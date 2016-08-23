@@ -7,9 +7,7 @@ use Carbon\Carbon;
 class HomeController extends BaseController {
 
     public function TESTINGROUTE(){ // test()
-        Notification::where('user_id', Auth::user()->id)->update([
-           'status' =>  'OLD'
-        ]);
+        return 'TESTING';
     }
 
     function generateConfirmationCode(){
