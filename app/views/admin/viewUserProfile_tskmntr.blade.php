@@ -66,6 +66,14 @@
         span b, li b {
             color:white;
         }
+        @media (max-width: 360px) {
+            .col-sm-12.mob{
+                padding: 0px;
+            }
+            .breadcrumb {
+                margin-top: 50px;
+            }
+        }
         /*-----------------*/
     </style>
 @stop
@@ -86,7 +94,7 @@
             </div>
             <div class="col-sm-12">
                 <div class="widget-container fluid-height">
-                    <div class="widget-content padded row" style="padding-bottom: 30px">
+                    <div class="widget-content">
                         <div class="col-sm-12" style="text-align: center; align-content: center; align-items: center;">
                                 <br/>
                                 @if($user->profilePic)
@@ -112,7 +120,7 @@
                             @endif
                             <br><br>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 mob">
                             <div class="col-md-6">
                                 <div class="heading" style="font-size:14pt;">
                                     <i class="glyphicon glyphicon-info-sign"></i>Personal Information
@@ -147,39 +155,39 @@
                             <hr class="hrLine" />
 
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <div class="heading" style="font-size:14pt;">
                                     <i class="fa fa-graduation-cap" style="margin-right: 10px;"></i>Educational Background
                                 </div>
-                                <div class="col-md-12" style="padding: 0 12px; color:#dddddd;">
+                                <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
                                     <span><b>College/Vocational: </b></span>
-                                    <ul>
-                                        <li><b>School Name: </b>Lorem ipsum</li>
+                                    <ul style="padding-left: 20px;">
+                                        <li><b>School: </b>Polytechnic University of the Philippines</li>
                                         <li><b>Course: </b>BSIT</li>
                                         <li><b>School Year: </b>2001/2015</li>
                                         <li><b>Awards: </b>N/A</li>
                                     </ul>
                                 </div>
 
-                                <div class="col-md-6" style="padding: 0 12px; color:#dddddd;">
+                                <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
                                     <span><b>High School: </b></span>
-                                    <ul>
-                                        <li><b>School Name: </b>Lorem ipsum</li>
+                                    <ul style="padding-left: 20px;">
+                                        <li><b>School: </b>San Bartolome High School</li>
                                         <li><b>School Year: </b>1996/2001</li>
                                         <li><b>Awards: </b>N/A</li>
                                     </ul>
                                 </div>
 
-                                <div class="col-md-6" style="padding: 0 12px; color:#dddddd;">
+                                <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
                                     <span><b>Elementary: </b></span>
-                                    <ul>
-                                        <li><b>School Name: </b>Lorem ipsum</li>
+                                    <ul style="padding-left: 20px;">
+                                        <li><b>School: </b>Placido Del Mundo Elementary School</li>
                                         <li><b>School Year: </b>1990/1996</li>
                                         <li><b>Awards: </b>N/A</li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="heading" style="font-size:14pt;">
                                     <i class="glyphicon glyphicon-wrench"></i>Skills
                                 </div>
@@ -227,37 +235,35 @@
                             </div> 
                             <hr class="hrLine" />-->
 
-                            <div class="col-sm-12" style="color:white;">
-                                <div class="col-sm-6">
-                                    <div class="heading">
-                                        <i class="glyphicon glyphicon-folder-open"></i>Supporting (Click to download)
-                                    </div>
-                                    <div style="padding: 0 35px;">
-                                        @if($docs->count() == 0)
-                                            <i>No data available.</i><br/>
-                                        @else
-                                            @foreach($docs as $doc)
-                                                <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a href="{{ $doc->path }}">{{ $doc->docname }}</a><br/>
-                                            @endforeach
-                                        @endif
-                                    </div>
+                            <div class="col-md-6" style="color:white;">
+                                <div class="heading">
+                                    <i class="glyphicon glyphicon-folder-open"></i>Supporting Documents
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="heading">
-                                        <i class="fa fa-certificate" style="margin-right: 10px;"></i>Certification
-                                    </div>
-                                    <div style="padding: 0 35px;">
-                                        @if($keyskills->count() == 0)
-                                            <i>No data available.</i><br/>
-                                        @else
-                                            @foreach($keyskills as $ks)
-                                                <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a href="{{ $ks->path }}"><img src="{{ $ks->path }}" title="{{ $ks->imgname }}" width="100em;" style="border: 1px solid #333333; border-radius: 0.3em"/></a>
-                                            @endforeach
-                                        @endif
-                                    </div>
+                                <div style="padding: 0 35px;">
+                                    @if($docs->count() == 0)
+                                        <i>No data available.</i><br><br>
+                                    @else
+                                        @foreach($docs as $doc)
+                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a href="{{ $doc->path }}">{{ $doc->docname }}</a><br><br>
+                                        @endforeach
+                                    @endif
                                 </div>
-                                <br/><br/>
                             </div>
+                            <div class="col-md-6" style="color:white;">
+                                <div class="heading">
+                                    <i class="fa fa-certificate" style="margin-right: 10px;"></i>Certification
+                                </div>
+                                <div style="padding: 0 35px;">
+                                    @if($keyskills->count() == 0)
+                                        <i>No data available.</i><br/>
+                                    @else
+                                        @foreach($keyskills as $ks)
+                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a href="{{ $ks->path }}"><img src="{{ $ks->path }}" title="{{ $ks->imgname }}" width="100em;" style="border: 1px solid #333333; border-radius: 0.3em"/></a>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+
                             <hr class="hrLine" style="padding-top:70px; margin-top: 70px" />
 <!--                             <div class="col-sm-12">
                                 <div class="col-sm-6">
@@ -290,6 +296,7 @@
                                 </div>
                             </div> -->
                         </div>
+                        <div style="clear:both;"></div>
                     </div>
                 </div>
             </div>
