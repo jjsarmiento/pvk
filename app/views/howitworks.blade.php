@@ -155,11 +155,13 @@
                     <!-- 16:9 aspect ratio -->
                     <div class="container-fluid">
                         <div class="row">
-            			    <div class="col-lg-1"></div>
-                                <div class="col-lg-10 text-center">
+            			    
+                                <div class="col-lg-12 text-center">
                                     <div class="embed-responsive embed-responsive-16by9">
                                     <!-- IFRAME -->
                                   <!--    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tntOCGkgt98"></iframe> -->
+                                    <iframe src="../video/PROVEEK.mp4" allowfullscreen></iframe>
+
                                     </div>
                     				<div class="text-center div_header">
                                 	  <a href="#works" class="page-scroll">
@@ -167,7 +169,7 @@
                                 	  </a>
                                     </div>
                                 </div>
-			                <div class="col-lg-1"></div>
+			              
                         </div>
                     </div>
                 </div>
