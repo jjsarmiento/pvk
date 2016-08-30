@@ -31,6 +31,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             height: auto;
+            min-height: 100%;
         }
         h1.lato-text{
             color: white;

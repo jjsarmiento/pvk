@@ -16,7 +16,8 @@
             background: url("../frontend/img/slideshow/10admin.jpg");
             background-size: cover;
             background-repeat: no-repeat;
-            height: 100%;
+            height: auto;
+            min-height: 100%;
         }
         h1.lato-text{
             color: white;
@@ -37,6 +38,11 @@
             transition: 0.3s;
             color: #d9d9d9;
             text-decoration: none;
+        }
+        @media(max-width: 767px){
+          h1.lato-text {
+              margin-top: 40px;
+          }
         }
         /*-----------------*/
         .accordion-toggle
