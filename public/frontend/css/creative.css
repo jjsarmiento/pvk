@@ -577,3 +577,15 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #222;
 }
+
+i.fa.fa-home {
+    color: #000;
+}
+i.fa.fa-home:hover, a.sidemenu:hover {
+    color: #2980b9;
+    transition: 0.3s;
+}
+a, a.sidemenu {
+    color: #000;
+    text-decoration: none !important;
+}

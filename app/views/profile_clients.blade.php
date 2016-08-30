@@ -12,6 +12,9 @@
     span {
         font-size: 16px;
     }
+    button.btn.btn-default.btn-trans {
+        padding: 9px;
+    }
 </style>
 @section('content')
     <!-- HEADER SEARCH SECTION -->

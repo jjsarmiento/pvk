@@ -11,6 +11,65 @@
         {
             text-decoration: none !important;
         }
+        /* Added by Jups */
+        section{
+            background: url("../frontend/img/slideshow/10admin.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+        }
+        h1.lato-text{
+            color: white;
+        }
+        .widget-container{
+            background-color: rgba(245,245,245,0.3);
+        }
+        .breadcrumb, .panel-heading{
+            background-color: rgba(245,245,245,0.7);
+        }
+        .breadcrumb>li{
+            color: white !important;
+        }
+        a.sidemenu {
+            color: white;
+        }
+        a.sidemenu:hover {
+            transition: 0.3s;
+            color: #d9d9d9;
+            text-decoration: none;
+        }
+
+        .heading {
+            background: rgba(3, 127, 180, 0.5) !important;
+            border-radius: 5px;
+            margin-bottom: 10px !important;
+            color: white !important;
+            height: 55px !important;
+        }
+        .col-sm-12 > img{
+            width: 260px;
+        }
+        span b, li b {
+            color:white;
+        }
+        @media (max-width: 360px) {
+            .col-sm-12.mob{
+                padding: 0px;
+            }
+            .breadcrumb {
+                margin-top: 50px;
+            }
+        }
+        .widget-content.padded {
+            color: white;
+        }
+        .well {
+        background-color: #3e3e3e !important;
+        border: 1px solid #5b5b5b !important;
+        }
+        /*-----------------*/
+
+
     </style>
 @stop
 
@@ -48,13 +107,13 @@
                         Job Ads
                     </li>
                 </ul>
-            </div>
+            </div> 
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="widget-container">
                     <div class="widget-content padded">
-                        <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:#2980b9">
+                        <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:white;">
                             {{ $job->title}}
                             @if(AdminController::IF_ADMIN_IS(['ADMINISTRATOR', 'SUPER_ADMIN'], Auth::user()->id))
                                 <a href="#" data-href="/ADMIN_DELETEJOB={{$job->id}}" type="button" class="close DELETE_JOB_BTN" style="opacity: 100;">
@@ -63,12 +122,12 @@
                             @endif
                         </h3>
                         <span class="text-right" style="padding:0;margin:0; color:#ccc;">
-                            Created at {{ date('m/d/y', strtotime($job->created_at)) }} by <a href="/{{$job->username}}">{{$job->fullName}}</a>
+                            Created at {{ date('m/d/y', strtotime($job->created_at)) }} by <a style="color:#68c3ff;" href="/{{$job->username}}">{{$job->fullName}}</a>
                         </span>
                         <br/><br/>
                         <div class="row" style="text-align: left">
                             <div class="col-md-7">
-                            <div class="col-md-4">Duration</div>
+                            <div class="col-md-4"><b>Duration</b></div>
                             <div class="col-md-8">
                                 @if($job->hiring_type == 'LT6MOS')
                                     Less than 6 months
@@ -78,32 +137,35 @@
                             </div>
                             <br/><br/>
                             <div class="col-md-4">
-                                Skill Category
+                                <b>Skill Category</b>
                             </div>
                             <div class="col-md-8">
                                 {{ $job->categoryname }}
                             </div>
                             <br/><br/>
                             <div class="col-md-4">
-                                Skill
+                                <b>Skill</b>
                             </div>
                             <div class="col-md-8">
                                 {{ $job->itemname }}
                             </div>
                             <br/><br/><br/>
                             <div class="col-md-4">
-                                Location
+                                <b>Location</b>
                             </div>
                             <div class="col-md-8">
                                 {{ $job->cityname }}, {{ $job->bgyname }}<br/>
                                 {{ $job->regname }}
                             </div>
                             <br/><br/><br/>
-                            <div class="col-md-4">Salary</div>
+                            <div class="col-md-4">
+                                <b>Salary</b>
+                            </div>
                             <div class="col-md-8">P{{ $job->salary }}</div>
                             <br/><br/><br/>
                             </div>
                             <div class="col-md-5">
+                                <b style="font-size: 17px;">Job Description :</b><br>
                                 {{ $job->description }}
                             </div>
                         </div>

@@ -34,6 +34,11 @@
             color: #d9d9d9;
             text-decoration: none;
         }
+        @media(max-width: 767px){
+          h1.lato-text {
+              margin-top: 40px;
+          }
+        }
         /*-----------------*/
         .accordion-toggle
         {

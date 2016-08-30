@@ -31,6 +31,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             height: auto;
+            min-height: 100%;
         }
         h1.lato-text{
             color: white;
@@ -86,6 +87,9 @@
                 <ul class="breadcrumb">
                     <li>
                         <a href="/" style="cursor: pointer;"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li>
+                        <a href="/userListTaskminators">User List</a>
                     </li>
                     <li class="active">
                         {{ $user->firstName }} {{ $user->lastName }}'s Profile

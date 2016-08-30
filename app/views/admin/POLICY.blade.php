@@ -19,6 +19,45 @@
         body{
             background-color:#E9EAED;
         }
+        /* Added by Jups */
+        section{
+            background: url("../frontend/img/slideshow/10admin.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: auto;
+            min-height: 100%;
+        }
+        h1.lato-text{
+            color: white;
+        }
+        .widget-container{
+            background-color: rgba(245,245,245,0.3);
+        }
+        .breadcrumb, .panel-heading{
+            background-color: rgba(245,245,245,0.7);
+        }
+        .breadcrumb>li{
+            color: white !important;
+        }
+        a.sidemenu {
+            color: white;
+        }
+        a.sidemenu:hover {
+            transition: 0.3s;
+            color: #d9d9d9;
+            text-decoration: none;
+        }
+
+        .nav-tabs a {
+            background-color: #eee;
+        }
+
+        .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+            background-color: #bbb7b4;
+            color: white !important;
+        }
+        /*-----------------*/
+
     </style>
     <script>
         $(document).ready(function() {
