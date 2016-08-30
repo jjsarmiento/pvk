@@ -1725,8 +1725,8 @@ class HomeController extends BaseController {
         $pass = (Input::has('primary_pass') ? Input::get('primary_pass') : Input::get('pass'));
 
         if(strcmp(Input::get('cPass'), $pass) == 0){
-            if(!ctype_alnum($pass) || strlen($pass) < 5){
-                array_push($registrationErrors, 'Password is alphanumeric only and must contain at least 5 characters');
+            if(!ctype_alnum($pass) || strlen($pass) < 8){
+                array_push($registrationErrors, 'Password is alphanumeric only and must contain at least 8 characters');
             }
         }else{
             array_push($registrationErrors, 'Passwords does not match');
