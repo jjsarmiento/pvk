@@ -309,7 +309,7 @@
                             </div>
                         </div>
                     </li> -->
-                    <li class="dropdown messages hidden-xs">
+                    <li class="dropdown messages hidden-xs" title="Notifications">
                         <a id="notificationLink" class="dropdown-toggle" data-toggle="dropdown" href="#" style="background:transparent; font-size: 14pt;">
                             <i class="fa fa-bell fa-fw"></i><span class="visible-xs-inline hidden-sm hidden-md" style="text-transform:none; font-size:11pt;">Notification</span>
                         </a>
@@ -347,14 +347,13 @@
                             <div id="notificationFooter"><a href="/showAllNotif" onclick="location.href='/showAllNotif'">See All</a></div>
                         </div>
                     </li>
-
-                    <li>
+                    <li title="Messages">
                         <a href="/messages" style="background:transparent; font-size: 14pt;">
                             <i class="fa fa-comment fa-fw"></i><span class="visible-xs-inline hidden-sm hidden-md" style="text-transform:none; font-size:11pt;">Message</span>
                         </a>
                     </li>
                     @if(User::GETROLE(Auth::user()->id) == 'CLIENT_CMP' || User::GETROLE(Auth::user()->id) == 'CLIENT_IND')
-                        <li>
+                        <li title="Checked Out Users">
                             <!--
                             <a href="#" style="background:transparent; font-size: 14pt;" class="SHWCRT" data-target="#CARTMODAL" data-toggle="modal">
                                 <i class="fa fa-shopping-cart fa-fw"></i>
@@ -383,12 +382,12 @@
                             @endif
                             --}}
                         </li>
-                        <li>
+                        <li title="Bookmarked Users">
                             <a href="/bookmarkedUsers" style="background:transparent; font-size: 14pt;">
                                 <i class="fa fa-bookmark fa-fw"></i>
                             </a>
                         </li>
-                        <li>
+                        <li title="Reviews & Feedbacks">
                             <a href="/reviews" style="background:transparent; font-size: 14pt;">
                                 <i class="fa fa-star fa-fw"></i>
                             </a>
