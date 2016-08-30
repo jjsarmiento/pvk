@@ -500,15 +500,15 @@ class AdminController extends \BaseController {
             ->join('roles', 'roles.id', '=', 'user_has_role.role_id')
             ->where('user_has_role.role_id', '2');
 
-        if($acctStatus != 'ALL'){
-            $users = $users->where('users.status', $acctStatus);
-        }
-
         if($keyword != 'NONE'){
             $users = $users->where('users.username', 'LIKE', '%'.$keyword.'%')
                 ->orWhere('users.fullName', 'LIKE', '%'.$keyword.'%');
         }else{
             $keyword = null;
+        }
+
+        if($acctStatus != 'ALL'){
+            $users = $users->where('users.status', $acctStatus);
         }
 
         if($checkout != 'ALL'){

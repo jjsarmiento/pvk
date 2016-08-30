@@ -108,4 +108,52 @@ class SubAdminController extends \BaseController {
             ->with('acctType', $acctType)
             ->with('orderBy', $orderBy);
     }
+
+    public function workers_SEARCH($checkout, $acctStatus, $orderBy, $keyword, $title){
+        $users = User::join('user_has_role', 'users.id', '=', 'user_has_role.user_id')
+            ->join('roles', 'roles.id', '=', 'user_has_role.role_id')
+            ->where('user_has_role.role_id', '2');
+
+        if($keyword != 'NONE'){
+            $users = $users->where('users.username', 'LIKE', '%'.$keyword.'%')
+                ->orWhere('users.fullName', 'LIKE', '%'.$keyword.'%');
+        }else{
+            $keyword = null;
+        }
+
+        if($acctStatus != 'ALL'){
+            $users = $users->where('users.status', $acctStatus);
+        }
+
+        if($checkout != 'ALL'){
+            $users_checked_out_ID = $this->ADMIN_GET_CHECKEDOUT_WORKERS();
+            if($checkout){
+                // checked out
+                $users = $users->whereIn('users.id', $users_checked_out_ID);
+            }else{
+                // not checked out
+                $users = $users->whereNotIn('users.id', $users_checked_out_ID);
+            }
+        }
+
+        $users = $users
+            ->select([
+                'users.id',
+                'users.fullName',
+                'users.status',
+                'users.username',
+                'users.created_at',
+            ])
+            ->orderBy('users.created_at', $orderBy)
+            ->groupBy('users.id')
+            ->paginate(10);
+
+        return View::make('admin.subadmin.userlist')
+            ->with('title', $title)
+            ->with('checkout', $checkout)
+            ->with('users', $users)
+            ->with('orderBy', $orderBy)
+            ->with('acctStatus', $acctStatus)
+            ->with('keyword', $keyword);;
+    }
 }

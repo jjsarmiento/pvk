@@ -1,5 +1,17 @@
 @extends('layouts.admin.master')
     @section('head')
+        <script>
+            $(document).ready(function() {
+                $('#INIT_SEARCH').click(function() {
+                    var chkout = $('#checkOut').val(),
+                        acctSt = $('#acctStatus').val(),
+                        orderBy = $('#orderBy').val(),
+                        keyword = ($('#keyword').val() ? $('#keyword').val() : 'NONE');
+
+                    location.href = '/subadmin/workers='+chkout+'='+acctSt+'='+orderBy+'='+keyword+'='+$('#PAGE_TITLE').text();
+                });
+            });
+        </script>
     @stop
 
     @section('title')
@@ -7,7 +19,7 @@
     @stop
 
     @section('content_header')
-      <h1>{{$title}}
+      <h1><span id="PAGE_TITLE">{{$title}}</span>
         <small>Control Panel</small>
       </h1>
       <ol class="breadcrumb">
@@ -20,7 +32,41 @@
     @section('body')
         <div class="row">
             <div class="col-md-12">
-                <div class="panel">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            @if($title == 'Workers - User Accounts List')
+                                <div class="col-md-3">
+                                    <select class="form-control" id="checkOut" name="checkOut">
+                                        <option value="ALL">Display All Checkout Status</option>
+                                        <option <?php if($checkout == 1){ echo 'selected'; } ?> value="1">Checked Out</option>
+                                        <option <?php if($checkout == 0){ echo 'selected'; } ?> value="0">Not Checked Out</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" id="acctStatus" name="acctStatus">
+                                        <option value="ALL">Display All Account Status</option>
+                                        <option <?php if(@$acctStatus == "ACTIVATED"){ echo('selected'); } ?> value="ACTIVATED">Activated</option>
+                                        <option <?php if(@$acctStatus == "DEACTIVATED"){ echo('selected'); } ?> value="DEACTIVATED">Deactivated</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-control" id="orderBy" name="orderBy">
+                                        <option value="DESC" <?php if(@$orderBy == "DESC"){ echo('selected'); } ?>>Oldest first</option>
+                                        <option value="ASC" <?php if(@$orderBy == "ASC"){ echo('selected'); } ?>>Newest first</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input value="{{@$keyword}}" type="text" class="form-control" name="keyword" id="keyword" placeholder="Search by name or username">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary" id="INIT_SEARCH"><i class="glyphicon glyphicon-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                     <div class="panel-body">
                         @if($users->count() > 0)
                             <table class="table table-condensed table-hover table-responsive">

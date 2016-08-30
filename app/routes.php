@@ -211,6 +211,8 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
     Route::group(['before' => 'ADMINISTRATOR_SUPPORT'], function(){
         // SEARCH PENDING USERS
         Route::get('/subadmin/pending_users={acctType}={orderBy}={keyword}', 'SubAdminController@pending_users_SEARCH');
+        // SEARCH WORKERS
+        Route::get('/subadmin/workers={checkoutStatus}={acctStatus}={orderBy}={keyword}={title}', 'SubAdminController@workers_SEARCH');
 
         Route::get('/viewUserProfile/{id}', 'AdminController@viewUserProfile');
         Route::get('/allJobAds_user/{user_id}', 'AdminController@allJobAds_user');
