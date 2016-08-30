@@ -83,40 +83,13 @@
                     @if($roles == 'TASKMINATOR' && $CLIENTFLAG)
                         <div class="col-md-12">
 
-                            <div class="col-md-6 padded">
-                                <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Invite to apply</a>
+                            <div class="col-md-4 padded">
+                                <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn-block btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Invite to apply</a>
                             </div>
 
-                            <div class="col-md-6 padded">
-                                @if($roles == 'TASKMINATOR')
-                                    @if($CLIENTFLAG)
-                                        @if(User::IS_BOOKMARKED(Auth::user()->id, $users->id))
-                                            <a class="btn btn-warning" href="/REMOVE_BOOKMARK:{{BookmarkUser::where('worker_id', $users->id)->where('company_id', Auth::user()->id)->pluck('id')}}"><i class="BOOKMARK_USER fa fa-bookmark" style="color: #2ECC71;"></i> Worker is  bookmarked</a>
-                                        @else
-                                            <a class="btn btn-warning" href="/ADD_BOOKMARK:{{$users->id}}"><i class="BOOKMARK_USER fa fa-bookmark-o" style="color: #2ECC71;"></i> Bookmark this worker</a>
-                                        @endif
-                                    @endif
-                                @endif
-                            </div>
                             @if($PURCHASED == 0 && BaseController::IS_AN_APPLICANT_FOR_COMPANY($users->id, Auth::user()->id))
                                 <div class="col-md-4 padded">
-                                    <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Invite to apply</a>
-                                </div>  
-
-                                <div class="col-md-4 padded">
-                                    @if($roles == 'TASKMINATOR')
-                                        @if($CLIENTFLAG)
-                                            @if(User::IS_BOOKMARKED(Auth::user()->id, $users->id))
-                                                <a class="btn btn-warning" href="/REMOVE_BOOKMARK:{{BookmarkUser::where('worker_id', $users->id)->where('company_id', Auth::user()->id)->pluck('id')}}"><i class="BOOKMARK_USER fa fa-bookmark" style="color: #2ECC71;"></i> Worker is  bookmarked</a>
-                                            @else
-                                                <a class="btn btn-warning" href="/ADD_BOOKMARK:{{$users->id}}"><i class="BOOKMARK_USER fa fa-bookmark-o" style="color: #2ECC71;"></i> Bookmark this worker</a>
-                                            @endif
-                                        @endif
-                                    @endif
-                                </div>
-
-                                <div class="col-md-4 padded">
-                                    <a href="/doCheckout={{$users->id}}" class="btn btn-warning" style="background-color: #E74C3C;">Checkout</a>
+                                    <a href="/doCheckout={{$users->id}}" class="btn btn-block btn-warning" style="background-color: #E74C3C;">Checkout</a>
                                     <!-- OLD CART PROCEDURE
                                     @if($USERINCART > 0)
                                         <a href="#" class="btn btn-warning SHWCRT" data-target="#CARTMODAL" data-toggle="modal" style="background-color: #E74C3C;"><i  class="fa fa-cart-plus"></i>&nbsp;&nbsp;Added to cart</a>
@@ -129,6 +102,18 @@
                                     -->
                                 </div>
                             @endif
+
+                            <div class="col-md-4 padded">
+                                @if($roles == 'TASKMINATOR')
+                                    @if($CLIENTFLAG)
+                                        @if(User::IS_BOOKMARKED(Auth::user()->id, $users->id))
+                                            <a class="btn btn-block btn-warning" href="/REMOVE_BOOKMARK:{{BookmarkUser::where('worker_id', $users->id)->where('company_id', Auth::user()->id)->pluck('id')}}"><i class="BOOKMARK_USER fa fa-bookmark" style="color: #2ECC71;"></i> Worker is  bookmarked</a>
+                                        @else
+                                            <a class="btn btn-block btn-warning" href="/ADD_BOOKMARK:{{$users->id}}"><i class="BOOKMARK_USER fa fa-bookmark-o" style="color: #2ECC71;"></i> Bookmark this worker</a>
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
                         </div>
                     @endif
 
