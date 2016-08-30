@@ -182,6 +182,10 @@
                                         <span><b>Linkedin: </b><a href="linkedin.com" target="_Blank">Linkedin.com</a></span>
                                         -->
                                     </div>
+                                @else
+                                    <span style="color:red; font-size:15px;">
+                                        <em><b>Note:</b> Contact Information will only be available after you check-out the Worker's Profile</em>
+                                    </span>
                                 @endif
                             @else
                                 <!-- CONTACT INFO -->
@@ -193,10 +197,6 @@
                                     <span><b>Linkedin: </b><a href="linkedin.com" target="_Blank">Linkedin.com</a></span>
                                 </div>
                             @endif
-
-                            <span style="color:red; font-size:15px;">
-                                <em><b>Note:</b> Contact Information will only be available after you check-out the Worker's Profile</em>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,15 @@
                             <span class="section-heading lato-text" style="font-size: 30px; color:#333;">Educational Background</span></i>
                             <hr class="hrLine">
                             <div class="content">
-                                {{$users->educationalBackground}}
+                                @if($PURCHASED > 0)
+                                    @if($users->educationalBackground)
+                                        {{$users->educationalBackground}}
+                                    @else
+                                        <center>N/A</center>
+                                    @endif
+                                @else
+                                    <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -239,17 +247,24 @@
                             <span class="section-heading lato-text" style="font-size: 30px; color:#333;">Relevant Experiences</span></i>
                             <hr class="hrLine">
                             <div class="content">
-                                @foreach($RELEVANT_EXP as $e)
-                                    <ul>
-                                        <li>Company : {{$e->position}}</li>
-                                        <li>Position : {{$e->company_name}}</li>
-                                        <li>Location : {{$e->location}}</li>
-                                        <li>Time Period : {{$e->time_period}}</li>
-                                        <li>Roles and Responsibility : {{$e->roles_and_resp}}</li>
-                                    </ul>
-                                    <hr/>
-                                @endforeach
-                                <span>{{$users->experience}}</span>
+                                @if($PURCHASED > 0)
+                                    @if($RELEVANT_EXP->count() > 0)
+                                        @foreach($RELEVANT_EXP as $e)
+                                            <ul>
+                                                <li>Company : {{$e->position}}</li>
+                                                <li>Position : {{$e->company_name}}</li>
+                                                <li>Location : {{$e->location}}</li>
+                                                <li>Time Period : {{$e->time_period}}</li>
+                                                <li>Roles and Responsibility : {{$e->roles_and_resp}}</li>
+                                            </ul>
+                                            <hr/>
+                                        @endforeach
+                                    @else
+                                        <center>N/A</center>
+                                    @endif
+                                @else
+                                    <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
+                                @endif
                             </div>
                         </div>
                     </div>
