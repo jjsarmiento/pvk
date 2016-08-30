@@ -75,4 +75,37 @@ class SubAdminController extends \BaseController {
         return View::make('admin.subadmin.jobads')
             ->with('jobs', $jobs);
     }
+
+    public function pending_users_SEARCH($acctType, $orderBy, $keyword){
+        $userList = User::join('user_has_role', 'users.id', '=', 'user_has_role.user_id')
+            ->join('roles', 'roles.id', '=', 'user_has_role.role_id')
+            ->whereIn('users.status', ['PRE_ACTIVATED', 'VERIFY_EMAIL_REGISTRATION']);
+
+        if($keyword != "NONE"){
+            $userList = $userList
+                ->where('users.fullName', 'LIKE', '%'.$keyword.'%')
+                ->orWhere('users.username', 'LIKE', '%'.$keyword.'%');
+        }
+
+        if($acctType != "ALL"){
+            $userList = $userList->where('users.accountType', $acctType);
+        }
+
+        $userList = $userList->orderBy('users.created_at', $orderBy)
+            ->select([
+                'users.id',
+                'users.fullName',
+                'users.status',
+                'users.username',
+            ])
+            ->paginate(10);
+
+
+
+        return View::make('admin.subadmin.pending_users')
+            ->with('users', $userList)
+            ->with('keyword', $keyword)
+            ->with('acctType', $acctType)
+            ->with('orderBy', $orderBy);
+    }
 }

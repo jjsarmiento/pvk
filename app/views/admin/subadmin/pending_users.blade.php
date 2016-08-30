@@ -1,5 +1,16 @@
 @extends('layouts.admin.master')
     @section('head')
+        <script>
+            $(document).ready(function(){
+                $('#INIT_SEARCH').click(function(){
+                    var acctType = $('#acctType').val(),
+                        orderBy = $('#orderBy').val(),
+                        keyword = ($('#keyword').val() ? $('#keyword').val() : 'NONE');
+
+                    location.href = "/subadmin/pending_users="+acctType+'='+orderBy+'='+keyword;
+                });
+            });
+        </script>
     @stop
 
     @section('title')
@@ -21,7 +32,34 @@
     @section('body')
         <div class="row">
             <div class="col-md-12">
-                <div class="panel">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <select id="acctType" name="acctType" class="form-control">
+                                    <option value="ALL" <?php if(@$acctType == 'ALL'){ echo('selected'); } ?>>Display All Account Type</option>
+                                    <option value="FREE" <?php if(@$acctType == 'FREE'){ echo('selected'); } ?>>Free</option>
+                                    <option value="BASIC" <?php if(@$acctType == 'BASIC'){ echo('selected'); } ?>>Basic</option>
+                                    <option value="PREMIUM" <?php if(@$acctType == 'CANCELLED'){ echo('PREMIUM'); } ?>>Premium</option>
+                                    <option value="MASS_HIRING" <?php if(@$acctType == 'MASS_HIRING'){ echo('selected'); } ?>>Mass Hiring</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select name="orderBy" id="orderBy" class="form-control">
+                                    <option value="DESC" <?php if(@$orderBy == 'DESC'){ echo('selected'); } ?>>Newest First</option>
+                                    <option value="ASC" <?php if(@$orderBy == 'ASC'){ echo('selected'); } ?>>Oldest First</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input value="{{@$keyword}}" type="text" class="form-control" name="keyword" id="keyword" placeholder="Search by name or username">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary" id="INIT_SEARCH"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         @if($users->count() > 0)
                             <table class="table table-condensed table-hover table-responsive">
