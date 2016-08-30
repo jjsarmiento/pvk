@@ -126,34 +126,23 @@
             <div class="col-md-12" style="background-color:white; border-radius:3px;">
                 <div class="col-md-3 container lato-text padded">
                     <div class="row padded" style="border-bottom: 1px solid #cdcdcd;">
-                        @if(Auth::user()->profilePic == null)
-                            <div class="thumbnail">
-                                @if(Auth::user()->profilePic)
-                                    <img src="{{ Auth::user()->profilePic }}" class="portrait"/><br>
-                                @else
-                                    <img src="/images/default_profile_pic.png"/><br>
-                                @endif
+                            <div class="widget-content padded">
+                                <div class="thumbnail">
+                                    @if(Auth::user()->profilePic)
+                                        <img src="{{ Auth::user()->profilePic }}" class="portrait"/><br>
+                                    @else
+                                        <img src="/images/default_profile_pic.png"/><br>
+                                    @endif
+                                </div>
                             </div>
-                            <h3 class="lato-text" style="margin-top:0px;">{{ $user->fullName }}</h3>
-                            <div class="heading" style="margin-bottom: 15px;">
-                                <i class="icon-signal"></i>Please upload a profile picture
-                            </div>
+                            <h3 class="lato-text" style="text-align: center; margin-top:0px;">{{ $user->fullName }}</h3>
+
                             <div class="widget-content" style="width: 236px;">
                                 {{ Form::open(array('url' => '/uploadProfilePic', 'id' => 'uploadProfilePicForm', 'files' => 'true')) }}
                                     <input type="file" name="profilePic" accept="image/*" class="form-control" /><br/>
                                     <button type="submit" class="btn btn-success" style="border: 1px solid #5cb85c;">Upload</button>
                                 {{ Form::close() }}
                             </div>
-                        @else
-                            <div class="widget-content padded">
-                                <div class="thumbnail">
-                                    <a href="/editProfile"><img src="{{ Auth::user()->profilePic }}" class="portrait"/></a>
-                                </div>
-                                <div class="heading">
-                                    <i class="glyphicon glyphicon-user"></i>{{ Auth::user()->fullName }}
-                                </div>
-                            </div>
-                        @endif
                     </div>
 
                     <div class="row padded bord" style="border-bottom: 1px solid #cdcdcd;">

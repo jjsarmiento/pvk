@@ -164,7 +164,7 @@
                             @endif
                         </div> -->
 
-                        @if(Auth::user()->profilePic == null)
+                        <div class="widget-content padded">
                             <div class="thumbnail">
                                 @if(Auth::user()->profilePic)
                                     <img src="{{ Auth::user()->profilePic }}" class="portrait"/><br>
@@ -172,28 +172,16 @@
                                     <img src="/images/default_profile_pic.png"/><br>
                                 @endif
                             </div>
-                            <h3 class="lato-text" style="margin-top:0px;">{{ $user->fullName }}</h3>
+                        </div>
 
-                            <div class="heading" style="margin-bottom: 15px;">
-                                <i class="icon-signal"></i>Please upload a profile picture
-                            </div>
+                        <h3 class="lato-text" style="margin-top:0px;">{{ $user->fullName }}</h3>
 
-                            <div class="widget-content" style="width: 236px;">
-                                {{ Form::open(array('url' => '/uploadProfilePic', 'id' => 'uploadProfilePicForm', 'files' => 'true')) }}
-                                    <input type="file" name="profilePic" accept="image/*" class="form-control" /><br/>
-                                    <button type="submit" class="btn btn-success" style="border: 1px solid #5cb85c;">Upload</button>
-                                {{ Form::close() }}
-                            </div>
-                        @else
-                            <div class="widget-content padded">
-                                <div class="thumbnail">
-                                    <a href="/editProfile"><img src="{{ Auth::user()->profilePic }}" class="portrait"/></a>
-                                </div>
-                                <div class="heading">
-                                    <i class="glyphicon glyphicon-user"></i>{{ Auth::user()->fullName }}
-                                </div>
-                            </div>
-                        @endif
+                        <div class="widget-content" style="width: 236px;">
+                            {{ Form::open(array('url' => '/uploadProfilePic', 'id' => 'uploadProfilePicForm', 'files' => 'true')) }}
+                                <input type="file" name="profilePic" accept="image/*" class="form-control" /><br/>
+                                <button type="submit" class="btn btn-success" style="border: 1px solid #5cb85c;">Upload</button>
+                            {{ Form::close() }}
+                        </div>
 
                         <!-- <h3 class="lato-text">{{ $user->companyName }}</h3> -->
                     </div>
