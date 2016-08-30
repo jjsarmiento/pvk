@@ -239,6 +239,16 @@
                             <span class="section-heading lato-text" style="font-size: 30px; color:#333;">Relevant Experiences</span></i>
                             <hr class="hrLine">
                             <div class="content">
+                                @foreach($RELEVANT_EXP as $e)
+                                    <ul>
+                                        <li>Company : {{$e->position}}</li>
+                                        <li>Position : {{$e->company_name}}</li>
+                                        <li>Location : {{$e->location}}</li>
+                                        <li>Time Period : {{$e->time_period}}</li>
+                                        <li>Roles and Responsibility : {{$e->roles_and_resp}}</li>
+                                    </ul>
+                                    <hr/>
+                                @endforeach
                                 <span>{{$users->experience}}</span>
                             </div>
                         </div>

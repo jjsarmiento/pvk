@@ -102,6 +102,8 @@ class HomeController extends BaseController {
                             ->whereNotIn('id', array_merge($this->WORKERGETINVITES_JOBID($temp->id), $this->GET_WORKER_APPLICATIONS($temp->id)))
                             ->get();
 
+                        $RELEVANT_EXP = WorkerExperience::where('user_id', $temp->id)->get();
+
                         $HAS_INVITES = Job::join('job_invites', 'job_invites.job_id', '=', 'jobs.id')
                             ->where('job_invites.invited_id', $temp->id)
                             ->whereIn('job_invites.job_id', BaseController::ALL_JOBS_STATIC(Auth::user()->id))
@@ -146,6 +148,7 @@ class HomeController extends BaseController {
 
                     $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Visited profile of <a href="/viewUserProfile/'.$users->id.'">'.$users->fullName.'</a>');
                     return View::make('profile_worker')
+                        ->with('RELEVANT_EXP', $RELEVANT_EXP)
                         ->with('full_docs', $full_docs)
                         ->with("users", $users)
                         ->with('roles', $role)
