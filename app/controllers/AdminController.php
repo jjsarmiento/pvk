@@ -732,7 +732,7 @@ class AdminController extends \BaseController {
         if($status != 'false'){
             $users = $users->where('users.status', $status);
         }
-        if($accountType !=' false'){
+        if($accountType != 'false'){
             $users = $users->join('user_subscriptions', 'user_subscriptions.id', '=', 'users.accountType')
                 ->join('system_subscriptions', 'system_subscriptions.id', '=', 'user_subscriptions.system_subscription_id')
                 ->where('system_subscriptions.subscription_label', $accountType);
@@ -769,13 +769,12 @@ class AdminController extends \BaseController {
             ->with('cmpSearch_Region', $region)
             ->with('cmpSearch_City', $city)
             ->with('cmpSearch_Province', $province)
-            ->with('subs', SystemSubscription::orderBy('id', 'ASC')->get())
             ->with('keyword', $keyword)
             ->with('acct_status', $status)
             ->with('adminCMP_accountType', $accountType)
             ->with('orderBy', $orderBy)
             ->with('adminCMP_SrchBy', $searchBy)
-//            ->with('users', $userList);
+            ->with('subs', SystemSubscription::orderBy('id', 'ASC')->get())
             ->with('users', $users);
     }
 

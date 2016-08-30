@@ -2,6 +2,10 @@
     @section('head')
         <script>
             $(document).ready(function() {
+                CHAINLOCATION($('#cmpSearch_Region'), $('#cmpSearch_City'));
+                CHAINLOCATION($('#cmpSearch_Region'), $('#cmpSearch_Province'));
+                CHAINLOCATION($('#cmpSearch_Province'), $('#cmpSearch_City'));
+
                 $('#INIT_SEARCH').click(function() {
                     var chkout = $('#checkOut').val(),
                         acctSt = $('#acctStatus').val(),
@@ -9,6 +13,19 @@
                         keyword = ($('#keyword').val() ? $('#keyword').val() : 'NONE');
 
                     location.href = '/subadmin/workers='+chkout+'='+acctSt+'='+orderBy+'='+keyword+'='+$('#PAGE_TITLE').text();
+                });
+
+                $('#INIT_SEARCH_MPLYRS').click(function(){
+                    var searchWord = ($('#keyword').val() == '') ? false : $('#keyword').val(),
+                        acctStatus = ($('#acct_status').val() == '') ? false : $('#acct_status').val(),
+                        accountType = ($('#acctType').val() == '') ? false :$('#acctType').val(),
+                        orderBy = $('#adminCMP_orderBy').val(),
+                        searchBy = $('#adminCMP_SrchBy').val(),
+                        region = ($('#cmpSearch_Region').val() == 'ALL') ? false : $('#cmpSearch_Region').val(),
+                        city = ($('#cmpSearch_City').val() == 'ALL') ? false : $('#cmpSearch_City').val(),
+                        province = ($('#cmpSearch_Province').val() == 'ALL') ? false : $('#cmpSearch_Province').val();
+
+                    location.href = '/subadmin/employers='+searchWord+'='+acctStatus+'='+accountType+'='+orderBy+'='+searchBy+'='+region+'='+city+'='+province+'='+$('#PAGE_TITLE').text();
                 });
             });
         </script>
@@ -65,7 +82,81 @@
                                     </div>
                                 </div>
                             @elseif($title == 'Employers - User Accounts List')
-
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="cmpSearch_Region" id="cmpSearch_Region">
+                                                <option value="ALL">All regions</option>
+                                                @foreach($regions as $r)
+                                                    <option <?php if(@$cmpSearch_Region == $r->regcode){ echo 'selected'; } ?> value="{{$r->regcode}}">{{$r->regname}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="cmpSearch_Province" id="cmpSearch_Province" data-loctype="REGION_TO_PROVINCE" data-loctypeother="PROVINCE_TO_CITY">
+                                                <option value="ALL">All provinces</option>
+                                                @foreach($provinces as $p)
+                                                    <option <?php if(@$cmpSearch_Province == $p->provcode){ echo 'selected'; } ?> value="{{$p->provcode}}">{{$p->provname}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="cmpSearch_City" id="cmpSearch_City" data-loctype="REGION_TO_CITY">
+                                                <option value="ALL">All cities</option>
+                                                @foreach($cities as $c)
+                                                    <option <?php if(@$cmpSearch_City == $c->citycode){ echo 'selected'; } ?> value="{{$c->citycode}}">{{$c->cityname}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="acct_status" id="acct_status">
+                                                <option value="">All Account Status</option>
+                                                <option <?php if(@$acct_status == 'DEACTIVATED'){echo 'selected';} ?> value="DEACTIVATED">Deactivated</option>
+                                                <option <?php if(@$acct_status == 'ACTIVATED'){echo 'selected';} ?> value="ACTIVATED">Activated</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="acctType" id="acctType">
+                                                <option value="">All Account Type</option>
+                                                @foreach($subs as $s)
+                                                    <option <?php if(@$adminCMP_accountType == $s->subscription_code){echo 'selected';} ?> value="{{$s->subscription_code}}">{{$s->subscription_label}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="adminCMP_orderBy" id="adminCMP_orderBy">
+                                                <option <?php if(@$orderBy == 'ASC'){echo 'selected';} ?>  value="ASC">Oldest to Newest</option>
+                                                <option <?php if(@$orderBy == 'DESC'){echo 'selected';} ?> value="DESC">Newest to Oldest</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input value="{{@$keyword}}" type="text" class="form-control" name="keyword" id="keyword" placeholder="Search by name or username">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-primary" id="INIT_SEARCH_MPLYRS"><i class="glyphicon glyphicon-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="adminCMP_SrchBy" id="adminCMP_SrchBy">
+                                                <option <?php if(@$adminCMP_SrchBy == 'username'){echo 'selected';} ?> value="username">Search by Username</option>
+                                                <option <?php if(@$adminCMP_SrchBy == 'fullName'){echo 'selected';} ?> value="fullName">Search by Name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
                         </div>
                     </div>

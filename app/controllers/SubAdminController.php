@@ -45,7 +45,11 @@ class SubAdminController extends \BaseController {
             ->paginate(10);
 
         return View::make('admin.subadmin.userlist')
+            ->with('provinces', [])
+            ->with('cities', [])
+            ->with('regions', Region::get())
             ->with('title', 'Employers - User Accounts List')
+            ->with('subs', SystemSubscription::orderBy('id', 'ASC')->get())
             ->with('users', $users);
     }
 
@@ -155,5 +159,73 @@ class SubAdminController extends \BaseController {
             ->with('orderBy', $orderBy)
             ->with('acctStatus', $acctStatus)
             ->with('keyword', $keyword);;
+    }
+
+    public function employers_SEARCH($keyword, $status, $accountType, $orderBy, $searchBy, $region, $city, $province, $title){
+        $users = User::join('user_has_role', 'users.id', '=', 'user_has_role.user_id')
+            ->join('roles', 'roles.id', '=', 'user_has_role.role_id')
+            ->leftJoin('cities', 'cities.citycode', '=', 'users.city')
+            ->leftJoin('provinces', 'provinces.provcode', '=', 'users.province')
+            ->leftJoin('regions', 'regions.regcode', '=', 'users.region')
+            ->whereIn('user_has_role.role_id', [3, 4]);
+        $cities = [];
+        $regions = Region::get();
+        $provinces = [];
+
+        if($keyword != 'false'){
+            $users = $users->where('users.'.$searchBy, 'LIKE', '%'.$keyword.'%');
+        }else{
+            $keyword = '';
+        }
+        if($status != 'false'){
+            $users = $users->where('users.status', $status);
+        }
+        if($accountType != 'false'){
+            $users = $users->join('user_subscriptions', 'user_subscriptions.id', '=', 'users.accountType')
+                ->join('system_subscriptions', 'system_subscriptions.id', '=', 'user_subscriptions.system_subscription_id')
+                ->where('system_subscriptions.subscription_label', $accountType);
+        }
+        if($region != 'false'){
+            $users = $users->where('users.region', $region);
+            $cities = City::where('regcode', $region)->get();
+            $provinces = Province::where('regcode', $region)->get();
+        }
+        if($city != 'false'){
+            $users = $users->where('users.city', $city);
+        }
+        if($province != 'false'){
+            $users = $users->where('users.province', $province);
+            $cities = City::where('provcode', $province)->get();
+        }
+        $users = $users->orderBy('users.created_at', $orderBy)->select([
+                'users.id',
+                'users.fullName',
+                'users.username',
+                'users.profilePic',
+                'users.status',
+                'users.created_at',
+                'cities.cityname',
+                'regions.regname',
+            ])
+            ->groupBy('users.id')
+            ->paginate(10);
+
+
+        return View::make('admin.subadmin.userlist')
+            ->with('title', $title)
+            ->with('cities', $cities)
+            ->with('regions', $regions)
+            ->with('provinces', $provinces)
+            ->with('cmpSearch_Region', $region)
+            ->with('cmpSearch_City', $city)
+            ->with('cmpSearch_Province', $province)
+            ->with('subs', SystemSubscription::orderBy('id', 'ASC')->get())
+            ->with('keyword', $keyword)
+            ->with('acct_status', $status)
+            ->with('adminCMP_accountType', $accountType)
+            ->with('orderBy', $orderBy)
+            ->with('adminCMP_SrchBy', $searchBy)
+//            ->with('users', $userList);
+            ->with('users', $users);
     }
 }
