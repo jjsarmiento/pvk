@@ -719,9 +719,12 @@ class AdminController extends \BaseController {
     }
 
     public function userListClientIndiSearch($keyword, $status, $accountType, $orderBy, $searchBy, $region, $city, $province){
-        $users = User::leftJoin('cities', 'cities.citycode', '=', 'users.city')
+        $users = User::join('user_has_role', 'users.id', '=', 'user_has_role.user_id')
+            ->join('roles', 'roles.id', '=', 'user_has_role.role_id')
+            ->leftJoin('cities', 'cities.citycode', '=', 'users.city')
             ->leftJoin('provinces', 'provinces.provcode', '=', 'users.province')
-            ->leftJoin('regions', 'regions.regcode', '=', 'users.region');
+            ->leftJoin('regions', 'regions.regcode', '=', 'users.region')
+            ->whereIn('user_has_role.role_id', [3, 4]);
         $cities = [];
         $regions = Region::get();
         $provinces = [];

@@ -56,8 +56,8 @@
                                 <div class="col-md-3">
                                     <select class="form-control" id="checkOut" name="checkOut">
                                         <option value="ALL">Display All Checkout Status</option>
-                                        <option <?php if(@$checkout == 1){ echo 'selected'; } ?> value="1">Checked Out</option>
-                                        <option <?php if(@$checkout == 0){ echo 'selected'; } ?> value="0">Not Checked Out</option>
+                                        <option <?php if(@$checkout == '1'){ echo 'selected'; } ?> value="1">Checked Out</option>
+                                        <option <?php if(@$checkout == '0'){ echo 'selected'; } ?> value="0">Not Checked Out</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
