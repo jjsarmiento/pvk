@@ -75,7 +75,11 @@
                             if(data.length == 0){
                                 $('#minimalRegForm_Worker').unbind().submit();
                             }else{
-                                alert(data.join("\n"));
+                                $('#MODAL_LIST_ERRORS').empty();
+                                $.each(data, function(key, value){
+                                    $('#MODAL_LIST_ERRORS').append('<b>'+value+'</b><br/>');
+                                });
+                                $('#MODAL_ERROR').modal().show();
                                 $('#FAUXSUBMITBUTTON').hide();
                                 $('#SUBMITBUTTON').prop('disabled', false).show();
                             }
@@ -722,6 +726,24 @@
                 </div>
                 <div class="modal-footer text-center" style="text-align:center; padding-bottom:20px;">
                     <a href="/" class="btn btn-primary btn-md" style="border:1px solid #2980b9; font-size:16pt; padding:15px 30px 15px 30px;border-radius: 4px;">SIGN UP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--ERRORS MODAL--}}
+
+    <div class="modal modal-vcenter fade lato-text" id="MODAL_ERROR" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center" style="padding-bottom:0">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <center><i class="fa fa-warning fa-4x" style="color: #E74C3C"></i></center>
+                    <div id="MODAL_LIST_ERRORS" style="text-align: center;">
+                        {{--ERRORS GO HERE--}}
+                    </div>
+                </div>
+                <div class="modal-footer text-center" style="text-align:center; padding-bottom:20px;">
                 </div>
             </div>
         </div>
