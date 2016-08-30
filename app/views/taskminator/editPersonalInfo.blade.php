@@ -45,6 +45,10 @@
         width: 100%;
         height: auto;
     }
+
+    .datepicker {
+        font-family: Lato;
+    }
 </style>
 @stop
 

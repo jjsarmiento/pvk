@@ -212,6 +212,10 @@
             background-color: #cce6ff;
         }
 
+        .datepicker {
+            font-family: Lato;
+        }
+
     </style>
     @yield('head-content')
 </head>
