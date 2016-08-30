@@ -192,21 +192,10 @@
                         <br/>
                         <div class="col-md-12">
                             <label>Skill Category : </label>{{ $job->categoryname }}<br/>
-                            <label>Skills Needed : </label>{{$job->itemname}}
+                            <label>Skills Needed : </label>{{$job->itemname}}<br/>
                             @foreach($custom_skills as $cs)
                                 {{$cs->skill}} <br/>
                             @endforeach
-                            <!--
-                            <span style="background-color: #1ABC9C;" title="{{$job->categoryname}}" class="badge">
-                                {{ $job->categoryname }}
-                            </span>
-                            <span style="background-color: #3498DB;" title="{{ $job->itemname }}" class="badge">
-                                {{ $job->itemname }}
-                            </span>
-                            @foreach($custom_skills as $cs)
-                                <span style="background-color: #3498DB;" title="{{$cs->skill}}" class="badge">{{$cs->skill}}</span>
-                            @endforeach
-                            -->
                         </div>
                         <br/><br/><br/>
                     </div>
