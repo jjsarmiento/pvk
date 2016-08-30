@@ -1712,12 +1712,12 @@ class HomeController extends BaseController {
         }
 
         // CHECK FIRSTNAME
-        if(!ctype_alnum(Input::get('fName'))){
+        if(!ctype_alnum(str_replace(' ', '', Input::get('fName')))){
             array_push($registrationErrors, 'First name can only contain letters');
         }
 
         // CHECK LASTNAME
-        if(!ctype_alnum(Input::get('lName'))){
+        if(!ctype_alnum(str_replace(' ', '', Input::get('lName')))){
             array_push($registrationErrors, 'Last name can only contain letters');
         }
 

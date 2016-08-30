@@ -185,7 +185,7 @@
 
                                 <div class="col-lg-6" style="border-right:1px solid #ccc;">
                                     {{ Form::label('lbl_username', 'Username', ['style' => 'color:#333; text-transform: uppercase']) }}
-                                    {{ Form::text('uName', null, ['class' => 'form-control', 'placeholder' => 'markopotato', 'style' => 'border:none;', 'required' => 'True']) }}
+                                    {{ Form::text('uName', null, ['min' => '5', 'class' => 'form-control', 'placeholder' => 'markopotato', 'style' => 'border:none;', 'required' => 'True']) }}
                                 </div>
                                 <div class="col-lg-6">
                                     {{ Form::label('lbl_email', 'Email', ['style' => 'color:#333; text-transform: uppercase']) }}
