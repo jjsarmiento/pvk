@@ -73,8 +73,7 @@
                 var date_input=$('input[name="date"]'); //our date input has the name "date"
                 var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                 var options={
-//                    format: 'mm/dd/yyyy',
-                    format: 'yyyy-mm-dd',
+                    format: 'mm/dd/yyyy',
                     container: container,
                     todayHighlight: true,
                     autoclose: true
@@ -153,13 +152,13 @@
                                 Birth Date :
                             </div>
                             <div class="col-md-9">
-                                <input class="form-control" value="{{$user->birthdate}}" id="date" name="date" placeholder="MM/DD/YYY" type="text"/><br/>
+                                <input class="form-control" value="{{date('m/d/Y', strtotime($user->birthdate))}}" id="date" name="date" placeholder="MM/DD/YYY" type="text"/><br/>
                             </div>
                             <div class="col-md-3">
                                 Street :
                             </div>
                             <div class="col-md-9">
-                                <input type="text"  class="form-control"value="{{ $user->address }}" name="address"/><br/>
+                                <input type="text"  class="form-control" value="{{ $user->address }}" name="address"/><br/>
                             </div>
                             <div class="col-md-3">
                                 Region :
