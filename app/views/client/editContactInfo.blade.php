@@ -95,17 +95,17 @@
             <div class="col-md-12">
                 <div class="widget-container" style="min-height: 150px; padding-bottom: 5px; padding-top: 20px;">
                     <div class="widget-content padded">
-                        <form method="POST" action="/doEditContactInfo" id="editContactInfo">
+                        <form method="POST" action="/doCltEditContactInfo" id="editContactInfo">
                             @foreach($contacts as $contact)
                                 @if($contact->ctype == 'email')
                                     Email : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"required="required" /><br/>
+                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                 @elseif($contact->ctype == 'businessNum')
                                     Business Number : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"required="required" /><br/>
+                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                 @elseif($contact->ctype == 'mobileNum')
                                     Mobile Number : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"required="required" /><br/>
+                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                 @elseif($contact->ctype == 'facebook')
                                     Facebook : 
                                     <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
@@ -118,6 +118,7 @@
                                 @endif
                             @endforeach
                             <div class="text-right padded">
+                                <a href="/editProfile" class="btn btn-danger" style="margin-eft: 10px;">Cancel Edit</a>
                                 <button type="submit" class="btn btn-primary" style="margin-eft: 10px;">Save Edit</button>
                             </div>
                         </form>

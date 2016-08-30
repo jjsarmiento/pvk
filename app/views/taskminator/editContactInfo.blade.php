@@ -135,6 +135,7 @@
                                 @endif
                             @endforeach
                             <div class="text-right padded">
+                                <a href="/editProfile" class="btn btn-danger" style="margin-eft: 10px;">Cancel Edit</a>
                                 <button type="submit" class="btn btn-primary" style="margin-eft: 10px;">Save Edit</button>
                             </div>
                         </form>

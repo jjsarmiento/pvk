@@ -261,12 +261,17 @@
                                             @else {{ $contact->ctype }} @endif
                                         </span>
                                          :
-                                        <span style="margin-left: 5px">{{ $contact->content }}</span><br/>
+                                         @if($contact->content)
+                                            <span style="margin-left: 5px">{{ $contact->content }}</span><br/>
+                                         @else
+                                            N/A<br/>
+                                         @endif
                                     @endforeach
-
+                                    <!--
                                     <span><b>Facebook: </b><a href="#"> </a>N/A</span><br>
                                     <span><b>Twitter: </b><a href="#"> </a>N/A</span><br>
                                     <span><b>Linkedin: </b><a href="#"> </a>N/A</span>
+                                    -->
                                 </div>
                             </div>
 
