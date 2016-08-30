@@ -238,11 +238,11 @@
                                             </div>
 
                                             @if(Auth::user()->total_profile_progress < 50)
+                                                <p style="color: #000000; margin-top: 5px;">
+                                                    <i style="color: red" class="fa fa-warning"></i> <b>You can start applying for jobs when you complete your profile above 50%.</b><br><br>
+                                                    <a class="clickHere" href="/editProfile"> Click here to edit your profile </a>
+                                                </p>
                                             @endif
-                                            <p style="color: #000000; margin-top: 5px;">
-                                                <i style="color: red" class="fa fa-warning"></i> <b>You can start applying for jobs when you complete your profile above 50%.</b><br><br>
-                                                <a class="clickHere" href="/editProfile"> Click here to edit your profile </a>
-                                            </p>
                                         </div>
                                     </div>
                                 </div>

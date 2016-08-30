@@ -134,7 +134,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Awards</label>
-                                <textarea name="awards" rows="10" id="awards" class="form-control" placeholder="Awards" required="required"></textarea>
+                                <textarea name="awards" rows="10" id="awards" class="form-control" placeholder="Awards"></textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">Add Education</button>
