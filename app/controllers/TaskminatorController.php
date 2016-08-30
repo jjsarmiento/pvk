@@ -1216,6 +1216,7 @@ class TaskminatorController extends \BaseController {
             ]);
         }
 
+        Session::flash('successMsg', 'Educational Information Successfully Added!');
         return Redirect::back();
     }
 
@@ -1249,6 +1250,8 @@ class TaskminatorController extends \BaseController {
                 'updated_at'    =>  Carbon::now()
             ]);
         }
+
+        Session::flash('successMsg', 'Educational Information Successfully Edited!');
         return Redirect::back();
     }
 
