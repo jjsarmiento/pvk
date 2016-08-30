@@ -102,35 +102,35 @@
                                         Email : 
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
+                                        <input placeholder="Input existing email example : james@email.com" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                     </div>
                                 @elseif($contact->ctype == 'facebook')
                                     <div class="col-md-3">
                                         Facebook : 
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                        <input placeholder="Input link to facebook account example : fb.com/proveek" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'linkedin')
                                     <div class="col-md-3">
                                         LinkedIn : 
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                        <input placeholder="Place link to business's LinkedIn account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'mobileNum')
                                     <div class="col-md-3">
                                         Mobile Number : 
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                        <input placeholder="Input existing mobile number for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'twitter')
                                     <div class="col-md-3">
                                         Twitter : 
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                        <input placeholder="Place link to business's Twitter account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @endif
                             @endforeach

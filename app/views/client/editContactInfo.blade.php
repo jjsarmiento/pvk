@@ -99,22 +99,22 @@
                             @foreach($contacts as $contact)
                                 @if($contact->ctype == 'email')
                                     Email : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
+                                    <input placeholder="Input existing email example : james@email.com" type="email" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                 @elseif($contact->ctype == 'businessNum')
                                     Business Number : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
+                                    <input placeholder="Input existing telephone/cellphone number used for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                 @elseif($contact->ctype == 'mobileNum')
                                     Mobile Number : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
+                                    <input placeholder="Input existing mobile number for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                 @elseif($contact->ctype == 'facebook')
                                     Facebook : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                    <input placeholder="Input link to facebook account example : fb.com/proveek" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                 @elseif($contact->ctype == 'twitter')
                                     Twitter : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                    <input placeholder="Place link to business's Twitter account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                 @elseif($contact->ctype == 'linkedin')
                                     LinkedIn : 
-                                    <input type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                    <input placeholder="Place link to business's LinkedIn account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                 @endif
                             @endforeach
                             <div class="text-right padded">
