@@ -9,7 +9,13 @@
             background: url("../frontend/img/slideshow/10admin.jpg");
             background-size: cover;
             background-repeat: no-repeat;
-            height: 100%;
+            height: auto;
+            min-height: 100%;
+        }
+        @media(max-width: 767px){
+          h1.lato-text {
+              margin-top: 40px;
+          }
         }
         h1.lato-text{
             color: white;
@@ -45,14 +51,20 @@
 @section('content')
 <section>
     <div class="container lato-text">
+        <div class="page-title">
+            <h1 class="lato-text">
+                Category & Skills
+            </h1>
+        </div>
+
         <div class="row">
-            <div class="col-lg-12 no-padding">
+            <div class="col-lg-12">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="/" style="cursor: pointer;"><i class="fa fa-home"></i></a>
+                        <a href="/"><i class="fa fa-home"></i></a>
                     </li>
-                    <li class="active">
-                        Manage Task Categories and Skills
+                    <li>
+                        System Skills
                     </li>
                 </ul>
             </div>
@@ -64,7 +76,57 @@
         @endif
         <br/>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-3">
+                <div class="widget-container">
+                    <div class="widget-content">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a class="accordion-toggle">
+                                User Account List</a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/admin" class="sidemenu">Pending Users</a><br>
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/userListTaskminators" class="sidemenu">Worker</a><br>
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/UsrAccntLstCMPNY" class="sidemenu">Company</a><br>
+                            <!--
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/userListClientIndi" class="sidemenu">Employer - Individuals</a><br>
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/userListClientComp" class="sidemenu">Employer - Companies</a><br>
+                            -->
+                        </div>
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a class="accordion-toggle">
+                                    Job Ads&nbsp;&nbsp;
+                                    <span id="searchAdBtn" data-target="#adSearchModal" data-toggle="modal" style="font-size:0.8em; background-color: #2980b9; border-radius: 0.8em; padding: 0.2em; padding-left: 0.5em; padding-right: 0.5em; color: #ffffff; cursor: pointer">
+                                        <i class="fa fa-search"></i> Search
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/showJobAds" class="sidemenu">All Job Ads</a><br>
+                            {{--<i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/jobAds=INDIVIDUAL" class="sidemenu">Individual</a><br>--}}
+                            {{--<i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/jobAds=FEATURED" class="sidemenu">Featured</a><br>--}}
+                            {{--<i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/jobAds=HIRING" class="sidemenu">Mass Hiring</a><br>--}}
+                            {{--<i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/jobAds=REFERRAL" class="sidemenu">Referral</a><br>--}}
+                        </div>
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a class="accordion-toggle">
+                                Category & Skills</a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/skills" class="sidemenu">System Skills</a><br>
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/customSkills" class="sidemenu">Custom Skills</a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
                 <div class="widget-container fluid-height padded" style="background-color: #ffffff;">
                     <table class="table table-striped table-condensed table-hover">
                         <thead>
@@ -127,7 +189,9 @@
                     <center>{{$taskCategory->links()}}</center>
                 </div>
             </div>
-            <div class="col-md-4">
+
+            <div class="col-md-3">
+                <!--ADD CATEGORY-->
                 <div class="widget-container fluid-height padded" style="background-color: #ffffff;">
                     <form method="POST" action="doAddCategory">
                         <div class="form-group">
@@ -137,6 +201,7 @@
                         <button type="submit" class="btn btn-success">Add Category</button>
                     </form>
                 </div>
+                <!--END ADD CATEGORY-->
             </div>
         </div>
     </div>

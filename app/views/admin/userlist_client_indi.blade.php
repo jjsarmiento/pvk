@@ -12,7 +12,13 @@
             background: url("../frontend/img/slideshow/10admin.jpg");
             background-size: cover;
             background-repeat: no-repeat;
-            height: 100%;
+            height: auto;
+            min-height: 100%;
+        }
+        @media(max-width: 767px){
+          h1.lato-text {
+              margin-top: 40px;
+          }
         }
         h1.lato-text{
             color: white;

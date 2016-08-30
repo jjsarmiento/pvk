@@ -18,6 +18,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             height: auto;
+            min-height: 100%;
         }
         h1.lato-text{
             color: white;
@@ -35,6 +36,11 @@
             transition: 0.3s;
             color: #d9d9d9;
             text-decoration: none;
+        }
+        @media(max-width: 767px){
+            ul.breadcrumb {
+                margin-top: 50px;
+            }            
         }
         /*-----------------*/
     </style>
