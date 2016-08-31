@@ -46,7 +46,11 @@
                 margin-top: 50px;
             }            
         }
-        
+        @media (max-width: 320px){
+            .text {
+                font-size: 13px;
+            }
+        }
         /*-----------------*/        
     </style>
     <script>
@@ -140,7 +144,7 @@
             </div>
             <div class="col-md-4">
                 <div class="widget-container stats-container" style="display:block !important;">
-                    <div class="col-lg-6 lato-text">
+                    <div class="col-md-6 col-xs-6 lato-text">
                         <a id="APPLICANTSLINK" href="/WORKERDOCUMENTS" style="text-decoration:none;">
                             <div class="number" style="color:#2980b9;">
                                 <i class="fa fa-file"></i>
@@ -150,7 +154,7 @@
                             </div>
                         </a>
                         </div>
-                        <div class="col-lg-6 lato-text">
+                        <div class="col-md-6 col-xs-6 lato-text">
                         <a id="INVITEDSLINK" href="/COMPANYDOCUMENTS" style="text-decoration:none;">
                             <div class="number" style="color:#2980b9;">
                                 <i class="fa fa-file"></i>
@@ -162,7 +166,7 @@
                     </div>
                 </div><br/>
                 <div class="widget-container stats-container" style="display:block !important;">
-                    <div class="col-lg-6 lato-text">
+                    <div class="col-md-6 col-xs-6 lato-text">
                         <a id="APPLICANTSLINK" href="/TOS" style="text-decoration:none;">
                             <div class="number" style="color:#2980b9;">
                                 <i class="fa fa-gavel"></i>
@@ -172,7 +176,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-lg-6 lato-text">
+                    <div class="col-md-6 col-xs-6 lato-text">
                         <a id="APPLICANTSLINK" href="/POLICY" style="text-decoration:none;">
                             <div class="number" style="color:#2980b9;">
                                 <i class="fa fa-eye"></i>
