@@ -12,7 +12,8 @@
             background: url("../frontend/img/slideshow/10admin.jpg");
             background-size: cover;
             background-repeat: no-repeat;
-            height: 100%;
+            height: auto;
+            min-height: 100%;
         }
         h1.lato-text{
             color: white;
@@ -37,6 +38,17 @@
         @media(max-width: 767px){
           h1.lato-text {
               margin-top: 40px;
+          }
+        }
+        @media screen and (max-width: 767px) {
+          .tg {
+            width: auto !important; 
+          }
+          .tg col {
+            width: auto !important;
+          }
+          .tg-wrap {
+            overflow-x: auto;-webkit-overflow-scrolling: touch;
           }
         }
         /*-----------------*/
@@ -229,13 +241,13 @@
                 @endif
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="widget-container fluid-height padded" style="background-color: #ffffff;">
+                        <div class="tg-wrap widget-container fluid-height padded" style="background-color: #ffffff;">
                             <table class="table table-hover table-striped">
                                 <thead>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Account Status</th>
-                                    <th>Action</th>
+                                    <th class="tg-yw4l">Name</th>
+                                    <th class="tg-yw4l">Username</th>
+                                    <th class="tg-yw4l">Account Status</th>
+                                    <th class="tg-yw4l">Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach($admins as $a)

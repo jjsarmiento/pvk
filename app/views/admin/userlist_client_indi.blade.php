@@ -40,7 +40,18 @@
             color: #d9d9d9;
             text-decoration: none;
         }
-        /*-----------------*/
+        @media screen and (max-width: 767px) {
+          .tg {
+            width: auto !important; 
+          }
+          .tg col {
+            width: auto !important;
+          }
+          .tg-wrap {
+            overflow-x: auto;-webkit-overflow-scrolling: touch;
+          }
+        
+}        /*-----------------*/
         .accordion-toggle
         {
             text-decoration: none !important; 
@@ -409,16 +420,17 @@
                         <font style="color: red">No data available.</font>
                     </div>
                 @else
-                    <table style="background-color: white;" class="table table-hover table-striped">
-                        <thead>
-                            <th>Name @Username</th>
-                            <th>Date of Registration</th>
-                            <th>Account Status</th>
-                            <th>Action</th>
-                            <th>Audit Trail</th>
-                        </thead>
-                        <tbody>
+                    <div class="tg-wrap">
+                        <table class="tg table table-hover" style="background:white;">
+                            <thead>
+                                <th class="tg-yw4l">Name @Username</th>
+                                <th class="tg-yw4l">Date of Registration</th>
+                                <th class="tg-yw4l">Account Status</th>
+                                <th class="tg-yw4l">Action</th>
+                                <th class="tg-yw4l">Audit Trail</th>
+                            </thead>
                             @foreach($users as $user)
+                            <tbody>
                                 <tr>
                                     <td>
                                         <a href="/viewUserProfile/{{$user->id}}" style="font-weight: bolder;">
@@ -441,9 +453,10 @@
                                     </td>
                                     <td style="text-align: center;"><a style="font-size:1.3em" href="/auditTrail={{$user->id}}"><i class="fa fa-eye"></i></a></td>
                                 </tr>
+                            </tbody>
                             @endforeach
-                        </tbody>
-                    </table>
+                        </table>
+                    </div>
                     <center>{{ $users->links() }}</center>
                 @endif
             </div>
@@ -451,3 +464,5 @@
     </div>
 </section>
 @stop
+
+

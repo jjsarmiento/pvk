@@ -24,7 +24,7 @@
               margin-top: 40px;
           }
         }
-        h1.lato-text{
+        h1.lato-text{ 
             color: white;
         }
         .widget-container{
@@ -43,6 +43,17 @@
             transition: 0.3s;
             color: #d9d9d9;
             text-decoration: none;
+        }
+        @media screen and (max-width: 767px) {
+          .tg {
+            width: auto !important; 
+          }
+          .tg col {
+            width: auto !important;
+          }
+          .tg-wrap {
+            overflow-x: auto;-webkit-overflow-scrolling: touch;
+          }
         }
         /*-----------------*/
     </style>
@@ -141,14 +152,15 @@
             </div>
             <div class="col-md-9">
                 @if($jobs->count() != 0)
+                <div class="tg-wrap">
                     <table class="table table-striped table-hover" style="background-color: white;">
                         <thead>
-                            <th>Title</th>
-                            <th>Owner</th>
-                            <th>Location</th>
-                            <th>Work Duration</th>
-                            <th>Salary</th>
-                            <th>Expiration</th>
+                            <th class="tg-yw4l">Title</th>
+                            <th class="tg-yw4l">Owner</th>
+                            <th class="tg-yw4l">Location</th>
+                            <th class="tg-yw4l">Work Duration</th>
+                            <th class="tg-yw4l">Salary</th>
+                            <th class="tg-yw4l">Expiration</th>
                         </thead>
                         <tbody>
                             @foreach($jobs as $job)
@@ -181,6 +193,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                     <!--
                     @foreach($jobs as $job)
                         <div class="widget-container fluid-height padded" data-wow-duration=".3s" data-wow-offset="0" data-wow-delay="0" style=" word-wrap: break-word; padding-left:1em; padding-right:10px; min-height: 1em; max-height: 10">

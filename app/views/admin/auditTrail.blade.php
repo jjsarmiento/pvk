@@ -12,7 +12,8 @@
             background: url("../frontend/img/slideshow/10admin.jpg");
             background-size: cover;
             background-repeat: no-repeat;
-            height: 100%;
+            height: auto;
+            min-height: 100%;
         }
         h1.lato-text{
             color: white;
@@ -33,6 +34,22 @@
             transition: 0.3s;
             color: #d9d9d9;
             text-decoration: none;
+        }
+        @media (max-width: 767px){
+          .breadcrumb {
+              margin-top: 30px;
+          }
+        }
+        @media screen and (max-width: 767px) {
+          .tg {
+            width: auto !important; 
+          }
+          .tg col {
+            width: auto !important;
+          }
+          .tg-wrap {
+            overflow-x: auto;-webkit-overflow-scrolling: touch;
+          }
         }
         /*-----------------*/
         .accordion-toggle
@@ -238,29 +255,29 @@
                         </div>
                     </div>
 
-                    <div class="col-md-9" style="padding: 0;">
-                        <div style="background-color: #ffffff;">
-                            <h3 style="text-align: center;">Audit Trail for {{$user->fullName}}</h3>
-                            @if($trails->count() > 0)
-                                <table class="table table-striped table-hover table-condensed">
-                                    <thead>
-                                        <th>Action</th>
-                                        <th>Date of Action</th>
-                                        <th>URL</th>
-                                        <th>IP Address</th>
-                                    </thead>
-                                    @foreach($trails as $t)
-                                        <tr>
-                                            <td>{{$t->content}}</td>
-                                            <td>{{date('D, M j, Y \a\t g:ia', strtotime($t->created_at))}}</td>
-                                            <td><a href="{{$t->at_url}}">{{$t->at_url}}</a></td>
-                                            <td>{{$t->ip_address}}</td>
-                                        </tr>
-                                    @endforeach
-                                </table>
-                            @else
-                                <center><i>No data available.</i></center>
-                            @endif
+                    <div class="col-md-9">
+                        <h3 style="text-align: center; color:white;">Audit Trail for {{$user->fullName}}</h3>
+                        <div class="tg-wrap">
+                          @if($trails->count() > 0)
+                          <table class="tg table table-hover" style="background:white;">
+                            <thead>
+                              <th class="tg-yw4l">Action</th>
+                              <th class="tg-yw4l">Date of Action</th>
+                              <th class="tg-yw4l">URL</th>
+                              <th class="tg-yw4l">IP Address</th>
+                            </thead>
+                            @foreach($trails as $t)
+                                <tr>
+                                    <td>{{$t->content}}</td>
+                                    <td>{{date('D, M j, Y \a\t g:ia', strtotime($t->created_at))}}</td>
+                                    <td><a href="{{$t->at_url}}">{{$t->at_url}}</a></td>
+                                    <td>{{$t->ip_address}}</td>
+                                </tr>
+                            @endforeach
+                          </table>
+                          @else
+                              <center style="color:white;"><i>No data available.</i></center>
+                          @endif
                         </div>
                         <center>{{$trails->links()}}</center>
                     </div>

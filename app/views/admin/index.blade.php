@@ -145,6 +145,27 @@
               cursor: pointer;
               margin-left: 10px;
             }
+            @media screen and (max-width: 767px) {
+                .tg {
+                    width: auto !important; 
+                }
+                .tg col {
+                    width: auto !important;
+                }
+                .tg-wrap {
+                    overflow-x: auto !important;
+                    -webkit-overflow-scrolling: touch !important;
+                }
+                p.hiddenNote {
+                    color: #9c9c9c;
+                    text-align: center;
+                }
+            }
+            @media (max-width: 479px){
+                p.hiddenNote{
+                    display: block !important;
+                }
+            }
     </style>
 @stop
 
@@ -327,14 +348,16 @@
                                 <font style="color: red">No data available.</font>
                             </div>
                         @else
-                            <table style="background-color: white;" class="table table-hover table-striped">
+                        <p class="hiddenNote" style="display:none;">You can swipe the table</p>
+                        <div class="tg-wrap">
+                            <table class="tg table table-hover table-striped"  style="background-color: white;">
                                 <thead>
-                                    <th>Name @Username</th>
-                                    <th>Date of Registration</th>
-                                    <th>Account Status</th>
-                                    <th>Action</th>
-                                    <th>Audit Trail</th>
-                                </thead>
+                                    <th class="tg-yw4l">Name @Username</th>
+                                    <th class="tg-yw4l">Date of Registration</th>
+                                    <th class="tg-yw4l">Account Status</th>
+                                    <th class="tg-yw4l">Action</th>
+                                    <th class="tg-yw4l">Audit Trail</th>
+                                <thead>
                                 <tbody>
                                     @foreach($users as $user)
                                         <tr>
@@ -357,6 +380,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+
+
                             <!--
                             @foreach($users as $user)
                                 <div class="media block-update-card" style="">
