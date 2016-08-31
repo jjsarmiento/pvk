@@ -152,8 +152,7 @@
                                     <td>
                                         {{--SAVE BUTTON--}}
                                         <div id="edit_mode_actions_{{$c->categorycode}}" style="display: none;">
-                                            <a href="#"
-                                                class="cancel_edit"
+                                            <a class="cancel_edit"
                                                 data-editdiv="#edit_mode_actions_{{$c->categorycode}}"
                                                 data-defaultdiv="#default_actions_{{$c->categorycode}}"
                                                 data-label="#label_{{$c->categorycode}}"
@@ -172,12 +171,12 @@
                                                 data-txtfield="#input_{{$c->categorycode}}"
                                                 data-editdiv="#edit_mode_actions_{{$c->categorycode}}"
                                                 data-defaultdiv="#default_actions_{{$c->categorycode}}"
-                                                href="#" data-href="/editCategory={{$c->categorycode}}
+                                                data-href="/editCategory={{$c->categorycode}}
                                             ">
                                                 <i class="fa fa-edit" title="Edit category - {{$c->categoryname}}"></i>
                                             </a>
                                             &nbsp;
-                                            <a href="#" data-href="/deleteCategory={{$c->categorycode}}" class="a-validate" data-message="Are you sure you want to delete {{$c->categoryname}}">
+                                            <a data-href="/deleteCategory={{$c->categorycode}}" class="a-validate" data-message="Are you sure you want to delete {{$c->categoryname}}">
                                                 <i class="fa fa-trash" title="Delete category - {{$c->categoryname}}"></i>
                                             </a>
                                         </div>

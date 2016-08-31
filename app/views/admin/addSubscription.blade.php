@@ -12,6 +12,18 @@
         body{
             background-color:#E9EAED;
         }
+        section{
+            background: url("../frontend/img/slideshow/10admin.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: auto;
+            min-height: 100%;
+        }
+        @media (max-width: 767px){
+            .breadcrumb {
+                margin-top:50px;
+            }
+        }
     </style>
 @stop
 
