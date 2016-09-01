@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 class AdminController extends \BaseController {
 
     public function userList(){
@@ -1709,5 +1710,93 @@ class AdminController extends \BaseController {
     public function deleteSubscription($sub_id){
         SystemSubscription::where('id', $sub_id)->delete();
         return Redirect::back();
+    }
+
+    public function CREATE_SUBSCRIPTION(){
+        return View::make('admin.CREATE_SUBSCRIPTION');
+    }
+
+    public function CREATESUBSCRIPTION(){
+        $errorArray = array();
+        // check code
+        if(!ctype_alnum(Input::get('subscription_code'))){
+            array_push($errorArray, 'SUBSCRIPTION CODE MUST BE ALPHANUMERIC ONLY');
+        }elseif(SystemSubscription::where('subscription_code', Input::get('subscription_code'))->count() > 0){
+            array_push($errorArray, 'SUBSCRIPTION CODE ALREADY EXISTS');
+        }
+
+        // check label
+        if(strlen(strip_tags(Input::get('subscription_label'))) == 0){
+            array_push($errorArray, 'SUBSCRIPTION LABEL CANNOT CONTAIN TAGS');
+        }
+
+        // check duration - DAYS
+        if(!is_numeric(Input::get('subscription_duration'))){
+            array_push($errorArray, 'DURATION MUST BE NUMERIC ONLY (USER UNIT OF DAYS)');
+        }
+
+        // check price
+        if(!is_numeric(Input::get('subscription_price'))){
+            array_push($errorArray, 'PRICE MUST BE NUMERIC ONLY');
+        }
+
+        // check worker bookmark limit
+        if(!is_numeric(Input::get('worker_bookmark_limit'))){
+            array_push($errorArray, 'WORKER BOOKMARK LIMIT MUST BE NUMERIC ONLY');
+        }
+
+        // check worker invite limit
+        if(!is_numeric(Input::get('invite_limit'))){
+            array_push($errorArray, 'INVITE LIMIT MUST BE NUMERIC ONLY');
+        }
+
+        // check JOB AD LIMIT PER WEEK
+        if(!is_numeric(Input::get('job_ad_limit_week'))){
+            array_push($errorArray, 'JOB AD LIMIT PER WEEK MUST BE NUMERIC ONLY');
+        }
+
+        // check JOB AD LIMIT PER WEEK
+        if(!is_numeric(Input::get('job_ad_limit_month'))){
+            array_push($errorArray, 'JOB AD LIMIT PER MONTH MUST BE NUMERIC ONLY');
+        }
+
+        // check FEATURED JOB AD
+        if(!is_numeric(Input::get('featured_job_ads'))){
+            array_push($errorArray, 'FEATURED JOB AD MUST BE NUMERIC ONLY');
+        }
+
+        // check JOB AD LIMIT PER WEEK
+        if(!is_numeric(Input::get('featured_job_ads'))){
+            array_push($errorArray, 'FEATURED JOB AD MUST BE NUMERIC ONLY');
+        }
+
+        // check JOB AD LIMIT PER WEEK
+        if(!is_numeric(Input::get('free_resume'))){
+            array_push($errorArray, 'FREE RESUME MUST BE NUMERIC ONLY');
+        }
+
+        if(count($errorArray) == 0){
+            SystemSubscription::insert([
+                'subscription_code'     => Input::get('subscription_code'),
+                'subscription_label'    => Input::get('subscription_label'),
+                'subscription_duration' => Input::get('subscription_duration'),
+                'subscription_price'    => Input::get('subscription_price'),
+                'worker_browse'         => Input::get('worker_browse'),
+                'worker_bookmark_limit' => Input::get('worker_bookmark_limit'),
+                'invite_limit'          => Input::get('invite_limit'),
+                'job_ad_limit_week'     => Input::get('job_ad_limit_week'),
+                'job_ad_limit_month'    => Input::get('job_ad_limit_month'),
+                'featured_job_ads'      => Input::get('featured_job_ads'),
+                'sms_notif'             => Input::get('sms_notif'),
+                'free_resume'           => Input::get('free_resume'),
+                'created_at'            => Carbon::now()
+            ]);
+
+            return Redirect::to('/SYSTEMSETTINGS');
+        }else{
+            Session::flash('errorArray', $errorArray);
+            return Redirect::back()
+                ->withInput();
+        }
     }
 }

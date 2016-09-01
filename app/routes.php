@@ -147,9 +147,11 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
         Route::get('/POLICY', 'AdminController@POLICY');
 
         //SUBSCRIPTIONS
+        Route::get('/CREATE_SUBSCRIPTION', 'AdminController@CREATE_SUBSCRIPTION');
         Route::get('/subscriptions:{subsID}', 'AdminController@subscriptions');
         Route::get('/deleteSubscription:{subsID}', 'AdminController@deleteSubscription');
         Route::post('/UPDATESUBSCRIPTION', 'AdminController@UPDATESUBSCRIPTION');
+        Route::post('/CREATESUBSCRIPTION', 'AdminController@CREATESUBSCRIPTION');
 
         // SKILLS ROUTE
         Route::get('/skills', 'AdminController@skills');
