@@ -162,7 +162,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="title">Job Description <span style="color: #E74C3C">*</span></label>
-                                                <textarea rows="10" name="description" placeholder="Provide a short description of what the job is about" class="form-control" required="required">{{ Input::old('description') }}</textarea>
+                                                <textarea rows="10" name="description" placeholder="Provide a short description of what the job is about" class="form-control" >{{ Input::old('description') }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="title">Other Qualifications (Other skills and competencies Required)</label>
@@ -176,7 +176,7 @@
                                         </div>
                                     </div>
                                     <hr/>
-                                    <h5><i class="glyphicon glyphicon-map-marker"></i> &nbsp;Task Location</h5><br/>
+                                    <h5><i class="glyphicon glyphicon-map-marker"></i> &nbsp;Job Location <span style="color: #E74C3C">*</span></h5><br/>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
