@@ -348,58 +348,60 @@
                         </div>
                         <br/>
                     @endif
-                    <div class="widget-container" style="min-height:30px;">
-                        <div class="widget-content">
-                            <div class="panel-body" style="color:#2980b9; font-size:20pt; margin-bottom: -10px;">
-                                <i class="fa fa-search" aria-hidden="true"></i> Recommended workers
+                    @if($workers->count() > 0)
+                        <div class="widget-container" style="min-height:30px;">
+                            <div class="widget-content">
+                                <div class="panel-body" style="color:#2980b9; font-size:20pt; margin-bottom: -10px;">
+                                    <i class="fa fa-search" aria-hidden="true"></i> Recommended workers
+                                </div>
+                                @foreach($workers as $w)
+                                    <div class="col-md-4">
+                                        <div class="workers">
+                                            <a href="" style="padding: 5px;">
+                                                <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png" width="80" height="80">
+                                            </a>
+                                            <span>
+                                            <b>
+                                                @if(!in_array($w->id, $CHECKEDOUT_WORKERS))
+                                                    {{substr_replace($w->firstName, str_repeat('*', strlen($w->firstName)-1), 1)}}
+                                                    &nbsp;
+                                                    {{substr_replace($w->lastName, str_repeat('*', strlen($w->lastName)-1), 1)}}
+                                                @else
+                                                    {{ $w->fullName }}
+                                                @endif
+                                            </b><br/> <a href="/{{$w->username}}" class="user">{{ '@'.$w->username }}</a></span><br>
+                                            {{--<span>Address Lorem ipsum sit dolor amet</span><br>--}}
+                                            <span><b>Profile Rating: {{$w->total_profile_progress}}%</b></span><br>
+                                            {{--<span><b>Last Login: </b> 2 Days ago</span>--}}
+                                        </div>
+                                        <a href="/{{$w->username}}" class="viewSal">VIEW FULL PROFILE</a>
+                                    </div>
+                                @endforeach
+                                <!--
+                                @for($i=0; $i<=2; $i++)
+                                    <div class="col-md-4">
+                                        <div class="workers">
+                                            <a href="" style="padding: 5px;">
+                                                <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png" width="80" height="80">
+                                            </a>
+                                            <span><b>J*** D********</b> <a href="#" class="user">@username</a></span><br>
+                                            <span>Address Lorem ipsum sit dolor amet</span><br>
+                                            <span><b>Profile Rating: </b> 23%</span><br>
+                                            <span><b>Last Login: </b> 2 Days ago</span>
+                                        </div>
+                                        <a href="" class="viewSal">VIEW FULL PROFILE</a>
+                                    </div>
+                                @endfor
+                                -->
+                                <div style="clear:both; padding-bottom:20px;"></div>
                             </div>
-                            @foreach($workers as $w)
-                                <div class="col-md-4">
-                                    <div class="workers">
-                                        <a href="" style="padding: 5px;">
-                                            <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png" width="80" height="80">
-                                        </a>
-                                        <span>
-                                        <b>
-                                            @if(!in_array($w->id, $CHECKEDOUT_WORKERS))
-                                                {{substr_replace($w->firstName, str_repeat('*', strlen($w->firstName)-1), 1)}}
-                                                &nbsp;
-                                                {{substr_replace($w->lastName, str_repeat('*', strlen($w->lastName)-1), 1)}}
-                                            @else
-                                                {{ $w->fullName }}
-                                            @endif
-                                        </b><br/> <a href="/{{$w->username}}" class="user">{{ '@'.$w->username }}</a></span><br>
-                                        {{--<span>Address Lorem ipsum sit dolor amet</span><br>--}}
-                                        <span><b>Profile Rating: {{$w->total_profile_progress}}%</b></span><br>
-                                        {{--<span><b>Last Login: </b> 2 Days ago</span>--}}
-                                    </div>
-                                    <a href="/{{$w->username}}" class="viewSal">VIEW FULL PROFILE</a>
-                                </div>
-                            @endforeach
-                            <!--
-                            @for($i=0; $i<=2; $i++)
-                                <div class="col-md-4">
-                                    <div class="workers">
-                                        <a href="" style="padding: 5px;">
-                                            <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png" width="80" height="80">
-                                        </a>
-                                        <span><b>J*** D********</b> <a href="#" class="user">@username</a></span><br>
-                                        <span>Address Lorem ipsum sit dolor amet</span><br>
-                                        <span><b>Profile Rating: </b> 23%</span><br>
-                                        <span><b>Last Login: </b> 2 Days ago</span>
-                                    </div>
-                                    <a href="" class="viewSal">VIEW FULL PROFILE</a>
-                                </div>
-                            @endfor
-                            -->
-                            <div style="clear:both; padding-bottom:20px;"></div>
                         </div>
-                    </div>
+                        <br/>
+                    @endif
                 </div>
-                <br/>
             </div>
 
-            <div class="col-lg-8" style="margin-top: 2em;">
+            <div class="col-lg-8" style="">
                 <div class="col-lg-12 no-padding">
                     <div class="widget-container col-md-6" style="">
                         <div class="widget-content">
