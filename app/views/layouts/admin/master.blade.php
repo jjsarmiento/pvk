@@ -84,7 +84,7 @@
 
                 @if(AdminController::IF_ADMIN_IS(['CONTENT_EDITOR'], Auth::user()->id))
                     <li class="header">CONTENT EDITOR</li>
-                    <li><a href="#"><i class="fa fa-gavel"></i> <span>Terms Of Service</span></a></li>
+                    <li><a href="/subadmin/terms_of_service"><i class="fa fa-gavel"></i> <span>Terms Of Service</span></a></li>
                     <li><a href="#"><i class="fa fa-eye"></i> <span>Policy</span></a></li>
                 @endif
                 <li><a href="/logout"><i class="fa fa-power-off text-red"></i> <span>Logout</span></a></li>

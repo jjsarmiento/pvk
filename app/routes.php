@@ -221,6 +221,10 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
         Route::get('/ADMIN_jobDetails={job_id}', 'AdminController@ADMIN_jobDetails');
     });
 
+    Route::group(['before' => 'ADMINISTRATOR_CONTENTEDITOR'], function(){
+
+    });
+
     Route::group(['before' => 'SUPPORT'], function(){
         // EXCLUSIVE ROUTES FOR SUPPORT
         Route::group(['before' => 'XCLSV_SUPPORT'], function(){
@@ -236,7 +240,6 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
         Route::group(['before' => 'XCLSV_CONTENT_EDITOR'], function(){
 
         });
-
     });
     /*
     Route::get('/taskListBidding', 'AdminController@taskListBidding');

@@ -23,6 +23,8 @@
                         <div class="row">
                             <i class="fa fa-warning fa-4x" style="color: #E74C3C;"></i><br/>
                             {{$message}}
+                            <br/>
+                            Redirect to <a href="/">home</a> page.
                         </div>
                     </div>
                 </div>
