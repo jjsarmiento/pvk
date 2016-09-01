@@ -228,4 +228,10 @@ class SubAdminController extends \BaseController {
 //            ->with('users', $userList);
             ->with('users', $users);
     }
+
+    public function terms_of_service(){
+        return View::make('admin.subadmin.terms_of_service')
+            ->with('content_es', SystemSetting::where('type', 'SYSSETTINGS_TOS_ES')->pluck('value'))
+            ->with('content_tg', SystemSetting::where('type', 'SYSSETTINGS_TOS_TG')->pluck('value'));
+    }
 }

@@ -70,6 +70,13 @@ Route::filter('guest', function()
 });
 
 Route::filter('ADMINISTRATOR_SUPPORT', function(){
+    if(!AdminController::IF_ADMIN_IS(['SUPER_ADMINISTRATOR', 'ADMINISTRATOR', 'SUPPORT'], Auth::user()->id)){
+        return View::make('admin.ADMIN_ROLE_ERROR')
+            ->with('message', 'Your account does not have the proper privilege to complete this action.');
+    }
+});
+
+Route::filter('ADMINISTRATOR_CONTENTEDITOR', function(){
     if(!AdminController::IF_ADMIN_IS(['SUPER_ADMINISTRATOR', 'ADMINISTRATOR', 'CONTENT_EDITOR'], Auth::user()->id)){
         return View::make('admin.ADMIN_ROLE_ERROR')
             ->with('message', 'Your account does not have the proper privilege to complete this action.');

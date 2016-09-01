@@ -19,9 +19,15 @@
     <link rel="stylesheet" href="/frontend/adminres/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     {{ HTML::style('/frontend/font-awesome/css/font-awesome.min.css') }}
 
+    {{ HTML::style('/frontend/ckeditor/css/samples.css') }}
+    {{ HTML::style('/frontend/ckeditor/toolbarconfigurator/lib/codemirror/neo.css') }}
+
     <script src="/js/jquery-1.11.0.min.js"></script>
     {{ HTML::script('/frontend/js/html5shiv.js') }}
     {{ HTML::script('/frontend/js/respond.min.js') }}
+
+    {{ HTML::script('/frontend/ckeditor/js/ckeditor.js') }}
+    {{ HTML::script('/frontend/ckeditor/js/sample.js') }}
     @yield('head')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
