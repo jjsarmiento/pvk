@@ -30,6 +30,15 @@
         font-size: 18px;
         line-height: 3em;
     }
+    @media (max-width: 767px){
+        .col-md-6 {
+            margin-bottom: 20px;
+        }
+        .skills{
+            width: 100% !Important;
+            display: block;
+        }
+    }
 </style>
 @section('content')
     <!-- HEADER SEARCH SECTION -->
@@ -83,7 +92,7 @@
                     @if($roles == 'TASKMINATOR' && $CLIENTFLAG)
                         <div class="col-md-12">
 
-                            <div class="col-md-4 padded">
+                            <div class="col-md-4 col-md-offset-2 padded">
                                 <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn-block btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Invite to apply</a>
                             </div>
 
@@ -210,10 +219,10 @@
                             <hr class="hrLine">
                             <div class="content">
                                 @foreach(User::getSkills($users->id) as $skill)
-                                    <span class="skills">{{ $skill->itemname }}</span>
+                                    <span class="skills" style="text-align:center;">{{ $skill->itemname }}</span>
                                 @endforeach
                                 @foreach(User::GET_CUSTOM_SKILLS($users->id) as $skill)
-                                    <span class="skills">{{ $skill->skill }}</span>
+                                    <span class="skills" style="text-align:center;">{{ $skill->skill }}</span>
                                 @endforeach
                             </div>
                         </div>
