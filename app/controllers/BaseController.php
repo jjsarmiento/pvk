@@ -773,5 +773,15 @@ class BaseController extends Controller {
         foreach(Purchase::get() as $o){ array_push($myArr, $o->worker_id); }
         return $myArr;
     }
+
+    public static function ADMIN_GET_ALL_ADMIN_ID($role){
+        $admins = AdminRole::join('admin_has_roles', 'admin_has_roles.admin_role_id', '=', 'admin_roles.id')
+            ->whereIn('admin_roles.role', $role)
+            ->select(['admin_has_roles.user_id'])
+            ->get();
+        $myArr = array();
+        foreach($admins as $o){ array_push($myArr, $o->user_id); }
+        return $myArr;
+    }
     // AUTHORED BY Jan Sarmiento -- END
 }

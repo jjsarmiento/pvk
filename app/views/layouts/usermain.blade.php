@@ -351,11 +351,13 @@
                             <div id="notificationFooter"><a href="/showAllNotif" onclick="location.href='/showAllNotif'">See All</a></div>
                         </div>
                     </li>
-                    <li title="Messages">
-                        <a href="/messages" style="background:transparent; font-size: 14pt;">
-                            <i class="fa fa-comment fa-fw"></i><span class="visible-xs-inline hidden-sm hidden-md" style="text-transform:none; font-size:11pt;">Message</span>
-                        </a>
-                    </li>
+                    @if($role == 'ADMIN')
+                        <li title="Messages">
+                            <a href="/messages" style="background:transparent; font-size: 14pt;">
+                                <i class="fa fa-comment fa-fw"></i><span class="visible-xs-inline hidden-sm hidden-md" style="text-transform:none; font-size:11pt;">Message</span>
+                            </a>
+                        </li>
+                    @endif
                     @if(User::GETROLE(Auth::user()->id) == 'CLIENT_CMP' || User::GETROLE(Auth::user()->id) == 'CLIENT_IND')
                         <li title="Checked Out Users">
                             <!--

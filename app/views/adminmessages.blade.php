@@ -28,10 +28,10 @@
 <script>
     $(document).ready(function(){
         $('#ADMIN_sendMsgContent').keyup(function(){
-            if($(this).val().length < 1){
-                $('#ADMIN_sendMsgBtn').attr('disabled', true);
-            }else{
+            if($(this).val().length > 1 && $('#USERID').val() != ''){
                 $('#ADMIN_sendMsgBtn').attr('disabled', false);
+            }else{
+                $('#ADMIN_sendMsgBtn').attr('disabled', true);
             }
         });
 
@@ -102,6 +102,7 @@
 
 @section('content')
 <section>
+    <input type="hidden" id="CHAT_ACTIVE" value="false" />
     <div class="container main-content lato-text">
         <div class="col-lg-3">
             @foreach($admins as $admin)
@@ -113,6 +114,7 @@
         <div class="col-lg-9">
             <div class="panel-header"><span id="PANELHEAD" style="font-size: 1.4em;"></span></div>
             <div class="panel-body" id="PANELBODY" style="word-wrap: break-word; height: 32em; overflow-y: auto; padding: 0; background-color: #ffffff;">
+                <div class="col-md-12 padded" style="background-color: #2980B9; color: #ffffff; text-align: center">PLEASE SELECT AN ADMIN TO CHAT WITH</div>
             </div>
             <div class="panel-footer">
                 <div class="input-group">
@@ -133,31 +135,4 @@
 @stop
 
 @section('body-scripts')
-<script>
-    $(document).ready(function(){
-        $('#uploadProfilePicForm').submit(function(){
-            $('#uploadBtn').empty().append('Uploading..');
-
-        });
-
-
-
-        $('#searchBtn').click(function(){
-                var workingTime = 'PTIME',
-                    searchField = 'name',
-                    searchCity  = '175301',
-                    searchWord  = '0',
-                    rateRange   = '0',
-                    rangeValue  = '0';
-
-                if($('#searchWord').val() != ''){
-                    searchWord = $('#searchWord').val();
-                }
-
-                location.href = '/tskmntr/doTaskSearch='+workingTime+'='+searchField+'='+searchCity+'='+searchWord+'='+rateRange+'='+rangeValue;
-            });
-
-
-    })
-</script>
 @stop

@@ -1563,7 +1563,8 @@ class HomeController extends BaseController {
     public function adminMessages(){
         $admins = User::join('user_has_role', 'users.id', '=', 'user_has_role.user_id')
             ->join('roles', 'roles.id', '=', 'user_has_role.role_id')
-            ->where('roles.role', 'ADMIN')
+            ->whereIn('users.id', BaseController::ADMIN_GET_ALL_ADMIN_ID(['SUPER_ADMINISTRATOR']))
+//            ->where('roles.role', 'ADMIN')
             ->select([
                 'users.id as id',
                 'users.firstName'
