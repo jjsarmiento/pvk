@@ -148,6 +148,7 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
 
         //SUBSCRIPTIONS
         Route::get('/subscriptions:{subsID}', 'AdminController@subscriptions');
+        Route::get('/deleteSubscription:{subsID}', 'AdminController@deleteSubscription');
         Route::post('/UPDATESUBSCRIPTION', 'AdminController@UPDATESUBSCRIPTION');
 
         // SKILLS ROUTE

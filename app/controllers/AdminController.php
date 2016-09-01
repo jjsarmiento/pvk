@@ -1705,4 +1705,9 @@ class AdminController extends \BaseController {
 
         return ($flag == 1) ? true : false;
     }
+
+    public function deleteSubscription($sub_id){
+        SystemSubscription::where('id', $sub_id)->delete();
+        return Redirect::back();
+    }
 }

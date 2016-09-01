@@ -185,10 +185,31 @@
 
                 <div class="widget-container" style="min-height: 1em;">
                     <div class="widget-content padded">
-                        <h3>Subscriptions</h3>
-                        @foreach($subscriptions as $s)
-                            <a href="/subscriptions:{{$s->id}}">{{$s->subscription_label}}</a><Br/>
-                        @endforeach
+                        <h3>Subscriptions<a class="btn btn-success" href="/CREATE_SUBSCRIPTION">CREATE SUBSCRIPTION</a></h3>
+                        @if($subscriptions->count() > 0)
+                            <table class="table table-condensed table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Label</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($subscriptions as $s)
+                                        <tr>
+                                            <td><a href="/subscriptions:{{$s->id}}">{{$s->subscription_code}}</a></td>
+                                            <td><a href="/subscriptions:{{$s->id}}">{{$s->subscription_label}}</a></td>
+                                            <td>
+                                                <a href="#" data-message="Are you sure you want to delete the {{$s->subscription_code}} subsctiption?" class="a-validate" data-href="/deleteSubscription:{{$s->id}}"><i class="fa fa-trash" title="Delete Subscription"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <center>N/A</center>
+                        @endif
                     </div>
                 </div>
             </div>
