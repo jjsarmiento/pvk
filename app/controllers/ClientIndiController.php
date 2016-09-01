@@ -1839,42 +1839,44 @@ class ClientIndiController extends \BaseController {
             Session::flash('errorMsg', 'Please attach a document before uploading');
             return Redirect::back();
         }else{
+            // FOR LOCALHOST
+            $destinationPath = 'public/upload/documents/'.Auth::user()->confirmationCode.'_'.Auth::user()->id;
+
+            // FOR LIVE SITE
+            $destinationPath = 'upload/documents/'.Auth::user()->confirmationCode.'_'.Auth::user()->id;
+
+            $doc_label = DocumentType::where('sys_doc_type', $doc_type)->pluck('sys_doc_label');
+            $file_label = $doc_label.' - '.Auth::user()->fullName;
+            $file_name = md5(uniqid(time(), true)).'.'.$doc_file->getClientOriginalExtension();
+
+            // INITIALIZE UPLOAD
+            $INIT_UPLOAD = $doc_file->move('public/'.$destinationPath, $file_name);
+
+            Document::insert([
+                'user_id'       =>  Auth::user()->id,
+                'docname'       =>  $file_name,
+                // PATH FOR LOCALHOST
+                // 'path'          =>  $destinationPath.'/'.$file_name,
+                // PATH FOR LIVE SITE
+                'path'          =>  'public/'.$destinationPath.'/'.$file_name,
+                'label'         =>  $file_label,
+                'type'          =>  $doc_type,
+                'created_at'    =>  date("Y:m:d H:i:s"),
+            ]);
+
+            Session::flash('successMsg', 'Document has been uploaded!');
+            $msg = 'Uploaded a document - '.$doc_label;
+            $this->INSERT_AUDIT_TRAIL(Auth::user()->id, $msg);
+            return Redirect::back();
+            /*
             $rules = array('file' => 'required|mimes:pdf,doc,docx');
             $validator = Validator::make(array('file'=> $doc_file), $rules);
             if($validator->passes()){
-                // FOR LOCALHOST
-                $destinationPath = 'public/upload/documents/'.Auth::user()->confirmationCode.'_'.Auth::user()->id;
-
-                // FOR LIVE SITE
-                $destinationPath = 'upload/documents/'.Auth::user()->confirmationCode.'_'.Auth::user()->id;
-
-                $doc_label = DocumentType::where('sys_doc_type', $doc_type)->pluck('sys_doc_label');
-                $file_label = $doc_label.' - '.Auth::user()->fullName;
-                $file_name = md5(uniqid(time(), true)).'.'.$doc_file->getClientOriginalExtension();
-
-                // INITIALIZE UPLOAD
-                $INIT_UPLOAD = $doc_file->move('public/'.$destinationPath, $file_name);
-
-                Document::insert([
-                    'user_id'       =>  Auth::user()->id,
-                    'docname'       =>  $file_name,
-                    // PATH FOR LOCALHOST
-                    // 'path'          =>  $destinationPath.'/'.$file_name,
-                    // PATH FOR LIVE SITE
-                    'path'          =>  'public/'.$destinationPath.'/'.$file_name,
-                    'label'         =>  $file_label,
-                    'type'          =>  $doc_type,
-                    'created_at'    =>  date("Y:m:d H:i:s"),
-                ]);
-
-                Session::flash('successMsg', 'Document has been uploaded!');
-                $msg = 'Uploaded a document - '.$doc_label;
-                $this->INSERT_AUDIT_TRAIL(Auth::user()->id, $msg);
-                return Redirect::back();
             }else{
                 Session::flash('errorMsg', 'Document failed to upload. Accepted file types are .PDF, .DOC and .DOCX');
                 return Redirect::back();
             }
+            */
         }
     }
 
