@@ -783,5 +783,12 @@ class BaseController extends Controller {
         foreach($admins as $o){ array_push($myArr, $o->user_id); }
         return $myArr;
     }
+
+    public static function GET_ALL_ADMIN(){
+        $admins = AdminHasRole::select(['user_id'])->groupBy('user_id')->get();
+        $myArr = array();
+        foreach($admins as $o){ array_push($myArr, $o->user_id); }
+        return $myArr;
+    }
     // AUTHORED BY Jan Sarmiento -- END
 }

@@ -1446,6 +1446,8 @@ class HomeController extends BaseController {
             return View::make('messages')->with('threads', Thread::where('user_id', Auth::user()->id)->where('status', 'OPEN')->orderBy('created_at', 'ASC')->get());
         }else{
             $msgs = User::join('admin_messages', 'admin_messages.sender_id', '=', 'users.id')
+                ->join('user_has_role', 'user_has_role.user_id', '=', 'users.id')
+                ->join('roles', 'user_has_role.role_id', '=', 'roles.id')
                 ->where('admin_messages.status', 'NEW')
                 ->where('admin_messages.user_id', Auth::user()->id)
                 ->whereNotIn('admin_messages.sender_id', [Auth::user()->id])
@@ -1453,7 +1455,8 @@ class HomeController extends BaseController {
                 ->select([
                     'users.id',
                     'users.username',
-                    'users.fullName'
+                    'users.fullName',
+                    'roles.role'
                 ])
                 ->get();
             return View::make('admin.adminmessage')

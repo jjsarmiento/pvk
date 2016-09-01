@@ -961,13 +961,18 @@ class AdminController extends \BaseController {
     }
 
     public function adminSearchChatUser(){
-        return User::where('fullName', 'LIKE', '%'.Input::get('chatSearch').'%')
-                ->orWhere('username', 'LIKE', '%'.Input::get('chatSearch').'%')
-                ->select([
-                    'fullName',
-                    'username',
-                    'id'
-                ])->get();
+        return User::join('user_has_role', 'user_has_role.user_id', '=', 'users.id')
+            ->whereNotIn('users.id', BaseController::GET_ALL_ADMIN())
+            ->join('roles', 'roles.id', '=','user_has_role.role_id')
+            ->where('users.fullName', 'LIKE', '%'.Input::get('chatSearch').'%')
+            ->orWhere('users.username', 'LIKE', '%'.Input::get('chatSearch').'%')
+            ->whereNotIn('users.id', BaseController::GET_ALL_ADMIN())
+            ->select([
+                'users.fullName',
+                'users.username',
+                'users.id',
+                'roles.role'
+            ])->get();
     }
 
     public function getCHAT($with_userId){

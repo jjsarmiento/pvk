@@ -145,9 +145,12 @@
                     url     :   '/adminSearchChatUser',
                     data    :   $('#chatSearchForm').serialize(),
                     success :   function(data){
+                        var worker_badge = '<span class="badge" style="background-color: #3498DB">Worker</span>',
+                            emplyr_badge = '<span class="badge" style="background-color: #2ECC71">Employer</span>';
                         $('#chatUSERLIST').empty();
                         $.each(data, function(key,value){
-                            $('#chatUSERLIST').append('<div data-userid="'+value['id']+'" class="DIVCHAT" style="cursor: pointer; border-bottom: solid 1px #bdc3c7; padding: 0.9em; background-color: white;"><b class="FULLNAME">'+value['fullName']+'</b><br/><span style="font-size: 0.8em" class="USERNAME">'+value['username']+'</span></div>');
+                            var badge = (value['role'] == 'TASKMINATOR') ? worker_badge : emplyr_badge;
+                            $('#chatUSERLIST').append('<div data-userid="'+value['id']+'" class="DIVCHAT" style="cursor: pointer; border-bottom: solid 1px #bdc3c7; padding: 0.9em; background-color: white;"><b class="FULLNAME">'+value['fullName']+'</b><br/><span class="USERNAME">'+value['username']+'</span>'+badge+'</div>');
                         });
                         REFRESHEVENTHANDLER();
                     }
@@ -320,7 +323,16 @@
                                         <div data-userid="{{$m->id}}" class="DIVCHAT" style="cursor: pointer; border-bottom: solid 1px #bdc3c7; padding: 0.9em; background-color: white;">
                                             <span class="badge" style="background-color: #E74C3C;">NEW</span>
                                             <b class="FULLNAME">{{$m->fullName}}</b><br>
-                                            <span style="font-size: 0.8em" class="USERNAME">{{$m->username}}</span>
+                                            <span class="USERNAME">{{$m->username}}</span>
+                                            @if($m->role == 'TASKMINATOR')
+                                                <span class="badge" style="background-color: #3498DB">
+                                                    Worker
+                                                </span>
+                                            @else
+                                                <span class="badge" style="background-color: #2ECC71">
+                                                    Employer
+                                                </span>
+                                            @endif
                                         </div>
                                     @endforeach
                                     <!--
