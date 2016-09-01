@@ -252,10 +252,25 @@
                 @if($hired)
                     Hired at {{$hired->created_at}}
                 @else
-                    <a href="/doHireWorker={{$worker->id}}={{$job->id}}" class="btn btn-success btn-block">Hire Worker</a>
+                    <a data-toggle="modal" data-target="#MODAL_CONFIRM_HIRE" class="btn btn-success btn-block">Hire Worker</a>
                 @endif
             </div>
         </div>
     </div>
 </section>
+<div class="modal modal-vcenter fade lato-text" id="MODAL_CONFIRM_HIRE" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="margin: 0; padding: 0; text-align: center;"><i class="fa fa-info-circle"></i> Confirm Hiring of Worker</h3>
+            </div>
+            <div class="modal-body" style="align-items: center; text-align: center;">
+                <div class="row">
+                    <a href="/doHireWorker={{$worker->id}}={{$job->id}}" class="btn btn-success col-md-offset-2 col-md-4" style="margin-right: 1em;">HIRE</a>
+                    <button class="btn btn-danger col-md-4" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
