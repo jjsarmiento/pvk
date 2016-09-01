@@ -484,7 +484,24 @@
                         </div>                        
                         <div class="panel-body" style="padding: 0 15px 15px;">
                             <div class="col-md-12">
-                                <span>{{Auth::user()->educationalBackground}}</span>
+
+                                @if($edu->count() > 0)
+                                    @foreach($edu as $e)
+                                        <div class="col-md-4" style="word-wrap: break-word;">
+                                            <span><b>{{$e->level}}</b></span>
+                                            <ul>
+                                                <li><b>School Name: </b>{{$e->school_name}}</li>
+                                                @if($e->level == 'COLLEGE' || $e->level == 'VOCATIONAL')
+                                                    <li><b>Course/Major: </b>{{$e->course_major}}</li>
+                                                @endif
+                                                <li><b>School Year: </b>{{$e->school_year}}</li>
+                                                <li><b>Awards: </b>{{$e->awards}}</li>
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <center>N/A</center>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -501,7 +518,20 @@
                             </div>                        
                             <div class="panel-body" style="padding: 0 15px 15px;">
                                 <div class="col-md-12">
-                                    <span>{{Auth::user()->experience}}</span>
+                                    @if($exp->count() > 0)
+                                        @foreach($exp as $e)
+                                            <ul>
+                                                <li><b>Position: </b><b style="font-size:18px;">{{$e->position}}</b></li>
+                                                <li><b>Company Name: </b><b style="font-size:15px;">{{$e->company_name}}</b></li>
+                                                <li><b>Location: </b> {{$e->location}}</li>
+                                                <li><b>Time Period: </b> {{$e->time_period}}</li>
+                                                <li><b>Roles and Responsibilities: </b>{{$e->roles_and_resp}}</li>
+                                            </ul>
+                                            <hr>
+                                        @endforeach
+                                    @else
+                                        <center>N/A</center>
+                                    @endif
                                 </div>
                             </div>
                         </div>
