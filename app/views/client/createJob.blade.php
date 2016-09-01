@@ -1,7 +1,7 @@
 @extends('layouts.usermain')
 
 @section('title')
-    Create Task
+    Create Job
 @stop
 
 @section('head-content')

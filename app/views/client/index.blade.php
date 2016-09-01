@@ -293,6 +293,7 @@
                                         </div>
                                         {{--<span style="font-size:10pt;">Please complete your profile to be able to apply for jobs.</span>--}}
                                     </div>
+                                    <a class="clickHere" href="/editProfile"> Click here to edit your profile </a>
                                 </div>                                
                                 <!-- @if(Auth::user()->total_profile_progress < 50) -->
                                     <p style="color: #000000; margin-top: 5px;">
