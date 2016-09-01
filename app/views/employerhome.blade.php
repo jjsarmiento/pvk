@@ -291,7 +291,7 @@
                                             &nbsp;
                                             {{substr_replace($nw->lastName, str_repeat('*', strlen($nw->lastName)-1), 1)}}
                                         </b><br>
-                                        <a href="#">@taskminator0</a><br>
+                                        <a href="#">{{$nw->username}}</a><br>
                                         <b>Profile Rating:</b> {{($nw->total_profile_progress ? $nw->total_profile_progress : 0)}}%<br>
                                         <a href="/{{$nw->username}}" class="viewSal">View Full Profile</a>
                                     </span>
