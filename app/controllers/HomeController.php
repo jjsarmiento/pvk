@@ -756,9 +756,16 @@ class HomeController extends BaseController {
         return View::make('home');
     }
 
-    public function employer()
-    {
-        return View::make('employerhome');
+    public function employer(){
+        $nw = User::join('user_has_role', 'users.id', '=', 'user_has_role.user_id')
+            ->join('roles', 'roles.id', '=', 'user_has_role.role_id')
+            ->where('user_has_role.role_id', '2')
+            ->orderBy('users.created_at', 'DESC')
+            ->take(20)
+            ->get();
+
+        return View::make('employerhome')
+            ->with('new_workers', $nw);
     }
 
     public function howitworks(){

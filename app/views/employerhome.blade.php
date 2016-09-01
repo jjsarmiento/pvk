@@ -275,23 +275,30 @@
                         <h2 class="lato-text" style="text-align: center;">List of Newly Signup Workers</h2>
                         <hr style="margin-bottom:40px;">
                         <div class="scrolls">
-                            @for($i=0; $i<=5; $i++)
+                            @foreach($new_workers as $nw)
                             <div class="padded" style="background:white; border-bottom: 1px solid #f2f2f2;">
                                 <div class="col-md-3 col-xs-5 no-padding">
-                                    <img src="../images/default_profile_pic.png" style="border: 1px solid #f2f2f2; width:100px; max-width:100%; display:table; margin-left:auto; margin-right:auto;">
+                                    @if($nw->profilePic)
+                                        <img src="{{$nw->profilePic}}" style="border: 1px solid #f2f2f2; width:100px; max-width:100%; display:table; margin-left:auto; margin-right:auto;">
+                                    @else
+                                        <img src="../images/default_profile_pic.png" style="border: 1px solid #f2f2f2; width:100px; max-width:100%; display:table; margin-left:auto; margin-right:auto;">
+                                    @endif
                                 </div>
                                 <div class="col-md-9 col-xs-7" style="margin:auto;">
                                     <span style="font-size:12px; color:#000;">
-                                        <b style="font-size:15px;">J***   D********</b><br> 
+                                        <b style="font-size:15px;">
+                                            {{substr_replace($nw->firstName, str_repeat('*', strlen($nw->firstName)-1), 1)}}
+                                            &nbsp;
+                                            {{substr_replace($nw->lastName, str_repeat('*', strlen($nw->lastName)-1), 1)}}
+                                        </b><br>
                                         <a href="#">@taskminator0</a><br>
-                                        <b>Profile Rating:</b> 55%<br>
-                                        <a href="#" class="viewSal">View Full Profile</a>
+                                        <b>Profile Rating:</b> {{($nw->total_profile_progress ? $nw->total_profile_progress : 0)}}%<br>
+                                        <a href="/{{$nw->username}}" class="viewSal">View Full Profile</a>
                                     </span>
-
                                 </div>
                                 <div style="clear:both;"></div>
                             </div>
-                            @endfor
+                            @endforeach
                         </div>
                     </div>
                 </div>
