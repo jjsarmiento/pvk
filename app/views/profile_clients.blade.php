@@ -82,7 +82,7 @@
                                     <td>{{$users->working_hours}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="50%"><label>DOLE Lisence</label></td>
+                                    <td width="50%"><label>DOLE License</label></td>
                                     <td>
                                         @if($license)
                                             <i style="font-size: 1.3em; color: #2ECC71;" class="fa fa-check-circle"></i>
