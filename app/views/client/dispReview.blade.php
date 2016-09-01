@@ -373,6 +373,7 @@
                         {{str_repeat('<i class="fa fa-star-o" style="color: #F1C40F;"></i>', (5-$fb->stars))}}
                     </p>
                     <p style="text-align: justify;">{{$fb->review}}</p>
+                    <p style="text-align: justify;">{{$fb->suggestion}}</p>
                 </div>
             </div>
         </div>
