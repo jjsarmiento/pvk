@@ -53,6 +53,51 @@
             padding-top: 25px; 
             padding-bottom:25px;
         }
+        a.viewSal {
+            background-color: #2980b9;
+            border: 2px solid #226ea0;
+            transition: 0.3s;
+            color: white;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            font-size: 12px;
+            display: table;
+            margin-top: 5px;
+        }
+        a.viewSal:hover {
+            background: transparent;
+            color: #2980b9;
+            text-decoration: none;
+        }
+        .scrolls{
+            overflow-y:scroll; 
+            height: 510px;
+            border-radius:5px;
+        }
+        /* Let's get this party started */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+         
+        /* Track */
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            -webkit-border-radius: 10px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-top-left-radius: 5px;;
+            border-bottom-left-radius: 5px;
+            background: rgba(41,128,185,0.9);
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+        }
+        ::-webkit-scrollbar-thumb:window-inactive {
+            background: rgba(41,128,185,0.9); 
+        }
     </style>
     <script src='https://www.google.com/recaptcha/api.js?hl=en?fallback=true'></script>
     <script>
@@ -227,32 +272,27 @@
                         </div>
                     </div> -->
                     <div class="col-lg-5" style="text-align: left;">
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                        <br><br>
-                        <div class="col-md-2">
-                            <i class="fa fa-bar-chart" aria-hidden="true" style="font-size:45px;"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <span style="font-size:18px;"><b>Integer viverra tincidunt finibus,</b> Sed sollicitudin ligula quis volutpat tempus feugiat dolor ac, ornare tellus</span>
-                            <br><br><br>
-                        </div>
+                        <h2 class="lato-text" style="text-align: center;">List of Newly Signup Workers</h2>
+                        <hr style="margin-bottom:40px;">
+                        <div class="scrolls">
+                            @for($i=0; $i<=5; $i++)
+                            <div class="padded" style="background:white; border-bottom: 1px solid #f2f2f2;">
+                                <div class="col-md-3 col-xs-5 no-padding">
+                                    <img src="../images/default_profile_pic.png" style="border: 1px solid #f2f2f2; width:100px; max-width:100%; display:table; margin-left:auto; margin-right:auto;">
+                                </div>
+                                <div class="col-md-9 col-xs-7" style="margin:auto;">
+                                    <span style="font-size:12px; color:#000;">
+                                        <b style="font-size:15px;">J***   D********</b><br> 
+                                        <a href="#">@taskminator0</a><br>
+                                        <b>Profile Rating:</b> 55%<br>
+                                        <a href="#" class="viewSal">View Full Profile</a>
+                                    </span>
 
-                        <div class="col-md-2">
-                            <i class="fa fa-pie-chart" aria-hidden="true" style="font-size:45px;"></i>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            @endfor
                         </div>
-                        <div class="col-md-10">
-                            <span style="font-size:18px;"><b>Aliquam eu accumsan arcu,</b> Mauris mattis ligula eget justo molestie venenatis</span>
-                            <br><br><br>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <i class="fa fa-area-chart" aria-hidden="true" style="font-size:45px;"></i>
-                        </div>
-                        <div class="col-md-10">
-                            <span style="font-size:18px;"><b>Donec et ligula sit amet ex gravida viverra et ut felis,</b>  Maecenas feugiat congue ex, sed facilisis ante commodo eu. Sed id hendrerit erat, vitae scelerisque est.</span>
-                            <br><br><br>
-                        </div>
-
                     </div>
                 </div>
                 <!-- <h1>Find Jobs that Matched Your Skills</h1>
