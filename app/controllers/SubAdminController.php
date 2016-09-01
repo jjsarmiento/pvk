@@ -236,6 +236,8 @@ class SubAdminController extends \BaseController {
     }
 
     public function policy(){
-        return View::make('admin.subadmin.policy');
+        return View::make('admin.subadmin.policy')
+            ->with('pol_es', SystemSetting::where('type', 'SYSSETTINGS_POLICY_ES')->pluck('value'))
+            ->with('pol_tg', SystemSetting::where('type', 'SYSSETTINGS_POLICY_TG')->pluck('value'));
     }
 }

@@ -145,8 +145,6 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
         Route::get('/WORKERDOCUMENTS', 'AdminController@WORKERDOCUMENTS');
         Route::get('/TOS', 'AdminController@TOS');
         Route::get('/POLICY', 'AdminController@POLICY');
-        Route::post('/POLICY_SAVE_ES', 'AdminController@POLICY_SAVE_ES');
-        Route::post('/POLICY_SAVE_TG', 'AdminController@POLICY_SAVE_TG');
 
         //SUBSCRIPTIONS
         Route::get('/subscriptions:{subsID}', 'AdminController@subscriptions');
@@ -220,6 +218,11 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
     });
 
     Route::group(['before' => 'ADMINISTRATOR_CONTENTEDITOR'], function(){
+        Route::get('/subadmin/terms_of_service', 'SubAdminController@terms_of_service');
+        Route::get('/subadmin/policy', 'SubAdminController@policy');
+        Route::post('/POLICY_SAVE_ES', 'AdminController@POLICY_SAVE_ES');
+        Route::post('/POLICY_SAVE_TG', 'AdminController@POLICY_SAVE_TG');
+
         Route::post('/TOS_SAVE_ES', 'AdminController@TOS_SAVE_ES');
         Route::post('/TOS_SAVE_TG', 'AdminController@TOS_SAVE_TG');
     });
@@ -235,9 +238,6 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
     });
 
     Route::group(['before' => 'CONTENT_EDITOR'], function(){
-        Route::get('/subadmin/terms_of_service', 'SubAdminController@terms_of_service');
-        Route::get('/subadmin/policy', 'SubAdminController@policy');
-
         // EXCLUSIVE ROUTES FOR CONTENT EDITOR
         Route::group(['before' => 'XCLSV_CONTENT_EDITOR'], function(){
 
