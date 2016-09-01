@@ -69,6 +69,7 @@ class HomeController extends BaseController {
             $CLIENTFLAG = false;
             $MULTIJOB = false;
             $full_docs = false;
+            $RELEVANT_EXP = false;
 
             if(Auth::check()){
                 if($temp->total_profile_progress < 50 && !AdminController::IF_ADMIN_IS(['SUPER_ADMINISTRATOR', 'ADMINISTRATOR', 'SUPPORT'], Auth::user()->id)){
@@ -149,6 +150,7 @@ class HomeController extends BaseController {
                     $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Visited profile of <a href="/viewUserProfile/'.$users->id.'">'.$users->fullName.'</a>');
                     return View::make('profile_worker')
                         ->with('RELEVANT_EXP', $RELEVANT_EXP)
+                        ->with('edu', WorkerEducation::where('user_id', $temp->id)->get())
                         ->with('full_docs', $full_docs)
                         ->with("users", $users)
                         ->with('roles', $role)

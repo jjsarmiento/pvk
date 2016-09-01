@@ -235,8 +235,20 @@
                             <hr class="hrLine">
                             <div class="content">
                                 @if($PURCHASED > 0)
-                                    @if($users->educationalBackground)
-                                        {{$users->educationalBackground}}
+                                    @if($edu->count() > 0)
+                                        @foreach($edu as $e)
+                                            <div class="col-md-4" style="word-wrap: break-word;">
+                                                <span><b>{{$e->level}}</b></span>
+                                                <ul>
+                                                    <li><b>School Name: </b>{{$e->school_name}}</li>
+                                                    @if($e->level == 'COLLEGE' || $e->level == 'VOCATIONAL')
+                                                        <li><b>Course/Major: </b>{{$e->course_major}}</li>
+                                                    @endif
+                                                    <li><b>School Year: </b>{{$e->school_year}}</li>
+                                                    <li><b>Awards: </b>{{$e->awards}}</li>
+                                                </ul>
+                                            </div>
+                                        @endforeach
                                     @else
                                         <center>N/A</center>
                                     @endif
