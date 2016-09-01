@@ -234,4 +234,8 @@ class SubAdminController extends \BaseController {
             ->with('content_es', SystemSetting::where('type', 'SYSSETTINGS_TOS_ES')->pluck('value'))
             ->with('content_tg', SystemSetting::where('type', 'SYSSETTINGS_TOS_TG')->pluck('value'));
     }
+
+    public function policy(){
+        return View::make('admin.subadmin.policy');
+    }
 }
