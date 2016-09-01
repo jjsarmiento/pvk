@@ -1447,6 +1447,7 @@ class HomeController extends BaseController {
         }else{
             $msgs = User::join('admin_messages', 'admin_messages.sender_id', '=', 'users.id')
                 ->where('admin_messages.status', 'NEW')
+                ->where('admin_messages.user_id', Auth::user()->id)
                 ->whereNotIn('admin_messages.sender_id', [Auth::user()->id])
                 ->groupBy('users.id')
                 ->select([

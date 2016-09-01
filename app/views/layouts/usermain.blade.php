@@ -356,6 +356,14 @@
                             <a href="/messages" style="background:transparent; font-size: 14pt;">
                                 <i class="fa fa-comment fa-fw"></i><span class="visible-xs-inline hidden-sm hidden-md" style="text-transform:none; font-size:11pt;">Message</span>
                             </a>
+                            <div class="fb-bar">
+                              <div id="notif-icon" class="notif-icon">
+                                  @if(AdminMessage::where('status', 'NEW')->where('user_id', Auth::user()->id)->count() > 0)
+                                    <id id="notification_count" style="">{{ AdminMessage::where('status', 'NEW')->where('user_id', Auth::user()->id)->count() }}</id>
+                                  @endif
+                                <!--<span id="notification_count">3</span>-->
+                              </div>
+                            </div>
                         </li>
                     @endif
                     @if(User::GETROLE(Auth::user()->id) == 'CLIENT_CMP' || User::GETROLE(Auth::user()->id) == 'CLIENT_IND')

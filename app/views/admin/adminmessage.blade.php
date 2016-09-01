@@ -318,6 +318,7 @@
                                     </span>
                                     @foreach($msgs as $m)
                                         <div data-userid="{{$m->id}}" class="DIVCHAT" style="cursor: pointer; border-bottom: solid 1px #bdc3c7; padding: 0.9em; background-color: white;">
+                                            <span class="badge" style="background-color: #E74C3C;">NEW</span>
                                             <b class="FULLNAME">{{$m->fullName}}</b><br>
                                             <span style="font-size: 0.8em" class="USERNAME">{{$m->username}}</span>
                                         </div>
