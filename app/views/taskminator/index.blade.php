@@ -521,8 +521,8 @@
                                     @if($exp->count() > 0)
                                         @foreach($exp as $e)
                                             <ul>
-                                                <li><b>Position: </b><b style="font-size:18px;">{{$e->position}}</b></li>
-                                                <li><b>Company Name: </b><b style="font-size:15px;">{{$e->company_name}}</b></li>
+                                                <li><b>Position: </b>{{$e->position}}</li>
+                                                <li><b>Company Name: </b>{{$e->company_name}}</li>
                                                 <li><b>Location: </b> {{$e->location}}</li>
                                                 <li><b>Time Period: </b> {{$e->time_period}}</li>
                                                 <li><b>Roles and Responsibilities: </b>{{$e->roles_and_resp}}</li>

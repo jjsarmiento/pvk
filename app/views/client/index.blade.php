@@ -230,8 +230,8 @@
                                 <a style="border-radius: 0.3em;" href="/tskmntrSearch" class="btn btn-primary btn-block">Search for Taskminators</a>
                                 -->
 
-                                <a style="border-radius: 0.3em;" href="#" data-href="/createJob" id="CREATE_JOB" class="btn btn-success btn-block btn-lg">Create Job</a>
-                                <a style="border-radius: 0.3em;" href="/jobs" class="btn btn-primary btn-block">Job</a>
+                                <a style="border-radius: 0.3em; font-size:16px;" href="#" data-href="/createJob" id="CREATE_JOB" class="btn btn-success btn-block btn-lg">Create a Job</a>
+                                <a style="border-radius: 0.3em; font-size:16px;" href="/jobs" class="btn btn-primary btn-block">Jobs</a>
                             @endif
                             <div class="row" style="font-size: 1.2em; font-weight: bolder; text-align: center;">
                                 <div class="col-md-12 padded">
@@ -357,7 +357,7 @@
                                 @foreach($workers as $w)
                                     <div class="col-md-4">
                                         <div class="workers">
-                                            <a href="" style="padding: 5px;">
+                                            <a href="/{{$w->username}}" style="padding: 5px;">
                                                 <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png" width="80" height="80">
                                             </a>
                                             <span>
