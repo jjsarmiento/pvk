@@ -1774,6 +1774,7 @@ class ClientIndiController extends \BaseController {
                 ]);
                 $msg = 'MULTIPLE INVITE | <a href="/ADMIN_jobDetails='.Input::get('JOBID').'">Job</a> invitation sent to <a href="/viewUserProfile/'.$w.'">worker</a>';
                 $this->INSERT_AUDIT_TRAIL(Auth::user()->id, $msg);
+                $this->NOTIFICATION_INSERT($w, 'You have been invited for a job!', '/jbdtls='.Input::get('JOBID'));
             }
         }
 
@@ -1800,6 +1801,7 @@ class ClientIndiController extends \BaseController {
                     'created_at'    =>  date("Y:m:d H:i:s")
                 ]);
                 $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'MULTI-JOB-INVITE <a href="ADMIN_jobDetails='.$j.'">job invite</a> sent to <a href="/viewUserProfile/'.Input::get('workerID').'">worker</a>');
+                $this->NOTIFICATION_INSERT(Input::get('workerID'), 'You have been invited for a job!', '/jbdtls='.$j);
             }
         }
         return Redirect::back();
