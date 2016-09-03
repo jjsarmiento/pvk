@@ -378,7 +378,11 @@
                                     <div class="col-md-4">
                                         <div class="workers">
                                             <a href="/{{$w->username}}" style="padding: 5px;">
-                                                <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png" width="80" height="80">
+                                                @if($w->profilePic)
+                                                    <img class="media-object update-card-MDimentions" src="{{$w->profilePic}}" width="80" height="80">
+                                                @else
+                                                    <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png" width="80" height="80">
+                                                @endif
                                             </a>
                                             <span>
                                             <b>
