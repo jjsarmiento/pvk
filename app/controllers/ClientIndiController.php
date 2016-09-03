@@ -755,8 +755,10 @@ class ClientIndiController extends \BaseController {
 
     public function doCltEditContactInfo(){
         // BUSINESS NUMBER VALIDATION
-        if(!ctype_digit(Input::get('businessNum'))){
-            return Redirect::back()->with('errorMsg', 'Business number must be numbers only');
+        if(Input::has('businessNum')){
+            if(!ctype_digit(Input::get('businessNum'))){
+                return Redirect::back()->with('errorMsg', 'Business number must be numbers only');
+            }
         }
 
 //         MOBILE NUMBER VALIDATION

@@ -102,7 +102,7 @@
                                     <input placeholder="Input existing email example : james@email.com" type="email" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                 @elseif($contact->ctype == 'businessNum')
                                     Business Number : 
-                                    <input placeholder="Input existing telephone/cellphone number used for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
+                                    <input placeholder="Input existing telephone/cellphone number used for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" /><br/>
                                 @elseif($contact->ctype == 'mobileNum')
                                     Mobile Number : 
                                     <input placeholder="Input existing mobile number for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
