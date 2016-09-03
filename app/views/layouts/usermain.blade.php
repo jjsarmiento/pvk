@@ -673,7 +673,7 @@
                                         <label>Province</label>
                                         <select id="adSearch_CITY" data-loctype="REGION_TO_PROVINCE" class="form-control">
                                             <option value="ALL" selected>Display from all provinces</option>
-                                            @if($AS_regcode)
+                                            @if(@$AS_regcode)
                                                 @foreach(Province::where('regcode', $AS_regcode)->get() as $prov)
                                                     <option <?php if(@$AS_citycode == $prov->provcode){ echo 'selected'; } ?> value="{{$prov->provcode }}">{{ $prov->provname }}</option>
                                                 @endforeach
