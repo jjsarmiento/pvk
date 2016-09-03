@@ -312,11 +312,22 @@
                         <div class="panel-group" id="accordion">
                             <div class="panel">
                                 <div class="panel filter-categories">
-                                    <div class="panel-body">
+                                    <div class="panel-body" style="word-wrap: break-word; text-align: justify;">
                                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                                            <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp Certification
+                                            <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp <a href="/certifications">Certification</a>
                                         </div> 
                                         <div class="panel-body">
+                                            @if($certs->count() > 0)
+                                                @foreach($certs as $c)
+                                                    <span><b>Title of Training/Certificate: </b>{{ $c->title }}</span><br>
+                                                    <span><b>Date Taken: </b>{{ $c->date }}</span><br>
+                                                    <span><b>Organizer/Company: </b>{{ $c->organizer_company }}</span><br>
+                                                    <a href="/editCertification:{{$c->id}}" class="btn btn-success btn-xs">EDIT</a>
+                                                    <hr/>
+                                                @endforeach
+                                            @else
+                                                <center>N/A</center>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
