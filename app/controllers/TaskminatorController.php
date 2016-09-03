@@ -1119,6 +1119,40 @@ class TaskminatorController extends \BaseController {
                 ->with('jobs', $jobs);
     }
 
+    public static function WORKER_profileProgress(){
+        $check = '<i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;';
+        $close = '<i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;';
+
+        $mobile = Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->pluck('content');
+        $email = Contact::where('user_id', Auth::user()->id)->where('ctype', 'email')->pluck('content');
+
+        $PASSPORT = Document::where('user_id', Auth::user()->id)->where('type', 'PASSPORT')->count();
+        $NBI = Document::where('user_id', Auth::user()->id)->where('type', 'NBI')->count();
+        $VOTERS_ID = Document::where('user_id', Auth::user()->id)->where('type', 'VOTERS_ID')->count();
+        $TIN = Document::where('user_id', Auth::user()->id)->where('type', 'TIN_ID')->count();
+        $exp = WorkerExperience::where('user_id', Auth::user()->id)->count();
+        $edu = WorkerEducation::where('user_id', Auth::user()->id)->count();
+        $skill_count = TaskminatorHasSkill::where('user_id', Auth::user()->id)->count() + CustomSkill::where('created_by', Auth::user()->id)->count();
+        $doc_count = Document::where('user_id', Auth::user()->id)->count();
+        $facebook = Contact::where('user_id', Auth::user()->id)->where('ctype', 'facebook')->pluck('content');
+        $ARRAY = array();
+
+        array_push($ARRAY, ['content'  => ((Auth::user()->fullName)             ? $check.'Full Name'                : $close.'Full Name'),              'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->birthdate)            ? $check.'Birthdate'                : $close.'Birthdate'),              'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->gender)               ? $check.'Gender'                   : $close.'Gender'),                 'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->address)              ? $check.'Address'                  : $close.'Address'),                'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => (($edu >= 3)                          ? $check.'Educational Background'   : $close.'Educational Background - Atleast 3 ('.$edu.' registered)'), 'url'    => '/editEducationalBackground']);
+        array_push($ARRAY, ['content'  => (($exp >= 2)                          ? $check.'Relevant Experience'      : $close.'Relevant Experience - Atleast 2('.$exp.' registered)'),    'url'    => '/editExperience']);
+        array_push($ARRAY, ['content'  => (($skill_count >= 4)                  ? $check.'Skills (At least 4 System/Custom Skill)'      : $close.'Skills (At least 4 System/Custom Skill) ('.$skill_count.' registered)'),    'url'    => '/editSkillInfo']);
+        array_push($ARRAY, ['content'  => (($mobile)                            ? $check.'Mobile Number'            : $close.'Mobile Number'),          'url'    => '/editContactInfo']);
+        array_push($ARRAY, ['content'  => (($email)                             ? $check.'Email'                    : $close.'Email'),                  'url'    => '/editContactInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Marital Status'           : $close.'Marital Status'),         'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->profilePic)           ? $check.'Profile Picture'          : $close.'Profile Picture'),        'url'    => '/editProfile']);
+        array_push($ARRAY, ['content'  => (($doc_count >= 2)                    ? $check.'Supporting Documents'     : $close.'Supporting Documents - Atleast 2 ('.$doc_count.' registered)'), 'url'    => '/editDocuments']);
+        array_push($ARRAY, ['content'  => (($facebook)                          ? $check.'Facebook'                 : $close.'Facebook'),               'url'    => '/editPersonalInfo']);
+        return $ARRAY;
+    }
+
     public function wprofileProgress(){
         $check = '<i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;';
         $close = '<i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;';

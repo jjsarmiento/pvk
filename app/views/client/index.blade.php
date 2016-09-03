@@ -449,15 +449,6 @@
                                 <span><b>Account Status: </b>{{Auth::user()->status}}</span>
                             </div>                             
                         </div>
-
-                        <div class="widget-content">
-                            <div class="panel-body" style="color:#2980b9; font-size:14pt;">
-                                <i class="fa fa-file-text-o" style="font-size:14pt; color:#2980b9"></i>&nbsp Licensed
-                            </div>
-                            <div class="panel-body">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</span>
-                            </div>                             
-                        </div>
                     </div>
                 </div>            
             </div> 

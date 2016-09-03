@@ -317,7 +317,6 @@
                                             <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp Certification
                                         </div> 
                                         <div class="panel-body">
-                                            <span>N/A</span>
                                         </div>
                                     </div>
                                 </div>
@@ -326,6 +325,28 @@
                     </div>
                 </div>
 
+                @if(Auth::user()->total_profile_progress)
+                    <div class="widget-container fluid-height">
+                        <div class="widget-content">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel">
+                                    <div class="panel filter-categories">
+                                        <div class="panel-body">
+                                            <div class="heading" style="font-size:14pt; color:#2980b9">
+                                                <i class="fa fa-edit" style="font-size:14pt; color:#2980b9"></i>&nbsp Profile Progress
+                                            </div>
+                                            <div class="panel-body">
+                                                @foreach($prof_prog as $r)
+                                                    <a href="{{$r['url']}}">{{$r['content']}}</a><br/>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
 
             <!-- ENF PROFILE PIC / INFO -->
@@ -604,7 +625,7 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
 <!-- END MAIN CONTENT -->
         </div>
     </div>

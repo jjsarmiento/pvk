@@ -900,6 +900,7 @@ class HomeController extends BaseController {
                     $hired = JobHiredWorker::where('worker_id', Auth::user()->id)->count();
                     // NEW JOB MODULE -- END by JAN SARMIENTO
                     return View::make('taskminator.index')
+                            ->with('prof_prog', TaskminatorController::WORKER_profileProgress())
                             ->with('edu', $edu)
                             ->with('exp', $exp)
                             ->with('hired', $hired)
