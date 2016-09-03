@@ -129,6 +129,14 @@ class DocumentTypesSeeder extends Seeder {
             'sys_doc_role'      =>  'WORKER',
             'sys_doc_disabled'  =>  false,
         ]);
+
+        // CERTIFICATES
+        DocumentType::create([
+            'sys_doc_type'      =>  'CERTIFICATES',
+            'sys_doc_label'     =>  'Certificates',
+            'sys_doc_role'      =>  'WORKER',
+            'sys_doc_disabled'  =>  false,
+        ]);
         // WORKER DOCUMENTS -- END
 
         // COMPANY DOCUMENTS -- START
