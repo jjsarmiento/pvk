@@ -669,12 +669,15 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>City/Municipalities</label>
-                                        <select id="adSearch_CITY" data-loctype="REGION_TO_CITY" class="form-control">
-                                            <option value="ALL" selected>Display from all cities</option>
-                                            @foreach(City::get() as $city)
-                                                <option <?php if(@$AS_citycode == $city->citycode){ echo 'selected'; } ?> value="{{$city->citycode }}">{{ $city->cityname }}</option>
-                                            @endforeach
+                                        {{--<label>City/Municipalities</label>--}}
+                                        <label>Province</label>
+                                        <select id="adSearch_CITY" data-loctype="REGION_TO_PROVINCE" class="form-control">
+                                            <option value="ALL" selected>Display from all provinces</option>
+                                            @if($AS_regcode)
+                                                @foreach(Province::where('regcode', $AS_regcode)->get() as $prov)
+                                                    <option <?php if(@$AS_citycode == $prov->provcode){ echo 'selected'; } ?> value="{{$prov->provcode }}">{{ $prov->provname }}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </div>
                                 </div>

@@ -1081,7 +1081,7 @@ class AdminController extends \BaseController {
                 ->with('custom_skills', $custom_skills);
     }
 
-    public function ADMINJbSrch($keyword, $regcode, $citycode, $hiringType, $orderBy, $categoryID, $skillID){
+    public function ADMINJbSrch($keyword, $regcode, $provcode, $hiringType, $orderBy, $categoryID, $skillID){
         $QUERY = Job::join('users', 'users.id', '=', 'jobs.user_id')
             ->join('taskcategory', 'jobs.skill_category_code', '=', 'taskcategory.categorycode')
             ->join('taskitems', 'jobs.skill_code', '=', 'taskitems.itemcode')
@@ -1092,8 +1092,8 @@ class AdminController extends \BaseController {
             $QUERY = $QUERY->where('jobs.regcode', $regcode);
         }
 
-        if($citycode != 'ALL'){
-            $QUERY = $QUERY->where('jobs.citycode', $citycode);
+        if($provcode != 'ALL'){
+            $QUERY = $QUERY->where('jobs.citycode', $provcode);
         }
 
         if($hiringType != 'ALL'){
@@ -1137,7 +1137,7 @@ class AdminController extends \BaseController {
                 ->with('jobs', $QUERY)
                 ->with('AS_keyword', $keyword)
                 ->with('AS_regcode', $regcode)
-                ->with('AS_citycode', $citycode)
+                ->with('AS_citycode', $provcode)
                 ->with('AS_hiringType', $hiringType)
                 ->with('AS_orderBy', $orderBy)
                 ->with('AS_categoryID', $categoryID)
