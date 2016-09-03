@@ -151,7 +151,7 @@ class DocumentTypesSeeder extends Seeder {
         // DOLE LISENCE
         DocumentType::create([
             'sys_doc_type'      =>  'DOLE_LICENSE',
-            'sys_doc_label'     =>  "DOLE Lisence",
+            'sys_doc_label'     =>  "DOLE License",
             'sys_doc_role'      =>  'COMPANY',
             'sys_doc_disabled'  =>  false,
         ]);
@@ -159,7 +159,7 @@ class DocumentTypesSeeder extends Seeder {
         // POEA LISENCE
         DocumentType::create([
             'sys_doc_type'      =>  'POEA_LICENSE',
-            'sys_doc_label'     =>  "POEA Lisence",
+            'sys_doc_label'     =>  "POEA License",
             'sys_doc_role'      =>  'COMPANY',
             'sys_doc_disabled'  =>  false,
         ]);
