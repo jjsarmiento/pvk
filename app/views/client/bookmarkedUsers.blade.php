@@ -50,12 +50,8 @@
                                         </span>
                                     </div>
                                     <div class="col-md-12">
-                                        @if(in_array($bm->userID, $CHECKED_OUT_USERS))
-                                            <input type="checkbox" class="BM_CHKBX" data-workerid="{{$bm->userID}}" />
-                                        @elseif(in_array($bm->userID, $INCART))
-                                            <a href="#" data-target="#CARTMODAL" data-toggle="modal" class="SHWCRT btn btn-xs btn-danger btn-block" style="border-radius: 0.3em;">Added to Cart</a>
-                                        @else
-                                            <a href="/addToCart={{$bm->userID}}" class="btn btn-warning btn-xs btn-block" style="border-radius: 0.3em;"><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</a>
+                                        @if(!in_array($bm->userID, $CHECKED_OUT_USERS))
+                                            <a href="/doCheckout={{$bm->userID}}" class="btn btn-block btn-warning" style="background-color: #E74C3C;">Checkout</a>
                                         @endif
                                     </div>
                                 </div>
