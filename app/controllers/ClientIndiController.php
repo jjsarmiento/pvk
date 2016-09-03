@@ -981,73 +981,71 @@ class ClientIndiController extends \BaseController {
     }
 
     public function SRCHWRKRSKLL($categoryId, $skillId, $region, $city, $province, $profilePercentage){
-        if(Auth::user()->status == 'ACTIVATED'){
-            $users = User::leftJoin('cities', 'users.city', '=', 'cities.citycode')
-                ->leftJoin('regions', 'users.region', '=', 'regions.regcode')
-                ->leftJoin('provinces', 'users.province', '=', 'provinces.provcode')
-                ->join('taskminator_has_skills', 'taskminator_has_skills.user_id', '=', 'users.id')
-                ->where('users.total_profile_progress', '>=', 50);
+        $users = User::leftJoin('cities', 'users.city', '=', 'cities.citycode')
+            ->join('user_has_role', 'user_has_role.user_id', '=', 'users.id')
+            ->leftJoin('regions', 'users.region', '=', 'regions.regcode')
+            ->leftJoin('provinces', 'users.province', '=', 'provinces.provcode')
+            ->where('users.total_profile_progress', '>=', 50)
+            ->where('user_has_role.role_id', 2);
 
-            $regions = Region::get();
-            $cities = [];
-            $provinces = [];
+        $regions = Region::get();
+        $cities = [];
+        $provinces = [];
 
-            if($region != 'ALL'){
-                $cities = City::where('regcode', $region)->get();
-                $provinces = Province::where('regcode', $region)->get();
-                $users = $users->where('users.region', $region);
-            }
-
-            if($city != 'ALL'){
-                $users = $users->where('users.city', $city);
-            }
-
-            if($province != 'ALL'){
-                $cities = City::where('provcode', $province)->get();
-                $users = $users->where('users.province', $province);
-            }
-
-            if($categoryId != 'ALL'){
-                $users = $users->where('taskminator_has_skills.taskcategory_code', $categoryId);
-            }
-
-            if($skillId != 'ALL'){
-                $users = $users->where('taskminator_has_skills.taskitem_code', $skillId);
-            }
-            $users = $users->select([
-                    'users.id',
-                    'users.address',
-                    'users.profilePic',
-                    'users.username',
-                    'users.fullName',
-                    'users.firstName',
-                    'users.lastName',
-                    'cities.cityname',
-                    'regions.regname'
-                ])
-                ->groupBy('users.id')
-                ->orderBy('users.total_profile_progress', $profilePercentage)
-                ->paginate(10);
-
-            return View::make('client.searchWorker_SKILL')
-                ->with('CHECKED_OUT_USERS', $this->GETCHECKEDOUTUSERS(Auth::user()->id))
-                ->with('region', $region)
-                ->with('city', $city)
-                ->with('province', $province)
-                ->with('profilePercentage', $profilePercentage)
-                ->with('categoryId', $categoryId)
-                ->with('skillId', $skillId)
-                ->with('users', $users)
-                ->with('regions', $regions)
-                ->with('cities', $cities)
-                ->with('provinces', $provinces)
-                ->with('categories', TaskCategory::orderBy('categoryname', 'ASC')->get())
-//                ->with('categorySkills', TaskItem::where('item_categorycode', '006')->orderBy('itemname', 'ASC')->get());
-                ->with('categorySkills', TaskItem::where('item_categorycode', $categoryId)->orderBy('itemname', 'ASC')->get());
-        }else{
-            Auth::logout();
-            return Redirect::to('/');
+        if($region != 'ALL'){
+            $cities = City::where('regcode', $region)->get();
+            $provinces = Province::where('regcode', $region)->get();
+            $users = $users->where('users.region', $region);
         }
+
+        if($city != 'ALL'){
+            $users = $users->where('users.city', $city);
+        }
+
+        if($province != 'ALL'){
+            $cities = City::where('provcode', $province)->get();
+            $users = $users->where('users.province', $province);
+        }
+
+        if($categoryId != 'ALL'){
+            $users = $users->join('taskminator_has_skills', 'taskminator_has_skills.user_id', '=', 'users.id')
+                ->where('taskminator_has_skills.taskcategory_code', $categoryId);
+        }
+
+        if($skillId != 'ALL'){
+            $users = $users->where('taskminator_has_skills.taskitem_code', $skillId);
+        }
+
+        $users = $users->select([
+                'users.id',
+                'users.address',
+                'users.profilePic',
+                'users.username',
+                'users.fullName',
+                'users.firstName',
+                'users.lastName',
+                'cities.cityname',
+                'regions.regname'
+            ])
+            ->groupBy('users.id')
+            ->orderBy('users.total_profile_progress', $profilePercentage)
+            ->paginate(10);
+
+        return View::make('client.searchWorker_SKILL')
+            ->with('CHECKED_OUT_USERS', $this->GETCHECKEDOUTUSERS(Auth::user()->id))
+            ->with('region', $region)
+            ->with('city', $city)
+            ->with('province', $province)
+            ->with('profilePercentage', $profilePercentage)
+            ->with('categoryId', $categoryId)
+            ->with('skillId', $skillId)
+            ->with('users', $users)
+            ->with('regions', $regions)
+            ->with('cities', $cities)
+            ->with('provinces', $provinces)
+            ->with('categories', TaskCategory::orderBy('categoryname', 'ASC')->get())
+//                ->with('categorySkills', TaskItem::where('item_categorycode', '006')->orderBy('itemname', 'ASC')->get());
+            ->with('categorySkills', TaskItem::where('item_categorycode', $categoryId)->orderBy('itemname', 'ASC')->get());
     }
 
     public function SKILLCATCHAIN($categoryId){
