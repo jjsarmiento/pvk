@@ -1574,6 +1574,8 @@ class ClientIndiController extends \BaseController {
             ->select([
                 'users.id as userid',
                 'users.profilePic',
+                'users.firstName',
+                'users.lastName',
                 'users.fullName',
                 'users.username',
                 'regions.regname',

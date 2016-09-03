@@ -110,7 +110,7 @@
             @if(Session::has('errorMsg'))
                 <div class="col-sm-12">
                     <div class="alert alert-danger">
-                        {{ @Session::get('errorMsg') }}
+                        <b>{{ @Session::get('errorMsg') }}</b>
                     </div>
                 </div>
             @endif

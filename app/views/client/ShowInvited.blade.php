@@ -167,7 +167,14 @@
                             </a>
                             <div class="media-body update-card-body">
                                 <a href="/{{$w->username}}" style="font-weight: bolder;">
+                                    @if(in_array($w->userid ,$CHECKED_OUT_USERS))
                                     {{$w->fullName }}
+                                    @else
+                                    {{substr_replace($w->firstName, str_repeat('*', strlen($w->firstName)-1), 1)}}
+                                    &nbsp;
+                                    {{substr_replace($w->lastName, str_repeat('*', strlen($w->lastName)-1), 1)}}
+                                    @endif
+
                                 </a>
                                 <p>{{$w->regname.', ' }}{{ $w->cityname }}</p>
                                 <a href="/SNDINVT:{{$w->userid}}:{{$job->id}}"><i class="fa fa-envelope"></i> View Invitation</a>
