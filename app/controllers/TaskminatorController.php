@@ -1326,7 +1326,7 @@ class TaskminatorController extends \BaseController {
 
     public function certifications(){
         return View::make('taskminator.certifications')
-            ->with('certs', WorkerCertification::where('user_id', Auth::user()->id)->get());
+            ->with('certs', WorkerCertification::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(10));
     }
 
     public function doAddCertifications(){
@@ -1339,6 +1339,24 @@ class TaskminatorController extends \BaseController {
         ]);
 
         Session::flash('successMsg', 'Certification has been successfully added');
+        return Redirect::back();
+    }
+
+    public function editCertification($cert_id){
+        return View::make('taskminator.editCertification')
+            ->with('cert', WorkerCertification::where('id', $cert_id)->first());
+    }
+
+    public function doEditCertification(){
+        WorkerCertification::where('id', Input::get('cert_id'))->update([
+            'user_id'           =>  Auth::user()->id,
+            'title'             =>  Input::get('certificate_name'),
+            'date'              =>  Input::get('date'),
+            'organizer_company' =>  Input::get('organizer_company'),
+            'created_at'        =>  Carbon::now()
+        ]);
+
+        Session::flash('successMsg', 'Certification has been successfully edited');
         return Redirect::back();
     }
 }

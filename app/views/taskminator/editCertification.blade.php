@@ -77,7 +77,7 @@
     <div class="container">
         <div class="page-title">
             <h1 class="lato-text">
-                Certifications
+                Edit Certification
             </h1>
         </div>
         <div class="row">
@@ -89,8 +89,11 @@
                     <li>
                         <a href="/editProfile">Edit Profile</a>
                     </li>
+                    <li>
+                        <a href="/certifications">Certifications</a>
+                    </li>
                     <li class="active">
-                        Certifications
+                        Edit Certification
                     </li>
                 </ul>
             </div>
@@ -114,21 +117,22 @@
                 <div class="widget-container " style="min-height: 1em;">
                     <div class="widget-content padded">
                         <div class="row">
-                            <form method="post" action="/doAddCertifications">
+                            <form method="post" action="/doEditCertification">
+                                <input type="hidden" value="{{$cert->id}}" name="cert_id" />
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Title of Training/Certificates</label>
-                                        <input type="text" required="required" class="form-control" placeholder="Title of Training or Certificate taken" name="certificate_name" />
+                                        <input value="{{$cert->title}}" type="text" required="required" class="form-control" placeholder="Title of Training or Certificate taken" name="certificate_name" />
                                     </div>
                                     <div class="form-group">
                                         <label>Date Taken</label>
-                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                                        <input value="{{$cert->date}}" class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Organizer/Company</label>
-                                        <textarea class="form-control" required="required" placeholder="Name of Organizer / Compay where certification has been taken" name="organizer_company" rows="6"></textarea>
+                                        <textarea class="form-control" required="required" placeholder="Name of Organizer / Compay where certification has been taken" name="organizer_company" rows="6">{{$cert->organizer_company}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -136,24 +140,6 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="widget-container " style="min-height: 1em; word-wrap: break-word;">
-                    <div class="widget-content padded">
-                        @if($certs->count() > 0)
-                            @foreach($certs as $c)
-                                <span><b>Title of Training/Certificate: </b>{{ $c->title }}</span><br>
-                                <span><b>Date Taken: </b>{{ $c->date }}</span><br>
-                                <span><b>Organizer/Company: </b>{{ $c->organizer_company }}</span><br>
-                                <a href="/editCertification:{{$c->id}}" class="btn btn-success btn-xs">EDIT</a>
-                                <hr/>
-                            @endforeach
-                            <center>{{$certs->links()}}</center>
-                        @else
-                            <center>N/A</center>
-                        @endif
                     </div>
                 </div>
             </div>
