@@ -313,8 +313,22 @@
                                 <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>&nbsp Contact Information
                             </div>     
                             <div class="panel-body">
+                                @foreach($contacts as $contact)
+                                    <span style="text-transform: capitalize; font-weight: 600; margin-right: 5px;">
+                                        @if($contact->ctype == "businessNum") Business No
+                                        @else {{ $contact->ctype }} @endif
+                                    </span>
+                                     :
+                                     @if($contact->content)
+                                        <span style="margin-left: 5px">{{ $contact->content }}</span><br/>
+                                     @else
+                                        N/A<br/>
+                                     @endif
+                                @endforeach
+                                <!--
                                 <span><b>Business Number: </b>000-123-452</span><br>
                                 <span><b>Business Email: </b><a herf="mailto:sample@mail.com">sample@mail.com</a></span>
+                                -->
                             </div>                             
                         </div>
                         <div class="widget-content">
@@ -322,10 +336,16 @@
                                 <i class="fa fa-user" style="font-size:14pt; color:#2980b9"></i>&nbsp Key Contact Person
                             </div>     
                             <div class="panel-body">
+                                <span><b>Name: </b></span> {{@$cperson->name}}<br>
+                                <span><b>Position: </b></span> {{@$cperson->position}}<br>
+                                <span><b>Contact #: </b></span> {{@$cperson->contact_number}}<br>
+                                <span><b>Email: </b> {{@$cperson->email}}</span>
+                                <!--
                                 <span><b>Name: </b>Lorem Ipsum</span><br>
                                 <span><b>Position: </b>Human Resource</span><br>
                                 <span><b>Contact Number: </b>000-222-333</span><br>
                                 <span><b>Email: </b><a herf="mailto:sample@mail.com">sample@mail.com</a></span>
+                                -->
                             </div>                             
                         </div>
                     </div>

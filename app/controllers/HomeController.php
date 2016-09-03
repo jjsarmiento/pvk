@@ -934,6 +934,8 @@ class HomeController extends BaseController {
                         ->take(3)
                         ->get();
                     return View::make('client.index')
+                        ->with('contacts', Contact::where('user_id', Auth::user()->id)->get())
+                        ->with('cperson', ContactPerson::where('user_id', Auth::user()->id)->first())
                         ->with('prog', ClientIndiController::EMPLOYER_profileProgress())
                         ->with('CHECKEDOUT_WORKERS', $CHECKEDOUT_WORKERS)
                         ->with('workers', $workers)
@@ -1375,6 +1377,7 @@ class HomeController extends BaseController {
             case '4'    :
                 $docs = Document::join('document_types', 'document_types.sys_doc_type', '=', 'documents.type')->select(['document_types.sys_doc_label'])->where('documents.user_id', Auth::user()->id)->get();
                 return View::make('editProfile_client')
+                    ->with('lisc', Document::where('user_id', Auth::user()->id)->whereIn('type', ['POEA_LICENSE', 'DOLE_LICENSE'])->get())
                     ->with('cperson', ContactPerson::where('user_id', Auth::user()->id)->first())
                     ->with('docs', $docs)
                     ->with('user', User::where('id', Auth::user()->id)->first())

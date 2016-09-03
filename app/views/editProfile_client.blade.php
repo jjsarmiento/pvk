@@ -187,9 +187,15 @@
                     </div>
                     <div class="row padded bord">
                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                           <i class="fa fa-file-text-o" style="font-size:14pt; color:#2980b9"></i>&nbsp License <button class="btn btn-xs btn-default pull-right" onclick="#" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
-                        </div>  
-                        <span>N/A</span>
+                           <i class="fa fa-file-text-o" style="font-size:14pt; color:#2980b9"></i>&nbsp License <a href="/editDocumentsCMP" class="btn btn-xs btn-default pull-right"  style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
+                        </div><Br/>
+                        @if($lisc->count() > 0)
+                            @foreach($lisc as $l)
+                                <span><i class="fa fa-check-circle" style="color: #2ECC71;"></i>&nbsp;{{$l->label}}</span><br/>
+                            @endforeach
+                        @else
+                            <center>N/A</center>
+                        @endif
                     </div>
 
                 </div>
