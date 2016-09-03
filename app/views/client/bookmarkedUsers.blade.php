@@ -1,7 +1,7 @@
 @extends('layouts.usermain')
 
 @section('title')
-    Taskminator - Task Search
+    Bookmarked Workers
 @stop
 
 @section('head-content')

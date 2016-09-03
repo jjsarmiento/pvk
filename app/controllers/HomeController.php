@@ -923,6 +923,7 @@ class HomeController extends BaseController {
                     BaseController::CHECK_EMPLOYER_POINTS(Auth::user()->id);
                     $CHECKEDOUT_WORKERS = $this->GET_ALL_CHECKEDOUT_WORKERS(Auth::user()->id);
                     $workers = User::join('user_has_role', 'user_has_role.user_id', '=', 'users.id')
+                        ->whereNotIn('users.id', $CHECKEDOUT_WORKERS)
                         ->where('user_has_role.role_id', 2)
                         ->where('users.total_profile_progress', '>=', 50)
                         ->select([
