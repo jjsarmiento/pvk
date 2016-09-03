@@ -151,10 +151,7 @@
                             <div class="content">
                                 <span><b>Address: </b>{{$users->address}}, {{$users->regname}}, {{$users->cityname}} {{$users->bgyname}}</span><br>
                                 <span><b>Gender: </b>{{{$users->gender}}}</span><br>
-                                <span><b>Birthdate: </b>{{$users->birthdate}} ({{ \Carbon\Carbon::now()->diffInYears(\Carbon\Carbon::parse($users->birthdate)) }} years old)</span><br>
-                                @if($users->marital_status)
-                                    <span><b>Martial Status: </b>{{$users->marital_status}}</span><br>
-                                @endif
+                                <span><b>Birthdate: </b>{{$users->birthdate}}</span><br>
                             </div>
                         </div>
                     </div>
@@ -254,7 +251,9 @@
                                             <center>N/A</center>
                                         @endif
                                     @else
-                                        <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
+                                        <span style="color:red; font-size:15px;">
+                                            <em><b>Note:</b> Supporting Documents will only be available for viewing and download after you check-out the Worker's Profile</em>
+                                        </span>
                                     @endif
                                 @else
                                     @if($edu->count() > 0)
@@ -305,7 +304,9 @@
                                             <center>N/A</center>
                                         @endif
                                     @else
-                                        <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
+                                        <span style="color:red; font-size:15px;">
+                                            <em><b>Note:</b> Supporting Documents will only be available for viewing and download after you check-out the Worker's Profile</em>
+                                        </span>
                                     @endif
                                 @else
                                     @if($RELEVANT_EXP)
