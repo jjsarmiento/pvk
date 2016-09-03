@@ -168,13 +168,21 @@
                         @endforeach
                     </div>
 
-                    <div class="row padded bord">
+                    <div class="row padded bord" style="word-wrap: break-word;">
                         <div class="heading" style="font-size:14pt; color:#2980b9">
                            <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp Certification <a href="/certifications" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
                         </div>  
-                        <span>N/A</span>
+                        @if($certs->count() > 0)
+                            @foreach($certs as $c)
+                                <span><b>Title of Training/Certificate: </b>{{ $c->title }}</span><br>
+                                <a href="/editCertification:{{$c->id}}" class="btn btn-success btn-xs">EDIT</a>
+                                <hr/>
+                            @endforeach
+                            {{$certs->links()}}
+                        @else
+                            <center>N/A</center>
+                        @endif
                     </div>
- 
                 </div>
 
                 <div class="col-md-9 bord" style="border-left: 1px solid #cdcdcd;">

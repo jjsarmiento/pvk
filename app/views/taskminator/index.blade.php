@@ -325,6 +325,7 @@
                                                     <a href="/editCertification:{{$c->id}}" class="btn btn-success btn-xs">EDIT</a>
                                                     <hr/>
                                                 @endforeach
+                                                {{$certs->links()}}
                                             @else
                                                 <center>N/A</center>
                                             @endif

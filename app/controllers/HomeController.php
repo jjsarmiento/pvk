@@ -1370,12 +1370,13 @@ class HomeController extends BaseController {
                 $pincode = Contact::where('user_id',  Auth::user()->id)->pluck('pincode');
                 $docs = Document::join('document_types', 'document_types.sys_doc_type', '=', 'documents.type')->select(['document_types.sys_doc_label'])->where('documents.user_id', Auth::user()->id)->get();
                 return View::make('editProfile_tskmntr')
-                            ->with('exp', $exp)
-                            ->with('edu', $edu)
-                            ->with('user', User::where('id', Auth::user()->id)->first())
-                            ->with('pincode', $pincode)
-                            ->with('customSkills', CustomSkill::where('created_by', Auth::user()->id)->get())
-                            ->with('docs', $docs);
+                    ->with('certs', WorkerCertification::where('user_id', Auth::user()->id)->paginate(10))
+                    ->with('exp', $exp)
+                    ->with('edu', $edu)
+                    ->with('user', User::where('id', Auth::user()->id)->first())
+                    ->with('pincode', $pincode)
+                    ->with('customSkills', CustomSkill::where('created_by', Auth::user()->id)->get())
+                    ->with('docs', $docs);
             case '3'    :
             case '4'    :
                 $docs = Document::join('document_types', 'document_types.sys_doc_type', '=', 'documents.type')->select(['document_types.sys_doc_label'])->where('documents.user_id', Auth::user()->id)->get();
