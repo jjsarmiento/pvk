@@ -179,6 +179,7 @@ class HomeController extends BaseController {
                                     'users.years_in_operation',
                                     'users.number_of_branches',
                                     'users.working_hours',
+                                    'users.profilePic',
                                     'regions.regname',
                                     'provinces.provname',
                                     'cities.cityname',
