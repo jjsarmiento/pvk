@@ -17,7 +17,7 @@ class CreateWorkerCertificationsTable extends Migration {
 			$table->increments('id');
 			$table->string('user_id');
 			$table->longText('title');
-			$table->date('date');
+			$table->string('date');
 			$table->longText('organizer_company');
 			$table->timestamps();
 		});

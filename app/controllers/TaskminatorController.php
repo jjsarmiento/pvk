@@ -1323,4 +1323,22 @@ class TaskminatorController extends \BaseController {
 
         return Redirect::back();
     }
+
+    public function certifications(){
+        return View::make('taskminator.certifications')
+            ->with('certs', WorkerCertification::where('user_id', Auth::user()->id)->get());
+    }
+
+    public function doAddCertifications(){
+        WorkerCertification::insert([
+            'user_id'           =>  Auth::user()->id,
+            'title'             =>  Input::get('certificate_name'),
+            'date'              =>  Input::get('date'),
+            'organizer_company' =>  Input::get('organizer_company'),
+            'created_at'        =>  Carbon::now()
+        ]);
+
+        Session::flash('successMsg', 'Certification has been successfully added');
+        return Redirect::back();
+    }
 }

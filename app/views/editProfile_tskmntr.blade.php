@@ -170,7 +170,7 @@
 
                     <div class="row padded bord">
                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                           <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp Certification <button class="btn btn-xs btn-default pull-right" onclick="#" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
+                           <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp Certification <a href="/certifications" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
                         </div>  
                         <span>N/A</span>
                     </div>

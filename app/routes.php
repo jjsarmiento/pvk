@@ -269,6 +269,10 @@ Route::group(array('before' => 'ADMIN-ONLY'), function(){
 });
 
 Route::group(array('before' => 'TASKMINATOR-ONLY'), function(){
+    // CERTIFICATIONS
+    Route::get('/certifications', 'TaskminatorController@certifications');
+    Route::post('/doAddCertifications', 'TaskminatorController@doAddCertifications');
+
     // EDIT EDUCATIONAL BACKGROUND -- JAN
     Route::get('/editEducationalBackground', 'TaskminatorController@editEducationalBackground');
     Route::post('/doEditEducationalBackground', 'TaskminatorController@doEditEducationalBackground');
