@@ -902,7 +902,7 @@ class HomeController extends BaseController {
                     // NEW JOB MODULE -- END by JAN SARMIENTO
                     return View::make('taskminator.index')
                             ->with('prof_prog', TaskminatorController::WORKER_profileProgress())
-                            ->with('certs', WorkerCertification::where('user_id',Auth::user()->id)->get())
+                            ->with('certs', WorkerCertification::where('user_id',Auth::user()->id)->paginate(10))
                             ->with('edu', $edu)
                             ->with('exp', $exp)
                             ->with('hired', $hired)
