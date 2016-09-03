@@ -857,6 +857,7 @@ class HomeController extends BaseController {
                     $jobs = Job::join('users', 'users.id', '=', 'jobs.user_id')
                         ->leftJoin('cities', 'cities.citycode', '=', 'jobs.citycode')
                         ->leftJoin('regions', 'regions.regcode', '=', 'jobs.regcode')
+                        ->whereNotIn('jobs.id', $this->GET_WORKER_APPLICATIONS(Auth::user()->id))
                         ->whereIn('jobs.skill_code', $skillCodeArray)
                         ->where('jobs.expired', false)
                         ->orderBy('jobs.created_at', 'DESC')
@@ -876,7 +877,7 @@ class HomeController extends BaseController {
                             'regions.regname',
                         ])
 //                        ->groupBy('jobs.id')
-                        ->take('5')
+                        ->take(3)
                         ->get();
 
                     $user_docs = Document::leftJoin('document_types', 'document_types.sys_doc_type', '=', 'documents.type')

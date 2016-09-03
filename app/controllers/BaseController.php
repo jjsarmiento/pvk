@@ -495,6 +495,20 @@ class BaseController extends Controller {
         return $myArr;
     }
 
+    public static function EMPLOYER_APPLICANTS($employer_id){
+        $jobs = Job::join('job_applications', 'job_applications.job_id', '=', 'jobs.id')
+            ->where('jobs.user_id', $employer_id)
+            ->select([
+                'jobs.id'
+            ])
+            ->get();
+        $myArr = array();
+        foreach($jobs as $o){
+            array_push($myArr, $o->id);
+        }
+        return $myArr;
+    }
+
     public function APPLICATIONS_OF_WORKER_FOR_COMPANY($companyID, $workerID){
         return Job::join('job_applications', 'job_applications.job_id', '=', 'jobs.id')
                 ->where('jobs.user_id', $companyID)
