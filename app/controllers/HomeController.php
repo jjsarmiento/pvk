@@ -934,6 +934,7 @@ class HomeController extends BaseController {
                         ->take(3)
                         ->get();
                     return View::make('client.index')
+                        ->with('prog', ClientIndiController::EMPLOYER_profileProgress())
                         ->with('CHECKEDOUT_WORKERS', $CHECKEDOUT_WORKERS)
                         ->with('workers', $workers)
                         ->with('subscription_msg', $this->SUBSCRIPTION_DURATION_MSG(Auth::user()->id))

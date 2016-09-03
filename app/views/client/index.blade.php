@@ -442,19 +442,24 @@
                 </div>            
             </div> 
 
+            @if(Auth::user()->total_profile_progress < 100)
             <div class="col-lg-8 job-post" style="margin-top: 2em;">
                 <div class="col-lg-12 no-padding">
                     <div class="widget-container" style="min-height:30px;">
                         <div class="widget-content">
                             <div class="panel-body" style="color:#2980b9; font-size:14pt;">
-                                <i class="fa fa-sticky-note" aria-hidden="true"></i> Other notes
+                                <i class="fa fa-edit" aria-hidden="true"></i> Profile Progress (Click to edit)
                             </div>
                             <div class="panel-body">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet viverra libero, tempor pretium diam placerat non. Sed eget sollicitudin sem. Maecenas sagittis mattis lacus eget commodo. Suspendisse quis risus ac neque luctus dapibus non sit amet ligula. Sed imperdiet sapien orci, at dignissim ipsum aliquet id. Quisque porttitor neque elit, vitae volutpat ante pretium non. Aliquam quam risus, varius sit amet ante quis, eleifend blandit purus. Donec condimentum neque sed nunc lobortis congue at vulputate enim. Integer eu nulla commodo, sollicitudin nulla non, convallis metus. Vivamus accumsan orci eget ex suscipit consequat. Vivamus nec nibh urna. Vivamus elementum id libero nec dignissim.</span>
+                                @foreach($prog as $r)
+                                    <a href="{{$r['url']}}">{{$r['content']}}</a><br/>
+                                @endforeach
+                                {{--<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet viverra libero, tempor pretium diam placerat non. Sed eget sollicitudin sem. Maecenas sagittis mattis lacus eget commodo. Suspendisse quis risus ac neque luctus dapibus non sit amet ligula. Sed imperdiet sapien orci, at dignissim ipsum aliquet id. Quisque porttitor neque elit, vitae volutpat ante pretium non. Aliquam quam risus, varius sit amet ante quis, eleifend blandit purus. Donec condimentum neque sed nunc lobortis congue at vulputate enim. Integer eu nulla commodo, sollicitudin nulla non, convallis metus. Vivamus accumsan orci eget ex suscipit consequat. Vivamus nec nibh urna. Vivamus elementum id libero nec dignissim.</span>--}}
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
     </div>
 </section>
 

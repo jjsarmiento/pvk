@@ -343,6 +343,7 @@ class BaseController extends Controller {
         $email = Contact::where('user_id', $user->id)->where('ctype', 'email')->pluck('content');
         $POEA_LICENSE = Document::where('user_id', $user_id)->where('type', 'DOLE_LICENSE')->count();
         $DOLE_LICENSE = Document::where('user_id', $user_id)->where('type', 'POEA_LICENSE')->count();
+        $CONTACT_PERSON = ContactPerson::where('user_id', $user_id)->count();
 
         $base = 0;
         $base = ($user->fullName    == null) ? $base : ++$base;
@@ -365,7 +366,7 @@ class BaseController extends Controller {
         $base = ($user->businessNature          ==  null) ? $base : ++$base;
         $base = ($user->years_in_operation      ==  null) ? $base : ++$base;
         $base = ($user->number_of_branches      ==  null) ? $base : ++$base;
-        $base = ($user->contact_person_position ==  null) ? $base : ++$base;
+        $base = ($CONTACT_PERSON                <=     0) ? $base : ++$base;
         $base = ($user->number_of_employees     ==  null) ? $base : ++$base;
         $base = ($user->working_hours           ==  null) ? $base : ++$base;
 
