@@ -9,7 +9,7 @@
         i{cursor:default !important;}
         body{background-color:#E9EAED;}
         .thumbnail {
-            border: 1px solid #BDC3C7;
+            border: 0px solid #BDC3C7;
             border-radius: 0.3em;
             cursor: pointer;
             position: relative;
@@ -28,7 +28,7 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            height: 100%;
+            /*height: 100%;*/
             width: auto;
             /*-webkit-transform: translate(-50%,-50%);*/
             /*-ms-transform: translate(-50%,-50%);*/
@@ -63,8 +63,8 @@
             background-color: transparent;          
         }
         .thumbnail{
-            border-radius: 360px;
-            width: 150px;
+            /*border-radius: 360px;*/
+            width: auto;
             height: 150px;
             margin: auto;     
         }
@@ -169,7 +169,7 @@
                                 @if(Auth::user()->profilePic)
                                     <img src="{{ Auth::user()->profilePic }}" class="portrait"/><br>
                                 @else
-                                    <img src="/images/default_profile_pic.png"/><br>
+                                    <img style="height:100%;" src="/images/yourlogohere.jpg"/><br>
                                 @endif
                             </div>
                         </div>

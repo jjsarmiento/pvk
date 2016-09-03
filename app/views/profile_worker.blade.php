@@ -166,7 +166,7 @@
                             @if($CLIENTFLAG && $roles == 'TASKMINATOR')
                                 @if($PURCHASED > 0)
                                     <!-- CONTACT INFO -->
-                                    <div class="ConInfo">
+                                    <div class="ConInfo" style="text-transform: capitalize;">
                                         @foreach(Contact::where('user_id', $users->id)->get() as $con)
                                             <span><b>
                                                 @if($con->ctype == "mobileNum")
@@ -198,7 +198,7 @@
                                 @endif
                             @else
                                 <!-- CONTACT INFO -->
-                                <div class="ConInfo">
+                                <div class="ConInfo" style="text-transform: capitalize;">
                                     <span><b>Mobile #: </b>{{$mobile}}</span><br>
                                     <span><b>Email: </b><a href="mailto:fakeemail@gmail.com">fakeemail@gmail.com</a></span><br>
                                     <span><b>FB: </b><a href="facebook.com" target="_Blank">Facebook.com</a></span><br>
