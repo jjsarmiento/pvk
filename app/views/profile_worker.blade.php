@@ -234,7 +234,29 @@
                             <span class="section-heading lato-text" style="font-size: 30px; color:#333;">Educational Background</span></i>
                             <hr class="hrLine">
                             <div class="content">
-                                @if($PURCHASED > 0)
+                                @if($users->id != Auth::user()->id)
+                                    @if($PURCHASED > 0)
+                                        @if($edu->count() > 0)
+                                            @foreach($edu as $e)
+                                                <div class="col-md-4" style="word-wrap: break-word;">
+                                                    <span><b>{{$e->level}}</b></span>
+                                                    <ul>
+                                                        <li><b>School Name: </b>{{$e->school_name}}</li>
+                                                        @if($e->level == 'COLLEGE' || $e->level == 'VOCATIONAL')
+                                                            <li><b>Course/Major: </b>{{$e->course_major}}</li>
+                                                        @endif
+                                                        <li><b>School Year: </b>{{$e->school_year}}</li>
+                                                        <li><b>Awards: </b>{{$e->awards}}</li>
+                                                    </ul>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <center>N/A</center>
+                                        @endif
+                                    @else
+                                        <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
+                                    @endif
+                                @else
                                     @if($edu->count() > 0)
                                         @foreach($edu as $e)
                                             <div class="col-md-4" style="word-wrap: break-word;">
@@ -252,8 +274,6 @@
                                     @else
                                         <center>N/A</center>
                                     @endif
-                                @else
-                                    <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
                                 @endif
                             </div>
                         </div>
@@ -268,8 +288,27 @@
                             <span class="section-heading lato-text" style="font-size: 30px; color:#333;">Relevant Experiences</span></i>
                             <hr class="hrLine">
                             <div class="content">
-                                @if($PURCHASED > 0)
-                                    @if($RELEVANT_EXP->count() > 0)
+                                @if($users->id != Auth::user()->id)
+                                    @if($PURCHASED > 0)
+                                        @if($RELEVANT_EXP)
+                                            @foreach($RELEVANT_EXP as $e)
+                                                <ul>
+                                                    <li>Company : {{$e->position}}</li>
+                                                    <li>Position : {{$e->company_name}}</li>
+                                                    <li>Location : {{$e->location}}</li>
+                                                    <li>Time Period : {{$e->time_period}}</li>
+                                                    <li>Roles and Responsibility : {{$e->roles_and_resp}}</li>
+                                                </ul>
+                                                <hr/>
+                                            @endforeach
+                                        @else
+                                            <center>N/A</center>
+                                        @endif
+                                    @else
+                                        <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
+                                    @endif
+                                @else
+                                    @if($RELEVANT_EXP)
                                         @foreach($RELEVANT_EXP as $e)
                                             <ul>
                                                 <li>Company : {{$e->position}}</li>
@@ -283,8 +322,6 @@
                                     @else
                                         <center>N/A</center>
                                     @endif
-                                @else
-                                    <center><i class="fa fa-info-circle"></i> Checkout Worker's profile first.</center>
                                 @endif
                             </div>
                         </div>
