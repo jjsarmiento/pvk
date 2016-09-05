@@ -85,7 +85,8 @@
     }
     a.clickHere {
         background: transparent;
-        border: 2px solid;
+        border: 2px solid #2980b9;
+        color: #2980b9;
         border-radius: 5px;
         padding: 5px 15px;
         font-size: 15px !important;
@@ -236,13 +237,14 @@
                                                 </div>
                                                 <span style="font-size:10pt;"></span>
                                             </div>
-
-                                            @if(Auth::user()->total_profile_progress < 50)
-                                                <p style="color: #000000; margin-top: 5px;">
-                                                    <i style="color: red" class="fa fa-warning"></i> <b>You can start applying for jobs when you complete your profile above 50%.</b><br><br>
-                                                    <a class="clickHere" href="/editProfile"> Click here to edit your profile </a>
-                                                </p>
-                                            @endif
+                                            
+                                            <p style="color: #000000; margin-top: 5px;">
+                                                <i style="color: red" class="fa fa-warning"></i> <b>You can start applying for jobs when you complete your profile above 50%.</b><br><br>
+                                                <a class="clickHere" href="/editProfile"> Click here to edit your profile </a>
+                                            </p>
+                                            <!-- @if(Auth::user()->total_profile_progress < 50) -->
+                                                
+                                            <!-- @endif -->
                                         </div>
                                     </div>
                                 </div>
