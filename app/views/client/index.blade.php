@@ -90,7 +90,8 @@
         }
         a.clickHere {
             background: transparent;
-            border: 2px solid;
+            border: 2px solid #2980b9;
+            color: #2980b9;
             border-radius: 5px;
             padding: 5px 15px;
             font-size: 15px !important;
