@@ -20,6 +20,11 @@
             font-size: 27px;
         }
     }
+    @media (max-width: 767px) {
+        .header-content-inner.wow.fadeIn.text-center {
+            margin-top: 50px;
+        }        
+    }
 </style>
 @section('content')
     <!-- HEADER SEARCH SECTION -->
