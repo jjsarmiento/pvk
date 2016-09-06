@@ -11,6 +11,7 @@
             background-repeat: no-repeat;
             height: auto !important;
             max-height: 100% !important;
+            overflow: scroll;
         }
         h1.lato-text{
             color: white;
