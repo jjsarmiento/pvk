@@ -15,6 +15,11 @@
     button.btn.btn-default.btn-trans {
         padding: 9px;
     }
+    @media (max-width: 320px) {
+        span.mob {
+            font-size: 27px;
+        }
+    }
 </style>
 @section('content')
     <!-- HEADER SEARCH SECTION -->
@@ -55,12 +60,12 @@
                     </p>     
                     </hr>
 
-                    <span><b>Business Address: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante</span><br>
+                    <span><b>Business Address: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante</span><br><br>
                 </div>
                 <div stlye="clear:both;"></div>
                 <div class="col-md-6">
                     <i class="fa fa-3x fa-briefcase text-primary">
-                    <span class="section-heading lato-text" style="font-size: 30px; color:#333;">Company Snapshots</span></i>
+                    <span class="section-heading lato-text mob" style="font-size: 30px; color:#333;">Company Snapshots</span></i>
                     {{--<hr class="hrLine">--}}
                     <div class="col-12-lg lato-text" style="padding-top: 20px;">
                         <table class="table table-hover table-striped">
