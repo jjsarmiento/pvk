@@ -9,7 +9,8 @@
             background: url("../frontend/img/slideshow/10admin.jpg");
             background-size: cover;
             background-repeat: no-repeat;
-            height: 100%;
+            height: auto !important;
+            max-height: 100% !important;
         }
         h1.lato-text{
             color: white;
@@ -33,6 +34,11 @@
         }
         .col-md-7, .col-md-5{
             color: white;
+        }
+        @media (max-width: 767px){
+            ul.breadcrumb {
+                margin: 50px 15px 0px;
+            }
         }
         /*-----------------*/
     </style>
@@ -60,6 +66,7 @@
                 </ul>
             </div>
         </div>
+        <div style="clear:both;"></div>
         @if(Session::has('errorm'))
             <span style="color: red">{{ Session::get('errorMsg') }}</span>
         @elseif(Session::has('succmsg'))
