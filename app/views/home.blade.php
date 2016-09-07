@@ -50,6 +50,11 @@
             padding-top: 25px; 
             padding-bottom:25px;
         }
+        @media (max-width: 320px){
+            .col-lg-12.lato-text.g-recaptcha {
+                margin-left: -35px;
+            }
+        }
     </style>
 
         <!--reCaptcha-->

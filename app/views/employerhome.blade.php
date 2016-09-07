@@ -98,6 +98,11 @@
         ::-webkit-scrollbar-thumb:window-inactive {
             background: rgba(41,128,185,0.9); 
         }
+        @media (max-width: 320px){
+            .col-lg-12.lato-text.g-recaptcha {
+                margin-left: -35px;
+            }
+        }
     </style>
     <script src='https://www.google.com/recaptcha/api.js?hl=en?fallback=true'></script>
     <script>

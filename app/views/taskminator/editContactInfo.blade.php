@@ -116,7 +116,7 @@
                                         LinkedIn : 
                                     </div>
                                     <div class="col-md-9">
-                                        <input placeholder="Place link to business's LinkedIn account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                        <input placeholder="Place link to user's LinkedIn account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'mobileNum')
                                     <div class="col-md-3">
@@ -130,7 +130,7 @@
                                         Twitter : 
                                     </div>
                                     <div class="col-md-9">
-                                        <input placeholder="Place link to business's Twitter account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                        <input placeholder="Place link to user's Twitter account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @endif
                             @endforeach
