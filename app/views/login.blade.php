@@ -50,6 +50,15 @@
         {
             width:45%; border:1px solid #2980b9; border-radius:4px;
         }
+        @media (max-width: 480px){
+            a.btn, input.btn.btn-md.btn-primary.lato-text.btnTheme {
+                width: 200px;
+                font-size: 15px;
+            }
+            .col-xs-10 {
+                padding: 10px !important;
+            }            
+        }
     </style>
 
 </head>
