@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder {
             'country'           =>  'PHILIPPINES',
             'confirmationCode'  =>  md5(uniqid(rand(), true)),
             'status'            =>  'ACTIVATED',
-            'accountType'       =>  2,
+            'accountType'       =>  1,
             'businessPermit'    =>  'Client Company DTI/SEC',
             'businessDescription'    =>  'Client Company Description',
             'businessNature'    =>  'Client Company Nature',
@@ -69,18 +69,6 @@ class UsersTableSeeder extends Seeder {
             'user_id'           =>  2,
             'role_id'           =>  4,
         ));
-        /*
-        ContactPerson::create(array(
-            'user_id'           =>  2,
-            'firstName'         =>  'Client Keyperon Firstname',
-            'midName'           =>  'Client Keyperon Midname',
-            'lastName'          =>  'Client Keyperon Lastname',
-            'contactNum'        =>  '09276274641',
-            'email'             =>  'sarmiento11102@gmail.com.ph',
-            'position'          =>  'Client Keyperon Position',
-            'country'           =>  'PHILIPPINES',
-        ));
-        */
         UserSubscription::insert([
             'user_id'                   =>  2,
             'system_subscription_id'    =>  1,

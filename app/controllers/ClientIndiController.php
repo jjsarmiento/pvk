@@ -1172,8 +1172,9 @@ class ClientIndiController extends \BaseController {
 
         if($job->expired){
             return View::make('client.jobDetails_EXPIRED')
-                    ->with('job', $job)
-                    ->with('custom_skills', $custom_skills);
+                ->with('REPOST_COST', SystemSetting::where('type', 'SYSSETTINGS_REPOST_POINTSPERAD')->pluck('value'))
+                ->with('job', $job)
+                ->with('custom_skills', $custom_skills);
         }else{
 
 //        $applications = JobApplication::where('job_id', $jobId)->get();
@@ -1901,7 +1902,7 @@ class ClientIndiController extends \BaseController {
             // POINT DEDUCTION FOR JOB ADS
             User::where('id', Auth::user()->id)
                 ->update([
-                    'points'    =>  (Auth::user()->points - SystemSetting::where('type', 'SYSSETTINGS_POINTSPERAD')->pluck('value'))
+                    'points'    =>  (Auth::user()->points - SystemSetting::where('type', 'SYSSETTINGS_REPOST_POINTSPERAD')->pluck('value'))
                 ]);
 
             $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Reposted expired <a href="ADMIN_jobDetails='.$jobID.'">job</a>');

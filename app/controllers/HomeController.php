@@ -7,7 +7,7 @@ use Carbon\Carbon;
 class HomeController extends BaseController {
 
     public function TESTINGROUTE(){ // test()
-        var_dump(!AdminController::IF_ADMIN_IS(['SUPER_ADMINISTRATOR', 'ADMINISTRATOR', 'CONTENT_EDITOR'], Auth::user()->id));
+        return $this->SUBSCRIPTION_STATS(Auth::user()->id);
     }
 
     function generateConfirmationCode(){

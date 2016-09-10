@@ -258,9 +258,9 @@
                 <div class="widget-content">
                     <a href="/REPOST_JOB:{{$job->id}}" class="btn-block btn btn-success">Repost Job Ad</a>
                     <br/>
-                    You currently have {{Auth::user()->points}} points.
+                    You currently have <b>{{Auth::user()->points}}</b> points.
                     <br/>
-                    <i style="font-weight: bold;"><span style="color: #E74C3C;">*</span> You need {{SystemSetting::where('type', 'SYSSETTINGS_POINTSPERAD')->pluck('value');}} points to repost this job.</i>
+                    <i style="font-weight: bold;"><span style="color: #E74C3C;">*</span> You need {{ $REPOST_COST }} points to repost this job.</i>
                 </div>
             </div>
         </div>
