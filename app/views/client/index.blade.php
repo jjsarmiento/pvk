@@ -210,7 +210,7 @@
                             <span><b>Nature of Employer :</b> Company</span><br>
                         </div>
                         <div class="col-md-6">
-                            <span><b>Last Login :</b> 08/03/16</span> 
+                            <span><b>Last Login :</b> {{@$LAST_LOGIN}}</span>
                         </div>             
                     </div>
                     <div style="clear:both;"></div>
@@ -401,7 +401,7 @@
                                             </b><br/> <a href="/{{$w->username}}" class="user">{{ '@'.$w->username }}</a></span><br>
                                             {{--<span>Address Lorem ipsum sit dolor amet</span><br>--}}
                                             <span><b>Profile Rating: {{$w->total_profile_progress}}%</b></span><br>
-                                            {{--<span><b>Last Login: </b> 2 Days ago</span>--}}
+                                            {{--<span><b>Last Login: </b> {{Auth::user()->last_login}}</span>--}}
                                         </div>
                                         <a href="/{{$w->username}}" class="viewSal">VIEW FULL PROFILE</a>
                                     </div>

@@ -41,6 +41,7 @@ class HomeController extends BaseController {
     public function logout(){
         if(Auth::check()){
             $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Logged out');
+            User::where('id', Auth::user()->id)->update(['last_login' => Carbon::now()]);
         }
         Auth::logout();
         return Redirect::to('/');
@@ -835,7 +836,7 @@ class HomeController extends BaseController {
                     Auth::logout();
                     return Redirect::to('/login')->with('errorMsg', 'Your account has been deactivated. Contact us for more information');
             }
-
+            $LAST_LOGIN = Carbon::parse(Auth::user()->last_login)->diffForHumans(Carbon::now());
             $role = Role::join('user_has_role', 'roles.id', '=', 'user_has_role.role_id')
                 ->where('user_has_role.user_id', Auth::user()->id)
                 ->pluck('role');
@@ -902,6 +903,7 @@ class HomeController extends BaseController {
                     $hired = JobHiredWorker::where('worker_id', Auth::user()->id)->count();
                     // NEW JOB MODULE -- END by JAN SARMIENTO
                     return View::make('taskminator.index')
+                            ->with('LAST_LOGIN', $LAST_LOGIN)
                             ->with('prof_prog', TaskminatorController::WORKER_profileProgress())
                             ->with('certs', WorkerCertification::where('user_id',Auth::user()->id)->paginate(10))
                             ->with('edu', $edu)
@@ -950,6 +952,7 @@ class HomeController extends BaseController {
                         ->take(3)
                         ->get();
                     return View::make('client.index')
+                        ->with('LAST_LOGIN', $LAST_LOGIN)
                         ->with('EMP_ADDRESS', $EMP_ADDRESS)
                         ->with('contacts', Contact::where('user_id', Auth::user()->id)->get())
                         ->with('cperson', ContactPerson::where('user_id', Auth::user()->id)->first())
