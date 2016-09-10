@@ -516,8 +516,7 @@
 
     @if(@$MULTIJOB)
         <script>
-            $(document).ready(function(){ INVITE_MULTI_JOB_VALIDATION();
-            })
+            $(document).ready(function(){ INVITE_MULTI_JOB_VALIDATION(); })
         </script>
         <form method="POST" action="/INVITEMULTIJOB">
             <input type="hidden" value="{{$users->id}}" name="workerID">

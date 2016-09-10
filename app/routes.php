@@ -399,6 +399,9 @@ Route::group(array('before' => 'CLIENT-ONLY'), function(){
             Route::post('/INVITEMULTIJOB', 'ClientIndiController@INVITEMULTIJOB');
 
             Route::post('/DOSNDINVT', 'ClientIndiController@DOSNDINVT');
+
+            // BULK INVITE FROM BOOKMARK
+            Route::get('/BulkInviteToApply={user_id}', 'ClientIndiController@BulkInviteToApply');
         });
 
         // HIRE WORKER

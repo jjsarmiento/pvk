@@ -25,12 +25,12 @@
         <div class="page-title">
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 @if($bookmarks->count() == 0)
                     <center><i>No bookmarked users</i></center>
                 @else
                     @foreach($bookmarks as $bm)
-                        <div class="col-md-4" style="margin-bottom: 1em;">
+                        <div class="col-md-3" style="margin-bottom: 1em;">
                             <div class="widget-container fluid-height padded" style="word-wrap: break-word; min-height: 1em; height: 7em; max-height: 7em;">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -50,21 +50,18 @@
                                         </span>
                                     </div>
                                     <div class="col-md-12">
+                                        <a href="/BulkInviteToApply={{$bm->userID}}" class="btn btn-xs btn-warning btn-block">Invite to apply</a>
+                                        <!--
                                         @if(!in_array($bm->userID, $CHECKED_OUT_USERS))
                                             <a href="/doCheckout={{$bm->userID}}" class="btn btn-block btn-warning" style="background-color: #E74C3C;">Checkout</a>
                                         @endif
+                                        -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 @endif
-            </div>
-            <div class="col-md-3">
-                <div class="widget-container">
-                    <div class="widget-content">
-                    </div>
-                </div>
             </div>
         </div>
     </div>

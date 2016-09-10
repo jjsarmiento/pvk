@@ -2210,4 +2210,18 @@ class ClientIndiController extends \BaseController {
         }
         return $ARRAY;
     }
+
+    public function BulkInviteToApply($user_id){
+        $WORKER_INVITES = $this->WORKERGETINVITES_JOBID($user_id);
+        $WORKER_APPLICATIONS = $this->GET_WORKER_APPLICATIONS($user_id);
+        $jobs = Job::where('user_id', Auth::user()->id)
+            ->where('expired', false)
+            ->whereNotIn('id', array_merge($WORKER_APPLICATIONS, $WORKER_INVITES))
+            ->get();
+
+        return View::make('client.BulkInviteToApply')
+            ->with('CHECKED_OUT_USERS', $this->GETCHECKEDOUTUSERS(Auth::user()->id))
+            ->with('worker', User::where('id', $user_id)->first())
+            ->with('all_jobs', $jobs);
+    }
 }
