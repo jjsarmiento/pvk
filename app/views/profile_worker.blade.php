@@ -252,7 +252,7 @@
                                         @endif
                                     @else
                                         <span style="color:red; font-size:15px;">
-                                            <em><b>Note:</b> Supporting Documents will only be available for viewing and download after you check-out the Worker's Profile</em>
+                                            <em><b>Note:</b> Educational Background will only be available for viewing after you check-out the Worker's Profile</em>
                                         </span>
                                     @endif
                                 @else
@@ -305,7 +305,7 @@
                                         @endif
                                     @else
                                         <span style="color:red; font-size:15px;">
-                                            <em><b>Note:</b> Supporting Documents will only be available for viewing and download after you check-out the Worker's Profile</em>
+                                            <em><b>Note:</b> Relevant Experiences will only be available for viewing you check-out the Worker's Profile</em>
                                         </span>
                                     @endif
                                 @else
