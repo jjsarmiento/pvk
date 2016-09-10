@@ -298,7 +298,7 @@
                                 </div>                                
                                 <!-- @if(Auth::user()->total_profile_progress < 50) -->
                                     <p style="color: #000000; margin-top: 5px;">
-                                        <i style="color: red" class="fa fa-warning"></i> <b>You can start applying for jobs when you complete your profile above 50%.</b><br><br>
+                                        <i style="color: red" class="fa fa-warning"></i> <b>You can start creating job ads when you complete your profile above 50%.</b><br><br>
                                     </p>
                                 <!-- @endif -->
                             </div>
