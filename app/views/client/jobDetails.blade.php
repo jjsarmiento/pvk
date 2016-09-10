@@ -201,7 +201,7 @@
                     </div>
                     <div class="col-md-6" style="word-wrap: break-word; text-align: justify;">
                         <label>Description</label><br/>
-                        {{ $job->description }}
+                        {{ nl2br($job->description) }}
                     </div>
                 </div>
                 <br/>
@@ -209,7 +209,7 @@
                     <div class="col-md-6">
                         <div class="col-md-12 well" style="text-align: justify;">
                             <label>Requirements</label><br/>
-                            {{$job->requirements}}
+                            {{ nl2br($job->requirements) }}
                         </div>
                     </div>
                     @if($job->AverageProcessingTime || $job->Industry || $job->CompanySize || $job->WorkingHours || $job->DressCode)
