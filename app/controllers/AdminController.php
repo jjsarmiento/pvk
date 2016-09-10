@@ -117,11 +117,14 @@ class AdminController extends \BaseController {
             }
 
             return View::make('admin.viewUserProfile_tskmntr')
+                ->with('certs', WorkerCertification::where('user_id', $id)->get())
+                ->with('edu', WorkerEducation::where('user_id', $id)->get())
+                ->with('exp', WorkerExperience::where('user_id', $id)->get())
                 ->with('user', User::where('id', $id)->first())
                 ->with('contactpersons', ContactPerson::where('user_id', $id)->get())
                 ->with('keyskills', Photo::where('user_id', $id)->where('type', 'KEYSKILLS')->get())
                 ->with('photos', Photo::where('user_id', $id)->whereNotIn('type', ['KEYSKILLS', 'DOCUMENT'])->get())
-                ->with('docs', Document::where('user_id', $id)->where('type', 'DOCUMENT')->get())
+                ->with('docs', Document::where('user_id', $id)->get())
                 ->with('miscDocs', Document::where('user_id', $id)->whereNotIn('type', ['KEYSKILLS', 'DOCUMENT'])->get())
                 ->with('ratings', Rate::where('taskminator_id', $id)->count())
                 ->with('starRatings', $starRatings)

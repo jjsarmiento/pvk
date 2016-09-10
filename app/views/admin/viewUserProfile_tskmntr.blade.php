@@ -131,13 +131,26 @@
                                 </div>
                                 <div style="padding: 0 12px; color:#dddddd;">
                                     <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Address</span>
-                                     : <span style="margin-left: 5px">{{Auth::user()->address}}{{ Region::where('regcode', $user->region)->pluck('regname') }} {{ Province::where('provcode', $user->province)->pluck('provname') }} {{ Barangay::where('bgycode', $user->barangay)->pluck('bgyname') }} {{ City::where('citycode', $user->city)->pluck('cityname') }}</span><br/>
+                                     : <span style="margin-left: 5px">
+                                        {{ Region::where('regcode', $user->region)->pluck('regname') }},
+                                        {{ Province::where('provcode', $user->province)->pluck('provname') }},
+                                        {{ Barangay::where('bgycode', $user->barangay)->pluck('bgyname') }},
+                                        {{ City::where('citycode', $user->city)->pluck('cityname') }},
+                                        {{$user->address}}
+                                        </span>
+                                     <br/>
                                     <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Birthdate</span>
                                      : <span style="margin-left: 5px">{{$user->birthdate}}</span><br/>
                                     <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Gender</span>
                                      : <span style="margin-left: 5px">{{$user->gender}}</span><br/>
                                     <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Marital Status</span>
-                                     : <span style="margin-left: 5px"></span><br/>
+                                     : <span style="margin-left: 5px">
+                                        @if($user->marital_status)
+                                        {{$user->marital_status}}
+                                        @else
+                                            <i>N/A</i>
+                                        @endif
+                                     </span><br/>
                                     <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Status</span>
                                      : <span style="margin-left: 5px">{{$user->status}}</span><br/>
                                     <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Account Created at</span>
@@ -159,37 +172,27 @@
                             <hr class="hrLine" />
 
 
-                            <div class="col-md-7">
+                            <div class="col-md-7" style="color:#dddddd;">
                                 <div class="heading" style="font-size:14pt;">
                                     <i class="fa fa-graduation-cap" style="margin-right: 10px;"></i>Educational Background
                                 </div>
-                                <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
-                                    <span><b>College/Vocational: </b></span>
-                                    <ul style="padding-left: 20px;">
-                                        <li><b>School: </b>Polytechnic University of the Philippines</li>
-                                        <li><b>Course: </b>BSIT</li>
-                                        <li><b>School Year: </b>2001/2015</li>
-                                        <li><b>Awards: </b>N/A</li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
-                                    <span><b>High School: </b></span>
-                                    <ul style="padding-left: 20px;">
-                                        <li><b>School: </b>San Bartolome High School</li>
-                                        <li><b>School Year: </b>1996/2001</li>
-                                        <li><b>Awards: </b>N/A</li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
-                                    <span><b>Elementary: </b></span>
-                                    <ul style="padding-left: 20px;">
-                                        <li><b>School: </b>Placido Del Mundo Elementary School</li>
-                                        <li><b>School Year: </b>1990/1996</li>
-                                        <li><b>Awards: </b>N/A</li>
-                                    </ul>
-                                </div>
+                                @if($edu->count() > 0)
+                                    @foreach($edu as $e)
+                                        <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
+                                            <span><b>{{$e->level}}: </b></span>
+                                            <ul style="padding-left: 20px;">
+                                                <li><b>School Name: </b>{{$e->school_name}}</li>
+                                                @if($e->level == 'COLLEGE' || $e->level == 'VOCATIONAL')
+                                                    <li><b>Course/Major: </b>{{$e->course_major}}</li>
+                                                @endif
+                                                <li><b>School Year: </b>{{$e->school_year}}</li>
+                                                <li><b>Awards: </b>{{$e->awards}}</li>
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <center><i>No data available.</i></center>
+                                @endif
                             </div>
                             <div class="col-md-5">
                                 <div class="heading" style="font-size:14pt;">
@@ -204,10 +207,26 @@
                             <div style="clear:both;"></div>
                             <hr class="hrLine" />
 
-                            <div class="col-md-12">
+                            <div class="col-md-12" style=" color:#dddddd;">
                                 <div class="heading" style="font-size:14pt;">
                                     <i class="fa fa-lightbulb-o" style="margin-right: 10px;"></i>Experience
-                                </div>    
+                                </div>
+                                @if($exp->count() > 0)
+                                    @foreach($exp as $e)
+                                        <div class="col-md-4" style="padding: 0 12px;">
+                                            <ul>
+                                                <li><b>Position: </b><b style="font-size:18px;">{{$e->position}}</b></li>
+                                                <li><b>Company Name: </b><b style="font-size:15px;">{{$e->company_name}}</b></li>
+                                                <li><b>Location: </b> {{$e->location}}</li>
+                                                <li><b>Time Period: </b> {{$e->time_period}}</li>
+                                                <li><b>Roles and Responsibilities: </b>{{$e->roles_and_resp}}</li>
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <center><i>No data available.</i></center>
+                                @endif
+                                <!--
                                 @for($i=0; $i<3; $i++)
                                     <div class="col-md-4" style="padding: 0 12px; color:#dddddd;">
                                         <ul>
@@ -219,6 +238,7 @@
                                         </ul>
                                     </div>
                                 @endfor
+                                -->
 
 
                             </div>
@@ -248,7 +268,9 @@
                                         <i>No data available.</i><br><br>
                                     @else
                                         @foreach($docs as $doc)
-                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a href="{{ $doc->path }}">{{ $doc->docname }}</a><br><br>
+                                            <a style="top: 2px; color: #ffffff;" href="{{$doc->path}}" title="Download {{$doc->label}}"><i class="glyphicon glyphicon-download"></i></a>
+                                            &nbsp;&nbsp;
+                                            <a target="_tab" style="color: #ffffff;" href="{{ $doc->path }}">{{ $doc->label }}</a><br><br>
                                         @endforeach
                                     @endif
                                 </div>
@@ -258,12 +280,15 @@
                                     <i class="fa fa-certificate" style="margin-right: 10px;"></i>Certification
                                 </div>
                                 <div style="padding: 0 35px;">
-                                    @if($keyskills->count() == 0)
-                                        <i>No data available.</i><br/>
-                                    @else
-                                        @foreach($keyskills as $ks)
-                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a href="{{ $ks->path }}"><img src="{{ $ks->path }}" title="{{ $ks->imgname }}" width="100em;" style="border: 1px solid #333333; border-radius: 0.3em"/></a>
+                                    @if($certs->count() > 0)
+                                        @foreach($certs as $c)
+                                            <span><b>Title of Training/Certificate: </b>{{ $c->title }}</span><br>
+                                            <span><b>Date Taken: </b>{{ $c->date }}</span><br>
+                                            <span><b>Organizer/Company: </b>{{ $c->organizer_company }}</span><br>
+                                            <hr/>
                                         @endforeach
+                                    @else
+                                        <center><i>No data available.</i></center>
                                     @endif
                                 </div>
                             </div>

@@ -272,7 +272,7 @@
                                     <hr>
                                 @endforeach
                             @else
-                                <center>N/A</center>
+                                <center><i>N/A</i></center>
                             @endif
                         </div>
 
