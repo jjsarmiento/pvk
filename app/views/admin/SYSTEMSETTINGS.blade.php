@@ -91,6 +91,13 @@
                                                             <input value="{{$sys->value}}" required="required" name="SYSSETTINGS_POINTSPERAD" id="SYSSETTINGS_POINTSPERAD" type="text" class="form-control" placeholder="POINTS" />
                                                         </div>
                                                     </div>
+                                                @elseif($sys->type == 'SYSSETTINGS_REPOST_POINTSPERAD')
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Repost Expired Job Ad creation cost (POINTS)</label>
+                                                            <input value="{{$sys->value}}" required="required" name="SYSSETTINGS_REPOST_POINTSPERAD" id="SYSSETTINGS_REPOST_POINTSPERAD" type="text" class="form-control" placeholder="POINTS" />
+                                                        </div>
+                                                    </div>
                                                 @elseif($sys->type == "SYSSETTINGS_JOBADDURATION")
                                                     <div class="col-md-6">
                                                         <div class="form-group">

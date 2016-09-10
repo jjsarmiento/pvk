@@ -1238,6 +1238,12 @@ class AdminController extends \BaseController {
                     'value'     =>  Input::get('SYSSETTINGS_POINTSPERAD')
                 ]);
 
+            SystemSetting::where('type', 'SYSSETTINGS_REPOST_POINTSPERAD')
+                ->update([
+                    'value'     =>  Input::get('SYSSETTINGS_REPOST_POINTSPERAD')
+                ]);
+
+
             SystemSetting::where('type', 'SYSSETTINGS_JOBADDURATION')
                 ->update([
                     'value'     =>  Input::get('SYSSETTINGS_JOBADDURATION')
