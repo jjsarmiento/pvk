@@ -57,15 +57,25 @@
                     <i class="fa fa-3x fa-info-circle text-primary">
                     <span class="section-heading lato-text" style="font-size: 30px; color:#333;">General Info</span></i>
                     <hr class="hrLine">                    
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante. Pellentesque vestibulum turpis at posuere pellentesque. Donec leo risus, dignissim at nisi at, congue dignissim dolor. Nullam ac feugiat massa. Nunc vel justo sem. Ut vestibulum congue est sit amet malesuada. Maecenas leo dui, bibendum vitae leo eget, tempor elementum ante.
+                    <p style="text-align: justify;">
+                        @if($users->businessDescription)
+                            {{$users->businessDescription}}
+                        @else
+                            N/A
+                        @endif
+                        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante. Pellentesque vestibulum turpis at posuere pellentesque. Donec leo risus, dignissim at nisi at, congue dignissim dolor. Nullam ac feugiat massa. Nunc vel justo sem. Ut vestibulum congue est sit amet malesuada. Maecenas leo dui, bibendum vitae leo eget, tempor elementum ante.--}}
                     </p>    
                     <p>
                         Cras nisl arcu, mollis id nisi et, facilisis viverra augue. Mauris ullamcorper enim quis sapien tristique, ornare dictum diam faucibus. Vivamus pharetra sit amet metus sit amet consectetur. Donec dictum eros vel augue lobortis lobortis. In interdum nisi turpis, non rhoncus lacus semper sit amet. Donec rutrum dolor libero, at commodo erat placerat nec. Proin cursus vulputate nibh et laoreet. Mauris ultrices nulla at velit euismod, ut dapibus purus aliquam.
                     </p>     
                     </hr>
 
-                    <span><b>Business Address: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante</span><br><br>
+                    <span>
+                        <b>Business Address: </b>
+                        {{$users->regname}}, {{$users->provname}}, {{$users->cityname}}, {{$users->cityname}}, {{$users->address}}
+                        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante--}}
+                    </span>
+                    <br><br>
                 </div>
                 <div stlye="clear:both;"></div>
                 <div class="col-md-6">
@@ -77,15 +87,33 @@
                             <tbody>
                                 <tr>
                                     <td width="50%"><label>Years in operation</label></td>
-                                    <td>{{$users->years_in_operation}}</td>
+                                    <td>
+                                        @if($users->years_in_operation)
+                                            {{ $users->years_in_operation }}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="50%"><label>Number of branches</label></td>
-                                    <td>{{$users->number_of_branches}}</td>
+                                    <td>
+                                        @if($users->number_of_branches)
+                                            {{ $users->number_of_branches }}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="50%"><label>Number of Employees</label></td>
-                                    <td>39</td>
+                                    <td>
+                                        @if($users->number_of_employees)
+                                            {{$users->number_of_employees}}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="50%"><label>Working Hours</label></td>
