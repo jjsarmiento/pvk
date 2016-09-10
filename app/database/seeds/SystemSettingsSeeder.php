@@ -15,6 +15,11 @@ class SystemSettingsSeeder extends Seeder {
         ));
 
         SystemSetting::create(array(
+            'type'          =>  "SYSSETTINGS_REPOST_POINTSPERAD",
+            'value'         =>  "2.5"
+        ));
+
+        SystemSetting::create(array(
             'type'          =>  "SYSSETTINGS_JOBADDURATION",
             'value'         =>  "168"
         ));
