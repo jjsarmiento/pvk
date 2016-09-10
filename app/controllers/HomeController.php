@@ -922,6 +922,17 @@ class HomeController extends BaseController {
                     BaseController::PROVEEK_PROFILE_PERCENTAGE_EMPLOYER(Auth::user()->id);
                     BaseController::CHECK_EMPLOYER_POINTS(Auth::user()->id);
                     $CHECKEDOUT_WORKERS = $this->GET_ALL_CHECKEDOUT_WORKERS(Auth::user()->id);
+                    $EMP_ADDRESS = User::leftJoin('regions', 'regions.regcode', '=', 'users.region')
+                        ->leftJoin('provinces', 'provinces.provcode', '=', 'users.province')
+                        ->leftJoin('cities', 'cities.citycode', '=', 'users.city')
+                        ->leftJoin('barangays', 'barangays.bgycode', '=', 'users.barangay')
+                        ->where('users.id', Auth::user()->id)
+                        ->select([
+                            'regions.regname',
+                            'provinces.provname',
+                            'cities.cityname',
+                            'barangays.bgyname'
+                        ])->first();
                     $workers = User::join('user_has_role', 'user_has_role.user_id', '=', 'users.id')
                         ->whereNotIn('users.id', $CHECKEDOUT_WORKERS)
                         ->where('user_has_role.role_id', 2)
@@ -939,6 +950,7 @@ class HomeController extends BaseController {
                         ->take(3)
                         ->get();
                     return View::make('client.index')
+                        ->with('EMP_ADDRESS', $EMP_ADDRESS)
                         ->with('contacts', Contact::where('user_id', Auth::user()->id)->get())
                         ->with('cperson', ContactPerson::where('user_id', Auth::user()->id)->first())
                         ->with('prog', ClientIndiController::EMPLOYER_profileProgress())

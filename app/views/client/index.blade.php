@@ -337,10 +337,14 @@
                                 <i class="fa fa-user" style="font-size:14pt; color:#2980b9"></i>&nbsp Key Contact Person
                             </div>     
                             <div class="panel-body">
-                                <span><b>Name: </b></span> {{@$cperson->name}}<br>
-                                <span><b>Position: </b></span> {{@$cperson->position}}<br>
-                                <span><b>Contact #: </b></span> {{@$cperson->contact_number}}<br>
-                                <span><b>Email: </b> {{@$cperson->email}}</span>
+                                @if(@$cperson->id)
+                                    <span><b>Name: </b></span> {{@$cperson->name}}<br>
+                                    <span><b>Position: </b></span> {{@$cperson->position}}<br>
+                                    <span><b>Contact #: </b></span> {{@$cperson->contact_number}}<br>
+                                    <span><b>Email: </b> {{@$cperson->email}}</span>
+                                @else
+                                    N/A
+                                @endif
                                 <!--
                                 <span><b>Name: </b>Lorem Ipsum</span><br>
                                 <span><b>Position: </b>Human Resource</span><br>
@@ -437,7 +441,13 @@
                                 <span><b>Business Description: </b>{{Auth::user()->businessDescription}}</span><br>
                                 <span><b>Business Nature:</b> {{Auth::user()->businessNature}}</span><br>
                                 <span><b>Business Permit:</b> {{Auth::user()->businessPermit}}</span><br>
-                                <span><b>Business Address:</b> {{Auth::user()->address}}</span><br>
+                                <span><b>Business Address:</b>
+                                    {{$EMP_ADDRESS->regname}},
+                                    {{$EMP_ADDRESS->provname}},
+                                    {{$EMP_ADDRESS->cityname}},
+                                    {{$EMP_ADDRESS->bgyname}},
+                                    {{Auth::user()->address}}
+                                </span><br>
                                 <span><b>Years in Operation:</b> {{Auth::user()->years_in_operation}}</span><br>
                                 <span><b>Company Size:</b> {{Auth::user()->number_of_branches}}</span><br>
                                 {{--<span><b>Description:</b> Client Company Description</span><br>--}}
