@@ -1219,7 +1219,7 @@ class HomeController extends BaseController {
 
             Mail::send('emails.changepass_Template', $data, function($message) use($email)
             {
-                $message->from('taskminator.mail@gmail.com', 'Proveek');
+                $message->from('admin@proveek.com', 'Inquiries - Proveek');
                 $message->to($email)->subject('Proveek Beta Password Management');
             });
 
