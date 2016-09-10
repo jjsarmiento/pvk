@@ -213,8 +213,8 @@
                                     <span><b>Business Nature: </b>{{ $user->businessNature }}</span><br>
                                     <span><b>Business Permit: </b>{{ $user->businessPermit }}</span><br>
                                     <span><b>Address: </b>{{ $user->address }} {{ Barangay::where('bgycode', $user->barangay)->pluck('bgyname') }} {{ City::where('citycode', $user->city)->pluck('cityname') }}</span><br>
-                                    <span><b>Years in Operation: </b></span><br>
-                                    <span><b>Company Size: </b></span>
+                                    <span><b>Years in Operation: </b> {{ $user->years_in_operation }} </span><br>
+                                    <span><b>Number of Branches: </b> {{ $user->number_of_branches }} </span>
                                 </div>
                             </div>  
                             <div class="col-md-6 well">
