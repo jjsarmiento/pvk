@@ -475,7 +475,7 @@ class TaskminatorController extends \BaseController {
             'midName'           =>  $middleName,
             'lastName'          =>  Input::get('lastName'),
             'fullName'          =>  Input::get('firstName').' '.Input::get('midName').' '.Input::get('lastName'),
-            'birthdate'         =>  Input::get('date'),
+            'birthdate'         =>  Carbon::parse(Input::get('date')),
             'gender'            =>  Input::get('gender'),
             'address'           =>  strip_tags(Input::get('address')),
             'region'            =>  Input::get('reg-task'),
