@@ -188,7 +188,7 @@ class HomeController extends BaseController {
                                 ->first();
 
                     $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Visited profile of <a href="/viewUserProfile/'.$users->id.'">'.$users->fullName.'</a>');
-                    $license = Document::where('user_id', $users->id)->where('type', 'DOLE_POEA_LISENCE')->first();
+                    $license = Document::where('user_id', $users->id)->where('type', 'DOLE_LICENSE')->first();
                     return View::make('profile_clients')
                         ->with('license', $license)
                         ->with("users", $users);
