@@ -836,7 +836,7 @@ class HomeController extends BaseController {
                     Auth::logout();
                     return Redirect::to('/login')->with('errorMsg', 'Your account has been deactivated. Contact us for more information');
             }
-            $LAST_LOGIN = Carbon::parse(Auth::user()->last_login)->diffForHumans(Carbon::now());
+            $LAST_LOGIN = Carbon::parse(Auth::user()->last_login)->diffForHumans();
             $role = Role::join('user_has_role', 'roles.id', '=', 'user_has_role.role_id')
                 ->where('user_has_role.user_id', Auth::user()->id)
                 ->pluck('role');
