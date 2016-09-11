@@ -4,82 +4,85 @@
 Route::get('/pre-release/register', 'HomeController@pre_release_register');
 
 // PLACE NON PROTECTED ROUTES HERE -- START
-Route::get('/', 'HomeController@index');
-Route::get('/more', 'HomeController@more');
-Route::get('/moreWorkers={categoryId}={skillId}={region}={city}={province}={profilePercentage}', 'HomeController@moreWorkers');
-Route::get('/moreJobs', 'HomeController@moreJobs');
-Route::get('/moreJobs:{keyword}:{region}:{city}:{category}:{skill}:{orderBy}:{workDuration}', 'HomeController@moreJobsSEARCH');
-
-Route::get('/PRVKUPDTJBDS', 'HomeController@UPDATE_JOBADS_GLOBAL');
-Route::get('/PRVKUPDTSBSCRPTNS={user_id}', 'HomeController@PRVKUPDTSBSCRPTNS');
-// Route::get('/home', 'HomeController@home');
-Route::get('/employer','HomeController@employer');
-Route::get('/howitworks', 'HomeController@howitworks');
-Route::get('/whychooseproveek', 'HomeController@whychooseproveek');
-Route::get('/pricing', 'HomeController@pricing');
-Route::get('/faq', 'HomeController@seeFAQ');
-Route::get('/faqTag', 'HomeController@seeFAQTAG');
-Route::get('/about', 'HomeController@seeAbout');
-Route::get('/workercategory={categorycode}', 'HomeController@landingJobAd');
 Route::get('/login', 'HomeController@login');
-
 Route::post('/doLogin', 'HomeController@doLogin');
-Route::get('/register', 'HomeController@register');
-Route::post('/doRegisterIndi', 'HomeController@doRegisterIndi');
-Route::post('/doRegisterComp', 'HomeController@doRegisterComp');
-Route::post('/doRegisterTaskminator', 'HomeController@doRegisterTaskminator');
-Route::get('/chainRegion', 'HomeController@chainRegion');
-Route::get('/chainCity', 'HomeController@chainCity');
-Route::get('/chainProvince', 'HomeController@chainProvince');
-Route::get('/regTaskminator', 'HomeController@regTaskminator');
-Route::post('/regTaskminator', 'HomeController@regTaskminator');
-Route::get('/regClientIndi', 'HomeController@regClientIndi');
-Route::get('/regClientComp', 'HomeController@regClientComp');
-Route::post('/regClientComp', 'HomeController@regClientComp');
-Route::get('/getProfilePercentage/{id}', 'HomeController@getProfilePercentage');
-Route::get('/SLFACTVT={time}={userid}', 'HomeController@SLFACTVT');
-Route::get('/ACTVTACCT={userid}', 'HomeController@ACTVTACCT');
-Route::get('/VRFYACCT={code}', 'HomeController@VRFYACCT');
-Route::get('/RESENDVALIDATION={userid}', 'HomeController@RESENDVALIDATION');
-Route::post('/CHKRGWRKR', 'HomeController@CHKRGWRKR');
-Route::get('/CHAINREG', 'HomeController@CHAINREG');
-Route::post('/ContactUs', 'HomeController@ContactUs');
 
-Route::get('/LOCCHAIN:{chainType}:{locationID}', 'HomeController@LOCCHAIN');
-Route::get('/CHAINCATEGORYANDSKILL:{categoryID}', 'HomeController@CHAINCATEGORYANDSKILL');
+Route::group(array('before' => 'PRE_RELEASE_RESTRICTION'), function(){
+    Route::get('/', 'HomeController@index');
+    Route::get('/more', 'HomeController@more');
+    Route::get('/moreWorkers={categoryId}={skillId}={region}={city}={province}={profilePercentage}', 'HomeController@moreWorkers');
+    Route::get('/moreJobs', 'HomeController@moreJobs');
+    Route::get('/moreJobs:{keyword}:{region}:{city}:{category}:{skill}:{orderBy}:{workDuration}', 'HomeController@moreJobsSEARCH');
 
+    Route::get('/PRVKUPDTJBDS', 'HomeController@UPDATE_JOBADS_GLOBAL');
+    Route::get('/PRVKUPDTSBSCRPTNS={user_id}', 'HomeController@PRVKUPDTSBSCRPTNS');
+// Route::get('/home', 'HomeController@home');
+    Route::get('/employer','HomeController@employer');
+    Route::get('/howitworks', 'HomeController@howitworks');
+    Route::get('/whychooseproveek', 'HomeController@whychooseproveek');
+    Route::get('/pricing', 'HomeController@pricing');
+    Route::get('/faq', 'HomeController@seeFAQ');
+    Route::get('/faqTag', 'HomeController@seeFAQTAG');
+    Route::get('/about', 'HomeController@seeAbout');
+    Route::get('/workercategory={categorycode}', 'HomeController@landingJobAd');
 
-Route::post('/regWorker', 'HomeController@regWorker');
-Route::post('/regEmployer', 'HomeController@regEmployer');
+    Route::get('/register', 'HomeController@register');
+    Route::post('/doRegisterIndi', 'HomeController@doRegisterIndi');
+    Route::post('/doRegisterComp', 'HomeController@doRegisterComp');
+    Route::post('/doRegisterTaskminator', 'HomeController@doRegisterTaskminator');
+    Route::get('/chainRegion', 'HomeController@chainRegion');
+    Route::get('/chainCity', 'HomeController@chainCity');
+    Route::get('/chainProvince', 'HomeController@chainProvince');
+    Route::get('/regTaskminator', 'HomeController@regTaskminator');
+    Route::post('/regTaskminator', 'HomeController@regTaskminator');
+    Route::get('/regClientIndi', 'HomeController@regClientIndi');
+    Route::get('/regClientComp', 'HomeController@regClientComp');
+    Route::post('/regClientComp', 'HomeController@regClientComp');
+    Route::get('/getProfilePercentage/{id}', 'HomeController@getProfilePercentage');
+    Route::get('/SLFACTVT={time}={userid}', 'HomeController@SLFACTVT');
+    Route::get('/ACTVTACCT={userid}', 'HomeController@ACTVTACCT');
+    Route::get('/VRFYACCT={code}', 'HomeController@VRFYACCT');
+    Route::get('/RESENDVALIDATION={userid}', 'HomeController@RESENDVALIDATION');
+    Route::post('/CHKRGWRKR', 'HomeController@CHKRGWRKR');
+    Route::get('/CHAINREG', 'HomeController@CHAINREG');
+    Route::post('/ContactUs', 'HomeController@ContactUs');
 
-Route::get('/regClient', function() {
-    return View::make('reg-client');
-});
+    Route::get('/LOCCHAIN:{chainType}:{locationID}', 'HomeController@LOCCHAIN');
+    Route::get('/CHAINCATEGORYANDSKILL:{categoryID}', 'HomeController@CHAINCATEGORYANDSKILL');
+
+    Route::post('/regWorker', 'HomeController@regWorker');
+    Route::post('/regEmployer', 'HomeController@regEmployer');
 
 // SEARCH ROUTE TEST
-Route::get('/searchform', 'searchTestController@index');
+    Route::get('/searchform', 'searchTestController@index');
 
-Route::get('/logout', 'HomeController@logout');
-Route::get('/changePassword', 'HomeController@changePassword');
-Route::post('/forgotPassword', 'HomeController@changePassword');
-Route::post('/changePassword', 'HomeController@changePassword');
-Route::get('/activateChangePass/{confirmationCode}', 'HomeController@activateChangePass');
-Route::get('/activateResetPass/{confirmationCode}', 'HomeController@activateResetPass');
-Route::post('/confirmReset', 'HomeController@confirmReset');
-Route::post('/confirmChange', 'HomeController@confirmChange');
-Route::post('/chainCategoryItems', 'HomeController@chainCategoryItems');
+    Route::get('/logout', 'HomeController@logout');
+    Route::get('/changePassword', 'HomeController@changePassword');
+    Route::post('/forgotPassword', 'HomeController@changePassword');
+    Route::post('/changePassword', 'HomeController@changePassword');
+    Route::get('/activateChangePass/{confirmationCode}', 'HomeController@activateChangePass');
+    Route::get('/activateResetPass/{confirmationCode}', 'HomeController@activateResetPass');
+    Route::post('/confirmReset', 'HomeController@confirmReset');
+    Route::post('/confirmChange', 'HomeController@confirmChange');
+    Route::post('/chainCategoryItems', 'HomeController@chainCategoryItems');
 // Route::get('/profile/{id}', 'HomeController@profile'); --- old profile page
-Route::get('/VERIFY_changeEmail_{userID}', 'HomeController@VERIFY_changeEmail');
-Route::post('/doVERIFY_changeEmail', 'HomeController@doVERIFY_changeEmail');
+    Route::get('/VERIFY_changeEmail_{userID}', 'HomeController@VERIFY_changeEmail');
+    Route::post('/doVERIFY_changeEmail', 'HomeController@doVERIFY_changeEmail');
 
 
 
 // CHIKKA SMS ROUTES -- START
-Route::post('/taskminator/receive', 'SMSAPIController@receive'); //register  http://yourserver.com/yourapp/receive  on the message receiver on API dashboard
-Route::post('/taskminator/notify', 'SMSAPIController@notify'); //http://yourserver.com/yourapp/notify for the delivery notification
+    Route::post('/taskminator/receive', 'SMSAPIController@receive'); //register  http://yourserver.com/yourapp/receive  on the message receiver on API dashboard
+    Route::post('/taskminator/notify', 'SMSAPIController@notify'); //http://yourserver.com/yourapp/notify for the delivery notification
 // CHIKKA SMS ROUTES -- END
 
 // PLACE NON PROTECTED ROUTES HERE -- END
+
+});
+
+Route::get('/regClient', function() {
+    return View::make('reg-client');
+});
 
 Route::group(array('before' => 'auth'), function(){
     // NOTIF -- 2016 Jan Sarmiento
