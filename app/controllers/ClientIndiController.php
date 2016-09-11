@@ -1662,7 +1662,7 @@ class ClientIndiController extends \BaseController {
             'company_id'    =>  Auth::user()->id,
             'worker_id'     =>  $worker_id,
             'purchased_at'  =>  Carbon::now(),
-            'expires_at'    =>  Carbon::now()->addWeek(2),
+            'expires_at'    =>  Carbon::now()->addWeeks(2),
             'created_at'    =>  Carbon::now(),
         ]);
 
