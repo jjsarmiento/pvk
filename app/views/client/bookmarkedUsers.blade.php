@@ -31,7 +31,7 @@
                 @else
                     @foreach($bookmarks as $bm)
                         <div class="col-md-3" style="margin-bottom: 1em;">
-                            <div class="widget-container fluid-height padded" style="word-wrap: break-word; min-height: 1em; height: 7em; max-height: 7em;">
+                            <div class="widget-container fluid-height padded">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:#2980b9">
@@ -51,6 +51,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <a href="/BulkInviteToApply={{$bm->userID}}" class="btn btn-xs btn-warning btn-block">Invite to apply</a>
+                                        <a href="/REMOVE_BOOKMARK:{{$bm->bmID}}" class="btn btn-xs btn-danger btn-block">remove bookmark</a>
                                         <!--
                                         @if(!in_array($bm->userID, $CHECKED_OUT_USERS))
                                             <a href="/doCheckout={{$bm->userID}}" class="btn btn-block btn-warning" style="background-color: #E74C3C;">Checkout</a>
