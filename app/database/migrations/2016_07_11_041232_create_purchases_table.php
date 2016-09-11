@@ -18,6 +18,8 @@ class CreatePurchasesTable extends Migration {
 			$table->string('company_id');
 			$table->string('worker_id');
 			$table->timestamp('purchased_at');
+            $table->boolean('expired')->default(false);
+            $table->timestamp('expires_at');
 			$table->timestamps();
 		});
 	}

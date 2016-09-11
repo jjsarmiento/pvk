@@ -1653,11 +1653,17 @@ class ClientIndiController extends \BaseController {
 
     public function doCheckout($worker_id){
         // NEW CHECKOUT PROCEDURE -- August 17, 2016
+        $PURCHASE_CHECK = Purchase::where('company_id', Auth::user()->id)->where('worker_id', $worker_id);
+        if($PURCHASE_CHECK->count() > 0){
+            $PURCHASE_CHECK->delete();
+        }
+
         Purchase::insert([
             'company_id'    =>  Auth::user()->id,
             'worker_id'     =>  $worker_id,
             'purchased_at'  =>  Carbon::now(),
-            'created_at'    =>  Carbon::now()
+            'expires_at'    =>  Carbon::now()->addWeek(2),
+            'created_at'    =>  Carbon::now(),
         ]);
 
         $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Checked out <a href="/viewUserProfile/'.$worker_id.'">worker</a>');
