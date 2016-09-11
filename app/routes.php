@@ -1,5 +1,8 @@
 <?php
 
+// TEMPORARY ROUTES
+Route::get('/pre-release/register', 'HomeController@pre_release_register');
+
 // PLACE NON PROTECTED ROUTES HERE -- START
 Route::get('/', 'HomeController@index');
 Route::get('/more', 'HomeController@more');

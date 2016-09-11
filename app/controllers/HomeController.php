@@ -5,6 +5,12 @@ use Captcha\Integration\BotDetectCaptcha;
 use Carbon\Carbon;
 
 class HomeController extends BaseController {
+    // TEMPORARY ROUTES -- START    by Jan Sarmiento
+    public function pre_release_register(){
+        return View::make('pre_release.register');
+    }
+    // TEMPORARY ROUTES -- END      by Jan Sarmiento
+
 
     public function TESTINGROUTE(){ // test()
         return $this->SUBSCRIPTION_STATS(Auth::user()->id);
@@ -215,7 +221,8 @@ class HomeController extends BaseController {
     }
 
     public function regEmployer(){
-        $captcha=$_POST['g-recaptcha-response'];
+        $captcha = @$_POST['g-recaptcha-response'];
+        $captcha = (Input::has('PRE_RELEASE_FLAG') ? true : $_POST['g-recaptcha-response']);
         $privatekey = "6LfpJyITAAAAAHn92bsWJxBb4TFCggUdSndYmZPo";
 
         if(!$captcha){
@@ -827,6 +834,10 @@ class HomeController extends BaseController {
     }
 
     public function index(){
+        if(Carbon::now() < Carbon::parse('2016/09/21') && !Auth::check()){
+            return View::make('comingsoon');
+        }
+
         $this->UPDATE_JOBADS_GLOBAL();
         if(Auth::check()){
             switch(Auth::user()->status){
