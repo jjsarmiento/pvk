@@ -980,11 +980,13 @@ class ClientIndiController extends \BaseController {
             ->with('TOTALPROG', $this->PROFILE_PERCENTAGE_WORKER(Auth::user()->id));
     }
 
-    public function SRCHWRKRSKLL($categoryId, $skillId, $region, $city, $province, $profilePercentage){
+    public function SRCHWRKRSKLL($categoryId, $skillId, $region, $city, $province, $profilePercentage, $keyword){
+        $CHECKED_OUT_USERS = $this->GETCHECKEDOUTUSERS(Auth::user()->id);
         $users = User::leftJoin('cities', 'users.city', '=', 'cities.citycode')
             ->join('user_has_role', 'user_has_role.user_id', '=', 'users.id')
             ->leftJoin('regions', 'users.region', '=', 'regions.regcode')
             ->leftJoin('provinces', 'users.province', '=', 'provinces.provcode')
+            ->whereNotIn('users.id', $CHECKED_OUT_USERS)
             ->where('users.total_profile_progress', '>=', 50)
             ->where('user_has_role.role_id', 2);
 
@@ -1016,6 +1018,12 @@ class ClientIndiController extends \BaseController {
             $users = $users->where('taskminator_has_skills.taskitem_code', $skillId);
         }
 
+        if($keyword != 'NONE'){
+            $users = $users->where('users.username', 'LIKE', '%'.$keyword.'%');
+        }else{
+            $keyword = '';
+        }
+
         $users = $users->select([
                 'users.id',
                 'users.address',
@@ -1024,6 +1032,8 @@ class ClientIndiController extends \BaseController {
                 'users.fullName',
                 'users.firstName',
                 'users.lastName',
+                'users.last_login',
+                'users.total_profile_progress',
                 'cities.cityname',
                 'regions.regname'
             ])
@@ -1032,7 +1042,8 @@ class ClientIndiController extends \BaseController {
             ->paginate(10);
 
         return View::make('client.searchWorker_SKILL')
-            ->with('CHECKED_OUT_USERS', $this->GETCHECKEDOUTUSERS(Auth::user()->id))
+            ->with('CHECKED_OUT_USERS', $CHECKED_OUT_USERS)
+            ->with('keyword', $keyword)
             ->with('region', $region)
             ->with('city', $city)
             ->with('province', $province)

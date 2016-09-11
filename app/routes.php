@@ -429,7 +429,7 @@ Route::group(array('before' => 'CLIENT-ONLY'), function(){
         Route::get('/compDoSearch', 'searchTestController@compDoSearch');
         Route::get('/CISRCH/{prog}={keyword}', 'ClientIndiController@CISRCH');
 
-        Route::get('/SRCHWRKRSKLL={categoryId}={skillId}={region}={city}={province}={profilePercentage}', 'ClientIndiController@SRCHWRKRSKLL');
+        Route::get('/SRCHWRKRSKLL={categoryId}={skillId}={region}={city}={province}={profilePercentage}={keyword}', 'ClientIndiController@SRCHWRKRSKLL');
 
         // BOOKMARK ROUTES
         Route::group(array('before' => 'worker_bookmark_limit'), function(){

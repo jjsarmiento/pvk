@@ -131,9 +131,10 @@
                     regions = $('#employer_region').val(),
                     city = $('#employer_city').val(),
                     province = $('#employer_province').val(),
-                    profilePercentage = $('#employer_profilePercentage').val();
+                    profilePercentage = $('#employer_profilePercentage').val(),
+                    keyword = ($('#employer_keyword').val().length > 0 ? $('#employer_keyword').val() : 'NONE');
 
-                location.href="/SRCHWRKRSKLL="+CTGRY+'='+SKLL+'='+regions+'='+city+'='+province+'='+profilePercentage;
+                location.href="/SRCHWRKRSKLL="+CTGRY+'='+SKLL+'='+regions+'='+city+'='+province+'='+profilePercentage+'='+keyword;
             });
 
 
@@ -181,6 +182,10 @@
             @endif
             <div class="col-md-4">
                 <div style="background-color: white; padding: 1em; margin-top: 2em;">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" value="{{ @$keyword }}" name="employer_keyword" id="employer_keyword" placeholder="Enter username" class="form-control"/>
+                    </div>
                     <div class="form-group">
                         <label>Region</label>
                         <select id="employer_region" name="employer_region" data-loctype="REGION_TO_CITY" class="form-control">
@@ -270,8 +275,8 @@
                                     </a>
                                 @endif
                                 <span>{{$user->address}}, {{$user->regname}}, {{$user->cityname}}, {{$user->bgyname}}</span><br>
-                                <span><b>Profile Rating: </b>70%</span><br>
-                                <span><b>Last login: </b>2 Days ago</span>
+                                <span><b>Profile Rating: </b>{{ $user->total_profile_progress }}%</span><br>
+                                <span><b>Last login: </b>{{ \Carbon\Carbon::parse($user->last_login)->diffForHumans() }}</span>
                             </div>
                         </div>
                     @endforeach

@@ -269,7 +269,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <a class="btn btn-primary btn-block" id="SRCHBTN_SKILL" href="/SRCHWRKRSKLL=006=006001=ALL=ALL=ALL=DESC"><i class="fa fa-search"></i> Search for workers</a>
+                        <a class="btn btn-primary btn-block" id="SRCHBTN_SKILL" href="/SRCHWRKRSKLL=006=006001=ALL=ALL=ALL=DESC=NONE"><i class="fa fa-search"></i> Search for workers</a>
                     </div>
                 @endif
 
