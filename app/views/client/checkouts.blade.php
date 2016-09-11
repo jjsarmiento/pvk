@@ -23,12 +23,20 @@
                         <thead>
                             <th>Checkout Date</th>
                             <th>Name</th>
+                            <th>Expiration</th>
                         </thead>
                         <tbody>
                             @foreach($workers as $w)
                                 <tr>
                                     <td>{{$w->purchased_at}}</td>
                                     <td><a href="/{{$w->username}}">{{$w->fullName}}</a></td>
+                                    <td>
+                                        @if($w->expired)
+                                            <span class="badge" style="background-color: #E74C3C">EXPIRED</span>
+                                        @else
+                                            {{$w->expires_at}}
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
