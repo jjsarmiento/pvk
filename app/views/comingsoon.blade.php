@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="timer_assets/assets/img/favicon.png">
 
-    <title>Webuild - Free Bootstrap coming soon template with countdown</title>
+    <title>Proveek - Coming Soon!</title>
 
     <!-- Bootstrap -->
     <link href="timer_assets/assets/css/bootstrap.css" rel="stylesheet">
