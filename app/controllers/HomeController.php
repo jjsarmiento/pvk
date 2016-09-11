@@ -1945,6 +1945,7 @@ class HomeController extends BaseController {
 
     public function PRVKUPDTSBSCRPTNS($user_id){
         BaseController::SUBSCRIPTION_UPDATE($user_id);
+        BaseController::CHECKOUT_UPDATE($user_id);
     }
 
     public function more(){

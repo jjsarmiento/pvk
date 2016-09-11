@@ -805,5 +805,22 @@ class BaseController extends Controller {
         foreach($admins as $o){ array_push($myArr, $o->user_id); }
         return $myArr;
     }
+
+    public function CHECKOUT_UPDATE($user_id){
+        $bc = new BaseController();
+        foreach(Purchase::where('company_id', $user_id)->get() as $p){
+            if(Carbon::now()->gte(Carbon::parse($p->expires_at))){
+                Purchase::where('id', $p->id)->delete();
+                $msg = 'Your checkout for '.User::where('id', $p->worker_id)->pluck('fullName').' has expired.';
+                $bc->NOTIFICATION_INSERT($p->company_id, $msg, '/checkouts');
+            }elseif(Carbon::now()->diffInDays(Carbon::parse($p->expires_at)) <= 3){
+                $msg = 'Your checkout for '.User::where('id', $p->worker_id)->pluck('fullName').' is about to expire in '.Carbon::now()->diffInDays(Carbon::parse($p->expires_at)).' days.';
+                $NOTIF_EXISTS = Notification::where('user_id', $p->company_id)->where('content', $msg)->where('notif_url', '/checkouts')->count();
+                if($NOTIF_EXISTS == 0){
+                    $bc->NOTIFICATION_INSERT($p->company_id, $msg, '/checkouts');
+                }
+            }
+        }
+    }
     // AUTHORED BY Jan Sarmiento -- END
 }
