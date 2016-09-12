@@ -55,39 +55,31 @@
                             </tbody>
                         </table>
                         <br/>
-                        <p class="text-center">
-                        <b>Tell us what you need and we’ll choose the people for you!</b><br/>
-                        (We’ll provide pre-screened, pre-interviewed and background checked
-                        profiles to you and you’ll just pay for what you hire)
-                        <br/><br/>
-                        Get Quotation Now at <b style="color: #3498DB;">service.proveek@gmail.com</b>
-                        </p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="text-center">
+                                <b>Tell us what you need and we’ll choose the people for you!</b><br/>
+                                (We’ll provide pre-screened, pre-interviewed and background checked
+                                profiles to you and you’ll just pay for what you hire)
+                                <br/><br/>
+                                Get Quotation Now at <b style="color: #3498DB;">service.proveek@gmail.com</b>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 style="margin-top: 0;"><i class="fa fa-info-circle" style="color: #F39C12;"></i> How to avail Proveek Packages</h3>
+                                <ol>
+                                    <li>Transfer amount to BPI Account under <b style="color: #3498DB">MARC BRIONES - Acct # 0919282118</b></li>
+                                    <li>Send a screenshot / photo of official receipt or confirmation to <b style="color: #3498DB">service.proveek@gmail.com</b></li>
+                                    <li>Wait for confirmation of purchase</li>
+                                </ol>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="panel-footer">
                     <center><i class="fa fa-copyright"></i> Proveek Beta - 2016</center>
                 </div>
             </div>
-
-            <div class="col-md-5 col-md-offset-1" style="margin-top: 3em;">
-                <div class="widget-container fluid-height padded">
-                    <div class="widget-content">
-                        <h3><i class="fa fa-info-circle" style="color: #F39C12;"></i> How to avail Proveek Packages</h3>
-                        <ol>
-                            <li>Transfer amount to BPI Account under <b style="color: #3498DB">MARC BRIONES - Acct # 0919282118</b></li>
-                            <li>Send a screenshot / photo of official receipt or confirmation to <b style="color: #3498DB">service.proveek@gmail.com</b></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
         </div>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
     </body>
 </html>
