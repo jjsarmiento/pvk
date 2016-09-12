@@ -93,7 +93,13 @@ class HomeController extends BaseController {
 
                     $CLIENT_PROGRESSFLAG = (Auth::user()->total_profile_progress >= 50) ? true : false;
 
-                    if($role == 'TASKMINATOR' && $CLIENTFLAG){
+                    if($role == 'TASKMINATOR' && $CLIENTFLAG){ // FLAG IF A CLIENT IS VIEWING A WORKER
+                        // APPLY SUBSCRIPTION RESTRICTION
+                        if($this->SUBSCRIPTION_RESTRICTIONS(Auth::user()->id ,'worker_browse')){
+                            return View::make('error.SUBSCRIPTION_ERROR')
+                                ->with('msg', "You package doesn't have persmission to browse workers!<br/>")
+                                ->with('sub', $this->SUBSCRIPTION_DETAILS(Auth::user()->id));
+                        }
                         $APPLICATIONS_OF_WORKER_FOR_COMPANY = $this->APPLICATIONS_OF_WORKER_FOR_COMPANY(Auth::user()->id, $temp->id);
 
                         $USERINCART =  Cart::where('worker_id', $temp->id)
