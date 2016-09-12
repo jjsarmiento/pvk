@@ -135,6 +135,11 @@
             .INVITE-BOOKMARK-WORKERS:hover {
                 background-color: #cce6ff;
             }
+        img.media-object.update-card-MDimentions {
+            border: 1px solid #eee;
+            display: table;
+            margin:auto;
+        }
     </style>
     <script>
         $(document).ready(function(){
@@ -292,7 +297,14 @@
                                     @foreach($bookmarks as $bm)
                                         @if(in_array($bm->userID, $CHECKED_OUT_USERS))
                                             <div class="col-md-12 INVITE-BOOKMARK-WORKERS" style="padding: 0.4em;">
-                                                <div class="col-md-7">
+                                                <div class="col-md-2">
+                                                    @if($bm->profilePic)
+                                                        <img class="media-object update-card-MDimentions" width="50" height="50" src="{{$bm->profilePic}}">
+                                                    @else
+                                                        <img class="media-object update-card-MDimentions" width="50" height="50" src="/images/default_profile_pic.png">
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-5">
                                                     <a target="_tab" href="/{{$bm->username}}">{{$bm->fullName}}</a>
                                                 </div>
                                                 <div class="col-md-5">
@@ -301,7 +313,14 @@
                                             </div>
                                         @else
                                             <div class="col-md-12 INVITE-BOOKMARK-WORKERS" style="padding: 0.4em;">
-                                                <div class="col-md-7">
+                                                <div class="col-md-2">
+                                                    @if($bm->profilePic)
+                                                        <img class="media-object update-card-MDimentions" width="50" height="50" src="{{$bm->profilePic}}">
+                                                    @else
+                                                        <img class="media-object update-card-MDimentions" width="50" height="50" src="/images/default_profile_pic.png">
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-5">
                                                     <a href="/{{$bm->username}}">
                                                         {{substr_replace($bm->firstName, str_repeat('*', strlen($bm->firstName)-1), 1)}}
                                                         &nbsp;

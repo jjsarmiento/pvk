@@ -1602,11 +1602,10 @@ class ClientIndiController extends \BaseController {
         $bookmarks = User::join('bookmark_users', 'users.id', '=', 'bookmark_users.worker_id')
             ->join('taskminator_has_skills', 'taskminator_has_skills.user_id', '=', 'users.id')
             ->where('bookmark_users.company_id', Auth::user()->id)
-//            ->where('taskminator_has_skills.taskcategory_code', $job->categorycode)
-//            ->where('taskminator_has_skills.taskitem_code', $job->itemcode)
             ->whereNotIn('users.id', $INVITEDS)
             ->whereNotIn('users.id', $APPLICANTS)
             ->select([
+                'users.profilePic',
                 'users.fullName',
                 'users.firstName',
                 'users.lastName',
