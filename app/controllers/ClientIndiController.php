@@ -1617,6 +1617,7 @@ class ClientIndiController extends \BaseController {
                 'bookmark_users.company_id',
                 'bookmark_users.created_at as bookmarked_at',
             ])
+            ->groupBy('users.id')
             ->get();
 
 
