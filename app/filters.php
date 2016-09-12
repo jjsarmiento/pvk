@@ -247,9 +247,11 @@ Route::filter('TASKMINATOR-ONLY', function(){
 });
 
 Route::filter('PRE_RELEASE_RESTRICTION', function(){
+    /*
     if(!Auth::check()){
         return View::make('comingsoon');
     }
+    */
 });
 
 /*
