@@ -81,7 +81,7 @@
             </div>
         </div>
         <div class="row">
-            <form method="POST" action="UPDATESUBSCRIPTION">
+            <form method="POST" action="/UPDATESUBSCRIPTION">
                 <input type="hidden" value="{{$sub->id}}" name="subID" />
                 <div class="col-md-6">
                     <div class="widget-container padded">
@@ -116,10 +116,21 @@
                 <div class="col-md-6">
                     <div class="widget-container padded">
                         <div class="widget-content">
-                            <div class="form-group">
-                                <label>Browser Workers</label><br/>
-                                <label class="radio-inline"><input required="required" <?php if($sub->worker_browse){echo 'checked';} ?> type="radio" name="worker_browse">True</label>
-                                <label class="radio-inline"><input required="required" <?php if(!$sub->worker_browse){echo 'checked';} ?> type="radio" name="worker_browse">False</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Browser Workers </label><br/>
+                                        <label class="radio-inline"><input required="required" <?php if($sub->worker_browse){echo 'checked';} ?> type="radio" name="worker_browse" value="1">Enable</label>
+                                        <label class="radio-inline"><input required="required" <?php if(!$sub->worker_browse){echo 'checked';} ?> type="radio" name="worker_browse" value="0">Disable</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Bulk Invite </label><br/>
+                                        <label class="radio-inline"><input required="required" <?php if($sub->bulk_invite){echo 'checked';} ?> type="radio" name="bulk_invite" value="1">Enable</label>
+                                        <label class="radio-inline"><input required="required" <?php if(!$sub->bulk_invite){echo 'checked';} ?> type="radio" name="bulk_invite" value="0">Disable</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Job Ad Limit per week</label>
@@ -135,8 +146,8 @@
                             </div>
                             <div class="form-group">
                                 <label>SMS Notification</label><br/>
-                                <label class="radio-inline"><input required="required" <?php if($sub->sms_notif){echo 'checked';} ?> type="radio" name="sms_notif">True</label>
-                                <label class="radio-inline"><input required="required" <?php if(!$sub->sms_notif){echo 'checked';} ?> type="radio" name="sms_notif">False</label>
+                                <label class="radio-inline"><input required="required" <?php if($sub->sms_notif){echo 'checked';} ?> type="radio" name="sms_notif" value="1">Enable</label>
+                                <label class="radio-inline"><input required="required" <?php if(!$sub->sms_notif){echo 'checked';} ?> type="radio" name="sms_notif" value="0">Disable</label>
                             </div>
                             <div class="form-group">
                                 <label>Free Worker Resumes</label>

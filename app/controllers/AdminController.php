@@ -1409,6 +1409,7 @@ class AdminController extends \BaseController {
                 'featured_job_ads'      => Input::get('featured_job_ads'),
                 'sms_notif'             => Input::get('sms_notif'),
                 'free_resume'           => Input::get('free_resume'),
+                'bulk_invite'           => Input::get('bulk_invite'),
                 'updated_at'            => date("Y:m:d H:i:s")
             ]);
 
