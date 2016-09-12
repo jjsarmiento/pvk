@@ -198,16 +198,18 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-6 lato-text">
-                    <a href="#" data-toggle="modal" data-target="#MULTI_INVITE_MODAL" style="text-decoration:none;">
-                        <div class="number" style="color:#2980b9;">
-                            <i class="fa fa-send"></i>
-                        </div>
-                        <div class="text" style="color:#2980b9;">
-                            Invite Multiple Workers
-                        </div>
-                    </a>
-                </div>
+                @if($BULK_INVITE)
+                    <div class="col-lg-6 lato-text">
+                        <a href="#" data-toggle="modal" data-target="#MULTI_INVITE_MODAL" style="text-decoration:none;">
+                            <div class="number" style="color:#2980b9;">
+                                <i class="fa fa-send"></i>
+                            </div>
+                            <div class="text" style="color:#2980b9;">
+                                Invite Multiple Workers
+                            </div>
+                        </a>
+                    </div>
+                @endif
                 <br/>
                 <br/>
                 <br/>

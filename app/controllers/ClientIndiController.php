@@ -1551,6 +1551,9 @@ class ClientIndiController extends \BaseController {
         $INVITEDS = $this->GETINVITEDS($jobId);
         $CHECKED_OUT_USERS = $this->GETCHECKEDOUTUSERS(Auth::user()->id);
         $APPLICANTS = $this->GETAPPLICANTS($jobId);
+        $BULK_INVITE = SystemSubscription::join('user_subscriptions', 'system_subscriptions.id', '=', 'user_subscriptions.system_subscription_id')
+            ->where('user_subscriptions.id', Auth::user()->accountType)
+            ->select(['system_subscriptions.bulk_invite'])->first()->bulk_invite;
 
         $job = Job::join('taskcategory', 'jobs.skill_category_code', '=', 'taskcategory.categorycode')
             ->join('taskitems', 'jobs.skill_code', '=', 'taskitems.itemcode')
@@ -1617,6 +1620,7 @@ class ClientIndiController extends \BaseController {
 
 
         return View::make('client.ShowInvited')
+                ->with('BULK_INVITE', $BULK_INVITE)
                 ->with('job', $job)
                 ->with('bookmarks', $bookmarks)
                 ->with('CHECKED_OUT_USERS', $CHECKED_OUT_USERS)
