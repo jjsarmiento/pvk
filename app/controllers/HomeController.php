@@ -47,7 +47,6 @@ class HomeController extends BaseController {
     public function logout(){
         if(Auth::check()){
             $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Logged out');
-            User::where('id', Auth::user()->id)->update(['last_login' => Carbon::now()]);
         }
         Auth::logout();
         return Redirect::to('/');
@@ -1053,6 +1052,7 @@ class HomeController extends BaseController {
                     return Redirect::to('/SLFACTVT='.time().'='.$user);
             }
             $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Logged in.');
+            User::where('id', Auth::user()->id)->update(['last_login' => Carbon::now()]);
             return Redirect::to('/');
         }else if(User::where('username', Input::get('username'))->count() == 0){
             return Redirect::back()->with('successMsg', 'This account has not been registered. Click <a href="/">here</a> to register.');
