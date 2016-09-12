@@ -29,6 +29,7 @@ class CreateSystemSubscriptionsTable extends Migration {
 			$table->string('featured_job_ads')->nullable();         // featured JOB ADS
 			$table->boolean('sms_notif')->nullable();         // POST JOB ADS
 			$table->integer('free_resume')->nullable();         // FREE PROFILES OF WORKERS (QUANTITY)
+			$table->boolean('bulk_invite')->nullable();         // BULK INVITATION
 			$table->timestamps();
 		});
 	}

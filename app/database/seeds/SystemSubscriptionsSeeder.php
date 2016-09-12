@@ -22,9 +22,10 @@ class SystemSubscriptionsSeeder extends Seeder {
             'featured_job_ads'      => '0',
             'sms_notif'             => false,
             'free_resume'           => 0,
+            'bulk_invite'           => 1,
         ]);
 
-        // FREE SUBSCRIPTION
+        // BASIC SUBSCRIPTION
         SystemSubscription::create([
             'subscription_code'     => 'BASIC',
             'subscription_label'    => 'Basic',
@@ -38,9 +39,10 @@ class SystemSubscriptionsSeeder extends Seeder {
             'featured_job_ads'      => '3',
             'sms_notif'             => true,
             'free_resume'           => 0,
+            'bulk_invite'           => 1,
         ]);
 
-        // FREE SUBSCRIPTION
+        // PREMIUM SUBSCRIPTION
         SystemSubscription::create([
             'subscription_code'     => 'PREMIUM',
             'subscription_label'    => 'Premium',
@@ -54,6 +56,7 @@ class SystemSubscriptionsSeeder extends Seeder {
             'featured_job_ads'      => '5',
             'sms_notif'             => true,
             'free_resume'           => 0,
+            'bulk_invite'           => 1,
         ]);
     }
 }
