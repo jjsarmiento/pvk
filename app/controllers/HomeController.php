@@ -2122,7 +2122,8 @@ class HomeController extends BaseController {
     }
 
     public function TOPUP(){
-        return View::make('TOPUP');
+        return View::make('TOPUP')
+            ->with('subs', SystemSubscription::get());
     }
 }
 
