@@ -1498,6 +1498,7 @@ class ClientIndiController extends \BaseController {
                 ->where('users.id', $invitedId)
                 ->select([
                     'users.id as userid',
+                    'users.username',
                     'users.firstName',
                     'users.lastName',
                     'users.fullName',
@@ -1525,7 +1526,7 @@ class ClientIndiController extends \BaseController {
             JobInvite::insert([
                 'invited_id'    =>  Input::get('USRID'),
                 'job_id'        =>  Input::get('JBID'),
-                'message'       =>  Input::get('txtarea_message'),
+                'message'       =>  trim(strip_tags(Input::get('txtarea_message'))),
                 'created_at'    =>  date("Y:m:d H:i:s")
             ]);
         }

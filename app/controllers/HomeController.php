@@ -120,7 +120,6 @@ class HomeController extends BaseController {
 
                         $MULTIJOB = Job::where('user_id', Auth::user()->id)
                             ->where('expired', false)
-//                            ->whereIn('skill_code', User::getSkillsCODE_ARRAY($temp->id))
                             ->whereNotIn('id', array_merge($this->WORKERGETINVITES_JOBID($temp->id), $this->GET_WORKER_APPLICATIONS($temp->id)))
                             ->get();
 

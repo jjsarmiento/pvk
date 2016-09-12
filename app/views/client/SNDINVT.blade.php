@@ -232,19 +232,21 @@
         <div class="col-md-5">
             @if($invitation)
                 <div class="widget-container padded" style="display: flex; min-height:125px; display:block !important;">
-                    <h3 style="margin: 0;">
-                        @if($isCheckedOut)
-                            {{$worker->fullName}}
-                        @else
-                            {{substr_replace($worker->firstName, str_repeat('*', strlen($worker->firstName)-1), 1)}}
-                            &nbsp;
-                            {{substr_replace($worker->lastName, str_repeat('*', strlen($worker->lastName)-1), 1)}}
-                        @endif
-                    </h3>
+                    <a href="/{{$worker->username}}">
+                        <h3 style="margin: 0;">
+                            @if($isCheckedOut)
+                                {{$worker->fullName}}
+                            @else
+                                {{substr_replace($worker->firstName, str_repeat('*', strlen($worker->firstName)-1), 1)}}
+                                &nbsp;
+                                {{substr_replace($worker->lastName, str_repeat('*', strlen($worker->lastName)-1), 1)}}
+                            @endif
+                        </h3>
+                    </a>
                     <span style="color: #7F8C8D;">{{$worker->regname}} {{$worker->cityname}}</span>
                     <br/><br/>
                     <span style="color: #2980B9; font-weight: bold;">Invite sent at {{$invitation->created_at}}</span>
-                    <div>{{$invitation->message}}</div>
+                    <div>{{nl2br($invitation->message)}}</div>
                     <br/>
                     <div class="form-group">
                         <a href="/cancelInvite:{{$job->id}}:{{$worker->userid}}" class="btn btn-danger">Cancel Invite</a>
@@ -255,15 +257,17 @@
                     <input type="hidden" name="JBID" value="{{$job->id}}" />
                     <input type="hidden" name="USRID" value="{{$worker->userid}}" />
                     <div class="widget-container padded" style="display: flex; min-height:125px; display:block !important;">
-                        <h3 style="margin: 0;">
-                            @if($isCheckedOut)
-                                {{$worker->fullName}}
-                            @else
-                                {{substr_replace($worker->firstName, str_repeat('*', strlen($worker->firstName)-1), 1)}}
-                                &nbsp;
-                                {{substr_replace($worker->lastName, str_repeat('*', strlen($worker->lastName)-1), 1)}}
-                            @endif
-                        </h3>
+                        <a href="/{{$worker->username}}">
+                            <h3 style="margin: 0;">
+                                @if($isCheckedOut)
+                                    {{$worker->fullName}}
+                                @else
+                                    {{substr_replace($worker->firstName, str_repeat('*', strlen($worker->firstName)-1), 1)}}
+                                    &nbsp;
+                                    {{substr_replace($worker->lastName, str_repeat('*', strlen($worker->lastName)-1), 1)}}
+                                @endif
+                            </h3>
+                        </a>
                         <span style="color: #7F8C8D;">{{$worker->regname}} {{$worker->cityname}}</span>
                         <br/><br/>
                         <div class="form-group">
