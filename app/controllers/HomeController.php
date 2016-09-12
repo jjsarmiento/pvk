@@ -86,6 +86,8 @@ class HomeController extends BaseController {
 
                 if($role == 'TASKMINATOR'){
                     $HAS_INVITES = null;
+                    $BULK_INVITE = true;
+
                     $APPLICATIONS_OF_WORKER_FOR_COMPANY = null;
                     if(User::GETROLE(Auth::user()->id) == 'CLIENT_IND' || User::GETROLE(Auth::user()->id) == 'CLIENT_CMP'){
                         $CLIENTFLAG = true;
@@ -93,13 +95,19 @@ class HomeController extends BaseController {
 
                     $CLIENT_PROGRESSFLAG = (Auth::user()->total_profile_progress >= 50) ? true : false;
 
-                    if($role == 'TASKMINATOR' && $CLIENTFLAG){ // FLAG IF A CLIENT IS VIEWING A WORKER
+                    if($role == 'TASKMINATOR' && $CLIENTFLAG){ // FLAG IF A EMPLOYER  IS VIEWING A WORKER
                         // APPLY SUBSCRIPTION RESTRICTION
+
                         if($this->SUBSCRIPTION_RESTRICTIONS(Auth::user()->id ,'worker_browse')){
                             return View::make('error.SUBSCRIPTION_ERROR')
                                 ->with('msg', "You package doesn't have persmission to browse workers!<br/>")
                                 ->with('sub', $this->SUBSCRIPTION_DETAILS(Auth::user()->id));
                         }
+
+                        $BULK_INVITE = SystemSubscription::join('user_subscriptions', 'system_subscriptions.id', '=', 'user_subscriptions.system_subscription_id')
+                            ->where('user_subscriptions.id', Auth::user()->accountType)
+                            ->select(['system_subscriptions.bulk_invite'])->first()->bulk_invite;
+
                         $APPLICATIONS_OF_WORKER_FOR_COMPANY = $this->APPLICATIONS_OF_WORKER_FOR_COMPANY(Auth::user()->id, $temp->id);
 
                         $USERINCART =  Cart::where('worker_id', $temp->id)
@@ -162,6 +170,7 @@ class HomeController extends BaseController {
 
                     $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Visited profile of <a href="/viewUserProfile/'.$users->id.'">'.$users->fullName.'</a>');
                     return View::make('profile_worker')
+                        ->with('BULK_INVITE', $BULK_INVITE)
                         ->with('RELEVANT_EXP', $RELEVANT_EXP)
                         ->with('edu', WorkerEducation::where('user_id', $temp->id)->get())
                         ->with('full_docs', $full_docs)
@@ -178,27 +187,27 @@ class HomeController extends BaseController {
                         ->with('jobapps', $APPLICATIONS_OF_WORKER_FOR_COMPANY);
                 }else{
                     $users = User::leftJoin('regions', 'regions.regcode', '=', 'users.region')
-                                ->leftJoin('cities', 'cities.citycode', '=', 'users.city')
-                                ->leftJoin('barangays', 'barangays.bgycode', '=', 'users.barangay')
-                                ->leftJoin('provinces', 'provinces.provcode', '=', 'users.province')
-                                ->where('users.id', $temp->id)
-                                ->select([
-                                    'users.id',
-                                    'users.address',
-                                    'users.businessDescription',
-                                    'users.businessNature',
-                                    'users.companyName',
-                                    'users.fullName',
-                                    'users.years_in_operation',
-                                    'users.number_of_branches',
-                                    'users.working_hours',
-                                    'users.profilePic',
-                                    'regions.regname',
-                                    'provinces.provname',
-                                    'cities.cityname',
-                                    'barangays.bgyname',
-                                ])
-                                ->first();
+                        ->leftJoin('cities', 'cities.citycode', '=', 'users.city')
+                        ->leftJoin('barangays', 'barangays.bgycode', '=', 'users.barangay')
+                        ->leftJoin('provinces', 'provinces.provcode', '=', 'users.province')
+                        ->where('users.id', $temp->id)
+                        ->select([
+                            'users.id',
+                            'users.address',
+                            'users.businessDescription',
+                            'users.businessNature',
+                            'users.companyName',
+                            'users.fullName',
+                            'users.years_in_operation',
+                            'users.number_of_branches',
+                            'users.working_hours',
+                            'users.profilePic',
+                            'regions.regname',
+                            'provinces.provname',
+                            'cities.cityname',
+                            'barangays.bgyname',
+                        ])
+                        ->first();
 
                     $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Visited profile of <a href="/viewUserProfile/'.$users->id.'">'.$users->fullName.'</a>');
                     $license = Document::where('user_id', $users->id)->where('type', 'DOLE_LICENSE')->first();
