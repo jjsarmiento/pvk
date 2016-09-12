@@ -6,6 +6,8 @@ Route::get('/pre-release/register', 'HomeController@pre_release_register');
 // PLACE NON PROTECTED ROUTES HERE -- START
 Route::get('/login', 'HomeController@login');
 Route::post('/doLogin', 'HomeController@doLogin');
+Route::get('/TOPUP', 'HomeController@TOPUP');
+
 
 Route::group(array('before' => 'PRE_RELEASE_RESTRICTION'), function(){
     Route::get('/', 'HomeController@index');

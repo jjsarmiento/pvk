@@ -2120,5 +2120,9 @@ class HomeController extends BaseController {
 
         return Redirect::back();
     }
+
+    public function TOPUP(){
+        return View::make('TOPUP');
+    }
 }
 

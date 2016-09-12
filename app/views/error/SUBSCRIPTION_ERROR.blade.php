@@ -52,7 +52,7 @@
                                 <i style="color: #E74C3C;" class="fa fa-warning"></i> {{$msg}}
                                 <br/>
                                 Click <a href="/">here</a> to redirect to home<br/>
-                                Click <a href="/TOPTUP">here</a> to apply for a new subscription!
+                                Click <a href="/TOPUP">here</a> to apply for a new subscription!
                             </div>
                         @else
                             <div class="col-md-12" style="padding-top: 3em;">
