@@ -202,6 +202,7 @@ class ComposerStaticInit953d5428e89260dd4741ae6cbf12205e
 
     public static $classMap = array (
         'ActivationCode' => __DIR__ . '/../..' . '/app/models/ActivationCode.php',
+        'AdminAccountsSeeder' => __DIR__ . '/../..' . '/app/database/seeds/AdminAccountsSeeder.php',
         'AdminController' => __DIR__ . '/../..' . '/app/controllers/AdminController.php',
         'AdminHasRole' => __DIR__ . '/../..' . '/app/models/AdminHasRole.php',
         'AdminMessage' => __DIR__ . '/../..' . '/app/models/AdminMessage.php',

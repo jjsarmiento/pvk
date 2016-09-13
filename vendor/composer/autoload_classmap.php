@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ActivationCode' => $baseDir . '/app/models/ActivationCode.php',
+    'AdminAccountsSeeder' => $baseDir . '/app/database/seeds/AdminAccountsSeeder.php',
     'AdminController' => $baseDir . '/app/controllers/AdminController.php',
     'AdminHasRole' => $baseDir . '/app/models/AdminHasRole.php',
     'AdminMessage' => $baseDir . '/app/models/AdminMessage.php',
