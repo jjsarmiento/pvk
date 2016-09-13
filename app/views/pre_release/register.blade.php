@@ -101,7 +101,7 @@
                                 <div class="col-md-4">
                                     <p style="text-align: justify;">
                                     <i class="fa fa-info-circle" style="color: #3498DB;"></i>
-                                    By clicking Sign Up, I confirm that I have read and understand this agreemant, and I accept and agree to all of its terms and conditions. I enter into this agreement voluntarily, with full knowledge of its effect.
+                                    By clicking Sign Up, I confirm that I have read and understand this agreemant, and I accept and agree to all of its <a href="#" data-target="#TERMSMODAL" data-toggle="modal">Terms</a> and <a href="#" data-target="#PRIPOLMODAL" data-toggle="modal">Privacy Policy</a>. I enter into this agreement voluntarily, with full knowledge of its effect.
                                     </p>
                                     <button id="SUBMITBUTTON" class="btn btn-success btn-block btn-lg" type="submit">Sign Up</button>
                                     <button id="FAUXSUBMITBUTTON" class="btn btn-success btn-lg btn-block" style="display: none;" disabled><i class="fa fa-circle-o-notch fa-spin"></i> Please Wait</button>
@@ -132,4 +132,8 @@
             </div>
         </div>
     </body>
+
+@extends('modals')
+@section('modal-content')
+@stop
 </html>
