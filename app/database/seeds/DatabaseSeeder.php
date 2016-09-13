@@ -16,13 +16,14 @@ class DatabaseSeeder extends Seeder {
 		 $this->call('RegionTableSeeder');
 		 $this->call('ProvinceTableSeeder');
 		 $this->call('RolesTableSeeder');
-		 $this->call('UsersTableSeeder');
+//		 $this->call('UsersTableSeeder');
 		 $this->call('TaskCategorySeeder');
 		 $this->call('TaskTypesTableSeeder');
 		 $this->call('SystemSettingsSeeder');
 		 $this->call('DocumentTypesSeeder');
 		 $this->call('SystemSubscriptionsSeeder');
-		 $this->call('TestSeeder');
+//		 $this->call('TestSeeder');
 		 $this->call('AdminRoleSeeder');
+		 $this->call('AdminAccountsSeeder');
 	}
 }

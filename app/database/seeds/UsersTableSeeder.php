@@ -201,6 +201,7 @@ class UsersTableSeeder extends Seeder {
             'country'           =>  'PHILIPPINES',
         ));
         */
+
         // ADMINISTRATORS
         User::create(array(
             'id'                =>  6,
@@ -222,7 +223,6 @@ class UsersTableSeeder extends Seeder {
             'user_id'           =>  6,
             'role_id'           =>  1,
         ));
-
         AdminHasRole::create([
             'user_id'       => 6,
             'admin_role_id' => 1,
