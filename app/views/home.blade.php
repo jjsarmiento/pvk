@@ -55,6 +55,11 @@
                 margin-left: -35px;
             }
         }
+        @media (max-width: 767px) {
+            section.bg-primary {
+                display: none;
+            }      
+        }
     </style>
 
         <!--reCaptcha-->
@@ -142,6 +147,10 @@
                          <a class="" href="Pricing.html">Pricing</a>
                         {{ HTML::link('/pricing', 'Pricing')}}
                     </li> -->
+                    <li>
+                        {{ HTML::link('/faq', 'Faq')}}
+                    </li>
+
                     <li>
                         <!--<a class="" href="#">Login / Sign Up</span></a> -->
                         {{ HTML::link('/login', 'Sign In')}}
@@ -661,12 +670,12 @@
                                 <h2>Proveek</h2>
                                 <ul style="padding-left:0">
                                     <li><a href="#page-top" class="page-scroll">Home</a></li>
-                                    <li><a href="/about">About</a></li>
+                                    <li><a href="/about">About Us</a></li>
                                     <li>{{ HTML::link('/howitworks', 'How It Works')}}</li>
                                     <li>  {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}</li>
-                                    <li>  {{ HTML::link('/pricing', 'Pricing')}}</li>
+                                    <!-- //<li>{{ HTML::link('/pricing', 'Pricing')}}</li>// -->
                                     <li><a href="/faq">FAQ</a></li>
-                                    <li>    {{ HTML::link('/login', 'Login / Sign Up')}}</li>
+                                    <li>    {{ HTML::link('/login', 'Sign In')}}</li>
                                 </ul>
                             </div>
                         </div>

@@ -90,7 +90,7 @@
                 </h1>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 no-padding">
                     <ul class="breadcrumb">
                         <li>
                             <a href="/"><i class="fa fa-home"></i></a>
@@ -99,7 +99,7 @@
                             <a href="/editProfile">Edit Profile</a>
                         </li>
                         <li class="active">
-                            Edit Personal Information
+                            Edit Company Information
                         </li>
                     </ul>
                 </div>
@@ -121,7 +121,7 @@
 
                 <form method="POST" action="{{$formUrl}}" id="editPersonalInfo">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="widget-container">
                                 <div class="widget-content padded">
                                     <h4 style="margin: 0; padding: 0; border-bottom: 1px solid #ECF0F1; padding-bottom: 0.6em; margin-bottom: 0.6em;"><i class="fa fa-briefcase"></i> Company Details</h4>
@@ -166,7 +166,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="widget-container">
                                 <div class="widget-content padded">
                                     <h4 style="margin: 0; padding: 0; border-bottom: 1px solid #ECF0F1; padding-bottom: 0.6em; margin-bottom: 0.6em;"><i class="fa fa-plus"></i> Additional Information</h4>
@@ -193,7 +193,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="widget-container">
                                 <div class="widget-content padded">
                                     <h4 style="margin: 0; padding: 0; border-bottom: 1px solid #ECF0F1; padding-bottom: 0.6em; margin-bottom: 0.6em;"><i class="fa fa-map-marker"></i> Location Details</h4>
@@ -240,11 +240,42 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="job-post">
+                                <div class="col-lg-12 no-padding">
+                                    <div class="widget-container" style="min-height:30px;">
+                                        <div class="panel-body">
+                                            <h4 style="margin: 0;padding: 0;border-bottom: 1px solid #ECF0F1;padding-bottom: 0.6em;margin-bottom: 0.6em;"><i class="fa fa-edit" aria-hidden="true"></i> Profile Progress</h4>
+                                        </div>
+                                        <div class="panel-body" style="padding-top: 0px; margin-top: -5px;">
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Company Name / Business Name</a><br>
+                                            <a href="/editProfile"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Profile Picture / Company Logo</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Region</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Province</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;City</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Barangay</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Permit</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Description</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Nature</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Years in Operation</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Number Of Branches</a><br>
+                                            <a href="/editContactPerson"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Contact Person Position</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Number Of Employees</a><br>
+                                            <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Working Hours</a><br>
+                                            <a href="/cltEditContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Mobile Number</a><br>
+                                            <a href="/cltEditContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Mobile Number</a><br>
+                                            <a href="/cltEditContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Email</a><br>
+                                            <a href="/editDocumentsCMP"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;POEA License / DOLE License</a><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br/>
                     <div class="row">
                         <div class="col-md-12">
-                            <button class="btn btn-success pull-right" style="border-radius: 0.3em;" type="submit">Save Profile Details</button>
+                            <button class="btn btn-success pull-left" style="border-radius: 0.3em;" type="submit">Save Profile Details</button>
                         </div>
                     </div>
                 </form>

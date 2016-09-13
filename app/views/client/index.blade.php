@@ -118,7 +118,15 @@
             background: transparent;
             color: #2980b9;
             text-decoration: none;
-        }      
+        }    
+        .btn.btn-xs.btn-default.pull-right {
+            color: #2980b9;
+            border: 1px solid #2980b9;
+            border-radius: 3px;
+        }  
+        .btn.btn-xs.btn-default.pull-right:hover {
+            color: white;
+        }        
         @media (max-width: 768px){
             .job-post{
                 margin-top: 2em;
@@ -305,57 +313,6 @@
                         </div>
                     </div>
                 </div>
-
-<!-- CONTACT INFo -->
-                <div class="col-lg-12 no-padding">
-                    <div class="widget-container" style="min-height:30px; margin-top:2em;">
-                        <div class="widget-content">
-                            <div class="heading" style="font-size:14pt; color:#2980b9">
-                                <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>&nbsp Contact Information
-                            </div>     
-                            <div class="panel-body">
-                                @foreach($contacts as $contact)
-                                    <span style="text-transform: capitalize; font-weight: 600; margin-right: 5px;">
-                                        @if($contact->ctype == "businessNum") Business No
-                                        @else {{ $contact->ctype }} @endif
-                                    </span>
-                                     :
-                                     @if($contact->content)
-                                        <span style="margin-left: 5px">{{ $contact->content }}</span><br/>
-                                     @else
-                                        N/A<br/>
-                                     @endif
-                                @endforeach
-                                <!--
-                                <span><b>Business Number: </b>000-123-452</span><br>
-                                <span><b>Business Email: </b><a herf="mailto:sample@mail.com">sample@mail.com</a></span>
-                                -->
-                            </div>                             
-                        </div>
-                        <div class="widget-content">
-                            <div class="heading" style="font-size:14pt; color:#2980b9">
-                                <i class="fa fa-user" style="font-size:14pt; color:#2980b9"></i>&nbsp Key Contact Person
-                            </div>     
-                            <div class="panel-body">
-                                @if(@$cperson->id)
-                                    <span><b>Name: </b></span> {{@$cperson->name}}<br>
-                                    <span><b>Position: </b></span> {{@$cperson->position}}<br>
-                                    <span><b>Contact #: </b></span> {{@$cperson->contact_number}}<br>
-                                    <span><b>Email: </b> {{@$cperson->email}}</span>
-                                @else
-                                    N/A
-                                @endif
-                                <!--
-                                <span><b>Name: </b>Lorem Ipsum</span><br>
-                                <span><b>Position: </b>Human Resource</span><br>
-                                <span><b>Contact Number: </b>000-222-333</span><br>
-                                <span><b>Email: </b><a herf="mailto:sample@mail.com">sample@mail.com</a></span>
-                                -->
-                            </div>                             
-                        </div>
-                    </div>
-                </div>
-
             </div>
 <!-- ENF PROFILE PIC / INFO / SIDEBAR-->
 
@@ -435,7 +392,7 @@
                     <div class="widget-container col-md-6" style="">
                         <div class="widget-content">
                             <div class="panel-body" style="color:#2980b9; font-size:14pt;">
-                                <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>&nbsp General Information
+                                <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>&nbsp General Information <button onclick="location.href='/cltEditPersonalInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                             </div>
                             <div class="panel-body">
                                 <span><b>Business Description: </b>{{Auth::user()->businessDescription}}</span><br>
@@ -465,8 +422,66 @@
                             </div>                             
                         </div>
                     </div>
-                </div>            
+                </div>
             </div> 
+
+            <div class="col-lg-8" style="margin-top:2em;">
+<!-- CONTACT INFo -->
+                <div class="col-lg-12 no-padding">
+                    <div class="widget-container col-md-6" style="min-height:30px;">
+                        <div class="widget-content">
+                            <div class="heading" style="font-size:14pt; color:#2980b9">
+                                <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>&nbsp Contact Information
+                                <button onclick="location.href='/cltEditContactInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
+                            </div>     
+                            <div class="panel-body">
+                                @foreach($contacts as $contact)
+                                    <span style="text-transform: capitalize; font-weight: 600; margin-right: 5px;">
+                                        @if($contact->ctype == "businessNum") Business No
+                                        @else {{ $contact->ctype }} @endif
+                                    </span>
+                                     :
+                                     @if($contact->content)
+                                        <span style="margin-left: 5px">{{ $contact->content }}</span><br/>
+                                     @else
+                                        N/A<br/>
+                                     @endif
+                                @endforeach
+                                <!--
+                                <span><b>Business Number: </b>000-123-452</span><br>
+                                <span><b>Business Email: </b><a herf="mailto:sample@mail.com">sample@mail.com</a></span>
+                                -->
+                            </div>                             
+                        </div>
+                    </div>
+                    <div class="widget-container col-md-6" style="min-height:30px;">
+                        <div class="widget-content">
+                            <div class="heading" style="font-size:14pt; color:#2980b9">
+                                <i class="fa fa-user" style="font-size:14pt; color:#2980b9"></i>&nbsp Key Contact Person
+                                <a href="/editContactPerson" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
+                            </div>     
+                            <div class="panel-body">
+                                @if(@$cperson->id)
+                                    <span><b>Name: </b></span> {{@$cperson->name}}<br>
+                                    <span><b>Position: </b></span> {{@$cperson->position}}<br>
+                                    <span><b>Contact #: </b></span> {{@$cperson->contact_number}}<br>
+                                    <span><b>Email: </b> {{@$cperson->email}}</span>
+                                @else
+                                    N/A
+                                @endif
+                                <!--
+                                <span><b>Name: </b>Lorem Ipsum</span><br>
+                                <span><b>Position: </b>Human Resource</span><br>
+                                <span><b>Contact Number: </b>000-222-333</span><br>
+                                <span><b>Email: </b><a herf="mailto:sample@mail.com">sample@mail.com</a></span>
+                                -->
+                            </div>                             
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
 
             @if(Auth::user()->total_profile_progress < 100)
             <div class="col-lg-8 job-post" style="margin-top: 2em;">
@@ -486,7 +501,7 @@
                     </div>
                 </div>
                 @endif
-    </div>
+            </div>
 </section>
 
 
@@ -501,12 +516,12 @@
                                 <h2>Proveek</h2>
                                 <ul style="padding-left:0">
                                     <li><a href="#page-top" class="page-scroll">Home</a></li>
-                                    <li><a href="/about">About</a></li>
+                                    <li><a href="/about">About Us</a></li>
                                     <li>{{ HTML::link('/howitworks', 'How It Works')}}</li>
                                     <li>  {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}</li>
-                                    <li>  {{ HTML::link('/pricing', 'Pricing')}}</li>
+                                    <!-- //<li>{{ HTML::link('/pricing', 'Pricing')}}</li>// -->
                                     <li><a href="/faq">FAQ</a></li>
-                                    <li>    {{ HTML::link('/login', 'Login / Sign Up')}}</li>
+                                    <li>    {{ HTML::link('/login', 'Sign In')}}</li>
                                 </ul>
                             </div>
                         </div>
