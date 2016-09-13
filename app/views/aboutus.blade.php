@@ -161,7 +161,7 @@
 	                <h2 class="section-heading">Mission</h2>
 	                <hr class="text-primary">
 	                <p>
-	                	Our Mission is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+	                	{{--Our Mission is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. --}}
 	                </p>
 				</div> 
 
@@ -170,7 +170,7 @@
 	                <h2 class="section-heading">Vision</h2>
 	                <hr class="text-primary"> 
 	                <p>
-	                	Our Vision is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+	                	{{--Our Vision is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. --}}
 	                </p>	                
 				</div> 
             </div>

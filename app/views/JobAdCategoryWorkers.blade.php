@@ -285,7 +285,7 @@
                     <h2 style="text-transform:none; font-size:30px; font-size: 40px; font-weight: bold;">{{$category_title}}</h2>
                     <hr>
                     <p style="color:#ECF0F1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec odio mauris. Vestibulum ante ipsum primis in faucibus orci mollis lorem vel ultricies.
+                        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec odio mauris. Vestibulum ante ipsum primis in faucibus orci mollis lorem vel ultricies.--}}
                     </p>
 
                     <div class="col-md-12">
