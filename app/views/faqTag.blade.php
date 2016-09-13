@@ -227,6 +227,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        {{ HTML::link('/', 'Worker')}}
+                    </li>
+
+                    <li>
+                        {{ HTML::link('/employer', 'Employer')}}
+                    </li>
+                    <li>
                        <!--  <a class="" href="HowItWorks.html">How It Works</a> -->
                         {{ HTML::link('/howitworks', 'How It Works')}}
 
@@ -242,7 +249,7 @@
                         <!-- {{ HTML::link('/pricing', 'Pricing')}} -->
                     </li>
                     <li>
-                          {{ HTML::link('/login', 'Login / Sign Up')}}
+                          {{ HTML::link('/login', 'Sign In')}}
                     </li>
                 </ul>
             </div>
@@ -662,12 +669,12 @@
                                 <h2>Proveek</h2>
                                 <ul style="padding-left:0">
                                     <li><a href="#page-top" class="page-scroll">Home</a></li>
-                                    <li><a href="/about">About</a></li>
+                                    <li><a href="/about">About Us</a></li>
                                     <li>{{ HTML::link('/howitworks', 'How It Works')}}</li>
                                     <li>  {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}</li>
-                                    <li>  {{ HTML::link('/pricing', 'Pricing')}}</li>
+                                    <!-- //<li>{{ HTML::link('/pricing', 'Pricing')}}</li>// -->
                                     <li><a href="/faq">FAQ</a></li>
-                                    <li>    {{ HTML::link('/login', 'Login / Sign Up')}}</li>
+                                    <li>    {{ HTML::link('/login', 'Sign In')}}</li>
                                 </ul>
                             </div>
                         </div>

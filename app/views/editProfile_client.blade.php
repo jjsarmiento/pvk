@@ -205,7 +205,7 @@
                         <div class="col-md-12 padded">
                             <div class="col-md-6">
                                 <div class="heading" style="font-size:14pt; color:#2980b9; word-wrap: break-word;">
-                                    <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>Personal Information <button onclick="location.href='/cltEditPersonalInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
+                                    <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>General Information <button onclick="location.href='/cltEditPersonalInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                                 </div>
                                 <div style="padding-left: 19px; word-wrap: break-word;">
                                     <span><b>Company Name: </b>{{ $user->companyName }}</span><br>
@@ -320,12 +320,12 @@
                                 <h2>Proveek</h2>
                                 <ul style="padding-left:0">
                                     <li><a href="#page-top" class="page-scroll">Home</a></li>
-                                    <li><a href="/about">About</a></li>
+                                    <li><a href="/about">About Us</a></li>
                                     <li>{{ HTML::link('/howitworks', 'How It Works')}}</li>
                                     <li>  {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}</li>
-                                    <li>  {{ HTML::link('/pricing', 'Pricing')}}</li>
+                                    //<li>{{ HTML::link('/pricing', 'Pricing')}}</li>//
                                     <li><a href="/faq">FAQ</a></li>
-                                    <li>    {{ HTML::link('/login', 'Login / Sign Up')}}</li>
+                                    <li>    {{ HTML::link('/login', 'Sign In')}}</li>
                                 </ul>
                             </div>
                         </div>

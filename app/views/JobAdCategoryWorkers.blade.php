@@ -269,7 +269,7 @@
                         <!-- {{ HTML::link('/pricing', 'Pricing')}} -->
                     </li>
                     <li>
-                          {{ HTML::link('/login', 'Login / Sign Up')}}
+                          {{ HTML::link('/login', 'Sign In')}}
                     </li>
                 </ul>
             </div>
@@ -390,9 +390,9 @@
                                     <li><a href="#">About</a></li>
                                     <li>{{ HTML::link('/howitworks', 'How It Works')}}</li>
                                     <li>  {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}</li>
-                                    <li>  {{ HTML::link('/pricing', 'Pricing')}}</li>
+                                    //<li>{{ HTML::link('/pricing', 'Pricing')}}</li>//
                                    <li><a href="/workercategory">Workers</a></li>
-                                    <li>    {{ HTML::link('/login', 'Login / Sign Up')}}</li>
+                                    <li>    {{ HTML::link('/login', 'Sign In')}}</li>
                                 </ul>
                             </div>
                         </div>

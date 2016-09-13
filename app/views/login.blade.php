@@ -59,6 +59,10 @@
                 padding: 10px !important;
             }            
         }
+        a.btn, input.btn.btn-md.btn-primary.lato-text.btnTheme {
+            font-size: 15px;
+            height: 41px;
+        }
     </style>
 
 </head>
@@ -105,12 +109,20 @@
                                 </div>
 
                             <!-- Login Button -->
-                                <div class="" style="padding-top:20px; padding-bottom:20px;">
+                                <div class="" style="padding-top:20px; padding-bottom:15px;">
                                       <!-- <button type="button" class="btn btn-primary btn-md lato-text" style="width:45%;border:1px solid #2980b9; border-radius:4px;">Login</button> -->
                                       {{ Form::submit('LOGIN', array('class' => 'btn btn-md btn-primary lato-text btnTheme', 'style' => 'border:1px solid #2990b9;')) }}                     
                                 </div>
                         {{ Form::close() }}
-                        <a href="/" class="btn btn-success lato-text btnTheme btn-lg" data-toggle="modal">Register</a><br/><br/>
+
+                        <div style="padding-bottom:15px;">
+                          <a href="/" class="btn btn-success lato-text btnTheme btn-lg" data-toggle="modal">Register as Worker</a>
+                        </div>
+                        
+                        <div style="padding-bottom:15px;">
+                          <a href="/employer" class="btn btn-success lato-text btnTheme btn-lg" data-toggle="modal">Register as Employer</a>
+                        </div>
+                        
                         <a class="btn btn-primary lato-text btnTheme" style="border:1px solid #2980b9;" data-toggle="modal" data-target="#forgotPassModal">Forgot Password</a>
 
                     <!-- Additionals -->

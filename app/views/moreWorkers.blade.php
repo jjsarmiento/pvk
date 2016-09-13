@@ -389,7 +389,7 @@
                         <!-- {{ HTML::link('/pricing', 'Pricing')}} -->
                     </li>
                     <li>
-                          {{ HTML::link('/login', 'Login / Sign Up')}}
+                          {{ HTML::link('/login', 'Sign In')}}
                     </li>
                 </ul>
             </div>
