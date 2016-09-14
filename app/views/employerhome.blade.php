@@ -108,6 +108,18 @@
                 display: none;
             }      
         }
+        @media (max-height: 720px) {
+            .header-content {
+                min-height: 100% !important;
+                margin-top: 40px !important;
+            }
+        }
+        @media (max-height: 600px){
+            .header-content {
+                min-height: 100% !important;
+                margin-top: 45px !important;
+            }
+        }
     </style>
     <script src='https://www.google.com/recaptcha/api.js?hl=en?fallback=true'></script>
     <script>

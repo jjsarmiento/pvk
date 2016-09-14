@@ -589,3 +589,8 @@ a, a.sidemenu {
     color: #000;
     text-decoration: none !important;
 }
+
+ span.homeTitle {
+    font-family: 'Lato', sans-serif;
+    margin-left: 2px;
+ }

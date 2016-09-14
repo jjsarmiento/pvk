@@ -86,7 +86,7 @@
             <div class="col-lg-12">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="/" style="cursor: pointer;"><i class="fa fa-home"></i></a>
+                        <a href="/" style="cursor: pointer;"><i class="fa fa-home"><span class="homeTitle">Home</span></i></a>
                     </li>
                     <li>
                         <a href="/userListTaskminators">User List</a>

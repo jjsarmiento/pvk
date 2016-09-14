@@ -428,6 +428,10 @@ class AdminController extends \BaseController {
             ->with('status', $status);
     }
 
+    public function INQUIRYMESSAGES(){
+        return View::make('admin.inquiry-messages');
+    }
+
     public function taskListAuto(){
         return View::make('admin.taskList')
             ->with('tasks', Task::where('hiringType', 'AUTOMATIC')->orderBy('created_at', 'ASC')->paginate(10))

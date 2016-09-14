@@ -3,6 +3,9 @@
 // TEMPORARY ROUTES
 Route::get('/pre-release/register', 'HomeController@pre_release_register');
 
+//Admin Messages
+Route::get('/inquiry-messages', 'AdminController@INQUIRYMESSAGES');
+
 // PLACE NON PROTECTED ROUTES HERE -- START
 Route::get('/login', 'HomeController@login');
 Route::post('/doLogin', 'HomeController@doLogin');
@@ -467,6 +470,7 @@ Route::group(array('before' => 'CLIENT-ONLY'), function(){
 });
 
 Route::get('/test', 'HomeController@TESTINGROUTE'); // TESTING
+
 
 Route::get('/{username}', 'HomeController@toProfile'); // new profile page viewer
 

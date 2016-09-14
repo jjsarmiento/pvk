@@ -78,7 +78,7 @@
             <div class="col-lg-12">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="/"><i class="fa fa-home"></i></a>
+                        <a href="/"><i class="fa fa-home"><span class="homeTitle">Home</span></i></a>
                     </li>
                     <li class="active">
                         Job Ads
