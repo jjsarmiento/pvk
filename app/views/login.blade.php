@@ -70,6 +70,76 @@
 <body id="page-top">
     <!-- HEADER SEARCH SECTION -->
     <header style="height:100%;">
+
+    <nav id="mainNavs" class="navbar navbar-default navbar-fixed-top affix">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand page-scroll logoImg" href="#page-top" style="padding:0; margin:0;"></a>
+               
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        {{ HTML::link('/', 'Worker')}}
+                    </li>
+
+                    <li>
+                        {{ HTML::link('/employer', 'Employer')}}
+                    </li>
+
+                    <li>
+                       <!--  <a class="" href="HowItWorks.html">How It Works</a> -->
+                        {{ HTML::link('/howitworks', 'How It Works')}}
+
+                    </li>
+
+                    <li>
+                     <!--   <a class="" href="WhyProveek.html">Why Choose Proveek</a> -->
+                         {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}
+
+                    </li>
+                    <!-- <li>
+                         <a class="" href="Pricing.html">Pricing</a>
+                        {{ HTML::link('/pricing', 'Pricing')}}
+                    </li> -->
+                    <li>
+                        {{ HTML::link('/faq', 'Faq')}}
+                    </li>
+
+                    <li class="active">
+                        <!--<a class="" href="#">Login / Sign Up</span></a> -->
+                        {{ HTML::link('/login', 'Sign In')}}
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+            <!--<div class="collapse navbar-collapse" style="background-color:rgba(255,255,255,.30); height: 25px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="page-scroll" href="#about" style="padding-top: 0;padding-bottom: 0">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services" style="padding-top: 0;padding-bottom: 0">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact" style="padding-top: 0;padding-bottom: 0">Contact</span></a>
+                    </li>
+                </ul>
+            </div>-->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>  
+
+
     <!-- Used for Copyright (LOWER RIGHT of Screen) -->
         <div class="divFooterDark"style="position:fixed; right:5px; bottom:0;background:none;">
             <p style="color:#222; margin:auto; font-size:7pt;">© 2016 Proveek Inc.</p>
@@ -115,13 +185,15 @@
                                 </div>
                         {{ Form::close() }}
 
-                        <div style="padding-bottom:15px;">
+                        <!-- JUPS -->
+<!--                         <div style="padding-bottom:15px;">
                           <a href="/" class="btn btn-success lato-text btnTheme btn-lg" data-toggle="modal">Register as Worker</a>
                         </div>
                         
                         <div style="padding-bottom:15px;">
                           <a href="/employer" class="btn btn-success lato-text btnTheme btn-lg" data-toggle="modal">Register as Employer</a>
-                        </div>
+                        </div> -->
+                         <!-- JUPS -->
                         
                         <a class="btn btn-primary lato-text btnTheme" style="border:1px solid #2980b9;" data-toggle="modal" data-target="#forgotPassModal">Forgot Password</a>
 

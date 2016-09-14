@@ -166,6 +166,47 @@
                     display: block !important;
                 }
             }
+            .tg  {border-collapse:collapse;border-spacing:0;}
+            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;overflow:hidden;word-break:normal;}
+            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+            .tg .tg-yw4l{
+                vertical-align:top;
+                height: 30px;
+                padding:5px;
+                color: #b8b9bb;
+            }
+            th.tg-yw4l{
+                width: auto;
+                min-width: 100%;
+            }
+            td.tg-yw4l {
+                color: #f5f5f5 !important;
+            }
+            
+            @media screen and (max-width: 767px) {
+                .tg {
+                    width: auto !important;
+                }
+                .tg col {
+                    width: auto !important;
+                }
+                .tg-wrap {
+                    overflow-x: auto;-webkit-overflow-scrolling: touch;
+                }
+            }
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+             
+            ::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3); 
+                border-radius: 3px;
+            }
+             
+            ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+                -webkit-box-shadow: inset 0 0 100px rgba(255,255,255,0.7); 
+            }
     </style>
 @stop
 
@@ -202,7 +243,7 @@
             <div class="container lato-text" style="">
                 <div class="page-title">
                     <h1 class="lato-text">
-                        User List : Workers
+                        Inquires : Messages
                     </h1>
                 </div>
 
@@ -213,7 +254,7 @@
                                 <a href="/"><i class="fa fa-home"><span class="homeTitle">Home</span></i></a>
                             </li>
                             <li>
-                                User List
+                                Messages
                             </li>
                         </ul>
                     </div>
@@ -223,6 +264,16 @@
                     <div class="col-md-3">
                         <div class="widget-container">
                             <div class="widget-content">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        <a class="accordion-toggle">
+                                        Inquiries</a>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/inquiry-messages" class="sidemenu">Messages</a><br>
+                                </div>
+
                                 <div class="panel-heading">
                                     <div class="panel-title">
                                         <a class="accordion-toggle">
@@ -285,134 +336,24 @@
                     </div>
 
                     <div class="col-md-9">
-                        <div class="well selected-filters">
-                            <h3 style="margin: 0; cursor: pointer;" onclick="$('#SEARCH_PARAMETERS').slideToggle('fast');">Search for Workers <i class="fa fa-search"></i></h3>
-                            {{--<div id="SEARCH_PARAMETERS" class="row" style="display: none;">--}}
-                            <div id="SEARCH_PARAMETERS" class="row" style="">
-                                <br/>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Account Status</label>
-                                        <select class="form-control" id="search_acctStatus" name="search_acctStatus">
-                                            <option value="ALL">Display All</option>
-                                            <option <?php if(@$acctStatus == "ACTIVATED"){ echo('selected'); } ?> value="ACTIVATED">Activated</option>
-                                            <option <?php if(@$acctStatus == "DEACTIVATED"){ echo('selected'); } ?> value="DEACTIVATED">Deactivated</option>
-                                        </select>
-                                    </div>
-                                    <!--
-                                    <div class="form-group">
-                                        <label>Rating</label>
-                                        <select class="form-control" id="search_rating" name="search_rating">
-                                            <option value="ASC" <?php if(@$rating == "ASC"){ echo('selected'); } ?>>Lowest First</option>
-                                            <option value="DESC" <?php if(@$rating == "DESC"){ echo('selected'); } ?>>Highest First</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Hiring Status</label>
-                                        <select class="form-control" id="search_hiring" name="search_hiring">
-                                            <option value="H">Hired</option>
-                                            <option value="NH">Not Hired</option>
-                                        </select>
-                                    </div>
-                                    -->
-                                    <div class="form-group">
-                                        <label>Order by</label>
-                                        <select class="form-control" id="search_orderBy" name="search_orderBy">
-                                            <option value="DESC" <?php if(@$orderBy == "DESC"){ echo('selected'); } ?>>Oldest first</option>
-                                            <option value="ASC" <?php if(@$orderBy == "ASC"){ echo('selected'); } ?>>Newest first</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Search Keywords (Name or Username)</label>
-                                        <input type="text" class="form-control" value="{{@$keyword}}" placeholder="KEYWORD FOR NAME/USERNAME" id="search_keyword" name="search_keyword" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Checkout Status</label>
-                                        <select class="form-control" id="search_checkoutStatus" name="search_checkoutStatus">
-                                            <option value="ALL">Display All</option>
-                                            <option value="1">Checked Out</option>
-                                            <option value="0">Not Checked Out</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group pull-right">
-                                        <button type="submit" class="btn btn-primary" id="search_btn">Search</button>
-                                    </div>
-                                </div>
+                        <div class="widget-container">
+                            <div class="widget-content" style="height: 423px; overflow-x:auto;">
+                                <table class="tg">
+                                  <tr>
+                                    <th class="tg-yw4l">Name</th>
+                                    <th class="tg-yw4l">Email</th>
+                                    <th class="tg-yw4l">Messages</th>
+                                  </tr>
+                                  @for($i=0; $i<7; $i++)
+                                  <tr style="border-bottom: 1px solid #b6b5b4;">
+                                    <td class="tg-yw4l" style="width:100px;">Sample Name</td>
+                                    <td class="tg-yw4l">fake_email@email.com</td>
+                                    <td class="tg-yw4l">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin dolor at velit scelerisque, non laoreet arcu cursus. Vivamus interdum pulvinar pulvinar. Aenean quis elit non risus mattis sagittis id vel velit. Duis dui dolor, viverra nec lacus at, auctor consectetur lorem. Vivamus viverra laoreet mauris at viverra.</td>
+                                  </tr>
+                                  @endfor
+                                </table>
                             </div>
                         </div>
-
-                        @if($users->count() == 0)
-                            <div class="well selected-filters" style="text-align: center">
-                                <font style="color: red">No data available.</font>
-                            </div>
-                        @else
-                        <p class="hiddenNote" style="display:none;">You can swipe the table</p>
-                        <div class="tg-wrap">
-                            <table class="tg table table-hover table-striped"  style="background-color: white;">
-                                <thead>
-                                    <th class="tg-yw4l">Name @Username</th>
-                                    <th class="tg-yw4l">Date of Registration</th>
-                                    <th class="tg-yw4l">Account Status</th>
-                                    <th class="tg-yw4l">Action</th>
-                                    <th class="tg-yw4l">Audit Trail</th>
-                                <thead>
-                                <tbody>
-                                    @foreach($users as $user)
-                                        <tr>
-                                            <td>
-                                                <a href="viewUserProfile/{{$user->id}}" style="font-weight: bolder;">
-                                                    {{ $user->fullName }} {{'@'.$user->username}}
-                                                </a>
-                                            </td>
-                                            <td>{{ date('D, M j, Y \a\t g:ia', strtotime($user->created_at)) }}</td>
-                                            <td><b>{{$user->status}}</b></td>
-                                            <td>
-                                                @if($user->status == 'ACTIVATED')
-                                                    <a style="border-radius: 0.3em;" data-msg="Confirm account DEACTIVATION of {{$user->fullName}}" class="ACT_DEAC btn-block btn btn-danger btn-xs" data-href="/adminDeactivate/{{$user->id}}">DEACTIVATE</a>
-                                                @else
-                                                    <a style="border-radius: 0.3em;" data-msg="Confirm account ACTIVATION of {{$user->fullName}}" class="ACT_DEAC btn-block btn btn-success btn-xs" data-href="/adminActivate/{{$user->id}}">ACTIVATE</a>
-                                                @endif
-                                            </td>
-                                            <td style="text-align: center;"><a style="font-size:1.3em" href="/auditTrail={{$user->id}}"><i class="fa fa-eye"></i></a></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                            <!--
-                            @foreach($users as $user)
-                                <div class="media block-update-card" style="">
-                                    <a class="pull-left" href="/viewUserProfile/{{$user->id}}">
-                                        @if($user->profilePic != "")
-                                            <img class="media-object update-card-MDimentions" src="{{$user->profilePic}}">
-                                        @else
-                                            <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png">
-                                        @endif
-                                    </a>
-                                    <div class="media-body update-card-body">
-                                        <a href="viewUserProfile/{{$user->id}}" style="font-weight: bolder;">
-                                            {{ $user->fullName }} {{'@'.$user->username}}
-                                        </a>
-                                        <p>
-                                            {{--<i class="fa fa-map-marker"></i> {{ $user->regname }}, {{ $user->cityname }}<br/>--}}
-                                            Registered at {{ date('D, M j, Y \a\t g:ia', strtotime($user->created_at)) }}<br/>
-                                            <a href="/auditTrail={{$user->id}}" class="btn btn-success btn-xs" style="border-radius: 0.3em; background-color: #9B59B6;">View Audit Trail</a>
-                                            @if($user->status == 'ACTIVATED')
-                                                <a style="border-radius: 0.3em;" data-msg="Confirm account DEACTIVATION of {{$user->fullName}}" class="ACT_DEAC btn btn-danger btn-xs" data-href="/adminDeactivate/{{$user->id}}">DEACTIVATE</a>
-                                            @else
-                                                <a style="border-radius: 0.3em;" data-msg="Confirm account ACTIVATION of {{$user->fullName}}" class="ACT_DEAC btn btn-success btn-xs" data-href="/adminActivate/{{$user->id}}">ACTIVATE</a>
-                                            @endif
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
-                            -->
-                            <center>{{ $users->links() }}</center>
-                        @endif
                     </div>
                 </div>
             </div>

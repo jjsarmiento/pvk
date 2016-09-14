@@ -68,7 +68,7 @@
             <div class="col-lg-12">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="/"><i class="fa fa-home"></i></a>
+                        <a href="/"><i class="fa fa-home"><span class="homeTitle">Home</span></i></a>
                     </li>
                     <li>
                         <a class="sidemenu" href="/SYSTEMSETTINGS"><i class="fa fa-gear"></i> System Settings</a>

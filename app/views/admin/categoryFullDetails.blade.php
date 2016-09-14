@@ -56,7 +56,7 @@
             <div class="col-lg-12 no-padding">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="/" style="cursor: pointer;"><i class="fa fa-home"></i></a>
+                        <a href="/" style="cursor: pointer;"><i class="fa fa-home"><span class="homeTitle">Home</span></i></a>
                     </li>
                     <li class="active">
                         <a href="/skills">Manage Task Categories and Skills</a>

@@ -40,10 +40,19 @@
             });
         </script>
     </head>
+
+    <style type="text/css">
+    </style>
+
     <body>
         <div class="row">
             <div class="col-md-8 col-md-offset-2" style="margin-top: 7em;">
                 <div class="widget-container fluid-height padded">
+
+                    <div style="margin:auto; display:table; margin-bottom:20px;">
+                        <img style="width:250px;" src="../frontend/img/proveek-logo-300.png">
+                    </div>
+
                     <div class="widget-content">
                         <form method="POST" action="/regEmployer" id="EMPLOYER_REG_FORM">
                             <input type="hidden" name="PRE_RELEASE_FLAG" value="1" />
