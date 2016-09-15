@@ -15,7 +15,7 @@
             position: relative;
             width: 80px;
             height: 80px;
-            overflow: hidden;
+            overflow: hidden; 
             /*float: left;*/
             margin-right: 1em;
             margin-bottom: 0em;
@@ -263,8 +263,8 @@
                             @if($exp->count() > 0)
                                 @foreach($exp as $e)
                                     <ul>
-                                        <li><b>Position: </b><b style="font-size:18px;">{{$e->position}}</b></li>
-                                        <li><b>Company Name: </b><b style="font-size:15px;">{{$e->company_name}}</b></li>
+                                        <li><b>Position: </b><b>{{$e->position}}</b></li>
+                                        <li><b>Company Name: </b><b>{{$e->company_name}}</b></li>
                                         <li><b>Location: </b> {{$e->location}}</li>
                                         <li><b>Time Period: </b> {{$e->time_period}}</li>
                                         <li><b>Roles and Responsibilities: </b>{{$e->roles_and_resp}}</li>
@@ -288,12 +288,16 @@
                                 <i class="glyphicon glyphicon-star" style="font-size:14pt; color:#2980b9"></i>&nbsp Skills <button class="btn btn-xs btn-default pull-right" onclick="location.href='/editSkillInfo'" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                             </div> 
                             <div style="padding-left:27px;">
+                                @if($customSkills->count() > 0)
                                 @foreach(User::getSkills(Auth::user()->id) as $skill)
                                     <span style="border:2px solid white; padding:8px; background-color: #BDC3C7; display:inline-block; color: white; border-radius: 0.2em; font-size: 12pt;">{{ $skill->itemname }}</span>
                                 @endforeach
                                 @foreach($customSkills as $cs)
                                     <span style="border:2px solid white; padding:8px; background-color: #BDC3C7; display:inline-block; color: white; border-radius: 0.2em; font-size: 12pt;">{{ $cs->skill }}</span>
                                 @endforeach
+                                @else
+                                    <center><i style="text-align:center;">N/A</if></center>
+                                @endif
                             </div>      
                         </div>
                     </div>
@@ -310,7 +314,7 @@
                                         <i class="fa fa-check-circle" style="color: #2ECC71;"></i>&nbsp;<span style="color: rgb(72, 157, 179);">{{$d->sys_doc_label}}</span><br/>
                                     @endforeach
                                 @else
-                                    <span>N/A</span>
+                                    <center><i style="text-align:center;">N/A</if></center>
                                 @endif
                             </div>      
                         </div>

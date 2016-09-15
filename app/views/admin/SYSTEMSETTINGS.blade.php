@@ -142,7 +142,6 @@
                             </form>
                 </form>
             </div>
-            <br>
             <div class="col-md-4">
                 <div class="widget-container stats-container" style="display:block !important; margin: 0px 0px 20px;">
                     <div class="col-md-6 col-xs-6 lato-text">
