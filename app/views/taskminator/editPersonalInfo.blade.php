@@ -229,7 +229,7 @@
                                     <option <?php if($user->marital_status == 'WIDOWED'){ echo 'selected'; } ?> value="WIDOWED">Widowed</option>
                                 </select><br/>
                             </div>
-                            <br/><div class="text-right padded"><button type="submit" class="btn btn-primary">Edit</button></div>
+                            <br/><div class="text-right padded"><button type="submit" class="btn btn-primary">Save</button></div>
                         </form>
                     </div>
                 </div>
@@ -257,6 +257,31 @@
                             </div>
                         </div>
                     @endif
+                </div>
+                <br>
+                <div class="job-post">
+                    <div class="col-lg-12 no-padding">
+                        <div class="widget-container" style="min-height:30px;">
+                            <div class="panel-body">
+                                <h4 style="margin: 0;padding: 0;border-bottom: 1px solid #ECF0F1;padding-bottom: 0.6em;margin-bottom: 0.6em;"><i class="fa fa-edit" aria-hidden="true"></i> Profile Progress</h4>
+                            </div>
+                            <div class="panel-body" style="margin-top:-25px;">
+                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Full Name</a><br>
+                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Birthdate</a><br>
+                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Gender</a><br>
+                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Address</a><br>
+                                    <a href="/editEducationalBackground"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Educational Background - Atleast 3 (0 registered)</a><br>
+                                    <a href="/editExperience"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Relevant Experience - Atleast 2(0 registered)</a><br>
+                                    <a href="/editSkillInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Skills (At least 4 System/Custom Skill)</a><br>
+                                    <a href="/editContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Mobile Number</a><br>
+                                    <a href="/editContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Email</a><br>
+                                    <a href="/editPersonalInfo"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Marital Status</a><br>
+                                    <a href="/editProfile"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Profile Picture</a><br>
+                                    <a href="/editDocuments"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Supporting Documents - Atleast 2 (0 registered)</a><br>
+                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Facebook</a><br>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

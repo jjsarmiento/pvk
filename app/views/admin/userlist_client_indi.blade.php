@@ -220,6 +220,15 @@
                         <div class="panel-heading">
                             <div class="panel-title">
                                 <a class="accordion-toggle">
+                                Inquiries</a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <i class="glyphicon glyphicon-chevron-right"></i> &nbsp; <a href="/inquiry-messages" class="sidemenu">Messages</a><br>
+                        </div>                      
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <a class="accordion-toggle">
                                 User Account List</a>
                             </div>
                         </div>

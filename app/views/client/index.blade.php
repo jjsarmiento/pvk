@@ -392,7 +392,7 @@
                     <div class="widget-container col-md-6" style="">
                         <div class="widget-content">
                             <div class="panel-body" style="color:#2980b9; font-size:14pt;">
-                                <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>&nbsp General Information <button onclick="location.href='/cltEditPersonalInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
+                                <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>&nbsp Company Information <button onclick="location.href='/cltEditPersonalInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                             </div>
                             <div class="panel-body">
                                 <span><b>Business Description: </b>{{Auth::user()->businessDescription}}</span><br>
@@ -428,7 +428,7 @@
             <div class="col-lg-8" style="margin-top:2em;">
 <!-- CONTACT INFo -->
                 <div class="col-lg-12 no-padding">
-                    <div class="widget-container col-md-6" style="min-height:30px;">
+                    <div class="widget-container col-md-6" style="min-height:160px;">
                         <div class="widget-content">
                             <div class="heading" style="font-size:14pt; color:#2980b9">
                                 <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>&nbsp Contact Information
@@ -454,7 +454,7 @@
                             </div>                             
                         </div>
                     </div>
-                    <div class="widget-container col-md-6" style="min-height:30px;">
+                    <div class="widget-container col-md-6" style="min-height:160px;">
                         <div class="widget-content">
                             <div class="heading" style="font-size:14pt; color:#2980b9">
                                 <i class="fa fa-user" style="font-size:14pt; color:#2980b9"></i>&nbsp Key Contact Person

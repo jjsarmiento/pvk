@@ -113,6 +113,14 @@
         color: #2980b9;
         text-decoration: none;
     }
+    .btn.btn-xs.btn-default.pull-right {
+        color: #2980b9;
+        border: 1px solid #2980b9;
+        border-radius: 3px;
+    }  
+    .btn.btn-xs.btn-default.pull-right:hover {
+        color: white;
+    }   
     .thumbnail {
         border: 0px solid #ddd !important;
         margin-bottom: 0;
@@ -260,7 +268,7 @@
                                 <div class="panel filter-categories">
                                     <div class="panel-body">
                                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                                            <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>&nbsp Personal Information
+                                            <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>&nbsp Personal Information <button onclick="location.href='/editPersonalInfo'" class="btn btn-xs btn-default pull-right border: 1px solid #2980b9;" style="padding: 2px 10px 2px 10px; text-transform: none; border: 1px solid #2980b9;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                                         </div>     
                                         <div class="panel-body">
                                             <span><b>Address:</b> {{Auth::user()->address}}</span><br>
@@ -272,7 +280,7 @@
                                             <span><b>Account Created:</b> {{date('m/d/y', strtotime(Auth::user()->created_at))}}</span><br>
                                         </div>  
                                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                                            <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>&nbsp Contact Information
+                                            <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>&nbsp Contact Information <button class="btn btn-xs btn-default pull-right" onclick="location.href='/editContactInfo'" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                                         </div>     
                                         <div class="panel-body">
                                             @foreach(Contact::where('user_id', Auth::user()->id)->get() as $con)
@@ -314,7 +322,7 @@
                                 <div class="panel filter-categories">
                                     <div class="panel-body" style="word-wrap: break-word; text-align: justify;">
                                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                                            <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp <a href="/certifications">Certification</a>
+                                            <i class="fa fa-certificate" style="font-size:14pt; color:#2980b9"></i>&nbsp Certification <a href="/certifications" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
                                         </div> 
                                         <div class="panel-body">
                                             @if($certs->count() > 0)
@@ -513,7 +521,8 @@
                 <div class="widget-container" style="min-height:30px; border:1px solid #e6e6e6">
                     <div class="widget-content">
                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                            <i class="fa fa-graduation-cap" style="font-size:14pt; color:#2980b9"></i>&nbsp Educational Background
+                            <i class="fa fa-graduation-cap" style="font-size:14pt; color:#2980b9"></i> Educational Background
+                            <a class="btn btn-xs btn-default pull-right" href="/editEducationalBackground" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
                         </div>                        
                         <div class="panel-body" style="padding: 0 15px 15px;">
                             <div class="col-md-12">
@@ -548,6 +557,7 @@
                         <div class="widget-content">
                             <div class="heading" style="font-size:14pt; color:#2980b9">
                                 <i class="fa fa-lightbulb-o" style="font-size:14pt; color:#2980b9"></i>&nbsp Experience
+                                <a class="btn btn-xs btn-default pull-right" href="/editExperience" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
                             </div>                        
                             <div class="panel-body" style="padding: 0 15px 15px;">
                                 <div class="col-md-12">
@@ -573,17 +583,21 @@
                     <div class="col-md-6">
                         <div class="widget-content">
                             <div class="heading" style="font-size:14pt; color:#2980b9">
-                                <i class="glyphicon glyphicon-star" style="font-size:14pt; color:#2980b9"></i>&nbsp Skills
+                                <i class="glyphicon glyphicon-star" style="font-size:14pt; color:#2980b9"></i>&nbsp Skills <button class="btn btn-xs btn-default pull-right" onclick="location.href='/editSkillInfo'" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                             </div>                        
                             <div class="panel-body" style="padding: 0 15px 15px;">
                                 <div class="col-md-12">
                                     <span>
-                                        @foreach(User::getSkills(Auth::user()->id) as $skill)
-                                            <span style="border:2px solid white; padding:8px; background-color: #BDC3C7; display:inline-block; color: white; border-radius: 0.2em; font-size: 12pt;">{{ $skill->itemname }}</span>
-                                        @endforeach
-                                        @foreach($customSkills as $cs)
-                                            <span style="border:2px solid white; padding:8px; background-color: #BDC3C7; display:inline-block; color: white; border-radius: 0.2em; font-size: 12pt;">{{ $cs->skill }}</span>
-                                        @endforeach
+                                        @if($customSkills->count() > 0)
+                                            @foreach(User::getSkills(Auth::user()->id) as $skill)
+                                                <span style="border:2px solid white; padding:8px; background-color: #BDC3C7; display:inline-block; color: white; border-radius: 0.2em; font-size: 12pt;">{{ $skill->itemname }}</span>
+                                            @endforeach
+                                            @foreach($customSkills as $cs)
+                                                <span style="border:2px solid white; padding:8px; background-color: #BDC3C7; display:inline-block; color: white; border-radius: 0.2em; font-size: 12pt;">{{ $cs->skill }}</span>
+                                            @endforeach
+                                        @else
+                                            <center>N/A</center>
+                                        @endif
                                     </span>
                                 </div>
                             </div>
@@ -599,7 +613,8 @@
                 <div class="widget-container" style="min-height:30px; border:1px solid #e6e6e6">
                     <div class="widget-content">
                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                            <i class="fa fa-file" style="font-size:14pt; color:#2980b9"></i>&nbsp <a href="/editDocuments">Supporting Documents</a>
+                            <i class="fa fa-file" style="font-size:14pt; color:#2980b9"></i>&nbsp Supporting Documents
+                            <a class="btn btn-xs btn-default pull-right" href="/editDocuments" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
                         </div>                        
                         <div class="panel-body" style="padding: 0 15px 15px;">
                             <div class="col-md-12">

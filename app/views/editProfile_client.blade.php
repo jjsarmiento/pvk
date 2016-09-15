@@ -88,6 +88,9 @@
             top: 0%;
         }   
         /*margin-top: 1em; border-radius: 0.3em; padding : 0.3em; color: #ECF0F1; background-color: #2C3E50;*/
+        .widgetss.col-md-6 {
+            height: 180px !important;
+        }
     </style>
 @stop
 
@@ -205,7 +208,7 @@
                         <div class="col-md-12 padded">
                             <div class="col-md-6">
                                 <div class="heading" style="font-size:14pt; color:#2980b9; word-wrap: break-word;">
-                                    <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>General Information <button onclick="location.href='/cltEditPersonalInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
+                                    <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>Company Information <button onclick="location.href='/cltEditPersonalInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                                 </div>
                                 <div style="padding-left: 19px; word-wrap: break-word;">
                                     <span><b>Company Name: </b>{{ $user->companyName }}</span><br>
@@ -242,45 +245,49 @@
 
                     <div class="row">
                         <div class="col-md-12 padded" style="border-bottom: 1px solid #cdcdcd;">
-                            <div class="col-md-6 padded">
-                                <div class="heading" style="font-size:14pt; color:#2980b9">
-                                    <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>
-                                    Contact Information
-                                    <button onclick="location.href='/cltEditContactInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
-                                </div>
-                                <div style="padding-left: 23px">
-                                    @foreach($contacts as $contact)
-                                        <span style="text-transform: capitalize; font-weight: 600; margin-right: 5px;">
-                                            @if($contact->ctype == "businessNum") Business No
-                                            @else {{ $contact->ctype }} @endif
-                                        </span>
-                                         :
-                                         @if($contact->content)
-                                            <span style="margin-left: 5px">{{ $contact->content }}</span><br/>
-                                         @else
-                                            N/A<br/>
-                                         @endif
-                                    @endforeach
-                                    <!--
-                                    <span><b>Facebook: </b><a href="#"> </a>N/A</span><br>
-                                    <span><b>Twitter: </b><a href="#"> </a>N/A</span><br>
-                                    <span><b>Linkedin: </b><a href="#"> </a>N/A</span>
-                                    -->
+                            <div class="widgetss col-md-6 padded">
+                                <div class="widget-content">
+                                    <div class="heading" style="font-size:14pt; color:#2980b9">
+                                        <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>
+                                        Contact Information
+                                        <button onclick="location.href='/cltEditContactInfo'" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
+                                    </div>
+                                    <div style="padding-left: 23px">
+                                        @foreach($contacts as $contact)
+                                            <span style="text-transform: capitalize; font-weight: 600; margin-right: 5px;">
+                                                @if($contact->ctype == "businessNum") Business No
+                                                @else {{ $contact->ctype }} @endif
+                                            </span>
+                                             :
+                                             @if($contact->content)
+                                                <span style="margin-left: 5px">{{ $contact->content }}</span><br/>
+                                             @else
+                                                N/A<br/>
+                                             @endif
+                                        @endforeach
+                                        <!--
+                                        <span><b>Facebook: </b><a href="#"> </a>N/A</span><br>
+                                        <span><b>Twitter: </b><a href="#"> </a>N/A</span><br>
+                                        <span><b>Linkedin: </b><a href="#"> </a>N/A</span>
+                                        -->
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 padded">
-                                <div class="heading" style="font-size:14pt; color:#2980b9">
-                                    <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>
-                                    Key Contact Person
-                                    <a href="/editContactPerson" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
-                                </div>
-                                <div style="padding-left: 23px">
+                            <div class="widgetss col-md-6 padded">
+                                <div class="widget-content">
+                                    <div class="heading" style="font-size:14pt; color:#2980b9">
+                                        <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>
+                                        Key Contact Person
+                                        <a href="/editContactPerson" class="btn btn-xs btn-default pull-right" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
+                                    </div>
+                                    <div style="padding-left: 23px">
 
-                                    <span><b>Name: </b></span> {{@$cperson->name}}<br>
-                                    <span><b>Position: </b></span> {{@$cperson->position}}<br>
-                                    <span><b>Contact #: </b></span> {{@$cperson->contact_number}}<br>
-                                    <span><b>Email: </b> {{@$cperson->email}}</span>
+                                        <span><b>Name: </b></span> {{@$cperson->name}}<br>
+                                        <span><b>Position: </b></span> {{@$cperson->position}}<br>
+                                        <span><b>Contact #: </b></span> {{@$cperson->contact_number}}<br>
+                                        <span><b>Email: </b> {{@$cperson->email}}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
