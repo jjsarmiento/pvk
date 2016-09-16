@@ -136,101 +136,116 @@
 @section('content')
 <section>
     <div class="container lato-text">
-        <div class="col-md-6">
-            <center>Applications</center><br/>
-            @if($applications->count() == 0)
-                <center><i>You have not applied for any jobs yet</i></center>
-            @else
-                @foreach($applications as $job)
-                    <div class="widget-container fluid-height padded wow fadeInUp" data-wow-duration=".3s" data-wow-offset="0" data-wow-delay="0" style="word-wrap: break-word; padding-left:10px; padding-right:10px; min-height: 50px;">
-                        <div style="display:flex;padding-bottom:5px">
-                            <span style="padding:0;margin:0; flex:1">
-                                <img src="{{ $job->profilePic }}" class="thumbnail" style="margin:0; width:64px; height:64px;" >
-                            </span>
-                            <div style="flex:11; padding-left: 5px;">
-                            <a href="/jbdtls={{$job->jobID}}" style="text-decoration:none;">
-                                <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:#2980b9">
-                                    {{ $job->title}} by {{ $job->fullName }}
-                                </h3>
-                                <div class="row" style="color:#95A5A6;">
-                                    <div class="col-md-4">
-                                        <span style="padding:0;margin:0;">
-                                            <i class="fa fa-briefcase"></i>
-                                            @if($job->hiring_type == 'LT6MOS')
-                                                Less than 6 months
-                                            @else
-                                                Greater than 6 months
-                                            @endif
-                                        </span><br>
-                                        <span class="text-right" style="padding:0;margin:0;">
-                                            @if($job->expired)
-                                                <span class="badge" style="background-color: #E74C3C">EXPIRED</span>
-                                            @else
-                                                <i class="fa fa-clock-o"></i> Expires at {{ date('m/d/y', strtotime($job->expires_at)) }}
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <span class="text-right" style="padding:0;margin:0;"><i class="fa fa-map-marker"></i> {{$job->regname}}, {{$job->cityname}}</span><br/>
-                                        <span class="text-right" style="padding:0;margin:0;"><b>P</b>{{$job->salary}}</span>
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                @endforeach
-            @endif
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/"><i class="fa fa-home"><span class="homeTitle">Home</span></i></a>
+                </li>
+                <li class="lato-text">
+                    Applicants
+                </li>
+            </ul>
+
+            <div class="col-md-12 widget-container stats-container padded">
+              <div class="col-md-6">
+                  <center>Applications</center><br/>
+                  @if($applications->count() == 0)
+                      <center><i>You have not applied for any jobs yet</i></center>
+                  @else
+                      @foreach($applications as $job)
+                          <div class="widget-container fluid-height padded wow fadeInUp" data-wow-duration=".3s" data-wow-offset="0" data-wow-delay="0" style="word-wrap: break-word; padding-left:10px; padding-right:10px; min-height: 50px;">
+                              <div style="display:flex;padding-bottom:5px">
+                                  <span style="padding:0;margin:0; flex:1">
+                                      <img src="{{ $job->profilePic }}" class="thumbnail" style="margin:0; width:64px; height:64px;" >
+                                  </span>
+                                  <div style="flex:11; padding-left: 5px;">
+                                  <a href="/jbdtls={{$job->jobID}}" style="text-decoration:none;">
+                                      <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:#2980b9">
+                                          {{ $job->title}} by {{ $job->fullName }}
+                                      </h3>
+                                      <div class="row" style="color:#95A5A6;">
+                                          <div class="col-md-4">
+                                              <span style="padding:0;margin:0;">
+                                                  <i class="fa fa-briefcase"></i>
+                                                  @if($job->hiring_type == 'LT6MOS')
+                                                      Less than 6 months
+                                                  @else
+                                                      Greater than 6 months
+                                                  @endif
+                                              </span><br>
+                                              <span class="text-right" style="padding:0;margin:0;">
+                                                  @if($job->expired)
+                                                      <span class="badge" style="background-color: #E74C3C">EXPIRED</span>
+                                                  @else
+                                                      <i class="fa fa-clock-o"></i> Expires at {{ date('m/d/y', strtotime($job->expires_at)) }}
+                                                  @endif
+                                              </span>
+                                          </div>
+                                          <div class="col-md-8">
+                                              <span class="text-right" style="padding:0;margin:0;"><i class="fa fa-map-marker"></i> {{$job->regname}}, {{$job->cityname}}</span><br/>
+                                              <span class="text-right" style="padding:0;margin:0;"><b>P</b>{{$job->salary}}</span>
+                                          </div>
+                                      </div>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                          <br>
+                      @endforeach
+                  @endif
+              </div>
+              <div class="col-md-6">
+                  <center>Available Jobs</center><Br/>
+                  @if($jobs->count() == 0)
+                      <center><i>No jobs available at the time.</i></center>
+                  @else
+                      @foreach($jobs as $job)
+                          <div class="widget-container fluid-height padded wow fadeInUp" data-wow-duration=".3s" data-wow-offset="0" data-wow-delay="0" style="word-wrap: break-word; padding-left:10px; padding-right:10px; min-height: 50px;">
+                              <div style="display:flex;padding-bottom:5px">
+                                  <span style="padding:0;margin:0; flex:1">
+                                      <img src="{{ $job->profilePic }}" class="thumbnail" style="margin:0; width:64px; height:64px;" >
+                                  </span>
+                                  <div style="flex:11; padding-left: 5px;">
+                                  <a href="/jbdtls={{$job->job_id}}" style="text-decoration:none;">
+                                      <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:#2980b9">
+                                          {{ $job->title}} by {{ $job->fullName }}
+                                      </h3>
+                                      <div class="row" style="color:#95A5A6;">
+                                          <div class="col-md-4">
+                                              <span style="padding:0;margin:0;">
+                                                  <i class="fa fa-briefcase"></i>
+                                                  @if($job->hiring_type == 'LT6MOS')
+                                                      Less than 6 months
+                                                  @else
+                                                      Greater than 6 months
+                                                  @endif
+                                              </span><br>
+                                              <span class="text-right" style="padding:0;margin:0;">
+                                                  @if($job->expired)
+                                                      <span class="badge" style="background-color: #E74C3C">EXPIRED</span>
+                                                  @else
+                                                      <i class="fa fa-clock-o"></i> Expires at {{ date('m/d/y', strtotime($job->expires_at)) }}
+                                                  @endif
+                                              </span>
+                                          </div>
+                                          <div class="col-md-8">
+                                              <span class="text-right" style="padding:0;margin:0;"><i class="fa fa-map-marker"></i> {{$job->regname}}, {{$job->cityname}}</span><br/>
+                                              <span class="text-right" style="padding:0;margin:0;"><b>P</b>{{$job->salary}}</span>
+                                          </div>
+                                      </div>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                          <br>
+                      @endforeach
+                  @endif
+                  <center>{{$jobs->links()}}</center>
+              </div>
+            </div>
+            
         </div>
-        <div class="col-md-6">
-            <center>Available Jobs</center><Br/>
-            @if($jobs->count() == 0)
-                <center><i>No jobs available at the time.</i></center>
-            @else
-                @foreach($jobs as $job)
-                    <div class="widget-container fluid-height padded wow fadeInUp" data-wow-duration=".3s" data-wow-offset="0" data-wow-delay="0" style="word-wrap: break-word; padding-left:10px; padding-right:10px; min-height: 50px;">
-                        <div style="display:flex;padding-bottom:5px">
-                            <span style="padding:0;margin:0; flex:1">
-                                <img src="{{ $job->profilePic }}" class="thumbnail" style="margin:0; width:64px; height:64px;" >
-                            </span>
-                            <div style="flex:11; padding-left: 5px;">
-                            <a href="/jbdtls={{$job->job_id}}" style="text-decoration:none;">
-                                <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:#2980b9">
-                                    {{ $job->title}} by {{ $job->fullName }}
-                                </h3>
-                                <div class="row" style="color:#95A5A6;">
-                                    <div class="col-md-4">
-                                        <span style="padding:0;margin:0;">
-                                            <i class="fa fa-briefcase"></i>
-                                            @if($job->hiring_type == 'LT6MOS')
-                                                Less than 6 months
-                                            @else
-                                                Greater than 6 months
-                                            @endif
-                                        </span><br>
-                                        <span class="text-right" style="padding:0;margin:0;">
-                                            @if($job->expired)
-                                                <span class="badge" style="background-color: #E74C3C">EXPIRED</span>
-                                            @else
-                                                <i class="fa fa-clock-o"></i> Expires at {{ date('m/d/y', strtotime($job->expires_at)) }}
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <span class="text-right" style="padding:0;margin:0;"><i class="fa fa-map-marker"></i> {{$job->regname}}, {{$job->cityname}}</span><br/>
-                                        <span class="text-right" style="padding:0;margin:0;"><b>P</b>{{$job->salary}}</span>
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                @endforeach
-            @endif
-            <center>{{$jobs->links()}}</center>
-        </div>
+
     </div>
 </section>
 @stop
