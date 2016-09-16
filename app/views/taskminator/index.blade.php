@@ -200,10 +200,10 @@
                         </div>                            
                     </div>
                     <div class="col-md-8 padded">
-                        <div class="heading" style="padding: 10px 0; text-align:center;">
-                            <a href="/editProfile" style="font-weight:bold; font-size:14pt;">{{ Auth::user()->fullName }}</a><br>
+                        <div class="heading" style="height:auto; padding: 5px 0 5px 0;">
+                            <a href="/editProfile" style="font-weight:bold; font-size:14pt; line-height: 1em;">{{ Auth::user()->fullName }}</a><br>
                         </div>
-                        {{--<span><b>Employment Status:</b> Not Hired</span><br>--}}
+                        <!-- <span><b>Employment Status:</b> Not Hired</span><br> -->
                         <span><b>Last Login:</b> {{@$LAST_LOGIN}}</span>
                     </div>
                     <!-- <div class="col-lg-12" style="padding-left:24px;">
@@ -289,8 +289,7 @@
                                                     @elseif($con->ctype == "businessNum") Business No.
                                                     @else {{ $con->ctype }} @endif
                                                 </span>
-                                                 :
-                                                <span style="margin-left: 5px">{{ $con->content }}</span>
+                                                : <span style="margin-left: 5px">{{ $con->content }}</span>
                                                 @if($con->ctype == "mobileNum")
                                                     @if(Contact::where('user_id',  Auth::user()->id)->pluck('pincode')!='verified')
                                                         {{--<button class="btn btn-xs btn-primary" onclick="location.href='/doVerifyMobileNumber'" style="padding: 2px 10px 2px 10px; margin: 5px; text-transform: none;">Verify</button>--}}
@@ -330,7 +329,7 @@
                                                     <span><b>Title of Training/Certificate: </b>{{ $c->title }}</span><br>
                                                     <span><b>Date Taken: </b>{{ $c->date }}</span><br>
                                                     <span><b>Organizer/Company: </b>{{ $c->organizer_company }}</span><br>
-                                                    <a href="/editCertification:{{$c->id}}" class="btn btn-success btn-xs">EDIT</a>
+                                                    <!-- <a href="/editCertification:{{$c->id}}" class="btn btn-success btn-xs">EDIT</a> -->
                                                     <hr/>
                                                 @endforeach
                                                 {{$certs->links()}}
@@ -532,12 +531,12 @@
                                         <div class="col-md-4" style="word-wrap: break-word;">
                                             <span><b>{{$e->level}}</b></span>
                                             <ul>
-                                                <li><b>School Name: </b>{{$e->school_name}}</li>
+                                                <li style="font-size: 15px;"><b>School Name: </b>{{$e->school_name}}</li>
                                                 @if($e->level == 'COLLEGE' || $e->level == 'VOCATIONAL')
-                                                    <li><b>Course/Major: </b>{{$e->course_major}}</li>
+                                                    <li style="font-size: 15px;"><b>Course/Major: </b>{{$e->course_major}}</li>
                                                 @endif
-                                                <li><b>School Year: </b>{{$e->school_year}}</li>
-                                                <li><b>Awards: </b>{{$e->awards}}</li>
+                                                <li style="font-size: 15px;"><b>School Year: </b>{{$e->school_year}}</li>
+                                                <li style="font-size: 15px;"><b>Awards: </b>{{$e->awards}}</li>
                                             </ul>
                                         </div>
                                     @endforeach
@@ -553,7 +552,7 @@
             <!-- Experiences/ SKILLS -->
             <div class="col-lg-8" style="padding-top: 19px;">
                 <div class="widget-container" style="min-height:30px; border:1px solid #e6e6e6">
-                    <div class="col-md-6">
+                    <div class="col-md-6">  
                         <div class="widget-content">
                             <div class="heading" style="font-size:14pt; color:#2980b9">
                                 <i class="fa fa-lightbulb-o" style="font-size:14pt; color:#2980b9"></i>&nbsp Experience
@@ -564,11 +563,11 @@
                                     @if($exp->count() > 0)
                                         @foreach($exp as $e)
                                             <ul>
-                                                <li><b>Position: </b>{{$e->position}}</li>
-                                                <li><b>Company Name: </b>{{$e->company_name}}</li>
-                                                <li><b>Location: </b> {{$e->location}}</li>
-                                                <li><b>Time Period: </b> {{$e->time_period}}</li>
-                                                <li><b>Roles and Responsibilities: </b>{{$e->roles_and_resp}}</li>
+                                                <li style="font-size: 15px;"><b>Position: </b>{{$e->position}}</li>
+                                                <li style="font-size: 15px;"><b>Company Name: </b>{{$e->company_name}}</li>
+                                                <li style="font-size: 15px;"><b>Location: </b> {{$e->location}}</li>
+                                                <li style="font-size: 15px;"><b>Time Period: </b> {{$e->time_period}}</li>
+                                                <li style="font-size: 15px;"><b>Roles and Responsibilities: </b>{{$e->roles_and_resp}}</li>
                                             </ul>
                                             <hr>
                                         @endforeach
@@ -609,11 +608,11 @@
             </div>
 
             <!-- Additional Info-->
-            <div class="col-lg-8" style="padding-top: 19px;">
+            <div class="col-lg-8" style="padding-top: 19px; float:right;">
                 <div class="widget-container" style="min-height:30px; border:1px solid #e6e6e6">
                     <div class="widget-content">
                         <div class="heading" style="font-size:14pt; color:#2980b9">
-                            <i class="fa fa-file" style="font-size:14pt; color:#2980b9"></i>&nbsp Supporting Documents
+                            <i class="fa fa-file" style="font-size:14pt; color:#2980b9;"></i>&nbsp Supporting Documents
                             <a class="btn btn-xs btn-default pull-right" href="/editDocuments" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</a>
                         </div>                        
                         <div class="panel-body" style="padding: 0 15px 15px;">

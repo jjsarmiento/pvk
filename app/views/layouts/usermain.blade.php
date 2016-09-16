@@ -260,6 +260,19 @@
                 </div>
             </div>
         <!-- END OF ADMIN -->
+
+        <!-- TASKMINATOR -->
+            @elseif ($role == 'TASKMINATOR')
+            <div class="col-sm-3 col-md-3 pull-left navbar-form">
+                <div class="input-group">
+                    <input data-url="" type="text" class="form-control input-trans srchAnim" value="{{@$keyword}}" placeholder="Search" required name="search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default btn-trans" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        <!-- END OF TASKMINATOR -->
+
         <!-- TASKMINATOR / WORKERS -->
             @elseif($role == 'TASKMINATOR')
                 @if(@$TOTALPROG >= 50)
