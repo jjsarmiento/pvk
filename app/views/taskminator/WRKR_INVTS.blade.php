@@ -130,13 +130,32 @@
               cursor: pointer;
               margin-left: 10px;
             }
+        .breadcrumb, .panel-heading, .heading{
+            background-color: rgba(245,245,245,0.7) !important;
+        }
+        .breadcrumb>li{
+            color: !important;
+        }
+
     </style>
 @stop
 
 @section('content')
 <section>
     <div class="container lato-text">
-        <div class="col-md-4">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/"><i class="fa fa-home"><span class="homeTitle">Home</span></i></a>
+                </li>
+                <li class="lato-text">
+                    Invites
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-3">
             <div class="widget-container stats-container" style="display:block !important;">
                 <div class="col-lg-12 lato-text">
                     <div class="number" style="color:#2980b9;">
@@ -149,7 +168,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             @if($jobs->count() != 0)
                 @foreach($jobs as $job)
                     <div class="widget-container fluid-height padded wow fadeInUp" data-wow-duration=".3s" data-wow-offset="0" data-wow-delay="0" style=" word-wrap: break-word; padding-left:1em; padding-right:10px; min-height: 1em; max-height: 10">
@@ -192,10 +211,12 @@
                     <br>
                 @endforeach
             @else
+              <div class="widget-container stats-container padded">
                 <center><i>
                     No Jobs posted yet.<br/>
-                    Click <a href="/createJob">here</a> to create jobs!
+                    <!-- Click <a href="/createJob">here</a> to create jobs! -->
                 </i></center>
+              </div>
             @endif
         </div>
     </div>

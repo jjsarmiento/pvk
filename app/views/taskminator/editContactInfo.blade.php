@@ -101,38 +101,38 @@
                         <form method="POST" action="/doEditContactInfo" id="editContactInfo">
                             @foreach($contacts as $contact)
                                 @if($contact->ctype == 'email')
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         Email : 
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <input placeholder="Input existing email example : james@email.com" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control" required="required" /><br/>
                                     </div>
                                 @elseif($contact->ctype == 'facebook')
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         Facebook : 
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <input placeholder="Input link to facebook account example : fb.com/proveek" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'linkedin')
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         LinkedIn : 
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <input placeholder="Place link to user's LinkedIn account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'mobileNum')
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         Mobile Number : 
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <input placeholder="Input existing mobile number for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'twitter')
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         Twitter : 
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <input placeholder="Place link to user's Twitter account" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @endif

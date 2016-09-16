@@ -180,7 +180,7 @@
                         @if($customSkill->count() > 0)
                             @foreach($customSkill as $cs)
                                 <p class="detele-cust-skills">
-                                    <span style="font-weight: bolder;">{{ $cs->skill }}</span> created by <a target="_tab" href="/viewUserProfile/{{$cs->userID}}">{{$cs->fullName}}</a>
+                                    <span style="font-weight: bolder;">{{ $cs->skill }}</span> created by <a style="color:white;" target="_tab" href="/viewUserProfile/{{$cs->userID}}">{{$cs->fullName}}</a>
                                     <i class="pull-right fa fa-trash DELETE-CUST-SKILL" data-href="/DELCSTSKLL={{$cs->customSkillID}}" style="cursor: pointer;"></i>
                                 </p>
                             @endforeach
