@@ -63,17 +63,12 @@
                         @else
                             N/A
                         @endif
-                        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante. Pellentesque vestibulum turpis at posuere pellentesque. Donec leo risus, dignissim at nisi at, congue dignissim dolor. Nullam ac feugiat massa. Nunc vel justo sem. Ut vestibulum congue est sit amet malesuada. Maecenas leo dui, bibendum vitae leo eget, tempor elementum ante.--}}
-                    </p>    
-                    <p>
-                        Cras nisl arcu, mollis id nisi et, facilisis viverra augue. Mauris ullamcorper enim quis sapien tristique, ornare dictum diam faucibus. Vivamus pharetra sit amet metus sit amet consectetur. Donec dictum eros vel augue lobortis lobortis. In interdum nisi turpis, non rhoncus lacus semper sit amet. Donec rutrum dolor libero, at commodo erat placerat nec. Proin cursus vulputate nibh et laoreet. Mauris ultrices nulla at velit euismod, ut dapibus purus aliquam.
-                    </p>     
+                    </p>
                     </hr>
 
                     <span>
                         <b>Business Address: </b>
                         {{$users->regname}}, {{$users->provname}}, {{$users->cityname}}, {{$users->cityname}}, {{$users->address}}
-                        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar accumsan arcu, a interdum eros sollicitudin porta. Nulla facilisi. Nunc feugiat venenatis nulla, non fringilla ante--}}
                     </span>
                     <br><br>
                 </div>
