@@ -1906,7 +1906,7 @@ class ClientIndiController extends \BaseController {
                 Session::flash('errorMsg', 'A document of this type has already been uploaded.');
                 return Redirect::back();
             }
-            
+
             /*
             $rules = array('file' => 'required|mimes:pdf,doc,docx');
             $validator = Validator::make(array('file'=> $doc_file), $rules);

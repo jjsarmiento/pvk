@@ -78,7 +78,7 @@ class HomeController extends BaseController {
             $RELEVANT_EXP = false;
 
             if(Auth::check()){
-                if($temp->total_profile_progress < 50 && !AdminController::IF_ADMIN_IS(['SUPER_ADMINISTRATOR', 'ADMINISTRATOR', 'SUPPORT'], Auth::user()->id)){
+                if(Auth::user()->id != $temp->id && $temp->total_profile_progress < 50 && !AdminController::IF_ADMIN_IS(['SUPER_ADMINISTRATOR', 'ADMINISTRATOR', 'SUPPORT'], Auth::user()->id)){
 //                    return Redirect::to('/');
                     return View::make('ERRORPAGE');
                 }
