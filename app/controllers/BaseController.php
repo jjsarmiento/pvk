@@ -404,12 +404,23 @@ class BaseController extends Controller {
         // skill
         $skill_count = TaskminatorHasSkill::where('user_id', $user->id)->count() + CustomSkill::where('created_by', $user->id)->count();
 
+        // CHECK ADDRESS
+        $reg = Region::where('regcode', $user->region)->pluck('regname');
+        $cty = City::where('citycode', $user->city)->pluck('cityname');
+        $prv = Province::where('provcode', $user->province)->pluck('provname');
+        $bgy = Barangay::where('bgycode', $user->barangay)->pluck('bgyname');
+        if($user->address && $reg && $cty && $prv && $bgy){
+            $full_address_flag = true;
+        }else{
+            $full_address_flag = false;
+        }
+
         // first 50% - 10 items
         $base = 0;
         $base = ($user->fullName    != null) ? ++$base : $base;
         $base = ($user->birthdate   != null) ? ++$base : $base;
         $base = ($user->gender      != null) ? ++$base : $base;
-        $base = ($user->address     != null) ? ++$base : $base;
+        $base = ($full_address_flag != null) ? ++$base : $base;
         $base = ($edu                   >=1) ? ++$base : $base;
         $base = ($exp                   >=1) ? ++$base : $base;
         $base = ($skill_count           >=1) ? ++$base : $base;

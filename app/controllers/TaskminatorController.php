@@ -1137,13 +1137,23 @@ class TaskminatorController extends \BaseController {
         $facebook = Contact::where('user_id', Auth::user()->id)->where('ctype', 'facebook')->pluck('content');
         $ARRAY = array();
 
+        $reg = Region::where('regcode', Auth::user()->region)->pluck('regname');
+        $cty = City::where('citycode', Auth::user()->city)->pluck('cityname');
+        $prv = Province::where('provcode', Auth::user()->province)->pluck('provname');
+        $bgy = Barangay::where('bgycode', Auth::user()->barangay)->pluck('bgyname');
+        if(Auth::user()->address && $reg && $cty && $prv && $bgy){
+            $full_address_flag = true;
+        }else{
+            $full_address_flag = false;
+        }
+
         array_push($ARRAY, ['content'  => ((Auth::user()->fullName)             ? $check.'Full Name'                : $close.'Full Name'),              'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->birthdate)            ? $check.'Birthdate'                : $close.'Birthdate'),              'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->gender)               ? $check.'Gender'                   : $close.'Gender'),                 'url'    => '/editPersonalInfo']);
-        array_push($ARRAY, ['content'  => ((Auth::user()->address)              ? $check.'Address'                  : $close.'Address'),                'url'    => '/editPersonalInfo']);
-        array_push($ARRAY, ['content'  => (($edu >= 3)                          ? $check.'Educational Background'   : $close.'Educational Background - Atleast 3 ('.$edu.' registered)'), 'url'    => '/editEducationalBackground']);
-        array_push($ARRAY, ['content'  => (($exp >= 2)                          ? $check.'Relevant Experience'      : $close.'Relevant Experience - Atleast 2('.$exp.' registered)'),    'url'    => '/editExperience']);
-        array_push($ARRAY, ['content'  => (($skill_count >= 4)                  ? $check.'Skills (At least 4 System/Custom Skill)'      : $close.'Skills (At least 4 System/Custom Skill) ('.$skill_count.' registered)'),    'url'    => '/editSkillInfo']);
+        array_push($ARRAY, ['content'  => (($full_address_flag)                 ? $check.'Address'                  : $close.'Address (Must have Region, City, Province and Barangay and Street Address)'),     'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => (($edu >= 3)                          ? $check.'Educational Background'   : $close.'Educational Background - Atleast 3 ('.$edu.' registered)'),   'url'    => '/editEducationalBackground']);
+        array_push($ARRAY, ['content'  => (($exp >= 2)                          ? $check.'Relevant Experience'      : $close.'Relevant Experience - Atleast 2('.$exp.' registered)'),       'url'    => '/editExperience']);
+        array_push($ARRAY, ['content'  => (($skill_count >= 4)                  ? $check.'Skills'                   : $close.'Skills (At least 4 System/Custom Skill) ('.$skill_count.' registered)'),    'url'    => '/editSkillInfo']);
         array_push($ARRAY, ['content'  => (($mobile)                            ? $check.'Mobile Number'            : $close.'Mobile Number'),          'url'    => '/editContactInfo']);
         array_push($ARRAY, ['content'  => (($email)                             ? $check.'Email'                    : $close.'Email'),                  'url'    => '/editContactInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Marital Status'           : $close.'Marital Status'),         'url'    => '/editPersonalInfo']);
