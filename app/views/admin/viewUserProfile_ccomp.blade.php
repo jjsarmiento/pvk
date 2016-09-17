@@ -214,7 +214,7 @@
                                         <i>No data available.</i><br/>
                                     @else
                                         @foreach($docs as $doc)
-                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a style="color: #ffffff" href="{{ $doc->path }}">{{ $doc->label }}</a><br/>
+                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a style="color: #ffffff" href="/{{ $doc->path }}">{{ $doc->label }}</a><br/>
                                         @endforeach
                                     @endif
                                 </div>
