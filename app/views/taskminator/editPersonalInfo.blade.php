@@ -266,19 +266,9 @@
                                 <h4 style="margin: 0;padding: 0;border-bottom: 1px solid #ECF0F1;padding-bottom: 0.6em;margin-bottom: 0.6em;"><i class="fa fa-edit" aria-hidden="true"></i> Profile Progress</h4>
                             </div>
                             <div class="panel-body" style="margin-top:-25px;">
-                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Full Name</a><br>
-                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Birthdate</a><br>
-                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Gender</a><br>
-                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Address</a><br>
-                                    <a href="/editEducationalBackground"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Educational Background - Atleast 3 (0 registered)</a><br>
-                                    <a href="/editExperience"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Relevant Experience - Atleast 2(0 registered)</a><br>
-                                    <a href="/editSkillInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Skills (At least 4 System/Custom Skill)</a><br>
-                                    <a href="/editContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Mobile Number</a><br>
-                                    <a href="/editContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Email</a><br>
-                                    <a href="/editPersonalInfo"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Marital Status</a><br>
-                                    <a href="/editProfile"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Profile Picture</a><br>
-                                    <a href="/editDocuments"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Supporting Documents - Atleast 2 (0 registered)</a><br>
-                                    <a href="/editPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Facebook</a><br>
+                                @foreach($prog as $r)
+                                    <a href="{{$r['url']}}">{{$r['content']}}</a><br/>
+                                @endforeach
                             </div>
                         </div>
                     </div>

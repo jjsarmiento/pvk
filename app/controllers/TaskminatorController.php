@@ -422,6 +422,7 @@ class TaskminatorController extends \BaseController {
 
     public function editPersonalInfo(){
         return View::make('taskminator.editPersonalInfo')
+                ->with('prog', TaskminatorController::WORKER_profileProgress())
                 ->with('user', Auth::user())
                 ->with('regions', Region::orderBy('regname', 'ASC')->get())
                 ->with('prov', Province::orderBy('provname', 'ASC')->where('regcode', Auth::user()->region)->get())
@@ -493,6 +494,7 @@ class TaskminatorController extends \BaseController {
 
     public function editContactInfo(){
         return View::make('taskminator.editContactInfo')
+            ->with('prog', TaskminatorController::WORKER_profileProgress())
             ->with('contacts', Contact::where('user_id', Auth::user()->id)->orderBy('content', 'DESC')->get());
     }
 
@@ -534,25 +536,26 @@ class TaskminatorController extends \BaseController {
 
     public function editSkillInfo(){
         $query = TaskminatorHasSkill::join('taskcategory', 'taskcategory.categorycode', '=', 'taskminator_has_skills.taskcategory_code')
-                ->join('taskitems', 'taskitems.itemcode', '=', 'taskminator_has_skills.taskitem_code')
-                ->where('taskminator_has_skills.user_id', Auth::user()->id)
-                ->select([
-                    'taskminator_has_skills.taskitem_code',
-                    'taskminator_has_skills.taskcategory_code',
-                    'taskminator_has_skills.user_id',
-                    'taskitems.itemname',
-                    'taskcategory.categoryname',
-                ])
-                ->get();
+            ->join('taskitems', 'taskitems.itemcode', '=', 'taskminator_has_skills.taskitem_code')
+            ->where('taskminator_has_skills.user_id', Auth::user()->id)
+            ->select([
+                'taskminator_has_skills.taskitem_code',
+                'taskminator_has_skills.taskcategory_code',
+                'taskminator_has_skills.user_id',
+                'taskitems.itemname',
+                'taskcategory.categoryname',
+            ])
+            ->get();
 
         $custom_skills = CustomSkill::get();
         $worker_cust_skills = CustomSkill::where('created_by', Auth::user()->id)->get();
         return View::make('taskminator.editSkillInfo')
-                ->with('skills', $query)
-                ->with('categories', TaskCategory::orderBy('categoryname', 'ASC')->get())
-                ->with('categorySkills', TaskItem::where('item_categorycode', '006')->orderBy('itemname', 'ASC')->get())
-                ->with('custom_skills', $custom_skills)
-                ->with('worker_cust_skills', $worker_cust_skills);
+            ->with('prog', TaskminatorController::WORKER_profileProgress())
+            ->with('skills', $query)
+            ->with('categories', TaskCategory::orderBy('categoryname', 'ASC')->get())
+            ->with('categorySkills', TaskItem::where('item_categorycode', '006')->orderBy('itemname', 'ASC')->get())
+            ->with('custom_skills', $custom_skills)
+            ->with('worker_cust_skills', $worker_cust_skills);
     }
 
     public function doEditSkillInfo(){
@@ -1027,30 +1030,31 @@ class TaskminatorController extends \BaseController {
     public function editDocuments(){
         $EXISTING_DOCUMENTS = $this->DOCUMENTS_GETEXISTINGTYPES(Auth::user()->id);
         $doc_types = DocumentType::orderBy('sys_doc_label', 'ASC')
-                        ->where('sys_doc_role', 'WORKER')
-                        ->where('sys_doc_disabled', false)
-                        ->whereNotIn('sys_doc_type', $EXISTING_DOCUMENTS)
-                        ->get();
+            ->where('sys_doc_role', 'WORKER')
+            ->where('sys_doc_disabled', false)
+            ->whereNotIn('sys_doc_type', $EXISTING_DOCUMENTS)
+            ->get();
 
         $user_docs = Document::leftJoin('document_types', 'document_types.sys_doc_type', '=', 'documents.type')
-                    ->where('documents.user_id', Auth::user()->id)
-                    ->select([
-                        'documents.id',
-                        'documents.user_id',
-                        'documents.created_at',
-                        'documents.path',
-                        'documents.docname',
-                        'documents.type',
-                        'documents.label',
-                        'document_types.sys_doc_label'
-                    ])
-                    ->orderBy('documents.created_at')
-                    ->paginate(10);
+            ->where('documents.user_id', Auth::user()->id)
+            ->select([
+                'documents.id',
+                'documents.user_id',
+                'documents.created_at',
+                'documents.path',
+                'documents.docname',
+                'documents.type',
+                'documents.label',
+                'document_types.sys_doc_label'
+            ])
+            ->orderBy('documents.created_at')
+            ->paginate(10);
 
 //        $user_docs = Document::get();
         return View::make('taskminator.editDocuments')
-                ->with('user_docs', $user_docs)
-                ->with('doc_types', $doc_types);
+            ->with('prog', TaskminatorController::WORKER_profileProgress())
+            ->with('user_docs', $user_docs)
+            ->with('doc_types', $doc_types);
     }
 
     public function doUploadDocumentsWRKR(){
@@ -1239,6 +1243,7 @@ class TaskminatorController extends \BaseController {
 
     public function editEducationalBackground(){
         return View::make('taskminator.editEducationalBackground')
+            ->with('prog', TaskminatorController::WORKER_profileProgress())
             ->with('educs', WorkerEducation::where('user_id', Auth::user()->id)->get());
     }
 
@@ -1305,6 +1310,7 @@ class TaskminatorController extends \BaseController {
 
     public function editExperience(){
         return View::make('taskminator.editExperience')
+            ->with('prog', TaskminatorController::WORKER_profileProgress())
             ->with('exps', WorkerExperience::where('user_id', Auth::user()->id)->get());
     }
 
@@ -1347,6 +1353,7 @@ class TaskminatorController extends \BaseController {
 
     public function certifications(){
         return View::make('taskminator.certifications')
+            ->with('prog', TaskminatorController::WORKER_profileProgress())
             ->with('certs', WorkerCertification::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(10));
     }
 
