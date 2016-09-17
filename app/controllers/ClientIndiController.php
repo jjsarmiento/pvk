@@ -1150,7 +1150,7 @@ class ClientIndiController extends \BaseController {
         $job = Job::join('taskcategory', 'jobs.skill_category_code', '=', 'taskcategory.categorycode')
             ->join('taskitems', 'jobs.skill_code', '=', 'taskitems.itemcode')
             ->leftJoin('regions', 'regions.regcode', '=', 'jobs.regcode')
-            ->leftJoin('barangays', 'barangays.bgycode', '=', 'jobs.bgycode')
+            ->leftJoin('provinces', 'provinces.provcode', '=', 'jobs.provcode')
             ->leftJoin('cities', 'cities.citycode', '=', 'jobs.citycode')
             ->where('jobs.id', $jobId)
             ->select([
@@ -1170,8 +1170,8 @@ class ClientIndiController extends \BaseController {
                 'jobs.expires_at',
                 'regions.regname',
                 'regions.regcode',
-                'barangays.bgyname',
-                'barangays.bgycode',
+                'provinces.provname',
+                'provinces.provcode',
                 'cities.cityname',
                 'cities.citycode',
                 'taskcategory.categoryname',
@@ -1327,7 +1327,7 @@ class ClientIndiController extends \BaseController {
                 ->with('categories',TaskCategory::orderBy('categoryname', 'ASC')->get())
                 ->with('skills', $skills)
                 ->with('regions', Region::all())
-                ->with('barangays', Barangay::where('citycode', $job->citycode)->orderBy('bgyname', 'ASC')->get())
+                ->with('provinces', Province::where('regcode', $job->regcode)->orderBy('provname', 'ASC')->get())
                 ->with('cities', City::where('regcode', $job->regcode)->orderBy('cityname', 'ASC')->get())
                 ->with('job',$job)
                 ->with('custom_skills',$custom_skills);
@@ -1342,7 +1342,7 @@ class ClientIndiController extends \BaseController {
             'skill_category_code'   =>  Input::get('taskcategory'),
             'skill_code'            =>  Input::get('taskitems'),
             'regcode'               =>  Input::get('region'),
-            'bgycode'               =>  Input::get('barangay'),
+            'provcode'              =>  Input::get('province'),
             'citycode'              =>  Input::get('city'),
             'hiring_type'           =>  Input::get('hiring_type'),
             'salary'                =>  Input::get('salary'),

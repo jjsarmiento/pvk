@@ -178,7 +178,7 @@
                             @endif
                         </div>
                         <div class="col-md-12">
-                            <label>Work Location : </label>{{ $job->cityname }}, {{ $job->regname }}
+                            <label>Work Location : </label>{{ $job->regname }}, {{$job->provname}}, {{ $job->cityname }}
                         </div>
                         @if($job->salary != 0)
                             <div class="col-md-12">

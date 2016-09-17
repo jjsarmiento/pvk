@@ -45,7 +45,8 @@
         $(document).ready(function(){
 
             locationChain($('#region'), $('#city'),$('#JOBEDITFORM'), '/chainRegion');
-            locationChain($('#city'), $('#barangay'),$('#JOBEDITFORM'), '/chainCity');
+            CHAINLOCATION($('#region'), $('#province'));
+            CHAINLOCATION($('#province'), $('#city'));
 
             $('#taskcategory').change(function(){
                 $('#taskitems').empty();
@@ -128,24 +129,24 @@
                             <br/><br/>
 
                             <div class="col-md-4">
-                                City
+                                Province
                             </div>
                             <div class="col-md-8">
-                                <select class="form-control" required="required" name="city" id="city">
-                                    @foreach($cities as $city)
-                                        <option value="{{ $city->citycode }}" <?php if($job->citycode == $city->citycode){ echo('selected'); } ?>>{{ $city->cityname }}</option>
+                                <select class="form-control" required="required" name="province" id="province" data-loctype="REGION_TO_PROVINCE" data-loctypeother="PROVINCE_TO_CITY">
+                                    @foreach($provinces as $prov)
+                                        <option value="{{ $prov->provcode }}" <?php if($job->provcode == $prov->provcode){ echo('selected'); } ?>>{{ $prov->provname }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <br/><br/>
 
                             <div class="col-md-4">
-                                Barangay
+                                City
                             </div>
                             <div class="col-md-8">
-                                <select class="form-control" required="required" name="barangay" id="barangay">
-                                    @foreach($barangays as $bgy)
-                                        <option value="{{$bgy->bgycode}}" <?php  if($job->bgycode == $bgy->bgycode){ echo('selected'); } ?>>{{ $bgy->bgyname }}</option>
+                                <select class="form-control" required="required" name="city" id="city">
+                                    @foreach($cities as $city)
+                                        <option value="{{ $city->citycode }}" <?php if($job->citycode == $city->citycode){ echo('selected'); } ?>>{{ $city->cityname }}</option>
                                     @endforeach
                                 </select>
                             </div>
