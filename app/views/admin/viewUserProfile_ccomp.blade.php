@@ -139,12 +139,12 @@
                                     <i class="glyphicon glyphicon-info-sign"></i>General Information
                                 </div>
                                 <div style="padding: 0 12px; color:#dddddd;">
-                                    <span><b>Business Description: </b>{{Auth::user()->businessDescription}}</span><br>
-                                    <span><b>Business Nature:</b> {{Auth::user()->businessNature}}</span><br>
-                                    <span><b>Business Permit:</b> {{Auth::user()->businessPermit}}</span><br>
-                                    <span><b>Business Address:</b> {{Auth::user()->address}}</span><br>
-                                    <span><b>Years in Operation:</b> {{Auth::user()->years_in_operation}}</span><br>
-                                    <span><b>Company Size:</b> {{Auth::user()->number_of_branches}}</span><br>
+                                    <span><b>Business Description: </b>{{$user->businessDescription}}</span><br>
+                                    <span><b>Business Nature:</b> {{$user->businessNature}}</span><br>
+                                    <span><b>Business Permit:</b> {{$user->businessPermit}}</span><br>
+                                    <span><b>Business Address:</b> {{ $address }} - {{ $user->address }} </span><br>
+                                    <span><b>Years in Operation:</b> {{$user->years_in_operation}}</span><br>
+                                    <span><b>Number of Branches:</b> {{$user->number_of_branches}}</span><br>
                                     {{--<span><b>Description:</b> Client Company Description</span><br>--}}
                                 </div>
                                 <br>
@@ -159,10 +159,17 @@
                                 </div>
                                 <br>
                                 <div class="heading" style="font-size:14pt;">
-                                    <i class="fa fa-file-text-o" style="margin-right: 10px;"></i>Licensed
+                                    <i class="fa fa-file-text-o" style="margin-right: 10px;"></i>License
                                 </div>
                                 <div style="padding: 0 12px; color:#dddddd;">
-                                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</span>
+                                    @if($lisc->count() > 0)
+                                        @foreach($lisc as $l)
+                                            <span><i class="fa fa-check-circle" style="color: #2ECC71;"></i>&nbsp;{{$l->label}}</span><br/>
+                                        @endforeach
+                                    @else
+                                        <center>N/A</center>
+                                    @endif
+                                    {{--<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</span>--}}
                                 </div>
                             </div>
                             <div style="clear:both;"></div>
@@ -178,12 +185,6 @@
                                         <span style="text-transform: capitalize; color: white; margin-right: 5px;"><b>{{ $conts->ctype }}</b></span>
                                          : {{ $conts->content }}<br/>
                                     @endforeach
-                                    <span style="text-transform: capitalize; color:white; margin-right: 5px;"><b>Facebook</b></span>
-                                    : <span style="margin-left: 5px">N/A</span><br/>
-                                    <span style="text-transform: capitalize; color:white; margin-right: 5px;"><b>Twitter</b></span>
-                                    : <span style="margin-left: 5px">N/A</span><br/>
-                                    <span style="text-transform: capitalize; color:white; margin-right: 5px;"><b>Linkedin</b></span>
-                                    : <span style="margin-left: 5px">N/A</span><br/>
                                 </div>
                                 <br>
                             </div>
@@ -193,27 +194,10 @@
                                     <i class="glyphicon glyphicon-phone"></i>Key Person
                                 </div>
                                 <div style="padding: 0 12px; color:#dddddd;">
-                                    @foreach($keyperson as $ks)
-                                        <!-- <span style="text-transform: capitalize; color: white; margin-right: 5px;">Name</span>
-                                         : <span style="margin-left: 5px">{{ $ks->firstName }} {{ $ks->midName }} {{ $ks->lastName }}</span><br/>
-                                        <span style="text-transform: capitalize; color: white; margin-right: 5px;">Contact #</span>
-                                         : <span style="margin-left: 5px">{{ $ks->contactNum }}</span><br/>
-                                        <span style="text-transform: capitalize; color: white; margin-right: 5px;">Email</span>
-                                         : <span style="margin-left: 5px">{{ $ks->email }}</span><br/>
-                                        <span style="text-transform: capitalize; color: white; margin-right: 5px;">Position</span>
-                                         : <span style="margin-left: 5px">{{ $ks->position}}</span><br/>
-                                        <br/> -->
-                                    @endforeach
-
-                                    <span style="text-transform: capitalize; color:white; margin-right: 5px;"><b>Name</b></span>
-                                    : <span style="margin-left: 5px">Lorem Ipsum</span><br/>
-                                    <span style="text-transform: capitalize; color:white; margin-right: 5px;"><b>Position</b></span>
-                                    : <span style="margin-left: 5px">Sit dolor amet</span><br/>
-                                    <span style="text-transform: capitalize; color:white; margin-right: 5px;"><b>Email</b></span>
-                                    : <span style="margin-left: 5px">lorem@ipsum.com</span><br/>
-                                    <span style="text-transform: capitalize; color:white; margin-right: 5px;"><b>Contact #</b></span>
-                                    : <span style="margin-left: 5px">N/A</span><br/>
-
+                                    <span><b>Name: </b></span> {{(@$cperson->name) ? $cperson->name : 'N/A' }}<br>
+                                    <span><b>Position: </b></span> {{ (@$cperson->position) ? $cperson->position : 'N/A' }}<br>
+                                    <span><b>Contact #: </b></span> {{ (@$cperson->contact_number) ? $cperson->contact_number : 'N/A' }}<br>
+                                    <span><b>Email: </b> {{ (@$cperson->email) ? $cperson->email : 'N/A' }}</span>
                                 </div>
                             </div>
 
@@ -221,7 +205,7 @@
                             <hr class="hrLine" />
 
 
-                            <div class="col-md-6" style="color:white;">
+                            <div class="col-md-6" style="color: #ffffff">
                                 <div class="heading">
                                     <i class="glyphicon glyphicon-folder-open"></i>Supporting Documents
                                 </div>
@@ -230,12 +214,13 @@
                                         <i>No data available.</i><br/>
                                     @else
                                         @foreach($docs as $doc)
-                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a href="{{ $doc->path }}">{{ $doc->docname }}</a><br/>
+                                            <i class="glyphicon glyphicon-download" style="top: 2px;"></i> &nbsp;&nbsp;<a style="color: #ffffff" href="{{ $doc->path }}">{{ $doc->label }}</a><br/>
                                         @endforeach
                                     @endif
                                 </div>
                                 <br>
                             </div>
+                            <!--
                             <div class="col-md-6" style="color:white;">
                                 <div class="heading">
                                     <i class="glyphicon glyphicon-folder-open"></i>Photos
@@ -250,7 +235,7 @@
                                     @endif
                                 </div>
                             </div>
-
+                            -->
                         </div>
                         <div style="clear:both;"></div>
                     </div>

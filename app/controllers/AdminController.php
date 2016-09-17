@@ -107,6 +107,7 @@ class AdminController extends \BaseController {
             Auth::logout();
             return Redirect::to('/');
         }else if(UserHasRole::where('user_id', $id)->pluck('role_id') == '2'){
+            // WORKER PROFILE
             $maxStars = Rate::where('taskminator_id', $id)->max('stars');
             $starCount = Rate::where('taskminator_id', $id)->count();
 
@@ -136,9 +137,18 @@ class AdminController extends \BaseController {
                 ->with('docs', Document::where('user_id', $id)->get())
                 ->with('photos', Document::where('user_id', $id));
         }else if(UserHasRole::where('user_id', $id)->pluck('role_id') == '4'){
+            // CLIENT PROFILE
+            $user = User::where('id', $id)->first();
+            $regn = Region::where('regcode', $user->region)->pluck('regname');
+            $prov = Province::where('provcode', $user->province)->pluck('provname');
+            $brgy = Barangay::where('bgycode', $user->barangay)->pluck('bgyname');
+            $city = City::where('citycode', $user->city)->pluck('cityname');
+            $address = $regn.', '.$prov.', '.$city.', '.$brgy;
             return View::make('admin.viewUserProfile_ccomp')
-                ->with('user', User::where('id', $id)->first())
-                ->with('keyperson', ContactPerson::where('user_id', $id)->get())
+                ->with('address', $address)
+                ->with('user', $user)
+                ->with('lisc', Document::where('user_id', $user->id)->whereIn('type', ['POEA_LICENSE', 'DOLE_LICENSE'])->get())
+                ->with('cperson', ContactPerson::where('user_id', $id)->first())
                 ->with('photos', Photo::where('user_id', $id)->get())
                 ->with('docs', Document::where('user_id', $id)->get())
                 ->with('miscDocs', Document::where('user_id', $id)->whereNotIn('type', ['KEYSKILLS', 'DOCUMENT'])->get());
