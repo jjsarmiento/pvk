@@ -56,27 +56,26 @@
     <section>
         <div class="container main-content lato-text">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="widget-container fluid-height padded">
-                        <div class="widget-content"></div>
-                    </div>
-                </div>
-                <div class="col-md-8">
+                <div class="col-md-8 col-md-offset-4">
                     <div class="widget-container fluid-height" style="padding: 0.5em;">
                         <div class="widget-content">
-                            @foreach($notifs as $n)
-                                <a href="/n_{{$n->id}}:{{$n->notif_url}}" style="text-decoration: none;">
-                                    @if($n->status == 'NEW')
-                                        <div class="item-new">
-                                            {{$n->content}}
-                                    @else
-                                        <div class="item">
-                                            {{$n->content}}
-                                    @endif
-                                        <Br/><span style="font-size: 0.8em; color: #7F8C8D;">{{ date('D M j, Y \a\t g:ia', strtotime($n->created_at)) }}</span>
-                                        </div>
-                                </a>
-                            @endforeach
+                            @if($notifs->count() > 0)
+                                @foreach($notifs as $n)
+                                    <a href="/n_{{$n->id}}:{{$n->notif_url}}" style="text-decoration: none;">
+                                        @if($n->status == 'NEW')
+                                            <div class="item-new">
+                                                {{$n->content}}
+                                        @else
+                                            <div class="item">
+                                                {{$n->content}}
+                                        @endif
+                                            <Br/><span style="font-size: 0.8em; color: #7F8C8D;">{{ date('D M j, Y \a\t g:ia', strtotime($n->created_at)) }}</span>
+                                            </div>
+                                    </a>
+                                @endforeach
+                            @else
+                                <center><i>No notifications</i></center>
+                            @endif
                         </div>
                     </div>
                     <center>{{$notifs->links()}}</center>

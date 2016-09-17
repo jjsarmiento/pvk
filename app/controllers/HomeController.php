@@ -939,7 +939,6 @@ class HomeController extends BaseController {
                     $full_add .= ($prv) ? $prv.', ' : '';
                     $full_add .= ($cty) ? $cty.', ' : '';
                     $full_add .= ($bgy) ? $bgy.' - ' : '';
-                    
                     return View::make('taskminator.index')
 //                            ->with('user_complete_address', $reg.', '.$prv.', '.$cty.', '.$bgy)
                             ->with('user_complete_address', $full_add)
