@@ -926,9 +926,23 @@ class HomeController extends BaseController {
                     $applicationCount = JobApplication::where('applicant_id', Auth::user()->id)->count();
                     $invitesCount = JobInvite::where('invited_id', Auth::user()->id)
                                         ->whereNotIn('job_id', $this->GETAPPLICATIONS_ID(Auth::user()->id))->count();
-                    $hired = JobHiredWorker::where('worker_id', Auth::user()->id)->count();
                     // NEW JOB MODULE -- END by JAN SARMIENTO
+
+                    // MANIPULATE COMPLETE ADDRESS STRING - JAN SARMIENTO
+                    $hired = JobHiredWorker::where('worker_id', Auth::user()->id)->count();
+                    $reg = Region::where('regcode', Auth::user()->region)->pluck('regname');
+                    $prv = Province::where('provcode', Auth::user()->province)->pluck('provname');
+                    $cty = City::where('citycode', Auth::user()->city)->pluck('cityname');
+                    $bgy = Barangay::where('bgycode', Auth::user()->barangay)->pluck('bgyname');
+                    $full_add = '';
+                    $full_add .= ($reg) ? $reg.', ' : '';
+                    $full_add .= ($prv) ? $prv.', ' : '';
+                    $full_add .= ($cty) ? $cty.', ' : '';
+                    $full_add .= ($bgy) ? $bgy.' - ' : '';
+                    
                     return View::make('taskminator.index')
+//                            ->with('user_complete_address', $reg.', '.$prv.', '.$cty.', '.$bgy)
+                            ->with('user_complete_address', $full_add)
                             ->with('LAST_LOGIN', $LAST_LOGIN)
                             ->with('prof_prog', TaskminatorController::WORKER_profileProgress())
                             ->with('certs', WorkerCertification::where('user_id',Auth::user()->id)->paginate(10))

@@ -271,7 +271,7 @@
                                             <i class="glyphicon glyphicon-map-marker" style="font-size:14pt; color:#2980b9"></i>&nbsp Personal Information <button onclick="location.href='/editPersonalInfo'" class="btn btn-xs btn-default pull-right border: 1px solid #2980b9;" style="padding: 2px 10px 2px 10px; text-transform: none; border: 1px solid #2980b9;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                                         </div>     
                                         <div class="panel-body">
-                                            <span><b>Address:</b> {{Auth::user()->address}}</span><br>
+                                            <span><b>Address:</b> {{$user_complete_address}} {{Auth::user()->address}}</span><br>
                                             <span><b>Birthdate:</b> {{Auth::user()->birthdate}}</span><br>
                                             <span><b>Gender:</b> {{Auth::user()->gender}}</span><br>
                                             <span><b>Marital Status:</b> {{Auth::user()->marital_status}}</span><br>
