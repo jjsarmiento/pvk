@@ -667,6 +667,7 @@ class ClientIndiController extends \BaseController {
             $formUrl = '/doCltEditPersonalInfo';
         }
         return View::make('client.editPersonalInfo')
+            ->with('prog', ClientIndiController::EMPLOYER_profileProgress())
             ->with('user', Auth::user())
             ->with('prov', Province::orderBy('provname', 'ASC')->where('regcode', Auth::user()->region)->get())
             ->with('regions', Region::orderBy('regname', 'ASC')->get())
@@ -749,6 +750,7 @@ class ClientIndiController extends \BaseController {
         }
 
         return View::make('client.editContactInfo')
+            ->with('prog', ClientIndiController::EMPLOYER_profileProgress())
             ->with('contacts', Contact::where('user_id', Auth::user()->id)->get())
             ->with('formUrl',   $formUrl);
     }
@@ -1854,8 +1856,9 @@ class ClientIndiController extends \BaseController {
             ->paginate(10);
 
         return View::make('client.editDocumentsCMP')
-                ->with('user_docs', $user_docs)
-                ->with('doc_types', $doc_types);
+            ->with('prog', ClientIndiController::EMPLOYER_profileProgress())
+            ->with('user_docs', $user_docs)
+            ->with('doc_types', $doc_types);
     }
 
     public function doUploadDocumentsCMP(){

@@ -169,24 +169,9 @@
                                 <h4 style="margin: 0;padding: 0;border-bottom: 1px solid #ECF0F1;padding-bottom: 0.6em;margin-bottom: 0.6em;"><i class="fa fa-edit" aria-hidden="true"></i> Profile Progress</h4>
                             </div>
                             <div class="panel-body" style="padding-top: 0px; margin-top: -5px;">
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Company Name / Business Name</a><br>
-                                <a href="/editProfile"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Profile Picture / Company Logo</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Region</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Province</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;City</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Barangay</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Permit</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Description</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Nature</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Years in Operation</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Number Of Branches</a><br>
-                                <a href="/editContactPerson"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;Contact Person Position</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Number Of Employees</a><br>
-                                <a href="/cltEditPersonalInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Working Hours</a><br>
-                                <a href="/cltEditContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Mobile Number</a><br>
-                                <a href="/cltEditContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Business Mobile Number</a><br>
-                                <a href="/cltEditContactInfo"><i style="color: #1ABC9C; font-size: 1.2em" class="fa fa-check-circle"></i>&nbsp;&nbsp;Email</a><br>
-                                <a href="/editDocumentsCMP"><i style="color: #E74C3C; font-size: 1.2em" class="fa fa-close"></i>&nbsp;&nbsp;POEA License / DOLE License</a><br>
+                                @foreach($prog as $r)
+                                    <a href="{{$r['url']}}">{{$r['content']}}</a><br/>
+                                @endforeach
                             </div>
                         </div>
                     </div>

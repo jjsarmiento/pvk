@@ -2109,6 +2109,7 @@ class HomeController extends BaseController {
 
     public function editContactPerson(){
         return View::make('client.editContactPerson')
+            ->with('prog', ClientIndiController::EMPLOYER_profileProgress())
             ->with('cperson', ContactPerson::where('user_id', Auth::user()->id)->first());
     }
 
