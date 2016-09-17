@@ -286,7 +286,7 @@
                     <div class="widget-container weather" style="min-height: 1em; box-shadow:none;">
                         <div class="widget-content">
                             <div class="padded text-center" style="min-height:30px; text-align:left; color:#2980b9; font-size:18pt;">
-                                <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbspYour Status : <a href="/cprofileProgress"><b>{{ Auth::user()->total_profile_progress }}%</b></a> | {{$subscription_msg}}
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbspYour Status : <a href="/cprofileProgress"><b>{{ floor(Auth::user()->total_profile_progress) }}%</b></a> | {{$subscription_msg}}
                                 <div class="widget-content">
                                     <div class="padded text-center" style="font-size:18pt; padding: 10px 0 0;">
                                         <div id="progressbar">

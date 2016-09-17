@@ -126,7 +126,7 @@
                                         Mobile Number : 
                                     </div>
                                     <div class="col-md-8">
-                                        <input placeholder="Input existing mobile number for business" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
+                                        <input placeholder="Input existing mobile number for business" required="required" type="text" name="{{$contact->ctype}}" value="{{$contact->content}}" class="form-control"/><br/>
                                     </div>
                                 @elseif($contact->ctype == 'twitter')
                                     <div class="col-md-4">

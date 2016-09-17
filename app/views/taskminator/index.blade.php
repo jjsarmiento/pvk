@@ -229,7 +229,7 @@
                                 <div class="panel filter-categories">
                                     <div class="panel-body">
                                         <div class="padded" style="color:#2980b9; font-size:20pt;">
-                                            <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbspYour Status : <a href="/wprofileProgress" style="font-weight: bold">{{ Auth::user()->total_profile_progress }}%</a>
+                                            <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbspYour Status : <a href="/wprofileProgress" style="font-weight: bold">{{ floor(Auth::user()->total_profile_progress) }}%</a>
 
                                             <div class="padded text-center" style="padding:10px 0 0; color:#2980b9; font-size:18pt;">
                                                 <div id="progressbar">
