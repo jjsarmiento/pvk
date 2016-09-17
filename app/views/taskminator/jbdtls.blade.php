@@ -248,7 +248,7 @@
                     {{$hasInvite->message}}
                 </div><br/>
             @endif
-
+            <br/><br/>
             @if($application)
                 @if(!$HIRED)
                     <div class="widget-container padded" style="min-height: 10px; display:block !important;">
