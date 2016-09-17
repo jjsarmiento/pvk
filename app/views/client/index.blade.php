@@ -215,7 +215,7 @@
                             <a href="/editProfile" style="font-weight:bold; font-size:14pt;">{{ Auth::user()->companyName }}</a><br>
                         </div>
                         <div class="col-md-6">
-                            <span><b>Nature of Employer :</b> Company</span><br>
+                            <span><b>Nature of Employer :</b> {{ Auth::user()->businessNature }}</span><br>
                         </div>
                         <div class="col-md-6">
                             <span><b>Last Login :</b> {{@$LAST_LOGIN}}</span>
