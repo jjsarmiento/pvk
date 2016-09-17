@@ -206,7 +206,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="city">City</label>
+                                                <label for="city">City/Municipality</label>
                                                 <select name="city" id="city" required="required" class="form-control">
                                                     @if(Input::old('region'))
                                                         @foreach(City::where('regcode', Input::old('region'))->orderBy('cityname', 'ASC')->get() as $city)

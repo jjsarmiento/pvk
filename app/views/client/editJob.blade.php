@@ -141,7 +141,7 @@
                             <br/><br/>
 
                             <div class="col-md-4">
-                                City
+                                City/Municipality
                             </div>
                             <div class="col-md-8">
                                 <select class="form-control" required="required" name="city" id="city">
