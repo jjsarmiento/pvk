@@ -447,7 +447,10 @@
                                             <b style="color: #3498DB;">{{'@'.$user->username}}</b>
                                         </a>
                                     </td>
-                                    <td>{{ date('D, M j, Y \a\t g:ia', strtotime($user->created_at)) }}</td>
+                                    <td>
+                                        {{ date('D, M j, Y \a\t g:ia', strtotime($user->created_at)) }}<br/>
+                                        {{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}
+                                    </td>
                                     <td><b>{{$user->status}}</b></td>
                                     <td>
                                         @if($user->status == 'ACTIVATED')
