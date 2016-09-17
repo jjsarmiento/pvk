@@ -383,7 +383,7 @@ class BaseController extends Controller {
             'total_profile_progress' =>  $FINAL_PERCENTAGE
         ]);
 
-        return $FINAL_PERCENTAGE;
+        return floor($FINAL_PERCENTAGE);
     }
 
     public static function PROVEEK_PROFILE_PERCENTAGE_WORKER($user_id){
@@ -449,7 +449,7 @@ class BaseController extends Controller {
             'total_profile_progress' =>  $FINAL_PERCENTAGE
         ]);
 
-        return $FINAL_PERCENTAGE;
+        return floor($FINAL_PERCENTAGE);
 
         /*
         // 1st 50%
