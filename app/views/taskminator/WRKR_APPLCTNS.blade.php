@@ -146,7 +146,7 @@
                 </li>
             </ul>
 
-            <div class="col-md-12 widget-container stats-container padded">
+            <div class="col-md-12 widget-container stats-container fluid-height padded">
               <div class="col-md-6">
                   <center>Applications</center><br/>
                   @if($applications->count() == 0)
