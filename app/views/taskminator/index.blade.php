@@ -506,7 +506,7 @@
                                             </div>
                                         @endforeach
                                     @else
-                                        <center><i>No jobs applicable to your skills!</i></center>
+                                        <center><i>No jobs applicable to your skills!<br/> <a href="/editSkillInfo">Click here to edit your skills</a></i></center>
                                     @endif
                                 </div>
                             </div>

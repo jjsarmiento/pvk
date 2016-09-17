@@ -1071,24 +1071,35 @@ class TaskminatorController extends \BaseController {
             $file_label = $doc_label.' - '.Auth::user()->fullName;
             $file_name = md5(uniqid(time(), true)).'.'.$doc_file->getClientOriginalExtension();
 
-            // INITIALIZE UPLOAD
-            $INIT_UPLOAD = $doc_file->move('public/'.$destinationPath, $file_name);
+            $doc_check = Document::where('user_id', Auth::user()->id)
+                ->where('docname', $file_name)
+                ->where('label', $file_label)
+                ->where('type', $doc_type)
+                ->count();
 
-            Document::insert([
-                'user_id'       =>  Auth::user()->id,
-                'docname'       =>  $file_name,
-                // PATH FOR LOCALHOST
-                // 'path'          =>  $destinationPath.'/'.$file_name,
-                // PATH FOR LIVE SITE
-                'path'          =>  'public/'.$destinationPath.'/'.$file_name,
-                'label'         =>  $file_label,
-                'type'          =>  $doc_type,
-                'created_at'    =>  date("Y:m:d H:i:s"),
-            ]);
+            if($doc_check == 0){
+                // INITIALIZE UPLOAD
+                $INIT_UPLOAD = $doc_file->move('public/'.$destinationPath, $file_name);
 
-            Session::flash('successMsg', 'Document has been uploaded!');
-            $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Uploaded document - '.$doc_label);
-            return Redirect::back();
+                Document::insert([
+                    'user_id'       =>  Auth::user()->id,
+                    'docname'       =>  $file_name,
+                    // PATH FOR LOCALHOST
+                    // 'path'          =>  $destinationPath.'/'.$file_name,
+                    // PATH FOR LIVE SITE
+                    'path'          =>  'public/'.$destinationPath.'/'.$file_name,
+                    'label'         =>  $file_label,
+                    'type'          =>  $doc_type,
+                    'created_at'    =>  date("Y:m:d H:i:s"),
+                ]);
+
+                Session::flash('successMsg', 'Document has been uploaded!');
+                $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Uploaded document - '.$doc_label);
+                return Redirect::back();
+            }else{
+                Session::flash('errorMsg', 'A document of this type has already been uploaded.');
+                return Redirect::back();
+            }
         }
     }
 
