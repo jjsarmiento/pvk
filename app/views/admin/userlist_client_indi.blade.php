@@ -432,7 +432,7 @@
                     <div class="tg-wrap">
                         <table class="tg table table-hover" style="background:white;">
                             <thead>
-                                <th class="tg-yw4l">Name @Username</th>
+                                <th class="tg-yw4l">Name / @username</th>
                                 <th class="tg-yw4l">Date of Registration</th>
                                 <th class="tg-yw4l">Account Status</th>
                                 <th class="tg-yw4l">Action</th>
@@ -443,7 +443,8 @@
                                 <tr>
                                     <td>
                                         <a href="/viewUserProfile/{{$user->id}}" style="font-weight: bolder;">
-                                            {{ $user->fullName }} {{'@'.$user->username}}
+                                            {{ $user->fullName }}<br/>
+                                            <b style="color: #3498DB;">{{'@'.$user->username}}</b>
                                         </a>
                                     </td>
                                     <td>{{ date('D, M j, Y \a\t g:ia', strtotime($user->created_at)) }}</td>
