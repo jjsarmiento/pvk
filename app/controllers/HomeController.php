@@ -851,9 +851,9 @@ class HomeController extends BaseController {
     }
 
     public function index(){
-//        if(Carbon::now() < Carbon::parse('2016/09/21') && !Auth::check()){
-//            return View::make('comingsoon');
-//        }
+        if(Carbon::now() < Carbon::parse('2016/09/21') && !Auth::check()){
+            return View::make('comingsoon');
+        }
 
         $this->UPDATE_JOBADS_GLOBAL();
         if(Auth::check()){
