@@ -476,9 +476,9 @@ Route::get('/test', 'HomeController@TESTINGROUTE'); // TESTING
 Route::get('/{username}', 'HomeController@toProfile'); // new profile page viewer
 
 // THIS FUNCTION IS FOR ROUTE PROTECTION - IT REDIRECTS THE SYSTEM WHEN cTHE ROUTE/METHOD IS NOT FOUND AND/OR DOESN'T EXIST - Jan Sarmiento
-//App::missing(function(){
-//    return View::make('ERRORPAGE');
-//});
+App::missing(function(){
+    return View::make('ERRORPAGE');
+});
 
 // THIS FUNCTION REDIRECTS USER TO INDEX or '/' IF THE PAGE MAKES AN ERROR - Jan Sarmiento
 //App::error(function(Exception $exception, $code){
