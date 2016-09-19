@@ -648,6 +648,7 @@
             location.href = '/workercategory:'+title+':'+workDuration+':'+region+':'+city+':'+category+':'+skill+':'+orderBy;
         });
         CHAINLOCATION($('#region'), $('#city'));
+        CHAINCATEGORYANDSKILL($('#category'), $('#skill'));
 	});
 
 	</script>
