@@ -227,6 +227,7 @@
         	padding:20px;
         }
 
+
     </style>
     <!-- END OF STYLE -->
 </head>
@@ -254,6 +255,14 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        {{ HTML::link('/', 'Worker')}}
+                    </li>
+
+                    <li>
+                        {{ HTML::link('/employer', 'Employer')}}
+                    </li>
+
+                    <li>
                        <!--  <a class="" href="HowItWorks.html">How It Works</a> -->
                         {{ HTML::link('/howitworks', 'How It Works')}}
 
@@ -264,14 +273,25 @@
                          {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}
 
                     </li>
-                    <li class = "active">
+                    <!-- <li>
+                         <a class="" href="Pricing.html">Pricing</a>
+                        {{ HTML::link('/pricing', 'Pricing')}}
+                    </li> -->
+                    <li>
+                        {{ HTML::link('/faq', 'Faq')}}
+                    </li>
+
+                    <li class="active">
                         <a class="page-scroll" href="#page-top">Job Ads Category</a>
                         <!-- {{ HTML::link('/pricing', 'Pricing')}} -->
                     </li>
+
                     <li>
-                          {{ HTML::link('/login', 'Sign In')}}
+                        <!--<a class="" href="#">Login / Sign Up</span></a> -->
+                        {{ HTML::link('/login', 'Sign In')}}
                     </li>
                 </ul>
+
             </div>
         </div>
         <!-- /.container-fluid -->
@@ -288,9 +308,63 @@
                         {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec odio mauris. Vestibulum ante ipsum primis in faucibus orci mollis lorem vel ultricies.--}}
                     </p>
 
-                    <div class="col-md-12">
+
+                    <div class="col-md-5 padded" style="height: auto; text-align:left; color:#000; font-family: 'Lato';">
+                        <div class="widget-container padded" style="min-height: 320px; border-radius: 10px; margin-top: -10px;">
+                            <div class="form-group col-md-6">
+                                <label>Keyword</label>
+                                <input value="" name="jobSearch_keyword" id="jobSearch_keyword" type="text" placeholder="Enter keyword for title / custom skill" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Work Duration</label>
+                                <select id="jobSearch_workDuration" name="jobSearch_workDuration" class="form-control">
+                                    <option selected="" value="ALL">All duration</option>
+                                    <option value="LT6MOS">Less than 6 months</option>
+                                    <option value="GT6MOS">Greater than 6 months</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Region</label>
+                                <select id="jobSearch_region" name="jobSearch_region" data-loctype="REGION_TO_CITY" class="form-control">
+                                    <option value="ALL">All regions</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>City</label>
+                                <select id="jobSearch_city" data-loctype="REGION_TO_CITY" name="jobSearch_city" class="form-control">
+                                    <option value="ALL">All citites</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Skill Category</label>
+                                <select id="jobSearch_category" name="jobSearch_category" class="form-control">
+                                    <option value="ALL">All skill categories</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Skill</label>
+                                <select id="jobSearch_skill" name="jobSearch_skill" class="form-control">
+                                    <option value="ALL">Display all from category</option>
+                                                            </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Order by</label>
+                                <select id="jobSearch_orderBy" name="jobSearch_orderBy" class="form-control">
+                                    <option value="ASC">Newest first</option>
+                                    <option selected="" value="DESC">Oldest first</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="panel-footer" style="margin-top: -10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top: 1px solid #929292;">
+                            <button id="INIT_JOBSEARCH" class="btn btn-primary btn-block" style="border-radius: 0.3em;">Search</button>
+                            <!-- <a href="/jobSearch:NO_KW_INPT:ALL:ALL:ALL:ALL:ALL:DESC" class="btn btn-success btn-xs btn-block" style="border-radius: 0.3em;">Show All Jobs</a> -->
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-7">
                         @foreach($jobs as $job)
-                        <div class="col-md-4" style="padding:10px;">
+                        <div class="col-md-4" style="padding:5px;">
                             <div style="background: white; padding: 15px; border-radius: 7px;">
                                 <div style="display:flex;padding-bottom:5px;">
                                     <div style="flex:11;">
@@ -330,10 +404,12 @@
                         </div>
                         @endforeach
 
-	                    <div class="col-md-12" style="padding: 20px;">
-	                   		<a href="/login" class="seemore">SEE MORE</a>
-	                    </div>
-                	</div>
+                        <div class="col-md-12" style="padding: 20px;">
+                            <a href="/login" class="seemore">SEE MORE</a>
+                        </div>
+                    </div>
+
+
             	</div>
         	</div>
         </div>
@@ -375,6 +451,8 @@
 	        @endfor
     	</div>
     </div>
+
+
 
 <!-- FOOTER -->
     <section id="footer" class="divFooterDark" style="padding-top:40px; padding-bottom:60px;">

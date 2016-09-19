@@ -155,13 +155,18 @@
 
     <section class="container" id="works" style="padding:0px 40px 0px 40px;">
         <div class="container-fluid">
-            <div class="row desk text-center col-md-6" style="padding: 38px 0px 40px 0px;">
+                        <div class="row desk text-center col-md-6">
+                <div class="col-md-12">
+                    <img class="imahe" src="/images/shakehands.jpg" style="width:100%;">
+                </div>
+            </div>
+            <div class="row desk text-center col-md-5" style="padding: 38px 0px 40px 0px;">
 				<div class="col-md-12">
 	                <i class="fa fa-5x fa-bullseye wow bounceIn text-primary" data-wow-delay=".2s"></i>
 	                <h2 class="section-heading">Mission</h2>
 	                <hr class="text-primary">
 	                <p>
-	                	{{--Our Mission is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. --}}
+	                	Our Mission is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 	                </p>
 				</div> 
 
@@ -170,15 +175,11 @@
 	                <h2 class="section-heading">Vision</h2>
 	                <hr class="text-primary"> 
 	                <p>
-	                	{{--Our Vision is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. --}}
+	                	Our Vision is to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit massa lorem, sed semper neque ultricies vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 	                </p>	                
 				</div> 
             </div>
-            <div class="row desk text-center col-md-6">
-            	<div class="col-md-12">
-		            <img class="imahe" src="/images/shakehands.jpg" style="width:100%;">
-		        </div>
-            </div>
+
         </div>
     </section>
 
@@ -216,7 +217,7 @@
                                     <li><a href="/about">About Us</a></li>
                                     <li>{{ HTML::link('/howitworks', 'How It Works')}}</li>
                                     <li>  {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}</li>
-                                    //<li>{{ HTML::link('/pricing', 'Pricing')}}</li>//
+                                    <!-- <li>{{ HTML::link('/pricing', 'Pricing')}}</li> -->
                                     <li><a href="/faq">FAQ</a></li>
                                     <li>    {{ HTML::link('/login', 'Sign In')}}</li>
                                 </ul>
