@@ -247,11 +247,11 @@ Route::filter('TASKMINATOR-ONLY', function(){
 });
 
 Route::filter('PRE_RELEASE_RESTRICTION', function(){
-    if(\Carbon\Carbon::now() < \Carbon\Carbon::parse('2016/09/21')){
-        if(!Auth::check()){
-            return View::make('comingsoon');
-        }
-    }
+//    if(\Carbon\Carbon::now() < \Carbon\Carbon::parse('2016/09/21')){
+//        if(!Auth::check()){
+//            return View::make('comingsoon');
+//        }
+//    }
 });
 
 /*

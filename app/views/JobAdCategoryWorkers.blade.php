@@ -305,8 +305,8 @@
                     <h2 style="text-transform:none; font-size:30px; font-size: 40px; font-weight: bold;">{{$category_title}}</h2>
                     <hr>
                     <input type="hidden" value="{{$categoryCode}}" name="categoryCode" />
-                    <div class="col-md-5 padded" style="height: auto; text-align:left; color:#000; font-family: 'Lato';">
-                        <div class="widget-container padded" style="min-height: 320px; border-radius: 10px; margin-top: -10px;">
+                    <div class="col-md-5 padded" style="text-align:left; color:#000; font-family: 'Lato';">
+                        <div class="widget-container fluid-height padded" style="min-height: 320px; border-radius: 10px; margin-top: -10px;">
                             <div class="form-group col-md-12">
                                 <label>Job Title</label>
                                 <input value="{{@$title}}" name="jobTitle" id="jobTitle" type="text" placeholder="Enter keyword for job title" class="form-control">
@@ -329,12 +329,20 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
+                                <label>Province</label>
+                                <select id="province" name="province" data-loctypeother="PROVINCE_TO_CITY" data-loctype="REGION_TO_PROVINCE" class="form-control">
+                                    <option value="ALL">All provinces</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label>City</label>
                                 <select id="city" data-loctype="REGION_TO_CITY" name="city" class="form-control">
                                     <option value="ALL">All cities from region</option>
-                                    @foreach($cities as $c)
-                                        <option <?php if(@$city == $c->citycode){ echo 'selected'; } ?> value="{{$c->citycode}}">{{$c->cityname}}</option>
-                                    @endforeach
+                                    @if(@$cities)
+                                        @foreach($cities as $c)
+                                            <option <?php if(@$city == $c->citycode){ echo 'selected'; } ?> value="{{$c->citycode}}">{{$c->cityname}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -648,6 +656,8 @@
             location.href = '/workercategory:'+title+':'+workDuration+':'+region+':'+city+':'+category+':'+skill+':'+orderBy;
         });
         CHAINLOCATION($('#region'), $('#city'));
+        CHAINLOCATION($('#region'), $('#province'));
+        CHAINLOCATION($('#province'), $('#city'));
         CHAINCATEGORYANDSKILL($('#category'), $('#skill'));
 	});
 
