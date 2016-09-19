@@ -835,10 +835,14 @@ class HomeController extends BaseController {
             ->where('jobs.expired', false)
             ->where('jobs.skill_category_code', $categoryCode)
             ->groupBy('jobs.id')
-            ->take(6)
+            ->take(3)
             ->get();
         return View::make('JobAdCategoryWorkers')
+            ->with('regions', Region::get())
+            ->with('categoryCode', $categoryCode)
             ->with('jobs', $jobs)
+            ->with('categories', TaskCategory::orderBy('categorycode', 'ASC')->get())
+            ->with('skills', TaskItem::where('item_categorycode', $categoryCode)->orderBy('itemname', 'ASC')->get())
             ->with('category_title', TaskCategory::where('categorycode', $categoryCode)->pluck('categoryname'));
     }
 
@@ -847,9 +851,9 @@ class HomeController extends BaseController {
     }
 
     public function index(){
-        if(Carbon::now() < Carbon::parse('2016/09/21') && !Auth::check()){
-            return View::make('comingsoon');
-        }
+//        if(Carbon::now() < Carbon::parse('2016/09/21') && !Auth::check()){
+//            return View::make('comingsoon');
+//        }
 
         $this->UPDATE_JOBADS_GLOBAL();
         if(Auth::check()){
@@ -2136,6 +2140,75 @@ class HomeController extends BaseController {
     public function TOPUP(){
         return View::make('TOPUP')
             ->with('subs', SystemSubscription::get());
+    }
+
+    public function doJobSearchForGuest($title, $duration, $region, $city, $category, $skill, $orderBy){
+        $this->UPDATE_JOBADS_GLOBAL();
+
+        $jobs = Job::join('users', 'jobs.user_id', '=', 'users.id')
+            ->leftJoin('cities', 'cities.citycode', '=', 'jobs.citycode')
+            ->leftJoin('regions', 'regions.regcode', '=', 'jobs.regcode');
+
+        if($title != 'NONE'){
+            $jobs = $jobs->where('jobs.title', 'LIKE', '%'.$title.'%');
+        }else{
+            $title = '';
+        }
+        if($region != 'ALL'){
+            $jobs = $jobs->where('jobs.regcode', $region);
+            $cities = City::where('regcode', $region)->orderBy('cityname', 'ASC')->get();
+        }else{
+            $cities = [];
+        }
+        if($city != 'ALL'){
+            $jobs = $jobs->where('jobs.citycode', $city);
+        }
+        if($skill != 'ALL'){
+            $jobs = $jobs->where('jobs.skill_code', $skill);
+        }
+        if($category != 'ALL'){
+            $jobs = $jobs->where('jobs.skill_category_code', $category);
+            $skills = TaskItem::where('item_categorycode', $category)->orderBy('itemname', 'ASC')->get();
+            $category_title = TaskCategory::where('categorycode', $category)->pluck('categoryname');
+        }else{
+            $skills = [];
+            $category_title = 'All Jobs Available';
+        }
+        if($duration != 'ALL'){
+            $jobs = $jobs->where('jobs.hiring_type', $duration);
+        }
+        $jobs = $jobs->orderBy('jobs.title', $orderBy)->select([
+                'users.fullName',
+                'jobs.title',
+                'jobs.id as job_id',
+                'jobs.expires_at',
+                'jobs.salary',
+                'jobs.created_at',
+                'jobs.description',
+                'jobs.hiring_type',
+                'cities.cityname',
+                'regions.regname',
+            ])
+            ->where('jobs.expired', false)
+            ->groupBy('jobs.id')
+            ->take(3)
+            ->get();;
+
+        return View::make('JobAdCategoryWorkers')
+            ->with('jobs', $jobs)
+            ->with('regions', Region::get())
+            ->with('cities', $cities)
+            ->with('categories', TaskCategory::orderBy('categoryname', 'ASC')->get())
+            ->with('skills', $skills)
+            // RETURN INPUTS
+            ->with('category_title', $category_title)
+            ->with('title', $title)
+            ->with('duration', $duration)
+            ->with('region', $region)
+            ->with('city', $city)
+            ->with('categoryCode', $category)
+            ->with('skill', $skill)
+            ->with('orderBy', $orderBy);
     }
 }
 

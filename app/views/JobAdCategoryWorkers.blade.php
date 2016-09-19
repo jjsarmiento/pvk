@@ -304,104 +304,111 @@
                 <div class="header-content-inner">
                     <h2 style="text-transform:none; font-size:30px; font-size: 40px; font-weight: bold;">{{$category_title}}</h2>
                     <hr>
-                    <p style="color:#ECF0F1">
-                        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec odio mauris. Vestibulum ante ipsum primis in faucibus orci mollis lorem vel ultricies.--}}
-                    </p>
-
-
+                    <input type="hidden" value="{{$categoryCode}}" name="categoryCode" />
                     <div class="col-md-5 padded" style="height: auto; text-align:left; color:#000; font-family: 'Lato';">
                         <div class="widget-container padded" style="min-height: 320px; border-radius: 10px; margin-top: -10px;">
-                            <div class="form-group col-md-6">
-                                <label>Keyword</label>
-                                <input value="" name="jobSearch_keyword" id="jobSearch_keyword" type="text" placeholder="Enter keyword for title / custom skill" class="form-control">
+                            <div class="form-group col-md-12">
+                                <label>Job Title</label>
+                                <input value="{{@$title}}" name="jobTitle" id="jobTitle" type="text" placeholder="Enter keyword for job title" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Work Duration</label>
-                                <select id="jobSearch_workDuration" name="jobSearch_workDuration" class="form-control">
-                                    <option selected="" value="ALL">All duration</option>
-                                    <option value="LT6MOS">Less than 6 months</option>
-                                    <option value="GT6MOS">Greater than 6 months</option>
+                                <select id="workDuration" name="workDuration" class="form-control">
+                                    <option value="ALL">All duration</option>
+                                    <option <?php if(@$duration == 'LT6MOS'){ echo 'selected'; } ?> value="LT6MOS">Less than 6 months</option>
+                                    <option <?php if(@$duration == 'GT6MOS'){ echo 'selected'; } ?> value="GT6MOS">Greater than 6 months</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Region</label>
-                                <select id="jobSearch_region" name="jobSearch_region" data-loctype="REGION_TO_CITY" class="form-control">
+                                <select id="region" name="region" data-loctype="REGION_TO_CITY" class="form-control">
                                     <option value="ALL">All regions</option>
+                                    @foreach($regions as $r)
+                                        <option <?php if(@$region == $r->regcode){ echo 'selected'; } ?> value="{{$r->regcode}}">{{$r->regname}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>City</label>
-                                <select id="jobSearch_city" data-loctype="REGION_TO_CITY" name="jobSearch_city" class="form-control">
-                                    <option value="ALL">All citites</option>
+                                <select id="city" data-loctype="REGION_TO_CITY" name="city" class="form-control">
+                                    <option value="ALL">All cities from region</option>
+                                    @foreach($cities as $c)
+                                        <option <?php if(@$city == $c->citycode){ echo 'selected'; } ?> value="{{$c->citycode}}">{{$c->cityname}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Skill Category</label>
-                                <select id="jobSearch_category" name="jobSearch_category" class="form-control">
+                                <select id="category" name="category" class="form-control">
                                     <option value="ALL">All skill categories</option>
+                                    @foreach($categories as $c)
+                                        <option <?php if($categoryCode == $c->categorycode){ echo 'selected'; } ?> value="{{$c->categorycode}}">{{$c->categoryname}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Skill</label>
-                                <select id="jobSearch_skill" name="jobSearch_skill" class="form-control">
-                                    <option value="ALL">Display all from category</option>
-                                                            </select>
+                                <select id="skill" name="skill" class="form-control">
+                                    <option value="ALL">Display all skills from category</option>
+                                    @foreach($skills as $s)
+                                        <option <?php if(@$skill == $s->itemcode){ echo 'selected'; } ?> value="{{$s->itemcode}}">{{$s->itemname}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Order by</label>
-                                <select id="jobSearch_orderBy" name="jobSearch_orderBy" class="form-control">
+                                <select id="orderBy" name="orderBy" class="form-control">
                                     <option value="ASC">Newest first</option>
-                                    <option selected="" value="DESC">Oldest first</option>
+                                    <option <?php if(@$orderBy == 'DESC'){ echo 'selected'; } ?> value="DESC">Oldest first</option>
                                 </select>
                             </div>
                         </div>
                         <div class="panel-footer" style="margin-top: -10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top: 1px solid #929292;">
-                            <button id="INIT_JOBSEARCH" class="btn btn-primary btn-block" style="border-radius: 0.3em;">Search</button>
-                            <!-- <a href="/jobSearch:NO_KW_INPT:ALL:ALL:ALL:ALL:ALL:DESC" class="btn btn-success btn-xs btn-block" style="border-radius: 0.3em;">Show All Jobs</a> -->
+                            <button id="INIT_JOBSEARCH" type="submit" class="btn btn-primary btn-block" style="border-radius: 0.3em;">Search</button>
                         </div>
                     </div>
 
 
                     <div class="col-md-7">
                         @foreach($jobs as $job)
-                        <div class="col-md-4" style="padding:5px;">
-                            <div style="background: white; padding: 15px; border-radius: 7px;">
-                                <div style="display:flex;padding-bottom:5px;">
-                                    <div style="flex:11;">
-                                        <a href="/login" style="text-decoration:none;">
-                                            <h3 class="lato-text" style="font-weight: bold; margin:0 0 10px 0 !important; color:#2980b9">
-                                                {{$job->title}}
-                                            </h3>
+                            <div class="col-md-12" style="padding:5px;">
+                                <div style="background: white; padding: 15px; border-radius: 7px;">
+                                    <div style="display:flex;padding-bottom:5px;">
+                                        <div style="flex:11;">
+                                            <a href="/login" style="text-decoration:none;">
+                                                <h3 class="lato-text" style="font-weight: bold; margin:0 0 10px 0 !important; color:#2980b9">
+                                                    {{$job->title}}
+                                                </h3>
 
-                                            <div class="row" style="color:#95A5A6; font-size: 0.8em;">
-                                                <div class="col-md-5">
-                                                    <span style="padding:0;margin:0;">
-                                                        <i class="fa fa-briefcase"></i>
-                                                        @if($job->hiring_type == 'LT6MOS')
-                                                            Less than 6 months
-                                                        @else
-                                                            Greater than 6 months
-                                                        @endif
-                                                    </span><br>
-                                                    <span class="text-right" style="padding:0;margin:0;">
-                                                        @if($job->expired)
-                                                            <span class="badge" style="background-color: #E74C3C">EXPIRED</span>
-                                                        @else
-                                                            <i class="fa fa-clock-o"></i> Expires at {{ date('m/d/y', strtotime($job->expires_at)) }}
-                                                        @endif
-                                                    </span>
-                                                </div>
+                                                <div class="row" style="color:#95A5A6; font-size: 0.8em;">
+                                                    <div class="col-md-5">
+                                                        <span style="padding:0;margin:0;">
+                                                            <i class="fa fa-briefcase"></i>
+                                                            @if($job->hiring_type == 'LT6MOS')
+                                                                Less than 6 months
+                                                            @else
+                                                                Greater than 6 months
+                                                            @endif
+                                                        </span><br>
+                                                        <span class="text-right" style="padding:0;margin:0;">
+                                                            @if($job->expired)
+                                                                <span class="badge" style="background-color: #E74C3C">EXPIRED</span>
+                                                            @else
+                                                                <i class="fa fa-clock-o"></i> Expires at {{ date('m/d/y', strtotime($job->expires_at)) }}
+                                                            @endif
+                                                        </span>
+                                                    </div>
 
-                                                <div class="col-md-7">
-                                                    <span class="text-right" style="padding:0;margin:0;"><i class="fa fa-map-marker"></i> {{$job->regname}}, {{$job->cityname}}</span><br/>
-                                                    <span class="badge" style="background-color:#2ECC71;">Login to view salary</span>
+                                                    <div class="col-md-7">
+                                                        <span class="text-right" style="padding:0;margin:0;"><i class="fa fa-map-marker"></i> {{$job->regname}}, {{$job->cityname}}</span><br/>
+                                                        <span class="badge" style="background-color:#2ECC71;">Login to view salary</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
 
                         <div class="col-md-12" style="padding: 20px;">
@@ -559,6 +566,7 @@
     <script src="frontend/js/jquery.nicescroll.js"></script>
     <script src="frontend/js/custom.js"></script>
 <!-- HTML SMOOTH MOUSEWHEEL SCROLLING -->
+    {{ HTML::script('js/taskminator.js') }}
     <script>
     $(document).ready(
 
@@ -628,6 +636,18 @@
 	    $("a.seemore").click(function(){
 	        $("#moreJobs").css("display", "block");
 	    });
+        $('#INIT_JOBSEARCH').click(function(){
+            var title           = ($('#jobTitle').val())        ? $('#jobTitle').val()      : 'NONE',
+                workDuration    = ($('#workDuration').val())    ? $('#workDuration').val()  : 'ALL',
+                region          = ($('#region').val())          ? $('#region').val()        : 'ALL',
+                city            = ($('#city').val())            ? $('#city').val()          : 'ALL',
+                category        = ($('#category').val())        ? $('#category').val()      : 'ALL',
+                skill           = ($('#skill').val())           ? $('#skill').val()         : 'ALL',
+                orderBy         = ($('#orderBy').val())         ? $('#orderBy').val()       : 'ASC';
+
+            location.href = '/workercategory:'+title+':'+workDuration+':'+region+':'+city+':'+category+':'+skill+':'+orderBy;
+        });
+        CHAINLOCATION($('#region'), $('#city'));
 	});
 
 	</script>
