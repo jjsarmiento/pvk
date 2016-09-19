@@ -851,9 +851,9 @@ class HomeController extends BaseController {
     }
 
     public function index(){
-//        if(Carbon::now() < Carbon::parse('2016/09/21') && !Auth::check()){
-//            return View::make('comingsoon');
-//        }
+        if(Carbon::now() < Carbon::parse('2016/09/21') && !Auth::check()){
+            return View::make('comingsoon');
+        }
 
         $this->UPDATE_JOBADS_GLOBAL();
         if(Auth::check()){
@@ -2142,12 +2142,15 @@ class HomeController extends BaseController {
             ->with('subs', SystemSubscription::get());
     }
 
-    public function doJobSearchForGuest($title, $duration, $region, $city, $category, $skill, $orderBy){
+    public function doJobSearchForGuest($title, $duration, $region, $city, $category, $skill, $orderBy, $province){
         $this->UPDATE_JOBADS_GLOBAL();
+        $provinces = [];
+        $cities = [];
 
         $jobs = Job::join('users', 'jobs.user_id', '=', 'users.id')
             ->leftJoin('cities', 'cities.citycode', '=', 'jobs.citycode')
-            ->leftJoin('regions', 'regions.regcode', '=', 'jobs.regcode');
+            ->leftJoin('regions', 'regions.regcode', '=', 'jobs.regcode')
+            ->leftJoin('provinces', 'provinces.provcode', '=', 'jobs.provcode');
 
         if($title != 'NONE'){
             $jobs = $jobs->where('jobs.title', 'LIKE', '%'.$title.'%');
@@ -2156,9 +2159,11 @@ class HomeController extends BaseController {
         }
         if($region != 'ALL'){
             $jobs = $jobs->where('jobs.regcode', $region);
-            $cities = City::where('regcode', $region)->orderBy('cityname', 'ASC')->get();
-        }else{
-            $cities = [];
+            $provinces = Province::where('regcode', $region)->orderBy('provname', 'ASC')->get();
+        }
+        if($province != 'ALL'){
+            $jobs = $jobs->where('jobs.provcode', $province);
+            $cities = City::where('provcode', $province)->orderBy('cityname', 'ASC')->get();
         }
         if($city != 'ALL'){
             $jobs = $jobs->where('jobs.citycode', $city);
@@ -2197,6 +2202,7 @@ class HomeController extends BaseController {
         return View::make('JobAdCategoryWorkers')
             ->with('jobs', $jobs)
             ->with('regions', Region::get())
+            ->with('provinces', $provinces)
             ->with('cities', $cities)
             ->with('categories', TaskCategory::orderBy('categoryname', 'ASC')->get())
             ->with('skills', $skills)
@@ -2208,7 +2214,8 @@ class HomeController extends BaseController {
             ->with('city', $city)
             ->with('categoryCode', $category)
             ->with('skill', $skill)
-            ->with('orderBy', $orderBy);
+            ->with('orderBy', $orderBy)
+            ->with('province', $province);
     }
 }
 

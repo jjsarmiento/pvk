@@ -332,6 +332,11 @@
                                 <label>Province</label>
                                 <select id="province" name="province" data-loctypeother="PROVINCE_TO_CITY" data-loctype="REGION_TO_PROVINCE" class="form-control">
                                     <option value="ALL">All provinces</option>
+                                    @if(@$provinces)
+                                        @foreach($provinces as $p)
+                                            <option <?php if(@$province == $p->provcode){ echo 'selected'; } ?> value="{{$p->provcode}}">{{$p->provname}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -651,9 +656,10 @@
                 city            = ($('#city').val())            ? $('#city').val()          : 'ALL',
                 category        = ($('#category').val())        ? $('#category').val()      : 'ALL',
                 skill           = ($('#skill').val())           ? $('#skill').val()         : 'ALL',
-                orderBy         = ($('#orderBy').val())         ? $('#orderBy').val()       : 'ASC';
+                orderBy         = ($('#orderBy').val())         ? $('#orderBy').val()       : 'ASC',
+                province        = ($('#province').val())        ? $('#province').val()      : 'ALL';
 
-            location.href = '/workercategory:'+title+':'+workDuration+':'+region+':'+city+':'+category+':'+skill+':'+orderBy;
+            location.href = '/workercategory:'+title+':'+workDuration+':'+region+':'+city+':'+category+':'+skill+':'+orderBy+':'+province;
         });
         CHAINLOCATION($('#region'), $('#city'));
         CHAINLOCATION($('#region'), $('#province'));

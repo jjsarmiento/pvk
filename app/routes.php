@@ -30,7 +30,7 @@ Route::group(array('before' => 'PRE_RELEASE_RESTRICTION'), function(){
     Route::get('/faqTag', 'HomeController@seeFAQTAG');
     Route::get('/about', 'HomeController@seeAbout');
     Route::get('/workercategory={categorycode}', 'HomeController@landingJobAd');
-    Route::get('/workercategory:{title}:{duration}:{region}:{city}:{category}:{skill}:{orderBy}', 'HomeController@doJobSearchForGuest');
+    Route::get('/workercategory:{title}:{duration}:{region}:{city}:{category}:{skill}:{orderBy}:{province}', 'HomeController@doJobSearchForGuest');
 
     Route::get('/register', 'HomeController@register');
     Route::post('/doRegisterIndi', 'HomeController@doRegisterIndi');
