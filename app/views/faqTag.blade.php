@@ -265,7 +265,7 @@
                     <h1 style="text-transform:none">Frequently Asked Questions</h1>
                     <hr>
                     <p style="color:#ECF0F1">
-                        Tagalog Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec odio mauris. Vestibulum ante ipsum primis in faucibus orci mollis lorem vel ultricies.
+                        <!-- Tagalog Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec odio mauris. Vestibulum ante ipsum primis in faucibus orci mollis lorem vel ultricies. -->
                     </p>
                     <a class="FAQbutton lato-text" href="/faq">Translate to English Version</a>
                     <!-- <a class="btnLink" style="text-decoration:none;" href="#GlobalModal" data-toggle="modal">Get Quotation Now</a>

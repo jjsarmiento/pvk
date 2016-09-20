@@ -153,7 +153,7 @@
     </header>
     <!-- END OF -->
 
-    <section class="container" id="works" style="padding:0px 40px 0px 40px;">
+    <section class="container" id="works" style="display:none; padding:0px 40px 0px 40px;">
         <div class="container-fluid">
                         <div class="row desk text-center col-md-6">
                 <div class="col-md-12">
@@ -183,7 +183,7 @@
         </div>
     </section>
 
-    <section id="works" style="padding: 50px; background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/BGQuote.jpg'); background-position: center top;">
+    <section id="works" style="display:none; padding: 50px; background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/BGQuote.jpg'); background-position: center top;">
         <div class="container-fluid container">
             <div class="row desk text-center">
 				<div class="col-md-12" style="color:white;">
