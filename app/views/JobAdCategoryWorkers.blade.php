@@ -306,7 +306,7 @@
                     <hr>
                     <input type="hidden" value="{{$categoryCode}}" name="categoryCode" />
                     <div class="col-md-5 padded" style="text-align:left; color:#000; font-family: 'Lato';">
-                        <div class="widget-container fluid-height padded" style="min-height: 320px; border-radius: 10px; margin-top: -10px;">
+                        <div class="widget-container fluid-height padded" style="min-height: 400px; border-radius: 10px; margin-top: -10px;">
                             <div class="form-group col-md-12">
                                 <label>Job Title</label>
                                 <input value="{{@$title}}" name="jobTitle" id="jobTitle" type="text" placeholder="Enter keyword for job title" class="form-control">
@@ -376,7 +376,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="panel-footer" style="margin-top: -10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top: 1px solid #929292;">
+                        <div class="panel-footer" style="margin-top: -10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top: 1px solid #dedede;">
                             <button id="INIT_JOBSEARCH" type="submit" class="btn btn-primary btn-block" style="border-radius: 0.3em;">Search</button>
                         </div>
                     </div>
@@ -488,7 +488,7 @@
                                     <li><a href="#">About</a></li>
                                     <li>{{ HTML::link('/howitworks', 'How It Works')}}</li>
                                     <li>  {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}</li>
-                                    //<li>{{ HTML::link('/pricing', 'Pricing')}}</li>//
+                                    <!-- <li>{{ HTML::link('/pricing', 'Pricing')}}</li> -->
                                    <li><a href="/workercategory">Workers</a></li>
                                     <li>    {{ HTML::link('/login', 'Sign In')}}</li>
                                 </ul>
