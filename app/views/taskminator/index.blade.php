@@ -163,6 +163,19 @@
         width: 90px;
         height: 90px;
     }
+    @media(max-width: 320px){
+        .col-md-8.padded{
+            text-align: center;
+        }
+        span.lastLog {
+            font-size: 15px
+        }
+    }
+    @media(max-width: 736px){
+        .col-lg-4{
+                margin-top: 50px;
+        }        
+    }
 </style>
 
 <script>
@@ -204,7 +217,7 @@
                             <a href="/editProfile" style="font-weight:bold; font-size:14pt; line-height: 1em;">{{ Auth::user()->fullName }}</a><br>
                         </div>
                         <!-- <span><b>Employment Status:</b> Not Hired</span><br> -->
-                        <span><b>Last Login:</b> {{@$LAST_LOGIN}}</span>
+                        <span class="lastLog"><b>Last Login:</b> {{@$LAST_LOGIN}}</span>
                     </div>
                     <!-- <div class="col-lg-12" style="padding-left:24px;">
                         <a href="/editProfile">Edit Profile</a>
