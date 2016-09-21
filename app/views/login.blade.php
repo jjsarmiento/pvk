@@ -186,13 +186,13 @@
                         {{ Form::close() }}
 
                         <!-- JUPS -->
-<!--                         <div style="padding-bottom:15px;">
+                        <div style="padding-bottom:15px;">
                           <a href="/" class="btn btn-success lato-text btnTheme btn-lg" data-toggle="modal">Register as Worker</a>
                         </div>
                         
                         <div style="padding-bottom:15px;">
                           <a href="/employer" class="btn btn-success lato-text btnTheme btn-lg" data-toggle="modal">Register as Employer</a>
-                        </div> -->
+                        </div>
                          <!-- JUPS -->
                         
                         <a class="btn btn-primary lato-text btnTheme" style="border:1px solid #2980b9;" data-toggle="modal" data-target="#forgotPassModal">Forgot Password</a>
