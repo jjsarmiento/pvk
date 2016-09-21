@@ -145,7 +145,7 @@
                             </div>
                     </div>
 
-                    <div class="row padded bord" style="border-bottom: 1px solid #cdcdcd;">
+                    <div class="row padded bord" style="border-bottom: 1px solid #cdcdcd; word-wrap: break-word;">
                         <div class="heading" style="font-size:13pt; color:#2980b9; padding-bottom: 3px;">
                             <i class="glyphicon glyphicon-phone-alt" style="font-size:14pt; color:#2980b9"></i>&nbsp Contact Information <button class="btn btn-xs btn-default pull-right" onclick="location.href='/editContactInfo'" style="padding: 2px 10px 2px 10px; text-transform: none;"><i class="fa fa-pencil-square-o"></i>&nbsp Edit</button>
                         </div>       
@@ -196,7 +196,7 @@
                                 <span><b>Birthdate: </b> {{Auth::user()->birthdate}}</span><br>
                                 <!-- <span><b>Age: </b> {{ \Carbon\Carbon::now()->diffInYears(\Carbon\Carbon::parse(Auth::user()->birthdate)) }} y/o</span><br> -->
                                 <span><b>Gender: </b>{{ Auth::user()->gender }}</span><br>
-                                <span><b>Marital Status: </b> {{ Auth::user()->marital_status }}</span><br>
+                                <span><b>Civil Status: </b> {{ Auth::user()->marital_status }}</span><br>
                                 <span ><b>Address: </b>{{Auth::user()->address}}{{ Region::where('regcode', $user->region)->pluck('regname') }} {{ Province::where('provcode', $user->province)->pluck('provname') }} {{ Barangay::where('bgycode', $user->barangay)->pluck('bgyname') }} {{ City::where('citycode', $user->city)->pluck('cityname') }}</span><br>
                                 <span><b>Account Created: </b>{{Auth::user()->created_at}}</span>
                             </div>     
