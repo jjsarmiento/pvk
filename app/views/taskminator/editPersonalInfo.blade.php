@@ -219,11 +219,11 @@
                                 </select><br/>
                             </div>
                             <div class="col-md-3">
-                                Marital Status :
+                                Civil Status :
                             </div>
                             <div class="col-md-9">
                                 <select name="marital_status" class="form-control">
-                                    <option value="">Please Select your marital status</option>
+                                    <option value="">Please Select your Civil Status</option>
                                     <option <?php if($user->marital_status == 'SINGLE'){ echo 'selected'; } ?> value="SINGLE">Single</option>
                                     <option <?php if($user->marital_status == 'MARRIED'){ echo 'selected'; } ?> value="MARRIED">Married</option>
                                     <option <?php if($user->marital_status == 'WIDOWED'){ echo 'selected'; } ?> value="WIDOWED">Widowed</option>

@@ -143,7 +143,7 @@
                                      : <span style="margin-left: 5px">{{$user->birthdate}}</span><br/>
                                     <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Gender</span>
                                      : <span style="margin-left: 5px">{{$user->gender}}</span><br/>
-                                    <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Marital Status</span>
+                                    <span style="text-transform: capitalize; color: white; margin-right: 5px; font-weight:600;">Civil Status</span>
                                      : <span style="margin-left: 5px">
                                         @if($user->marital_status)
                                         {{$user->marital_status}}

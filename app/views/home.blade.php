@@ -605,7 +605,7 @@
 <!-- END OF TESTIMONIAL SLIDER -->
 
 <!-- PARTNERSHIP SLIDER -->
-    <section class="bg-primary" style="background-image: url(frontend/img/blur_03.jpg); background-position: top; background-attachment: fixed; -webkit-background-size: cover; -moz-background-size: cover; background-size: cover; -o-background-size: cover; padding-top:40px; padding-bottom: 40px">
+    <section class="bg-primary" style="display:none;background-image: url(frontend/img/blur_03.jpg); background-position: top; background-attachment: fixed; -webkit-background-size: cover; -moz-background-size: cover; background-size: cover; -o-background-size: cover; padding-top:40px; padding-bottom: 40px">
 		<div class="item">
 			<div class="container-fluid">
 				<div class="row">

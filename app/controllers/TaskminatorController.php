@@ -1171,7 +1171,7 @@ class TaskminatorController extends \BaseController {
         array_push($ARRAY, ['content'  => (($skill_count >= 4)                  ? $check.'Skills'                   : $close.'Skills (At least 4 System/Custom Skill) ('.$skill_count.' registered)'),    'url'    => '/editSkillInfo']);
         array_push($ARRAY, ['content'  => (($mobile)                            ? $check.'Mobile Number'            : $close.'Mobile Number'),          'url'    => '/editContactInfo']);
         array_push($ARRAY, ['content'  => (($email)                             ? $check.'Email'                    : $close.'Email'),                  'url'    => '/editContactInfo']);
-        array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Marital Status'           : $close.'Marital Status'),         'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Civil Status'           : $close.'Civil Status'),         'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->profilePic)           ? $check.'Profile Picture'          : $close.'Profile Picture'),        'url'    => '/editProfile']);
         array_push($ARRAY, ['content'  => (($doc_count >= 2)                    ? $check.'Supporting Documents'     : $close.'Supporting Documents - Atleast 2 ('.$doc_count.' registered)'), 'url'    => '/editDocuments']);
         array_push($ARRAY, ['content'  => (($facebook)                          ? $check.'Facebook'                 : $close.'Facebook'),               'url'    => '/editPersonalInfo']);
@@ -1205,7 +1205,7 @@ class TaskminatorController extends \BaseController {
         array_push($ARRAY, ['content'  => (($skill_count >= 4)                  ? $check.'Skills (At least 4 System/Custom Skill)'      : $close.'Skills (At least 4 System/Custom Skill) ('.$skill_count.' registered)'),    'url'    => '/editSkillInfo']);
         array_push($ARRAY, ['content'  => (($mobile)                            ? $check.'Mobile Number'            : $close.'Mobile Number'),          'url'    => '/editContactInfo']);
         array_push($ARRAY, ['content'  => (($email)                             ? $check.'Email'                    : $close.'Email'),                  'url'    => '/editContactInfo']);
-        array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Marital Status'           : $close.'Marital Status'),         'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Civil Status'           : $close.'Civil Status'),         'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->profilePic)           ? $check.'Profile Picture'          : $close.'Profile Picture'),        'url'    => '/editProfile']);
         array_push($ARRAY, ['content'  => (($doc_count >= 2)                    ? $check.'Supporting Documents'     : $close.'Supporting Documents - Atleast 2 ('.$doc_count.' registered)'), 'url'    => '/editDocuments']);
         array_push($ARRAY, ['content'  => (($facebook)                          ? $check.'Facebook'                 : $close.'Facebook'),               'url'    => '/editPersonalInfo']);
@@ -1218,7 +1218,7 @@ class TaskminatorController extends \BaseController {
         array_push($ARRAY, ['content'  => ((Auth::user()->barangay)             ? $check.'Barangay'                 : $close.'Barangay'),               'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->city)                 ? $check.'City'                     : $close.'City'),                   'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->birthdate)            ? $check.'Birthdate'                : $close.'Birthdate'),              'url'    => '/editPersonalInfo']);
-        array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Marital Status'           : $close.'Marital Status'),         'url'    => '/editPersonalInfo']);
+        array_push($ARRAY, ['content'  => ((Auth::user()->marital_status)       ? $check.'Civil Status'           : $close.'Civil Status'),         'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->profilePic)           ? $check.'Profile Picture'          : $close.'Profile Picture'),        'url'    => '/editProfile']);
         array_push($ARRAY, ['content'  => ((Auth::user()->educationalBackground)? $check.'Educational Background'   : $close.'Educational Background'), 'url'    => '/editPersonalInfo']);
         array_push($ARRAY, ['content'  => ((Auth::user()->experience)           ? $check.'Experience'               : $close.'Experience'),             'url'    => '/editPersonalInfo']);
