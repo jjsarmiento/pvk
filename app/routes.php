@@ -11,8 +11,6 @@ Route::get('/login', 'HomeController@login');
 Route::post('/doLogin', 'HomeController@doLogin');
 Route::get('/TOPUP', 'HomeController@TOPUP');
 
-
-Route::group(array('before' => 'PRE_RELEASE_RESTRICTION'), function(){
     Route::get('/', 'HomeController@index');
     Route::get('/more', 'HomeController@more');
     Route::get('/moreWorkers={categoryId}={skillId}={region}={city}={province}={profilePercentage}', 'HomeController@moreWorkers');
@@ -83,8 +81,6 @@ Route::group(array('before' => 'PRE_RELEASE_RESTRICTION'), function(){
 // CHIKKA SMS ROUTES -- END
 
 // PLACE NON PROTECTED ROUTES HERE -- END
-
-});
 
 Route::get('/regClient', function() {
     return View::make('reg-client');
