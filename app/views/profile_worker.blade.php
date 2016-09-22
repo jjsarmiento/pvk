@@ -89,17 +89,17 @@
                         </div>
                     </div> -->
                     <br/>
-                    @if($roles == 'TASKMINATOR' && $CLIENTFLAG)
-                        <div class="col-md-12">
-                            @if($BULK_INVITE)
-                                @if($PURCHASED == 0)
-                                    <div class="col-md-4 col-md-offset-2 padded">
-                                        <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn-block btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Invite to apply</a>
-                                    </div>
-                                @endif
-                            @endif
+                    @if($PURCHASED == 0 && BaseController::IS_AN_APPLICANT_FOR_COMPANY($users->id, Auth::user()->id))
 
-                            @if($PURCHASED == 0 && BaseController::IS_AN_APPLICANT_FOR_COMPANY($users->id, Auth::user()->id))
+                            <div class="col-md-12">
+                                @if($BULK_INVITE)
+                                    @if($PURCHASED == 0)
+                                        <div class="col-md-4 padded">
+                                            <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn-block btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Invite to apply</a>
+                                        </div>
+                                    @endif
+                                @endif
+
                                 <div class="col-md-4 padded">
                                     <a href="/doCheckout={{$users->id}}" class="btn btn-block btn-warning" style="background-color: #E74C3C;">Checkout</a>
                                     <!-- OLD CART PROCEDURE
@@ -113,22 +113,48 @@
                                     <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Checkout </a>
                                     -->
                                 </div>
-                            @endif
 
-                            @if($roles == 'TASKMINATOR')
-                                @if($CLIENTFLAG)
+                                @if($roles == 'TASKMINATOR')
+                                    @if($CLIENTFLAG)
+                                        @if($PURCHASED == 0)
+                                            <div class="col-md-4 padded">
+                                                @if(User::IS_BOOKMARKED(Auth::user()->id, $users->id))
+                                                    <a class="btn btn-block btn-warning" href="/REMOVE_BOOKMARK:{{BookmarkUser::where('worker_id', $users->id)->where('company_id', Auth::user()->id)->pluck('id')}}"><i class="BOOKMARK_USER fa fa-bookmark" style="color: #2ECC71;"></i> Worker is  bookmarked</a>
+                                                @else
+                                                    <a class="btn btn-block btn-warning" href="/ADD_BOOKMARK:{{$users->id}}"><i class="BOOKMARK_USER fa fa-bookmark-o" style="color: #2ECC71;"></i> Bookmark this worker</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
+                            
+                    @else
+                        @if($roles == 'TASKMINATOR' && $CLIENTFLAG)
+                            <div class="col-md-12">
+                                @if($BULK_INVITE)
                                     @if($PURCHASED == 0)
-                                        <div class="col-md-4 padded">
-                                            @if(User::IS_BOOKMARKED(Auth::user()->id, $users->id))
-                                                <a class="btn btn-block btn-warning" href="/REMOVE_BOOKMARK:{{BookmarkUser::where('worker_id', $users->id)->where('company_id', Auth::user()->id)->pluck('id')}}"><i class="BOOKMARK_USER fa fa-bookmark" style="color: #2ECC71;"></i> Worker is  bookmarked</a>
-                                            @else
-                                                <a class="btn btn-block btn-warning" href="/ADD_BOOKMARK:{{$users->id}}"><i class="BOOKMARK_USER fa fa-bookmark-o" style="color: #2ECC71;"></i> Bookmark this worker</a>
-                                            @endif
+                                        <div class="col-md-4 col-md-offset-2 padded">
+                                            <a data-toggle="modal" data-target="#INVITEMULTIJOB" class="btn-block btn btn-warning" href="#"><i class="fa fa-envelope-o" style="color: #2ECC71;"></i> Invite to apply</a>
                                         </div>
                                     @endif
                                 @endif
-                            @endif
-                        </div>
+
+                                @if($roles == 'TASKMINATOR')
+                                    @if($CLIENTFLAG)
+                                        @if($PURCHASED == 0)
+                                            <div class="col-md-4 padded">
+                                                @if(User::IS_BOOKMARKED(Auth::user()->id, $users->id))
+                                                    <a class="btn btn-block btn-warning" href="/REMOVE_BOOKMARK:{{BookmarkUser::where('worker_id', $users->id)->where('company_id', Auth::user()->id)->pluck('id')}}"><i class="BOOKMARK_USER fa fa-bookmark" style="color: #2ECC71;"></i> Worker is  bookmarked</a>
+                                                @else
+                                                    <a class="btn btn-block btn-warning" href="/ADD_BOOKMARK:{{$users->id}}"><i class="BOOKMARK_USER fa fa-bookmark-o" style="color: #2ECC71;"></i> Bookmark this worker</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
+                        @endif
                     @endif
 
                     <!-- <div class="text-center div_header">
