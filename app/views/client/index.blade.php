@@ -355,7 +355,7 @@
                                                 @else
                                                     {{ $w->fullName }}
                                                 @endif
-                                            </b><br/> <a href="/{{$w->username}}" class="user">{{ '@'.$w->username }}</a></span><br>
+                                            </b><br/><!--  <a href="/{{$w->username}}" class="user">{{ '@'.$w->username }}</a></span> --><br>
                                             {{--<span>Address Lorem ipsum sit dolor amet</span><br>--}}
                                             <span><b>Profile Rating: {{$w->total_profile_progress}}%</b></span><br>
                                             {{--<span><b>Last Login: </b> {{Auth::user()->last_login}}</span>--}}
