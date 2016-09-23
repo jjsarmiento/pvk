@@ -32,6 +32,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="frontend/css/creative.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="frontend/css/vegas.css">
+    <link rel="stylesheet" href="frontend/css/lightslider.css" type="text/css">
     <link rel="stylesheet" href="frontend/css/custom.css" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -228,6 +229,29 @@
         	background: white;
         	padding:20px;
         }
+        body {
+            font-family: 'Lato';
+        }
+        /* Let's get this party started */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+         
+        /* Track */
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            -webkit-border-radius: 3px;
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 3px;
+            background: rgba(41,128,185,0.9);
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+        }
+        ::-webkit-scrollbar-thumb:window-inactive {
+            background: rgba(41,128,185,0.9); 
+        }
 
     </style>
     <!-- END OF STYLE -->
@@ -273,6 +297,14 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        {{ HTML::link('/', 'Worker')}}
+                    </li>
+
+                    <li>
+                        {{ HTML::link('/employer', 'Employer')}}
+                    </li>
+
+                    <li>
                        <!--  <a class="" href="HowItWorks.html">How It Works</a> -->
                         {{ HTML::link('/howitworks', 'How It Works')}}
 
@@ -283,12 +315,17 @@
                          {{ HTML::link('/whychooseproveek', 'Why Choose Proveek')}}
 
                     </li>
+                    <!-- <li>
+                         <a class="" href="Pricing.html">Pricing</a>
+                        {{ HTML::link('/pricing', 'Pricing')}}
+                    </li> -->
                     <li>
-                        {{--<a class="page-scroll" href="#page-top">Job Ads Category</a>--}}
-                        <!-- {{ HTML::link('/pricing', 'Pricing')}} -->
+                        {{ HTML::link('/faq', 'Faq')}}
                     </li>
+
                     <li>
-                          {{ HTML::link('/login', 'Sign In')}}
+                        <!--<a class="" href="#">Login / Sign Up</span></a> -->
+                        {{ HTML::link('/login', 'Sign In')}}
                     </li>
                 </ul>
             </div>
@@ -301,7 +338,7 @@
         <div class="vegas.overlay" style="height:100%; width:100%; background-color: rgba(0,0,0,.5); color:black;">
             <div class="header-content">
                 <div class="header-content-inner">
-                    <div class="widget-container padded fluid-height">
+                    <div class="widget-container padded fluid-height" style="height:600px; overflow-y: scroll;">
                         <div class="widget-content fluid-height">
                             <div class="row">
                                 <div class="col-md-4">
