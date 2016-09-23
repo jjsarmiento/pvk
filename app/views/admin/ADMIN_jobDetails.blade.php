@@ -182,7 +182,7 @@
                                 <div class="col-md-12">
                                     <label>Other Skills</label><br/>
                                     @foreach($custom_skills as $cs)
-                                        <span class="badge">{{$cs->skill}}</span>
+                                        <span class="badge" style="white-space: pre-wrap; text-align: left; line-height: 15px !important;">{{$cs->skill}}</span>
                                     @endforeach
                                 </div>
                             </div>
