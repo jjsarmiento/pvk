@@ -155,7 +155,7 @@
             <div class="container lato-text" style="">
                 <div class="page-title">
                     <h1 class="lato-text">
-                        Create ADMIN Account
+                        Create Admin Account
                     </h1>
                 </div>
 
@@ -192,6 +192,8 @@
                                 <table class="table table-condensed table-striped table-condensed">
                                     <thead>
                                         <th>Title</th>
+                                        <th>Applicants</th>
+                                        <th>Invited</th>
                                         <th>Date Created</th>
                                         <th>Expiration</th>
                                         <th>Action</th>
@@ -200,6 +202,8 @@
                                         @foreach($jobs as $j)
                                             <tr>
                                                 <td>{{$j->title}}</td>
+                                                <td style="text-align:center;"><a href="#"><b>#</b></a></td>
+                                                <td style="text-align:center;"><a href="#"><b>#</b></a></td>
                                                 <td>{{$j->created_at}}</td>
                                                 <td>
                                                     @if($j->expired)
