@@ -394,9 +394,9 @@
                     </div>
                 @endif
                 <!-- END OF PROFILE  COMPLETENESS METER -->
-                <div class="col-lg-12 no-padding">
+                <div class="col-lg-6 no-padding">
                     <div class="widget-container stats-container" style="display:block !important;">
-                        <div class="col-lg-6 lato-text col-xs-12 id1">
+                        <div class="col-lg-12 lato-text col-xs-12 id1">
                             {{--<a href="/tskmntr_taskBids" style="text-decoration:none;">--}}
                             <a href="/WRKR_APPLCTNS" style="text-decoration:none;">
                                 <div class="number" style="color:#2980b9;">
@@ -408,7 +408,13 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-6 lato-text col-xs-12 id2">
+                      
+                    </div>
+                </div>
+
+                <div class="col-lg-6 no-padding">
+                    <div class="widget-container stats-container" style="display:block !important;">
+                        <div class="col-lg-12 lato-text col-xs-12 id2">
                             {{--<a href="/tskmntr_taskOffers" style="text-decoration:none;">--}}
                             <a href="/WRKR_INVTS" style="text-decoration:none;">
                                 <div class="number" style="color:#2980b9;">
@@ -419,9 +425,10 @@
                                     Invites
                                 </div>
                             </a>
-                        </div>
+                        </div>                         
                     </div>
                 </div>
+
                 <!--
                 <div class="row">
                     <div class="col-lg-12">
@@ -621,7 +628,7 @@
             </div>
 
             <!-- Additional Info-->
-            <div class="col-lg-8" style="padding-top: 19px; float:right;">
+            <div class="col-lg-8 col-xs-12" style="padding-top: 19px; float:right;">
                 <div class="widget-container" style="min-height:30px; border:1px solid #e6e6e6">
                     <div class="widget-content">
                         <div class="heading" style="font-size:14pt; color:#2980b9">
