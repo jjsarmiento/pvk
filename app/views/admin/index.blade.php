@@ -304,7 +304,7 @@
                                         <label>Account Status</label>
                                         <select class="form-control" id="search_acctStatus" name="search_acctStatus">
                                             <option value="ALL">Display All</option>
-                                            <option <?php if(@$acctStatus == "ACTIVATED"){ echo('selected'); } ?> value="ACTIVATED">Activated</option>
+                                            <option <?php if(@$acctStatus == "ACTIVATED"){ echo('selected'); } ?> value="ACTIVATED">ActiAvated</option>
                                             <option <?php if(@$acctStatus == "DEACTIVATED"){ echo('selected'); } ?> value="DEACTIVATED">Deactivated</option>
                                         </select>
                                     </div>
@@ -366,6 +366,8 @@
                                     <th class="tg-yw4l">Account Status</th>
                                     <th class="tg-yw4l">Action</th>
                                     <th class="tg-yw4l">Audit Trail</th>
+                                    <th class="tg-yw4l">Applied For</th>
+                                    <th class="tg-yw4l">Invited In</th>
                                 <thead>
                                 <tbody>
                                     @foreach($users as $user)
@@ -376,6 +378,8 @@
                                                 </a>
                                             </td>
                                             <td>{{ date('D, M j, Y \a\t g:ia', strtotime($user->created_at)) }}</td>
+                                            <td style="text-align:center;"><a href="#"><b>#</b></a></td>
+                                            <td style="text-align:center;"><a href="#"><b>#</b></a></td>
                                             <td><b>{{$user->status}}</b></td>
                                             <td>
                                                 @if($user->status == 'ACTIVATED')
