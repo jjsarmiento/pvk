@@ -45,15 +45,46 @@
             text-decoration: none;
         }
         @media screen and (max-width: 767px) {
-          .tg {
-            width: auto !important; 
-          }
-          .tg col {
-            width: auto !important;
-          }
-          .tg-wrap {
-            overflow-x: auto;-webkit-overflow-scrolling: touch;
-          }
+            .tg {
+                width: auto !important; 
+            }
+            .tg col {
+                width: auto !important;
+            }
+            .tg-wrap {
+                overflow-x: auto;-webkit-overflow-scrolling: touch;
+            }
+        }
+        @media (max-width: 991px) {
+            div#adv-search {
+                margin-top: 20px !important;
+            }
+            button.btn.btn-default.dropdown-toggle {
+                display: none !important;
+            }
+        }
+        .btn{
+            border-radius: 4px !important;
+        }
+        .btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+        button.btn.btn-default.dropdown-toggle {
+            height: 34px !important;
+            border-radius: 0px !important;
+        }
+        button.btn.btn-primary{
+            height: 34px !important;
+            border-top-right-radius: 4px !important;
+            border-bottom-right-radius: 4px !important;
+            border-top-left-radius: 0px !important;
+            border-bottom-left-radius: 0px !important;
+        }
+        .form-horizontal .form-group {
+            margin: 0 !important;
+            padding:15px !important;
+            width: 100% !important;
         }
         /*-----------------*/
     </style>
@@ -160,6 +191,40 @@
                 </div>
             </div>
             <div class="col-md-9">
+
+            <div class="input-group" id="adv-search">
+                <input type="text" class="form-control" placeholder="Search For Title, Owners or Location" />
+                <div class="input-group-btn">
+                    <div class="btn-group" role="group">
+                        <div class="dropdown dropdown-lg">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span style="font-size: 12px; font-weight: 200;">Categories</span>&nbsp
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right full-width" role="menu">
+                                <form class="form-horizontal" role="form">
+                                  <div class="form-group">
+                                    <label for="filter">Filter by</label>
+                                    <select class="form-control">
+                                        <option value="0" selected>Select</option>
+                                        <option value="1">Title</option>
+                                        <option value="2">Owners</option>
+                                        <option value="3">Location</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="contain">Contains the words</label>
+                                    <input class="form-control" type="text" />
+                                  </div>
+                                  <button type="submit" class="btn btn-primary" style="width:100% !important; border-radius:0px !important;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div> 
+
                 @if($jobs->count() != 0)
                 <div class="tg-wrap">
                     <table class="table table-striped table-hover" style="background-color: white;">
@@ -249,7 +314,8 @@
                     -->
                 {{$jobs->links()}}
                 @else
-                    <center><i>No job ads available</i></center>
+                    <br>
+                    <center style="color:white;"><i>No job ads available</i></center>
                 @endif
             </div>
         </div>
