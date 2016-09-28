@@ -261,7 +261,8 @@ class HomeController extends BaseController {
                     'username'              =>  Input::get('uName'),
                     'password'              =>  Hash::make(Input::get('primary_pass')),
                     'confirmationCode'      =>  $this->generateConfirmationCode(),
-                    'status'                =>  'VERIFY_EMAIL_REGISTRATION',
+                  //  'status'                =>  'VERIFY_EMAIL_REGISTRATION',
+                    'status'                =>  'PRE_ACTIVATED',
                     'country'               =>  'PHILIPPINES',
                     'created_at'            =>  date("Y:m:d H:i:s"),
                     'updated_at'            =>  date("Y:m:d H:i:s"),
@@ -317,7 +318,7 @@ class HomeController extends BaseController {
 
                 // VALIDATE EMAIL - SEND MAIL NOTIFICATION -- START
                 // insert activation code
-                $activationCode = uniqid().'_'.time();
+           /*     $activationCode = uniqid().'_'.time();
                 $codecreated_at = time(); //date("Y:m:d H:i:s");
                 $duration = $codecreated_at+86400;
                 ActivationCode::insert([
@@ -338,7 +339,7 @@ class HomeController extends BaseController {
                     $message->from('admin@proveek.com', 'Proveek');
                     $message->to($email)->subject('Proveek BETA - Validate Account');
                 });
-                // VALIDATE EMAIL - SEND MAIL NOTIFICATION -- END
+             */   // VALIDATE EMAIL - SEND MAIL NOTIFICATION -- END
                 BaseController::PROVEEK_PROFILE_PERCENTAGE_EMPLOYER($userId);
                 $this->INSERT_AUDIT_TRAIL($userId, 'Created employer account.');
                 Session::flash('successMsg', 'We have sent a validation link to your email! <br/> Please validate your account to start using Proveek');
@@ -640,7 +641,7 @@ class HomeController extends BaseController {
                 $this->INSERT_AUDIT_TRAIL($userId, 'Created Worker Account.');
 
                 // VALIDATE EMAIL - SEND MAIL NOTIFICATION -- START
-                $data = array(
+            /*    $data = array(
                     'msg'   =>  'You have successfully registered in Proveek BETA',
                     'url'   =>  URL::to('/').'/login'
                 );
@@ -651,7 +652,7 @@ class HomeController extends BaseController {
                     $message->from('admin@proveek.com', 'Proveek');
                     $message->to($email)->subject('Proveek BETA - Registration Successful!');
                 });
-                // VALIDATE EMAIL - SEND MAIL NOTIFICATION -- END
+              */  // VALIDATE EMAIL - SEND MAIL NOTIFICATION -- END
 
                 Auth::attempt(array('username' => Input::get('uName'), 'password' => Input::get('pass')));
                 BaseController::PROVEEK_PROFILE_PERCENTAGE_WORKER($userId);
