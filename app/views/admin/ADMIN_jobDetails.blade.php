@@ -73,8 +73,8 @@
             color: #ddd;
             transition: 0.3s;
         }
-        a.nmes:hover{
-            color: white;
+        a.nmees:hover, a.nmes:hover{
+            color: white !important;
         }
         @media(max-width: 991px){
             .mobInvApp{
@@ -221,16 +221,24 @@
                         <div class="col-md-12 col-sm-6 col-xs-12">
                             <h4>List of Applicants</h4>
                             <ul>
-                                @for($i=0; $i<5; $i++)
-                                    <li style="margin-left:-15px;"><a class="nmes" href="#">Lorem Ipsum Sample Name</a><br></li>
+                                @for($i=0; $i<9; $i++)
+                                    @if($i<5)
+                                        <li style="margin-left:-15px;"><a class="nmes" href="#">Lorem Ipsum Sample Name</a><br></li>
+                                    @elseif($i==6)
+                                        <li style="margin-left:-15px; list-style-type: none;"><a class="nmees" href="#" style="color:#68c3ff;">See More</a></li>
+                                    @endif
                                 @endfor
                             </ul>
                         </div>
-                        <div class="mobINV col-md-12 col-sm-6 col-xs-12">
+                        <div class="col-md-12 col-sm-6 col-xs-12">
                             <h4>Invited Lists</h4>
                             <ul>
                                 @for($i=0; $i<5; $i++)
-                                    <li  style="margin-left:-15px;"><a class="nmes" href="#">Lorem Ipsum Sample Name</a><br></li>
+                                    @if($i<5)
+                                        <li style="margin-left:-15px;"><a class="nmes" href="#">Lorem Ipsum Sample Name</a><br></li>
+                                    @elseif($i==6)
+                                        <li style="margin-left:-15px; list-style-type: none;"><a class="nmees" href="#" style="color:#68c3ff;">See More</a></li>
+                                    @endif
                                 @endfor
                             </ul>
                         </div>
