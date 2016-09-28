@@ -139,6 +139,11 @@
               cursor: pointer;
               margin-left: 10px;
             }
+            @media(max-width: 991px) {
+                .mobAppINv{
+                    margin-top:10px;
+                }
+            }
     </style>
     <script>
         $(document).ready(function(){
@@ -186,10 +191,6 @@
                                 P{{ $job->salary }}
                             </div>
                         @endif
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
                         <div class="col-md-12">
                             <label>Skill Category : </label>{{ $job->categoryname }}<br/>
                             <label>Skills Needed : </label>{{$job->itemname}}<br/>
@@ -197,111 +198,120 @@
                                 {{$cs->skill}} <br/>
                             @endforeach
                         </div>
-                        <br/><br/><br/>
-                    </div>
-                    <div class="col-md-6" style="word-wrap: break-word; text-align: justify;">
-                        <label>Description</label><br/>
-                        {{ nl2br($job->description) }}
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="col-md-12 well" style="text-align: justify;">
-                            <label>Requirements</label><br/>
-                            {{ nl2br($job->requirements) }}
-                        </div>
+                        <br>
                     </div>
                     @if($job->AverageProcessingTime || $job->Industry || $job->CompanySize || $job->WorkingHours || $job->DressCode)
                         <div class="col-md-6" style="text-align: justify;">
-                            <h4>Company Snaphots</h4>
-                            @if($job->AverageProcessingTime)
-                                <label>Average Processing Time</label><br/>
-                                {{$job->AverageProcessingTime}}<br/>
-                            @endif
+                            <h4 style="margin-top:0px;">Company Snaphots</h4>
+                            <div class="col-md-12">
+                                @if($job->AverageProcessingTime)
+                                    <label>Average Processing Time: </label>
+                                    {{$job->AverageProcessingTime}}<br/>
+                                @endif
 
-                            @if($job->Industry)
-                                <label>Industry</label><br/>
-                                {{$job->Industry}}<br/>
-                            @endif
+                                @if($job->Industry)
+                                    <label>Industry: </label>
+                                    {{$job->Industry}}<br/>
+                                @endif
 
-                            @if($job->CompanySize)
-                                <label>Company Size</label><br/>
-                                {{$job->CompanySize}}<br/>
-                            @endif
+                                @if($job->CompanySize)
+                                    <label>Company Size: </label>
+                                    {{$job->CompanySize}}<br/>
+                                @endif
 
-                            @if($job->WorkingHours)
-                                <label>Working Hours</label><br/>
-                                {{$job->WorkingHours}}<br/>
-                            @endif
+                                @if($job->WorkingHours)
+                                    <label>Working Hours: </label>
+                                    {{$job->WorkingHours}}<br/>
+                                @endif
 
-                            @if($job->DressCode)
-                                <label>Dress Code</label><br/>
-                                {{$job->DressCode}}
-                            @endif
-                        </div>
-                    @endif
-                </div>
-            </div>
-
-            <div class="col-lg-12 padded" style=" margin-bottom: 0; padding-bottom: 0;">
-                <div class="col-lg-4"><hr class="hrLine"></div>
-                <div class="col-lg-4" style="padding-top: 10px; text-align: center"><p style="font-size:10pt;">Recommended Workers</p></div>
-                <div class="col-lg-4"><hr class="hrLine"></div>
-            </div>
-            <div class="row">
-                @if($workers->count() != 0)
-                    @foreach($workers as $w)
-                        <div class="col-md-4 padded" style="">
-                            <div class="media block-update-card" style="height: 15em;">
-                                <a class="pull-left" href="/{{$w->username}}">
-                                    @if($w->profilePic != "")
-                                        <img class="media-object update-card-MDimentions" src="{{$w->profilePic}}">
-                                    @else
-                                        <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png">
-                                    @endif
-                                </a>
-                                <div class="media-body update-card-body">
-                                    {{--CONDITION FOR NAME DISPLAY--}}
-                                    @if(in_array($w->id, $CHECKED_OUT_USERS))
-                                        <a href="/{{$w->username}}" style="font-weight: bolder;">
-                                            {{ $w->fullName }}
-                                        </a>
-                                    @else
-                                        <a href="/{{$w->username}}" style="font-weight: bolder;">
-                                            {{substr_replace($w->firstName, str_repeat('*', strlen($w->firstName)-1), 1)}}
-                                            &nbsp;
-                                            {{substr_replace($w->lastName, str_repeat('*', strlen($w->lastName)-1), 1)}}
-                                        </a>
-                                    @endif
-                                    <p>{{ $w->regname }}, {{ $w->cityname }}</p>
-                                </div>
-                                <br/>
-                                <br/>
-                                @if(in_array($w->id, $INVITEDS))
-                                    <a data-sample="{{$w->inviteID}}" href="/SNDINVT:{{$w->id}}:{{$job->id}}" class="btn btn-block btn-xs btn-success" style="border-radius: 0.3em;"><i class="fa fa-envelope"></i> Invite Sent</a>
-                                @else
-                                    <a data-sample="{{$w->inviteID}}" href="/SNDINVT:{{$w->id}}:{{$job->id}}" class="btn btn-block btn-xs btn-primary" style="border-radius: 0.3em;"><i class="fa fa-envelope"></i> Send Invite</a>
+                                @if($job->DressCode)
+                                    <label>Dress Code: </label>
+                                    {{$job->DressCode}}
                                 @endif
                             </div>
                         </div>
-                    @endforeach
-                    <div class="col-md-4 padded text-center"><br/>
-                        <a href="/WRKRSRCH:{{$job->id}}:{{$job->categorycode}}:{{$job->itemcode}}:NONE">
-                            <i class="fa fa-search" style="font-size: 3em;"></i><br/>
-                            Look for more workers..
-                        </a>
+                    @endif
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="word-wrap: break-word; text-align: justify;">
+                        <h4>Description</h4>
+                        <div class="col-md-12">
+                            {{ nl2br($job->description) }}
+                        </div>
                     </div>
-                @else
-                    <div class="padded" style="font-size: 1.5em;">
-                    <center><i class="fa fa-info"></i> <i>No Workers match the skills required.</i></center>
+                    <div class="col-md-12">
+                        <div class="col-md-12" style="margin-top:20px;">
+                            <div class="col-md-12 well" style="text-align: justify;">
+                                <label>Requirements</label><br/>
+                                {{ nl2br($job->requirements) }}
+                            </div>
+                        </div>
                     </div>
-                @endif
+                </div>
+
+                <div class="recommendedWorkers">
+                    <div class="row">
+                        <div class="col-lg-4"><hr class="hrLine"></div>
+                        <div class="col-lg-4" style="padding-top: 10px; text-align: center"><p style="font-size:10pt;">Recommended Workers</p></div>
+                        <div class="col-lg-4"><hr class="hrLine"></div>
+                    </div>
+                    <div class="row">
+                        @if($workers->count() != 0)
+                            @foreach($workers as $w)
+                                <div class="col-md-4 padded" style="">
+                                    <div class="media block-update-card" style="height: 15em;">
+                                        <a class="pull-left" href="/{{$w->username}}">
+                                            @if($w->profilePic != "")
+                                                <img class="media-object update-card-MDimentions" src="{{$w->profilePic}}">
+                                            @else
+                                                <img class="media-object update-card-MDimentions" src="/images/default_profile_pic.png">
+                                            @endif
+                                        </a>
+                                        <div class="media-body update-card-body">
+                                            {{--CONDITION FOR NAME DISPLAY--}}
+                                            @if(in_array($w->id, $CHECKED_OUT_USERS))
+                                                <a href="/{{$w->username}}" style="font-weight: bolder;">
+                                                    {{ $w->fullName }}
+                                                </a>
+                                            @else
+                                                <a href="/{{$w->username}}" style="font-weight: bolder;">
+                                                    {{substr_replace($w->firstName, str_repeat('*', strlen($w->firstName)-1), 1)}}
+                                                    &nbsp;
+                                                    {{substr_replace($w->lastName, str_repeat('*', strlen($w->lastName)-1), 1)}}
+                                                </a>
+                                            @endif
+                                            <p>{{ $w->regname }}, {{ $w->cityname }}</p>
+                                        </div>
+                                        <br/>
+                                        <br/>
+                                        @if(in_array($w->id, $INVITEDS))
+                                            <a data-sample="{{$w->inviteID}}" href="/SNDINVT:{{$w->id}}:{{$job->id}}" class="btn btn-block btn-xs btn-success" style="border-radius: 0.3em;"><i class="fa fa-envelope"></i> Invite Sent</a>
+                                        @else
+                                            <a data-sample="{{$w->inviteID}}" href="/SNDINVT:{{$w->id}}:{{$job->id}}" class="btn btn-block btn-xs btn-primary" style="border-radius: 0.3em;"><i class="fa fa-envelope"></i> Send Invite</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="col-md-4 padded text-center"><br/>
+                                <a href="/WRKRSRCH:{{$job->id}}:{{$job->categorycode}}:{{$job->itemcode}}:NONE">
+                                    <i class="fa fa-search" style="font-size: 3em;"></i><br/>
+                                    Look for more workers..
+                                </a>
+                            </div>
+                        @else
+                            <div class="padded" style="font-size: 1.5em;">
+                            <center><i class="fa fa-info"></i> <i>No Workers match the skills required.</i></center>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <div style="clear:both;"></div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="widget-container stats-container" style="display:block !important;">
-                <div class="col-lg-6 lato-text">
+            <div class="widget-container stats-container mobAppINv" style="display:block !important;">
+                <div class="col-lg-6 col-xs-6 lato-text">
                     <a id="APPLICANTSLINK" href="#" style="text-decoration:none;">
                         <div class="number" style="color:#2980b9;">
                             <i class="fa fa-users"></i>
@@ -312,7 +322,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-6 lato-text">
+                <div class="col-lg-6 col-xs-6 lato-text">
                     <a id="INVITEDSLINK" href="/ShowInvited:{{$job->id}}" style="text-decoration:none;">
                         <div class="number" style="color:#2980b9;">
                             <i class="fa fa-envelope-square"></i>

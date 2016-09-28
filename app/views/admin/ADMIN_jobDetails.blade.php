@@ -69,8 +69,32 @@
         border: 1px solid #5b5b5b !important;
         }
         /*-----------------*/
-
-
+        .nmes{
+            color: #ddd;
+            transition: 0.3s;
+        }
+        a.nmes:hover{
+            color: white;
+        }
+        @media(max-width: 991px){
+            .mobInvApp{
+                margin-top:20px;
+            }
+            .mobINV{
+                margin-top: 0px !important;
+            }
+            .widget-container {
+                min-height: auto;
+            }
+        }
+        @media(max-width: 767px){
+            .mobINV{
+                margin-top:20px !important;
+            }
+        }
+        .mobINV{
+                margin-top:20px;
+            }
     </style>
 @stop
 
@@ -111,7 +135,7 @@
             </div> 
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="widget-container">
                     <div class="widget-content padded">
                         <h3 class="lato-text" style="font-weight: bold; margin:0 !important; color:white;">
@@ -127,69 +151,94 @@
                         </span>
                         <br/><br/>
                         <div class="row" style="text-align: left">
-                            <div class="col-md-7">
-                            <div class="col-md-4"><b>Duration</b></div>
-                            <div class="col-md-8">
-                                @if($job->hiring_type == 'LT6MOS')
-                                    Less than 6 months
-                                @else
-                                    Greater than 6 months
-                                @endif
-                            </div>
-                            <br/><br/>
-                            <div class="col-md-4">
-                                <b>Skill Category</b>
-                            </div>
-                            <div class="col-md-8">
-                                {{ $job->categoryname }}
-                            </div>
-                            <br/><br/>
-                            <div class="col-md-4">
-                                <b>Skill</b>
-                            </div>
-                            <div class="col-md-8">
-                                {{ $job->itemname }}
-                            </div>
-                            <br/><br/><br/>
-                            <div class="col-md-4">
-                                <b>Location</b>
-                            </div>
-                            <div class="col-md-8">
-                                {{ $job->cityname }}, {{ $job->bgyname }}<br/>
-                                {{ $job->regname }}
-                            </div>
-                            <br/><br/><br/>
-                            <div class="col-md-4">
-                                <b>Salary</b>
-                            </div>
-                            <div class="col-md-8">P{{ $job->salary }}</div>
-                            <br/><br/><br/>
-                            </div>
                             <div class="col-md-5">
                                 <b style="font-size: 17px;">Job Description :</b><br>
                                 {{ $job->description }}
                             </div>
-                        </div>
-                        <br/>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="col-md-12 well">
-                                    <label>Requirements</label><br/>
-                                    {{$job->requirements}}
+
+                            <div class="col-md-7">
+                                <div class="col-md-4"><b>Duration</b></div>
+                                <div class="col-md-8">
+                                    @if($job->hiring_type == 'LT6MOS')
+                                        Less than 6 months
+                                    @else
+                                        Greater than 6 months
+                                    @endif
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="col-md-12">
+
+                                <div class="col-md-4">
+                                    <b>Skill Category</b>
+                                </div>
+                                <div class="col-md-8">
+                                    {{ $job->categoryname }}
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b>Skill</b>
+                                </div>
+                                <div class="col-md-8">
+                                    {{ $job->itemname }}
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b>Location</b>
+                                </div>
+                                <div class="col-md-8">
+                                    {{ $job->cityname }}, {{ $job->bgyname }}<br/>
+                                    {{ $job->regname }}
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b>Salary</b>
+                                </div>
+                                <div class="col-md-8">P{{ $job->salary }}</div>
+
+                                <div class="col-md-12" style="margin-top:20px;">
                                     <label>Other Skills</label><br/>
                                     @foreach($custom_skills as $cs)
                                         <span class="badge" style="white-space: pre-wrap; text-align: left; line-height: 15px !important;">{{$cs->skill}}</span>
                                     @endforeach
+                            </div>
+
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12 well">
+                                    <label>Requirements</label><br/>
+                                    {{$job->requirements}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-3 mobInvApp">
+                <div class="widget-container">
+                    <div class="widget-content padded">
+                        <div class="col-md-12 col-sm-6 col-xs-12">
+                            <h4>List of Applicants</h4>
+                            <ul>
+                                @for($i=0; $i<5; $i++)
+                                    <li style="margin-left:-15px;"><a class="nmes" href="#">Lorem Ipsum Sample Name</a><br></li>
+                                @endfor
+                            </ul>
+                        </div>
+                        <div class="mobINV col-md-12 col-sm-6 col-xs-12">
+                            <h4>Invited Lists</h4>
+                            <ul>
+                                @for($i=0; $i<5; $i++)
+                                    <li  style="margin-left:-15px;"><a class="nmes" href="#">Lorem Ipsum Sample Name</a><br></li>
+                                @endfor
+                            </ul>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
