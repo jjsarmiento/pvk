@@ -70,7 +70,7 @@ section {
 
 @media (max-width: 767px){
     section{
-        padding-top: 120px;
+        padding-top: 120px !important;
     }
     a {
         z-index: 999;
@@ -609,3 +609,7 @@ a, a.sidemenu {
     font-family: 'Lato', sans-serif;
     margin-left: 2px;
  }
+
+ .divFooterDark{
+    font-style: normal !important;
+}
