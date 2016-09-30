@@ -190,14 +190,14 @@
         .lato-text { font-family: 'Lato', sans-serif}
         /*section{padding:0px 0px;}*/
 
-        .srchAnim
+/*        .srchAnim
         {
             width: 200px !important;
         }
         .srchAnim:focus
         {
-            widtH: 400px !important;
-        }
+            width: 400px !important;
+        }*/
 
         .hrLine
         {
@@ -286,18 +286,17 @@
                     </div>
                 @endif
         <!-- END OF TASKMINATOR / WORKER -->
+
         <!-- EMPLOYERS / COMPANIES -->
             @elseif($role == 'CLIENT_IND' || $role == 'CLIENT_CMP')
-                {{--@if(@$total_prog >= 50)--}}
-                    {{--<div class="col-sm-3 col-md-3 pull-left navbar-form">--}}
-                        {{--<div class="input-group">--}}
-                            {{--<input type="text" data-url="/CISRCH/{{@$total_prog}}=" value="{{@$keyword}}" class="form-control input-trans srchAnim" placeholder="Search for workers / preffered skills" required name="search">--}}
-                            {{--<div class="input-group-btn">--}}
-                                {{--<button class="btn btn-default btn-trans" type="submit"><i class="glyphicon glyphicon-search"></i></button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
+            <div class="col-sm-3 col-md-3 pull-left navbar-form">
+                <div class="input-group">
+                    <input data-url="" type="text" class="form-control input-trans srchAnim" value="{{@$keyword}}" placeholder="Search" required name="search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default btn-trans" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </div>
             @endif
         <!-- END OF EMPLOYER / COMPANIES -->
     <!-- END OF SEARCH FOR NAV BAR -->
