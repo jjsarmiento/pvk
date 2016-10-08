@@ -147,10 +147,28 @@
             </div>
             <div class="col-md-4">
                 <div class="panel-body" style="background:white;">
-                    <h4 style="margin: 0;padding: 0;border-bottom: 1px solid #ECF0F1;padding-bottom: 0.6em;margin-bottom: 0.6em;"><i class="fa fa-edit" aria-hidden="true"></i> Edit your profile picture</h4>
+                    <h4 style="margin: 0;padding: 0;border-bottom: 1px solid #ECF0F1;padding-bottom: 0.6em;margin-bottom: 0.6em;"><i class="fa fa-edit" aria-hidden="true"></i> Verify your mobile number</h4>
                 </div>
-                <div class="widget-container small" style="margin-top:-25px;">
-                    @if(Auth::user()->profilePic == null)
+                <div class="widget-container" style="min-height: 150px; padding-bottom: 5px; margin-top: -25px;">
+                    @foreach($contacts as $contact)
+                         @if($contact->ctype == 'mobileNum')
+
+                        <div class="heading">
+                            Mobile Number : {{$contact->content}}
+                        </div>
+                        <div class="heading">
+                            Status : Not Verified  <button onclick="location.href='/sendSmsCode'" class="btn btn-xs btn-default pull-right border: 1px solid #2980b9;" style="padding: 2px 10px 2px 10px; text-transform: none; border: 1px solid #2980b9;">Send Verification Code</button>
+                        </div>
+                        @endif
+                     @endforeach
+
+                        <div class="widget-content padded">
+                            <input placeholder="Input verification code" required="required" type="text" name="" value="" class="form-control"/><br/>
+                        </div>
+                     <div class="text-right padded">
+                                <button type="submit" class="btn btn-primary" style="margin-eft: 10px;">Confirm Mobile Number</button>
+                    </div>
+              <!--      @if(Auth::user()->profilePic == null)
                         <div class="heading">
                             <i class="icon-signal"></i>Please upload a profile picture
                         </div>
@@ -169,7 +187,7 @@
                                 <a href="/editProfile"><img src="{{ Auth::user()->profilePic }}" class="portrait"/></a>
                             </div>
                         </div>
-                    @endif
+                    @endif -->
                 </div>
             </div>
             <div class="col-md-4">
