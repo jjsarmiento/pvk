@@ -610,6 +610,89 @@ class TaskminatorController extends \BaseController {
         return Redirect::back()->with('successMsg', 'Password successfully changed');
     }
 
+        //SMS bY MDSR
+
+    public function sendSmsCode(){
+          if(Contact::where('user_id', Auth::user()->id)->pluck('pincode') == 'verified'){
+            //return View::make('editProfile_tskmntr')->with('user', User::where('id', Auth::user()->id)->first());       
+           // return View::make('verifysuccess');
+            echo "user is here";
+            
+            echo str_random(32);
+            
+           // echo "mobile number = ".$mobileNum;
+        }else{
+            include('ChikkaSMS.php');
+             $SMSCODE = Contact::where('user_id', Auth::user()->id )->where('ctype', 'mobileNum')->pluck('pincode');
+             $mobileNum = Contact::where('user_id', Auth::user()->id )->where('ctype', 'mobileNum')->pluck('content');
+             //edit mobile number for sending sms text
+             $mobileNum = "63".substr($mobileNum,1);
+        
+            $clientId = '6df7472869b1ae7542fedd1244bc588aa4215564a0ad064a08a2001f8701fdb2';
+            $secretKey = '6389e577850a038b66a1274c789e7b8c13493efcfeda56a15b4e57f171d216b0';
+            $shortCode = '292906377';
+            $SMSmessage =  'WELCOME TO PROVEEK.      Code:'. $SMSCODE.'. Use this to verify your mobile number in Proveek.';
+            $messageID = mt_rand(100000,999999);
+
+            $chikkaAPI = new ChikkaSMS($clientId,$secretKey,$shortCode);
+            $response = $chikkaAPI->sendText($messageID, $mobileNum, $SMSmessage);
+            header("HTTP/1.1 " . $response->status . " " . $response->message);
+           // exit($response->description);
+
+            /*
+             $arr_post_body = array(
+            "message_type" => "SEND",
+            "mobile_number" =>  $mobileNum,
+            "shortcode" => "292906377",
+            "message_id" => str_random(32),
+            "message" => urlencode("WELCOME TO PROVEEK.   ".$SMSCODE.". Use this to verify your mobile number in Proveek.") , 
+            "client_id" => "6df7472869b1ae7542fedd1244bc588aa4215564a0ad064a08a2001f8701fdb2",
+            "secret_key" => "6389e577850a038b66a1274c789e7b8c13493efcfeda56a15b4e57f171d216b0"
+             );
+
+             $query_string = "";
+        foreach($arr_post_body as $key => $frow){
+            $query_string .= '&'.$key.'='.$frow;
+        }
+
+        $URL = "https://post.chikka.com/smsapi/request";
+
+        $curl_handler = curl_init();
+        curl_setopt($curl_handler, CURLOPT_URL, $URL);
+        curl_setopt($curl_handler, CURLOPT_POST, count($arr_post_body));
+        curl_setopt($curl_handler, CURLOPT_POSTFIELDS, $query_string);
+        curl_setopt($curl_handler, CURLOPT_RETURNTRANSFER, TRUE);
+        $response = curl_exec($curl_handler);
+        curl_close($curl_handler);
+
+        echo "Accepted";
+        $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Send SMS Verification code');
+       return Redirect::back()->with('successMsg', 'SMS Code Sent!');
+
+       */
+        $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'SMS Code is sent');
+        return Redirect::back()->with('successMsg', 'SMS Code sent!');
+        }
+
+
+
+        
+    }
+
+    public function verifySmsCode(){
+
+         $SMSCODE = Contact::where('user_id', Auth::user()->id )->where('ctype', 'mobileNum')->pluck('pincode');
+
+
+
+    }
+
+
+
+
+
+
+
     public function sendVerificationCode(){
         // pincode already verified
         if(Contact::where('user_id', Auth::user()->id)->pluck('pincode') == 'verified'){
