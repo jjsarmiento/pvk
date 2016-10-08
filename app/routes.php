@@ -352,10 +352,17 @@ Route::group(array('before' => 'TASKMINATOR-ONLY'), function(){
     Route::get('/denyOffer/{taskid}', 'TaskminatorController@denyOffer');
     */
 
-    // sms verification
+    // sms verification by MDSR
     Route::get('/doVerifyMobileNumber', 'TaskminatorController@doVerifyMobileNumber');
     Route::post('/verifyPin', 'TaskminatorController@verifyPin');
     Route::get('/sendVerificationCode', 'TaskminatorController@sendVerificationCode');
+
+    Route::get('/sendSmsCode', 'TaskminatorController@sendSmsCode');
+
+    //EDN OF SMS
+
+
+    
     Route::get('/workerDoSearch', 'searchTestController@workerDoSearch');
     Route::get('/WSRCH={keyword}', 'TaskminatorController@WSRCH');
 });
