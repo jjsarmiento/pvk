@@ -610,31 +610,45 @@ class HomeController extends BaseController {
                     'role_id'   =>  '2'
                 ));
 
+                   //Generate PIN CODE
+                    $letters = '01234ABCDEFGHIJKLM56789NOPQRSTUVWXYZ';
+                    $key = '';
+                    for($i = 1; $i <= 5; $i++)
+                    {
+                     $key .= $letters[mt_rand(0, strlen($letters) - 1)];
+                    }
+                    //END OF Generate PIN CODE
+
                 Contact::insert(array(
                     array(
                         'user_id'       =>  $userId,
                         'ctype'         =>  'email',
                         'content'       =>  Input::get('txtEmail'),
+                        'pincode'       =>  NULL,
                     ),
                     array(
                         'user_id'       =>  $userId,
                         'ctype'         =>  'mobileNum',
                         'content'       =>  Input::get('mblNum'),
+                        'pincode'       =>  $key,
                     ),
                     array(
                         'user_id'       =>  $userId,
                         'ctype'         =>  'facebook',
                         'content'       =>  NULL,
+                        'pincode'       =>  NULL,
                     ),
                     array(
                         'user_id'       =>  $userId,
                         'ctype'         =>  'twitter',
                         'content'       =>  NULL,
+                        'pincode'       =>  NULL,
                     ),
                     array(
                         'user_id'       =>  $userId,
                         'ctype'         =>  'linkedin',
                         'content'       =>  NULL,
+                        'pincode'       =>  NULL,
                     )
                 ));
 
