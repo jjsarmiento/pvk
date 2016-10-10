@@ -524,11 +524,33 @@ class TaskminatorController extends \BaseController {
         }else if(strlen(Input::get('mobileNum')) == 0 || strlen(Input::get('mobileNum')) < 11){
             return Redirect::back()->with('errorMsg', 'Mobile number cannot be empty and must be more than 11 digits')->withInput(Input::except('password'));
         }
+
+        $mobileNum = Contact::where('user_id', Auth::user()->id )->where('ctype', 'mobileNum')->pluck('content');
+        if($mobileNum != Input::get('mobileNum')){
+                    //Generate NEW PIN CODE
+                    $letters = '01234ABCDEFGHIJKLM56789NOPQRSTUVWXYZ';
+                    $key = '';
+                    for($i = 1; $i <= 5; $i++)
+                    {
+                     $key .= $letters[mt_rand(0, strlen($letters) - 1)];
+                    }
+                    //END OF Generate NEW PIN CODE
+        Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum'), 'pincode' => $key]);
+        Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum'), 'pincode' => $key]); 
+        Contact::where('user_id', Auth::user()->id)->where('ctype', 'email')->update(['content' => Input::get('email'), 'pincode' => $key]);
+        Contact::where('user_id', Auth::user()->id)->where('ctype', 'facebook')->update(['content' => Input::get('facebook'), 'pincode' => $key]);
+        Contact::where('user_id', Auth::user()->id)->where('ctype', 'linkedin')->update(['content' => Input::get('linkedin'), 'pincode' => $key]);
+        Contact::where('user_id', Auth::user()->id)->where('ctype', 'twitter')->update(['content' => Input::get('twitter'), 'pincode' => $key]);
+        }else{
+        Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum')]); 
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'email')->update(['content' => Input::get('email')]);
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'facebook')->update(['content' => Input::get('facebook')]);
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'linkedin')->update(['content' => Input::get('linkedin')]);
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'twitter')->update(['content' => Input::get('twitter')]);
-        Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum')]);
+        }
+
+
+
 
         $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Edited contact information');
         return Redirect::back()->with('successMsg', 'Successfully edited contact information.');
