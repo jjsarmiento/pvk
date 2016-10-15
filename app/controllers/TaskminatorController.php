@@ -535,7 +535,7 @@ class TaskminatorController extends \BaseController {
                      $key .= $letters[mt_rand(0, strlen($letters) - 1)];
                     }
                     //END OF Generate NEW PIN CODE
-        
+
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum'), 'pincode' => $key]);
         }
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'email')->update(['content' => Input::get('email')]);
@@ -694,11 +694,25 @@ class TaskminatorController extends \BaseController {
         
     }
 
-    public function verifySmsCode(){
+    public function confirmSmsCode(){
 
          $SMSCODE = Contact::where('user_id', Auth::user()->id )->where('ctype', 'mobileNum')->pluck('pincode');
+         $mobileNum = Contact::where('user_id', Auth::user()->id )->where('ctype', 'mobileNum')->pluck('content');
+         $myinput = Input::get('pincodeinput');
 
+         if($SMSCODE != $myinput){
+            $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'PIN Code do Not Matched');
+             return Redirect::back()->with('errorMsg', 'PIN Code do Not Matched');
 
+         }
+
+         if($SMSCODE == $myinput){
+
+             Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum'), 'pincode' => 'verified']);
+             $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Mobile Number Confirmed');
+             return Redirect::back()->with('successMsg', 'Mobile NUmber Confirmed');
+         }
+ 
 
     }
 

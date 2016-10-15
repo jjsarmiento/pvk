@@ -358,7 +358,7 @@ Route::group(array('before' => 'TASKMINATOR-ONLY'), function(){
     Route::get('/sendVerificationCode', 'TaskminatorController@sendVerificationCode');
 
     Route::get('/sendSmsCode', 'TaskminatorController@sendSmsCode');
-
+    Route::post('/confirmSmsCode', 'TaskminatorController@confirmSmsCode');
     //EDN OF SMS
 
 
