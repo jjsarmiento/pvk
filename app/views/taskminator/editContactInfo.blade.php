@@ -158,6 +158,7 @@
                             @endif
                             @if($contact->pincode == 'verified')
                             Status : Verified
+                            Mobile Number : {{$contact->content}}
                             @endif
                     </div>
                         @endif
