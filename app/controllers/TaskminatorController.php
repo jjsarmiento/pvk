@@ -535,20 +535,13 @@ class TaskminatorController extends \BaseController {
                      $key .= $letters[mt_rand(0, strlen($letters) - 1)];
                     }
                     //END OF Generate NEW PIN CODE
+        
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum'), 'pincode' => $key]);
-        Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum'), 'pincode' => $key]); 
-        Contact::where('user_id', Auth::user()->id)->where('ctype', 'email')->update(['content' => Input::get('email'), 'pincode' => $key]);
-        Contact::where('user_id', Auth::user()->id)->where('ctype', 'facebook')->update(['content' => Input::get('facebook'), 'pincode' => $key]);
-        Contact::where('user_id', Auth::user()->id)->where('ctype', 'linkedin')->update(['content' => Input::get('linkedin'), 'pincode' => $key]);
-        Contact::where('user_id', Auth::user()->id)->where('ctype', 'twitter')->update(['content' => Input::get('twitter'), 'pincode' => $key]);
-        }else{
-        Contact::where('user_id', Auth::user()->id)->where('ctype', 'mobileNum')->update(['content' => Input::get('mobileNum')]); 
+        }
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'email')->update(['content' => Input::get('email')]);
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'facebook')->update(['content' => Input::get('facebook')]);
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'linkedin')->update(['content' => Input::get('linkedin')]);
         Contact::where('user_id', Auth::user()->id)->where('ctype', 'twitter')->update(['content' => Input::get('twitter')]);
-        }
-
 
 
 
