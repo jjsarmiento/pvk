@@ -195,8 +195,8 @@
                 <div class="row">
                     <div class="col-lg-7 text-left">
                         <h2>Sign Up</h2>
-                        <h3 class="lato-text">Find jobs that matches your skills!</h3>
-                        <br><br>
+                        <h3 class="lato-text">"Find jobs that match your skills!</h3>
+                        <br>
                         {{ Form::open(array('url' => '/regWorker', 'id' => 'minimalRegForm_Worker')) }}
                             <div class="col-lg-10 signUpDiv" style="">
                                 <div class="col-lg-6" style="border-right:1px solid #ccc;">
