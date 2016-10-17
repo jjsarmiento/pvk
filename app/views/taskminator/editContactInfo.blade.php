@@ -157,7 +157,7 @@
                             Status : Not Verified  <button onclick="location.href='/sendSmsCode'" class="btn btn-xs btn-default pull-right border: 1px solid #2980b9;" style="padding: 2px 10px 2px 10px; text-transform: none; border: 1px solid #2980b9;">Send Verification Code</button>
                             @endif
                             @if($contact->pincode == 'verified')
-                            Status : Verified
+                            Status : Verified <br>
                             Mobile Number : {{$contact->content}}
                             @endif
                     </div>
