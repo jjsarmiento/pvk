@@ -234,15 +234,15 @@
     </nav>
 
     <!-- HEADER SEARCH SECTION -->
-    <header style="max-height: auto !important;">
-        <div class="vegas.overlay" style="height:100%; width:100%; background-color: rgba(0,0,0,.5);">
-        <div class="header-content">
+    <header style="height:110%;">
+        <div class="vegas.overlay" style="height:110%; width:100%; background-color: rgba(0,0,0,.5);">
+        <div class="header-content" style= "max-height: auto !important;">
             <div class="header-content-inner lato-text">
                 <div class="row">
                     <div class="col-lg-7 text-left">
                         <h2>Sign Up</h2>
                         <h3 class="lato-text">Post jobs and find suitable workers!</h3>
-                        <br>
+                    
                         {{ Form::open(array('url' => '/regEmployer', 'id' => 'minimalRegForm_Company')) }}
                             <div class="col-lg-8 signUpDiv" style="">
                                 <div class="col-lg-12" style="">
@@ -279,7 +279,7 @@
                                     {{ Form::label('lbl_mobileNum', 'Mobile Number', ['style' => 'color:#333; text-transform: uppercase']) }}
                                     <input type="text" class="form-control" placeholder="09xxxxxxxxx" name="mobileNum" style="border: none;" required="required" />
                                 </div>
-                                <div class="col-lg-12 lato-text g-recaptcha" style="padding-top:10px;" data-sitekey="6LfpJyITAAAAAPxa-KWsJlqMNHL6qVK6nngZktlY"></div>
+                                <div class="col-lg-12 lato-text g-recaptcha"  style="padding-top:10px; " data-sitekey="6LfpJyITAAAAAPxa-KWsJlqMNHL6qVK6nngZktlY"></div>
                                 <div class="col-lg-12 lato-text">
                                     <p style="padding:0;margin:0;font-size:10pt; color:#0f0f0f">By clicking Sign Up, you agree to our <a href="#" data-target="#TERMSMODAL" data-toggle="modal">Terms</a> and that you have read our <a href="#" data-target="#PRIPOLMODAL" data-toggle="modal">Privacy Policy</a>.</p>
                                 </div>
@@ -299,7 +299,7 @@
                     </div> -->
                     <div class="col-lg-5" style="text-align: left;">
                         <h2 class="lato-text" style="text-align: center;">List of Newly Signup Workers</h2>
-                        <hr style="margin-bottom:40px;">
+                        <hr style="margin-bottom:60%px;">
                         <div class="scrolls">
                             @foreach($new_workers as $nw)
                             <div class="padded" style="background:white; border-bottom: 1px solid #f2f2f2;">

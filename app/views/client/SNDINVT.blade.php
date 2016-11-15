@@ -272,7 +272,7 @@
                         <br/><br/>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea name="txtarea_message" id="txtarea_message" rows="8" class="form-control" placeholder="Attach a message to your invite for {{$worker->fullName}}"></textarea>
+                            <textarea name="txtarea_message" id="txtarea_message" rows="8" class="form-control" placeholder="Attach a message to your invitation"></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success">Send Invite</button>

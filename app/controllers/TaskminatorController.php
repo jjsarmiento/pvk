@@ -943,6 +943,29 @@ class TaskminatorController extends \BaseController {
         $job = Job::where('id', Input::get('application_jobID'))->first();
         $client = User::where('id', $job->user_id)->first();
 
+        //SMS notification to Employer
+
+        include('ChikkaSMS.php');
+         $mobileNum = Contact::where('user_id', $job->user_id )->where('ctype', 'mobileNum')->pluck('content');
+         $mobileNum = "63".substr($mobileNum,1);
+        echo $mobileNum  ;
+        
+         
+            $clientId = '6df7472869b1ae7542fedd1244bc588aa4215564a0ad064a08a2001f8701fdb2';
+            $secretKey = '6389e577850a038b66a1274c789e7b8c13493efcfeda56a15b4e57f171d216b0';
+            $shortCode = '292906377';
+            $SMSmessage =  'Proveek Update.Someone applied to your posted job.';
+            $messageID = mt_rand(100000,999999);
+
+            $chikkaAPI = new ChikkaSMS($clientId,$secretKey,$shortCode);
+            $response = $chikkaAPI->sendText($messageID, $mobileNum, $SMSmessage);
+            header("HTTP/1.1 " . $response->status . " " . $response->message);
+            echo $response->status;
+            echo '<br>';
+            echo $response->message;
+
+        //end of sms notif
+
         // NOTIFICATION
         $this->NOTIFICATION_INSERT($client->id, 'Worker has applied for <b>'.$job->title.'</b>', '/jobDetails='.$job->id);
         $this->INSERT_AUDIT_TRAIL(Auth::user()->id, 'Sent application for a <a href="/ADMIN_jobDetails='.Input::get('application_jobID').'">job</a>');

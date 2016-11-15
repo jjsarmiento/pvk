@@ -1515,6 +1515,8 @@ class ClientIndiController extends \BaseController {
 
         $isCheckedOut = (in_array($worker->userid, $this->GETCHECKEDOUTUSERS(Auth::user()->id))) ? true : false;
 
+
+
         return View::make('client.SNDINVT')
                 ->with('worker', $worker)
                 ->with('job', $job)
@@ -1532,7 +1534,27 @@ class ClientIndiController extends \BaseController {
                 'created_at'    =>  date("Y:m:d H:i:s")
             ]);
         }
+        
 
+        //Send SMS notif to the worker MDSR
+        include('ChikkaSMS.php');
+         $mobileNum = Contact::where('user_id', Input::get('USRID') )->where('ctype', 'mobileNum')->pluck('content');
+         $mobileNum = "63".substr($mobileNum,1);
+         echo $mobileNum;
+        
+         
+            $clientId = '6df7472869b1ae7542fedd1244bc588aa4215564a0ad064a08a2001f8701fdb2';
+            $secretKey = '6389e577850a038b66a1274c789e7b8c13493efcfeda56a15b4e57f171d216b0';
+            $shortCode = '292906377';
+            $SMSmessage =  'Proveek Update.A company Invited you to apply for their job.';
+            $messageID = mt_rand(100000,999999);
+
+            $chikkaAPI = new ChikkaSMS($clientId,$secretKey,$shortCode);
+            $response = $chikkaAPI->sendText($messageID, $mobileNum, $SMSmessage);
+            header("HTTP/1.1 " . $response->status . " " . $response->message);
+            
+
+        //End of SMS notif
         // NOTIFICATION
         $job = Job::where('id', Input::get('JBID'))->first();
         $this->NOTIFICATION_INSERT(Input::get('USRID'), '<b>'.Auth::user()->fullName.'</b> has sent you an invitation to apply for <b>'.$job->title.'</b>', '/jbdtls='.$job->id);
